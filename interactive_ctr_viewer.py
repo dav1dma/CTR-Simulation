@@ -1,2280 +1,454 @@
+"""Responsive CTR viewer with PS5 and keyboard control."""
+
+from __future__ import annotations
+
 import math
 import time
+from dataclasses import dataclass
 
 import numpy as np
 import pygame
 import pyvista as pv
 
-from tube_parameters import build_supervisor_ctr_parameters
 from CTR_superPosKin_fun_sectioned import superPosKin
+from tube_parameters import build_supervisor_ctr_parameters
 
-
-# ============================================================
-# PS5 CONTROLLER MAPPING
-# ============================================================
-
-BUTTON_CROSS = 0
-
-BUTTON_L1 = 9
-BUTTON_R1 = 10
-
-LEFT_STICK_X = 0
-LEFT_STICK_Y = 1
-
-RIGHT_STICK_X = 2
-RIGHT_STICK_Y = 3      # intentionally unused
-
-L2_AXIS = 4
-R2_AXIS = 5
-
-
-# ============================================================
-# CONTROL SETTINGS
-# ============================================================
+# Mapping confirmed by the controller-identification scripts on this Mac.
+BUTTON_CROSS, BUTTON_L1, BUTTON_R1 = 0, 9, 10
+LEFT_STICK_X, LEFT_STICK_Y, RIGHT_STICK_X = 0, 1, 2
+L2_AXIS, R2_AXIS = 4, 5
 
 STICK_DEADZONE = 0.08
-
+TRIGGER_DEADZONE = 0.02
 MAX_ROTATION_SPEED_DEG_S = 300.0
 MAX_TRANSLATION_SPEED_MM_S = 80.0
-
 CAMERA_ORBIT_SPEED_DEG_S = 90.0
-
-
-# Keyboard backup
 KEYBOARD_TRANSLATION_STEP_MM = 1.0
 KEYBOARD_ROTATION_STEP_DEG = 5.0
-
 KEYBOARD_CAMERA_STEP_DEG = 5.0
 
-
-# ============================================================
-# PERFORMANCE SETTINGS
-# ============================================================
-
-# Controller / UI polling:
-# ~60 Hz
 TIMER_INTERVAL_MS = 16
-
-
-# Mechanical model update rate
 MODEL_UPDATE_HZ = 40.0
-
-MODEL_UPDATE_INTERVAL = (
-    1.0 / MODEL_UPDATE_HZ
-)
-
-
-# Text does not need to update at 60 Hz
 STATUS_UPDATE_HZ = 5.0
-
-STATUS_UPDATE_INTERVAL = (
-    1.0 / STATUS_UPDATE_HZ
-)
-
-
-# Points calculated in each model section
 MODEL_POINTS_PER_SECTION = 12
-
-
-# Fixed number of points used to DRAW the CTR.
-#
-# Keeping this constant means PyVista can reuse
-# the same actor instead of creating a new one.
-DISPLAY_POINTS = 100
-
-
-BACKBONE_LINE_WIDTH = 7.0
-
-TIP_RADIUS_MM = 2.5
-
-
-SHOW_GRID = True
-
-
-# ============================================================
-# ROBOT PARAMETERS
-# ============================================================
-
-TUBE_NAMES = [
-
-    "INNER",
-
-    "MIDDLE",
-
-    "OUTER"
-]
-
-
-CTR_par = (
-    build_supervisor_ctr_parameters()
-)
-
-
-sim_par = {
-
-    "n_p": MODEL_POINTS_PER_SECTION,
-
-    "isPlot": False
-}
-
-
-# ============================================================
-# INITIAL ROBOT STATE
-# ============================================================
-
-# Deployment [m]
-ul = np.array([
-
-    120e-3,
-
-    70e-3,
-
-    40e-3
-
-], dtype=float)
-
-
-# Rotation [rad]
-uphi = np.deg2rad([
-
-    0.0,
-
-    0.0,
-
-    0.0
-])
-
-
-selected_tube = 0
-
-
-TOTAL_LENGTHS = np.array([
-
-    sum(
-        CTR_par["l_t"][0]
-    ),
-
-    sum(
-        CTR_par["l_t"][1]
-    ),
-
-    sum(
-        CTR_par["l_t"][2]
-    )
-
-], dtype=float)
-
-
-robot_dirty = True
-
-
-# ============================================================
-# CONTROLLER SETUP
-# ============================================================
-
-pygame.init()
-
-pygame.joystick.init()
-
-
-controller = None
-
-
-last_controller_reconnect_attempt = (
-    0.0
-)
-
-
-# Button edge detection
-previous_l1 = False
-
-previous_r1 = False
-
-previous_cross = False
-
-
-def connect_controller():
-
-    global controller
-
-    global previous_l1
-    global previous_r1
-    global previous_cross
-
-
-    try:
-
-        pygame.joystick.quit()
-
-        pygame.joystick.init()
-
-
-        if pygame.joystick.get_count() == 0:
-
-            controller = None
-
-            return False
-
-
-        controller = (
-            pygame.joystick.Joystick(0)
-        )
-
-
-        controller.init()
-
-
-        previous_l1 = False
-
-        previous_r1 = False
-
-        previous_cross = False
-
-
-        print("")
-        print("Controller connected:")
-        print(
-            controller.get_name()
-        )
-        print("")
-
-
-        return True
-
-
-    except pygame.error as exc:
-
-        controller = None
-
-        print(
-            f"Controller connection error: {exc}"
-        )
-
-
-        return False
-
-
-connect_controller()
-
-
-# ============================================================
-# CONTROLLER FILTERING
-# ============================================================
-
-def apply_axis_deadzone(value):
-
-    """
-    Deadzone for one analogue axis.
-    """
-
-    if abs(value) < STICK_DEADZONE:
-
+DISPLAY_POINTS = 80
+CONTROLLER_RETRY_S = 1.0
+ERROR_PRINT_INTERVAL_S = 2.0
+
+TUBE_NAMES = ("INNER", "MIDDLE", "OUTER")
+INITIAL_DEPLOYMENT_M = np.array([120e-3, 70e-3, 40e-3])
+INITIAL_ROTATION_RAD = np.zeros(3)
+CAMERA_ORIGIN = np.zeros(3)
+
+
+def apply_axis_deadzone(value: float, deadzone: float = STICK_DEADZONE) -> float:
+    value = float(np.clip(value, -1.0, 1.0))
+    if abs(value) <= deadzone:
         return 0.0
-
-
-    sign = (
-
-        1.0
-
-        if value > 0.0
-
-        else -1.0
-    )
-
-
-    scaled = (
-
-        abs(value)
-
-        - STICK_DEADZONE
-
-    ) / (
-
-        1.0
-
-        - STICK_DEADZONE
-    )
-
-
-    return (
-        sign * scaled
-    )
+    return math.copysign((abs(value) - deadzone) / (1.0 - deadzone), value)
 
 
 def apply_stick_deadzone(
-    x,
-    y
-):
-
-    """
-    Radial deadzone for the left analogue stick.
-    """
-
-    magnitude = (
-        math.hypot(
-            x,
-            y
-        )
-    )
-
-
-    if magnitude < STICK_DEADZONE:
-
-        return (
-            0.0,
-            0.0
-        )
-
-
-    magnitude = min(
-
-        magnitude,
-
-        1.0
-    )
-
-
-    scaled_magnitude = (
-
-        magnitude
-
-        - STICK_DEADZONE
-
-    ) / (
-
-        1.0
-
-        - STICK_DEADZONE
-    )
-
-
-    scale = (
-
-        scaled_magnitude
-
-        / magnitude
-    )
-
-
-    return (
-
-        x * scale,
-
-        y * scale
-    )
-
-
-def trigger_value(
-    raw_value
-):
-
-    """
-    PS5 trigger:
-
-    -1 = released
-    +1 = fully pressed
-
-    converted to:
-
-     0 = released
-     1 = fully pressed
-    """
-
-    return float(
-
-        np.clip(
-
-            (
-                raw_value
-                + 1.0
-            )
-            / 2.0,
-
-            0.0,
-
-            1.0
-        )
-    )
-
-
-# ============================================================
-# PYVISTA SETUP
-# ============================================================
-
-plotter = pv.Plotter(
-
-    window_size=[
-        1200,
-        800
-    ]
-)
-
-
-plotter.set_background(
-    "white"
-)
-
-
-if SHOW_GRID:
-
-    plotter.show_grid()
-
-
-plotter.add_axes()
-
-
-# ============================================================
-# FORWARD MODEL
-# ============================================================
-
-def calculate_backbone():
-
-    inputs = {
-
-        "ul":
-            ul.tolist(),
-
-        "uphi":
-            uphi.tolist()
-    }
-
-
-    (
-
-        rhoQ_tip,
-
-        R_tip,
-
-        s,
-
-        rhoQ,
-
-        Kappa,
-
-        Kappa_xy,
-
-        phi,
-
-        ul_sorted,
-
-        t_tip
-
-    ) = superPosKin(
-
-        CTR_par,
-
-        inputs,
-
-        sim_par
-    )
-
-
-    all_points = []
-
-
-    for (
-        section_number,
-        section
-
-    ) in enumerate(rhoQ):
-
-
-        section_points = (
-            np.column_stack([
-
-                np.asarray(
-                    section[0],
-                    dtype=float
-                ),
-
-                np.asarray(
-                    section[1],
-                    dtype=float
-                ),
-
-                np.asarray(
-                    section[2],
-                    dtype=float
-                )
-            ])
-        )
-
-
-        # Remove duplicate connection
-        # point between model sections
-        if section_number > 0:
-
-            section_points = (
-                section_points[1:]
-            )
-
-
-        all_points.append(
-            section_points
-        )
-
-
-    if not all_points:
-
-        raise RuntimeError(
-
-            "Forward model returned "
-            "no backbone."
-        )
-
-
-    backbone_mm = (
-
-        np.vstack(
-            all_points
-        )
-
-        * 1000.0
-    )
-
-
-    tip_mm = (
-
-        np.asarray(
-
-            rhoQ_tip[0:3],
-
-            dtype=float
-        )
-
-        * 1000.0
-    )
-
-
-    return (
-
-        backbone_mm,
-
-        tip_mm
-    )
-
-
-# ============================================================
-# FIXED DISPLAY RESAMPLING
-# ============================================================
-
-def resample_polyline(
-
-    points,
-
-    number_of_points=DISPLAY_POINTS
-
-):
-
-    """
-    Resample the calculated robot centreline
-    to a constant number of display points.
-
-    This is only a VISUAL operation.
-
-    It does not change the CTR mechanics.
-    """
-
-    points = np.asarray(
-
-        points,
-
-        dtype=float
-    )
-
-
+    x: float, y: float, deadzone: float = STICK_DEADZONE
+) -> tuple[float, float]:
+    magnitude = math.hypot(x, y)
+    if magnitude <= deadzone:
+        return 0.0, 0.0
+    scale = ((min(magnitude, 1.0) - deadzone) / (1.0 - deadzone)) / magnitude
+    return x * scale, y * scale
+
+
+def trigger_value(raw_value: float) -> float:
+    """Convert observed PS5 range (-1 released, +1 pressed) to 0..1."""
+    return float(np.clip((raw_value + 1.0) * 0.5, 0.0, 1.0))
+
+
+def resample_polyline(points: np.ndarray, count: int = DISPLAY_POINTS) -> np.ndarray:
+    """Give the centreline fixed topology so its actor can be reused."""
+    points = np.asarray(points, dtype=float)
+    if count < 2:
+        raise ValueError("count must be at least 2")
     if len(points) == 0:
-
-        return np.zeros(
-
-            (
-                number_of_points,
-                3
-            ),
-
-            dtype=float
-        )
-
-
+        return np.zeros((count, 3))
     if len(points) == 1:
-
-        return np.repeat(
-
-            points,
-
-            number_of_points,
-
-            axis=0
-        )
-
-
-    segment_lengths = (
-
-        np.linalg.norm(
-
-            np.diff(
-
-                points,
-
-                axis=0
-            ),
-
-            axis=1
-        )
+        return np.repeat(points, count, axis=0)
+    distance = np.concatenate(
+        ([0.0], np.cumsum(np.linalg.norm(np.diff(points, axis=0), axis=1)))
+    )
+    if distance[-1] <= 1e-12:
+        return np.repeat(points[:1], count, axis=0)
+    targets = np.linspace(0.0, distance[-1], count)
+    return np.column_stack(
+        [np.interp(targets, distance, points[:, axis]) for axis in range(3)]
     )
 
 
-    distance = np.concatenate([
-
-        [0.0],
-
-        np.cumsum(
-            segment_lengths
-        )
-    ])
-
-
-    total_distance = (
-        distance[-1]
-    )
+@dataclass
+class InputSnapshot:
+    left_x: float = 0.0
+    left_y: float = 0.0
+    right_x: float = 0.0
+    l2: float = 0.0
+    r2: float = 0.0
 
 
-    if total_distance <= 1e-12:
+class ControllerManager:
+    """Own one joystick without repeatedly restarting Pygame."""
 
-        return np.repeat(
+    def __init__(self) -> None:
+        self.joystick = None
+        self.previous = {BUTTON_L1: False, BUTTON_R1: False, BUTTON_CROSS: False}
+        self.last_retry = -CONTROLLER_RETRY_S
+        self.connect()
 
-            points[:1],
+    @property
+    def connected(self) -> bool:
+        return self.joystick is not None and self.joystick.get_init()
 
-            number_of_points,
-
-            axis=0
-        )
-
-
-    targets = np.linspace(
-
-        0.0,
-
-        total_distance,
-
-        number_of_points
-    )
-
-
-    resampled = (
-        np.column_stack([
-
-            np.interp(
-
-                targets,
-
-                distance,
-
-                points[:, 0]
-            ),
-
-            np.interp(
-
-                targets,
-
-                distance,
-
-                points[:, 1]
-            ),
-
-            np.interp(
-
-                targets,
-
-                distance,
-
-                points[:, 2]
+    def connect(self, now: float | None = None) -> bool:
+        now = time.perf_counter() if now is None else now
+        self.last_retry = now
+        if self.connected:
+            return True
+        if pygame.joystick.get_count() == 0:
+            self.joystick = None
+            return False
+        joystick = pygame.joystick.Joystick(0)
+        joystick.init()
+        required_axes = max(LEFT_STICK_Y, RIGHT_STICK_X, L2_AXIS, R2_AXIS) + 1
+        required_buttons = max(BUTTON_CROSS, BUTTON_L1, BUTTON_R1) + 1
+        axes, buttons = joystick.get_numaxes(), joystick.get_numbuttons()
+        if axes < required_axes or buttons < required_buttons:
+            joystick.quit()
+            raise RuntimeError(
+                f"Controller has {axes} axes/{buttons} buttons; expected at least "
+                f"{required_axes} axes/{required_buttons} buttons."
             )
-        ])
-    )
-
-
-    return resampled
-
-
-# ============================================================
-# CREATE ROBOT ACTORS ONCE
-# ============================================================
-
-initial_backbone_mm, current_tip_mm = (
-    calculate_backbone()
-)
-
-
-initial_display_points = (
-    resample_polyline(
-        initial_backbone_mm
-    )
-)
-
-
-backbone_poly = (
-    pv.lines_from_points(
-        initial_display_points
-    )
-)
-
-
-backbone_actor = (
-    plotter.add_mesh(
-
-        backbone_poly,
-
-        line_width=
-            BACKBONE_LINE_WIDTH,
-
-        render_lines_as_tubes=True,
-
-        smooth_shading=False,
-
-        reset_camera=False,
-
-        name="ctr_backbone",
-
-        render=False
-    )
-)
-
-
-# Tip sphere is also created only once
-tip_mesh = pv.Sphere(
-
-    radius=
-        TIP_RADIUS_MM,
-
-    center=(
-        0.0,
-        0.0,
-        0.0
-    )
-)
-
-
-tip_actor = (
-    plotter.add_mesh(
-
-        tip_mesh,
-
-        name="ctr_tip",
-
-        reset_camera=False,
-
-        render=False
-    )
-)
-
-
-tip_actor.position = (
-    tuple(
-        current_tip_mm
-    )
-)
-
-
-# Origin / insertion point
-plotter.add_mesh(
-
-    pv.Sphere(
-
-        radius=2.5,
-
-        center=(
-            0.0,
-            0.0,
-            0.0
-        )
-    ),
-
-    name="ctr_origin",
-
-    reset_camera=False,
-
-    render=False
-)
-
-
-# ============================================================
-# DIAGNOSTICS
-# ============================================================
-
-last_left_x = 0.0
-
-last_left_y = 0.0
-
-last_right_x = 0.0
-
-last_l2 = 0.0
-
-last_r2 = 0.0
-
-
-last_model_ms = 0.0
-
-
-model_updates_in_window = 0
-
-model_update_rate = 0.0
-
-
-rate_window_start = (
-    time.perf_counter()
-)
-
-
-last_error_text = ""
-
-
-# ============================================================
-# STATUS TEXT
-# ============================================================
-
-def make_status_text():
-
-    ul_mm = (
-        ul * 1000.0
-    )
-
-
-    rotations_deg = (
-        np.rad2deg(
-            uphi
-        )
-    )
-
-
-    controller_text = (
-
-        "CONNECTED"
-
-        if controller is not None
-
-        else "DISCONNECTED"
-    )
-
-
-    text = (
-
-        f"ACTIVE TUBE: "
-        f"{TUBE_NAMES[selected_tube]}\n"
-
-        f"PS5: "
-        f"{controller_text}\n\n"
-
-
-        f"Inner   | "
-        f"{ul_mm[0]:6.1f} mm   "
-        f"{rotations_deg[0]:7.1f} deg\n"
-
-
-        f"Middle  | "
-        f"{ul_mm[1]:6.1f} mm   "
-        f"{rotations_deg[1]:7.1f} deg\n"
-
-
-        f"Outer   | "
-        f"{ul_mm[2]:6.1f} mm   "
-        f"{rotations_deg[2]:7.1f} deg\n\n"
-
-
-        f"TIP XYZ\n"
-
-        f"X = "
-        f"{current_tip_mm[0]:7.1f} mm\n"
-
-        f"Y = "
-        f"{current_tip_mm[1]:7.1f} mm\n"
-
-        f"Z = "
-        f"{current_tip_mm[2]:7.1f} mm\n\n"
-
-
-        f"LIVE INPUT\n"
-
-        f"Left stick X/Y  = "
-        f"{last_left_x:+.2f}, "
-        f"{last_left_y:+.2f}\n"
-
-        f"Right stick L/R = "
-        f"{last_right_x:+.2f}\n"
-
-        f"L2 / R2         = "
-        f"{last_l2:.2f}, "
-        f"{last_r2:.2f}\n\n"
-
-
-        f"PERFORMANCE\n"
-
-        f"Model calc      = "
-        f"{last_model_ms:5.1f} ms\n"
-
-        f"Model updates   = "
-        f"{model_update_rate:4.1f} /s\n\n"
-
-
-        f"PS5 CONTROLS\n"
-
-        f"L1 / R1         "
-        f"previous / next tube\n"
-
-        f"L2              "
-        f"retract selected tube\n"
-
-        f"R2              "
-        f"insert selected tube\n"
-
-        f"Right stick L/R "
-        f"rotate selected tube\n"
-
-        f"Left stick      "
-        f"orbit camera about origin\n"
-
-        f"Cross           "
-        f"reset robot\n\n"
-
-
-        f"KEYBOARD BACKUP\n"
-
-        f"1 / 2 / 3       "
-        f"Inner / Middle / Outer\n"
-
-        f"W / S           "
-        f"insert / retract 1 mm\n"
-
-        f"A / D           "
-        f"rotate -/+ 5 deg\n"
-
-        f"J / L           "
-        f"camera left / right\n"
-
-        f"I / K           "
-        f"camera up / down\n"
-
-        f"R               "
-        f"reset robot\n"
-
-        f"Q               "
-        f"quit\n"
-
-        f"Mouse           "
-        f"free camera control"
-    )
-
-
-    if last_error_text:
-
-        text += (
-
-            "\n\nERROR: "
-
-            + last_error_text
-        )
-
-
-    return text
-
-
-# Create the text actor only ONCE.
-status_actor = (
-    plotter.add_text(
-
-        make_status_text(),
-
-        position="upper_left",
-
-        font_size=9,
-
-        name="status_text",
-
-        render=False
-    )
-)
-
-
-def update_status_text():
-
-    # Because this is a CornerAnnotation,
-    # use set_text rather than SetInput.
-    status_actor.set_text(
-
-        "upper_left",
-
-        make_status_text()
-    )
-
-
-# ============================================================
-# TRANSLATION LIMITS
-# ============================================================
-
-def translation_limits(
-
-    tube_number
-
-):
-
-    # Maintain:
-    #
-    # outer <= middle <= inner
-
-    if tube_number == 0:
-
-        minimum = (
-            ul[1]
-        )
-
-        maximum = (
-            TOTAL_LENGTHS[0]
-        )
-
-
-    elif tube_number == 1:
-
-        minimum = (
-            ul[2]
-        )
-
-
-        maximum = min(
-
-            ul[0],
-
-            TOTAL_LENGTHS[1]
-        )
-
-
-    else:
-
-        minimum = 0.0
-
-
-        maximum = min(
-
-            ul[1],
-
-            TOTAL_LENGTHS[2]
-        )
-
-
-    return (
-
-        minimum,
-
-        maximum
-    )
-
-
-# ============================================================
-# TRANSLATION COMMAND
-# ============================================================
-
-def change_translation_mm(
-
-    amount_mm
-
-):
-
-    global robot_dirty
-
-
-    minimum, maximum = (
-        translation_limits(
-            selected_tube
-        )
-    )
-
-
-    old_value = float(
-        ul[selected_tube]
-    )
-
-
-    ul[selected_tube] = (
-        np.clip(
-
-            old_value
-
-            + amount_mm
-            / 1000.0,
-
-            minimum,
-
-            maximum
-        )
-    )
-
-
-    changed = not np.isclose(
-
-        old_value,
-
-        ul[selected_tube]
-    )
-
-
-    if changed:
-
-        robot_dirty = True
-
-
-    return changed
-
-
-# ============================================================
-# ROTATION COMMAND
-# ============================================================
-
-def change_rotation_deg(
-
-    amount_deg
-
-):
-
-    global robot_dirty
-
-
-    old_value = float(
-        uphi[selected_tube]
-    )
-
-
-    uphi[selected_tube] += (
-
-        np.deg2rad(
-            amount_deg
-        )
-    )
-
-
-    # Wrap:
-    #
-    # -180 ... +180 deg
-    uphi[selected_tube] = (
-
-        (
-
-            uphi[selected_tube]
-
-            + np.pi
-
-        )
-
-        % (
-            2.0
-            * np.pi
-        )
-
-        - np.pi
-    )
-
-
-    changed = not np.isclose(
-
-        old_value,
-
-        uphi[selected_tube]
-    )
-
-
-    if changed:
-
-        robot_dirty = True
-
-
-    return changed
-
-
-# ============================================================
-# TUBE SELECTION
-# ============================================================
-
-def select_tube(
-
-    number
-
-):
-
-    global selected_tube
-
-
-    selected_tube = (
-        number % 3
-    )
-
-
-    print(
-
-        "Selected:",
-
-        TUBE_NAMES[
-            selected_tube
-        ]
-    )
-
-
-    update_status_text()
-
-
-def previous_tube():
-
-    select_tube(
-
-        selected_tube - 1
-    )
-
-
-def next_tube():
-
-    select_tube(
-
-        selected_tube + 1
-    )
-
-
-# ============================================================
-# RESET ROBOT
-# ============================================================
-
-def reset_robot():
-
-    global selected_tube
-
-    global robot_dirty
-
-
-    ul[:] = np.array([
-
-        120e-3,
-
-        70e-3,
-
-        40e-3
-    ])
-
-
-    uphi[:] = np.deg2rad([
-
-        0.0,
-
-        0.0,
-
-        0.0
-    ])
-
-
-    selected_tube = 0
-
-
-    robot_dirty = True
-
-
-    print(
-        "Robot reset."
-    )
-
-
-# ============================================================
-# CAMERA CONTROL
-# ============================================================
-
-# Back / insertion point of the tubes.
-CAMERA_ORIGIN = np.array([
-
-    0.0,
-
-    0.0,
-
-    0.0
-
-], dtype=float)
-
-
-def orbit_camera(
-
-    delta_yaw_deg,
-
-    delta_pitch_deg
-
-):
-
-    """
-    Orbit around the CTR insertion point.
-
-    Important:
-    This does NOT lock the camera every frame.
-
-    It only modifies it while the left stick
-    or camera keyboard controls are used.
-    """
-
-    camera = (
-        plotter.camera
-    )
-
-
-    position = np.asarray(
-
-        camera.position,
-
-        dtype=float
-    )
-
-
-    relative = (
-
-        position
-
-        - CAMERA_ORIGIN
-    )
-
-
-    radius = float(
-
-        np.linalg.norm(
-            relative
-        )
-    )
-
-
-    if radius <= 1e-9:
-
-        radius = 450.0
-
-
-        relative = np.array([
-
-            radius,
-
-            0.0,
-
-            0.0
-        ])
-
-
-    yaw = math.atan2(
-
-        relative[1],
-
-        relative[0]
-    )
-
-
-    pitch = math.asin(
-
-        float(
-
-            np.clip(
-
-                relative[2]
-                / radius,
-
-                -1.0,
-
-                1.0
-            )
-        )
-    )
-
-
-    yaw += math.radians(
-
-        delta_yaw_deg
-    )
-
-
-    pitch += math.radians(
-
-        delta_pitch_deg
-    )
-
-
-    # Prevent camera flipping upside down.
-    pitch = float(
-
-        np.clip(
-
-            pitch,
-
-            math.radians(
-                -80.0
-            ),
-
-            math.radians(
-                80.0
-            )
-        )
-    )
-
-
-    new_position = (
-
-        CAMERA_ORIGIN
-
-        + radius
-
-        * np.array([
-
-            math.cos(pitch)
-            * math.cos(yaw),
-
-            math.cos(pitch)
-            * math.sin(yaw),
-
-            math.sin(pitch)
-        ])
-    )
-
-
-    camera.position = (
-        tuple(
-            new_position
-        )
-    )
-
-
-    # Always look at the back of the tubes.
-    camera.focal_point = (
-
-        0.0,
-
-        0.0,
-
-        0.0
-    )
-
-
-    camera.up = (
-
-        0.0,
-
-        0.0,
-
-        1.0
-    )
-
-
-# ============================================================
-# FAST ROBOT VISUAL UPDATE
-# ============================================================
-
-def update_robot_visual():
-
-    global current_tip_mm
-
-    global robot_dirty
-
-    global last_model_ms
-
-    global model_updates_in_window
-
-    global model_update_rate
-
-    global rate_window_start
-
-
-    start = (
-        time.perf_counter()
-    )
-
-
-    backbone_mm, tip_mm = (
-        calculate_backbone()
-    )
-
-
-    display_points = (
-        resample_polyline(
-            backbone_mm
-        )
-    )
-
-
-    last_model_ms = (
-
-        time.perf_counter()
-
-        - start
-
-    ) * 1000.0
-
-
-    # ========================================================
-    # UPDATE EXISTING BACKBONE
-    #
-    # No removing actor.
-    # No adding actor.
-    # No new tube mesh.
-    # ========================================================
-
-    backbone_poly.points = (
-        display_points
-    )
-
-
-    backbone_poly.Modified()
-
-
-    # ========================================================
-    # UPDATE EXISTING TIP
-    # ========================================================
-
-    current_tip_mm = (
-        tip_mm.copy()
-    )
-
-
-    tip_actor.position = (
-
-        tuple(
-            current_tip_mm
-        )
-    )
-
-
-    robot_dirty = False
-
-
-    # ========================================================
-    # PERFORMANCE COUNTER
-    # ========================================================
-
-    model_updates_in_window += 1
-
-
-    now = (
-        time.perf_counter()
-    )
-
-
-    elapsed = (
-
-        now
-
-        - rate_window_start
-    )
-
-
-    if elapsed >= 1.0:
-
-        model_update_rate = (
-
-            model_updates_in_window
-
-            / elapsed
-        )
-
-
-        model_updates_in_window = 0
-
-
-        rate_window_start = (
-            now
-        )
-
-
-# ============================================================
-# KEYBOARD BACKUP
-# ============================================================
-
-# PyVista already assigns some keys such as
-# W, S, R and 3 to its own rendering commands.
-#
-# Remove those defaults before assigning
-# our robot controls.
-
-for key in (
-
-    "1",
-
-    "2",
-
-    "3",
-
-    "w",
-
-    "s",
-
-    "a",
-
-    "d",
-
-    "r",
-
-    "i",
-
-    "j",
-
-    "k",
-
-    "l"
-
-):
-
-    try:
-
-        plotter.iren.clear_events_for_key(
-            key
-        )
-
-    except Exception:
-
-        pass
-
-
-# Tube selection
-plotter.add_key_event(
-
-    "1",
-
-    lambda:
-        select_tube(0)
-)
-
-
-plotter.add_key_event(
-
-    "2",
-
-    lambda:
-        select_tube(1)
-)
-
-
-plotter.add_key_event(
-
-    "3",
-
-    lambda:
-        select_tube(2)
-)
-
-
-# Linear movement
-plotter.add_key_event(
-
-    "w",
-
-    lambda:
-        change_translation_mm(
-            +KEYBOARD_TRANSLATION_STEP_MM
-        )
-)
-
-
-plotter.add_key_event(
-
-    "s",
-
-    lambda:
-        change_translation_mm(
-            -KEYBOARD_TRANSLATION_STEP_MM
-        )
-)
-
-
-# Rotation
-plotter.add_key_event(
-
-    "a",
-
-    lambda:
-        change_rotation_deg(
-            -KEYBOARD_ROTATION_STEP_DEG
-        )
-)
-
-
-plotter.add_key_event(
-
-    "d",
-
-    lambda:
-        change_rotation_deg(
-            +KEYBOARD_ROTATION_STEP_DEG
-        )
-)
-
-
-# Camera
-plotter.add_key_event(
-
-    "j",
-
-    lambda:
-        orbit_camera(
-            -KEYBOARD_CAMERA_STEP_DEG,
-            0.0
-        )
-)
-
-
-plotter.add_key_event(
-
-    "l",
-
-    lambda:
-        orbit_camera(
-            +KEYBOARD_CAMERA_STEP_DEG,
-            0.0
-        )
-)
-
-
-plotter.add_key_event(
-
-    "i",
-
-    lambda:
-        orbit_camera(
-            0.0,
-            +KEYBOARD_CAMERA_STEP_DEG
-        )
-)
-
-
-plotter.add_key_event(
-
-    "k",
-
-    lambda:
-        orbit_camera(
-            0.0,
-            -KEYBOARD_CAMERA_STEP_DEG
-        )
-)
-
-
-plotter.add_key_event(
-
-    "r",
-
-    reset_robot
-)
-
-
-# Q is already PyVista's normal quit key.
-
-
-# ============================================================
-# TIMER STATE
-# ============================================================
-
-last_timer_time = (
-    time.perf_counter()
-)
-
-
-last_model_update_time = (
-    last_timer_time
-)
-
-
-last_status_update_time = (
-    last_timer_time
-)
-
-
-# ============================================================
-# CONTROLLER TIMER CALLBACK
-# ============================================================
-
-def controller_tick(
-
-    step
-
-):
-
-    global controller
-
-    global previous_l1
-    global previous_r1
-    global previous_cross
-
-    global last_timer_time
-
-    global last_model_update_time
-
-    global last_status_update_time
-
-    global last_controller_reconnect_attempt
-
-    global last_left_x
-    global last_left_y
-
-    global last_right_x
-
-    global last_l2
-    global last_r2
-
-    global last_error_text
-
-
-    try:
-
-        now = (
-            time.perf_counter()
-        )
-
-
-        dt = min(
-
-            now
-            - last_timer_time,
-
-            0.05
-        )
-
-
-        last_timer_time = (
-            now
-        )
-
-
-        # ====================================================
-        # VERY IMPORTANT FIX
-        #
-        # event.get() pumps AND removes events from the queue.
-        #
-        # The previous code only pumped the queue.
-        # ====================================================
-
-        pygame.event.get()
-
-
-        # ====================================================
-        # RECONNECT CONTROLLER IF NECESSARY
-        # ====================================================
-
-        if controller is None:
-
-            if (
-
-                now
-                - last_controller_reconnect_attempt
-
-                >= 1.0
-            ):
-
-                last_controller_reconnect_attempt = (
-                    now
-                )
-
-
-                connect_controller()
-
-
-        # ====================================================
-        # CONTROLLER INPUT
-        # ====================================================
-
-        if controller is not None:
-
+        self.joystick = joystick
+        self.previous = dict.fromkeys(self.previous, False)
+        print(f"Controller connected: {joystick.get_name()}")
+        return True
+
+    def disconnect(self) -> None:
+        if self.joystick is not None:
             try:
-
-                # --------------------------------------------
-                # L1 / R1 / CROSS
-                # --------------------------------------------
-
-                l1_now = bool(
-
-                    controller.get_button(
-                        BUTTON_L1
-                    )
-                )
-
-
-                r1_now = bool(
-
-                    controller.get_button(
-                        BUTTON_R1
-                    )
-                )
-
-
-                cross_now = bool(
-
-                    controller.get_button(
-                        BUTTON_CROSS
-                    )
-                )
-
-
-                if (
-
-                    l1_now
-
-                    and not previous_l1
-
-                ):
-
-                    previous_tube()
-
-
-                if (
-
-                    r1_now
-
-                    and not previous_r1
-
-                ):
-
-                    next_tube()
-
-
-                if (
-
-                    cross_now
-
-                    and not previous_cross
-
-                ):
-
-                    reset_robot()
-
-
-                previous_l1 = (
-                    l1_now
-                )
-
-
-                previous_r1 = (
-                    r1_now
-                )
-
-
-                previous_cross = (
-                    cross_now
-                )
-
-
-                # ============================================
-                # LEFT STICK = CAMERA
-                # ============================================
-
-                raw_left_x = (
-                    controller.get_axis(
-                        LEFT_STICK_X
-                    )
-                )
-
-
-                raw_left_y = (
-                    controller.get_axis(
-                        LEFT_STICK_Y
-                    )
-                )
-
-
-                (
-
-                    last_left_x,
-
-                    last_left_y
-
-                ) = apply_stick_deadzone(
-
-                    raw_left_x,
-
-                    raw_left_y
-                )
-
-
-                if (
-
-                    last_left_x != 0.0
-
-                    or
-
-                    last_left_y != 0.0
-
-                ):
-
-                    orbit_camera(
-
-                        last_left_x
-
-                        * CAMERA_ORBIT_SPEED_DEG_S
-
-                        * dt,
-
-
-                        -last_left_y
-
-                        * CAMERA_ORBIT_SPEED_DEG_S
-
-                        * dt
-                    )
-
-
-                # ============================================
-                # RIGHT STICK L/R = TUBE ROTATION
-                # ============================================
-
-                last_right_x = (
-                    apply_axis_deadzone(
-
-                        controller.get_axis(
-                            RIGHT_STICK_X
-                        )
-                    )
-                )
-
-
-                if last_right_x != 0.0:
-
-                    change_rotation_deg(
-
-                        last_right_x
-
-                        * MAX_ROTATION_SPEED_DEG_S
-
-                        * dt
-                    )
-
-
-                # Right stick up/down intentionally
-                # does nothing.
-
-
-                # ============================================
-                # L2 / R2 = TRANSLATION
-                # ============================================
-
-                last_l2 = trigger_value(
-
-                    controller.get_axis(
-                        L2_AXIS
-                    )
-                )
-
-
-                last_r2 = trigger_value(
-
-                    controller.get_axis(
-                        R2_AXIS
-                    )
-                )
-
-
-                translation_command = (
-
-                    last_r2
-
-                    - last_l2
-                )
-
-
-                if (
-
-                    abs(
-                        translation_command
-                    )
-
-                    > 0.02
-
-                ):
-
-                    change_translation_mm(
-
-                        translation_command
-
-                        * MAX_TRANSLATION_SPEED_MM_S
-
-                        * dt
-                    )
-
-
-                last_error_text = ""
-
-
-            except pygame.error as exc:
-
-                # If the controller is disconnected,
-                # don't let the whole timer die.
-
-                last_error_text = (
-
-                    f"Controller lost: {exc}"
-                )
-
-
-                controller = None
-
-
-        # ====================================================
-        # UPDATE ROBOT
-        # ====================================================
-
-        if (
-
-            robot_dirty
-
-            and
-
-            now
-            - last_model_update_time
-
-            >= MODEL_UPDATE_INTERVAL
-
-        ):
-
-            update_robot_visual()
-
-
-            last_model_update_time = (
-                now
-            )
-
-
-        # ====================================================
-        # UPDATE STATUS
-        # ====================================================
-
-        if (
-
-            now
-            - last_status_update_time
-
-            >= STATUS_UPDATE_INTERVAL
-
-        ):
-
-            update_status_text()
-
-
-            last_status_update_time = (
-                now
-            )
-
-
-        # ====================================================
-        # IMPORTANT:
-        #
-        # NO plotter.render() HERE.
-        #
-        # Let PyVista/VTK's interactive event loop
-        # perform the rendering.
-        # ====================================================
-
-
-    except Exception as exc:
-
-        # If anything unexpected goes wrong in the
-        # callback, print it rather than silently
-        # killing the controller loop.
-
-        last_error_text = (
-
-            f"{type(exc).__name__}: {exc}"
+                self.joystick.quit()
+            except pygame.error:
+                pass
+        self.joystick = None
+        self.previous = dict.fromkeys(self.previous, False)
+
+    def process_events(self, now: float) -> None:
+        """Drain Pygame's bounded queue and handle hot-plugging."""
+        for event in pygame.event.get():
+            if event.type == pygame.JOYDEVICEREMOVED and self.connected:
+                current_id = self.joystick.get_instance_id()
+                if getattr(event, "instance_id", current_id) == current_id:
+                    print("Controller disconnected; keyboard control remains available.")
+                    self.disconnect()
+            elif event.type == pygame.JOYDEVICEADDED and not self.connected:
+                self.connect(now)
+        if not self.connected and now - self.last_retry >= CONTROLLER_RETRY_S:
+            self.connect(now)
+
+    def pressed(self, button: int) -> bool:
+        if not self.connected:
+            return False
+        current = bool(self.joystick.get_button(button))
+        rising_edge = current and not self.previous[button]
+        self.previous[button] = current
+        return rising_edge
+
+    def axes(self) -> InputSnapshot:
+        if not self.connected:
+            return InputSnapshot()
+        left_x, left_y = apply_stick_deadzone(
+            self.joystick.get_axis(LEFT_STICK_X),
+            self.joystick.get_axis(LEFT_STICK_Y),
+        )
+        return InputSnapshot(
+            left_x,
+            left_y,
+            apply_axis_deadzone(self.joystick.get_axis(RIGHT_STICK_X)),
+            trigger_value(self.joystick.get_axis(L2_AXIS)),
+            trigger_value(self.joystick.get_axis(R2_AXIS)),
         )
 
 
-        print(
-
-            "Controller timer error:",
-
-            last_error_text
+class CTRViewer:
+    def __init__(self) -> None:
+        pygame.init()
+        pygame.joystick.init()
+        self.parameters = build_supervisor_ctr_parameters()
+        self.sim_parameters = {"n_p": MODEL_POINTS_PER_SECTION, "isPlot": False}
+        self.total_lengths = np.array(
+            [sum(lengths) for lengths in self.parameters["l_t"]]
         )
+        self.deployment = INITIAL_DEPLOYMENT_M.copy()
+        self.rotation = INITIAL_ROTATION_RAD.copy()
+        self.selected_tube = 0
+        self.robot_dirty = True
+        self.inputs = InputSnapshot()
+        self.last_model_ms = 0.0
+        self.model_rate = 0.0
+        self.model_count = 0
+        self.rate_start = time.perf_counter()
+        self.error_text = ""
+        self.last_error_print = -ERROR_PRINT_INTERVAL_S
+        self.controller = ControllerManager()
+
+        self.plotter = pv.Plotter(window_size=(1200, 800))
+        self.plotter.set_background("white")
+        self.plotter.show_grid()
+        self.plotter.add_axes()
+        backbone, self.tip_mm = self.calculate_backbone()
+        self.backbone_poly = pv.lines_from_points(resample_polyline(backbone))
+        self.plotter.add_mesh(
+            self.backbone_poly,
+            line_width=7.0,
+            render_lines_as_tubes=True,
+            smooth_shading=False,
+            reset_camera=False,
+            name="ctr_backbone",
+            render=False,
+        )
+        self.tip_actor = self.plotter.add_mesh(
+            pv.Sphere(radius=2.5), name="ctr_tip", reset_camera=False, render=False
+        )
+        self.tip_actor.position = tuple(self.tip_mm)
+        self.plotter.add_mesh(
+            pv.Sphere(radius=2.5), name="ctr_origin", reset_camera=False, render=False
+        )
+        self.status_actor = self.plotter.add_text(
+            self.status_text(),
+            position="upper_left",
+            font_size=9,
+            name="status",
+            render=False,
+        )
+        now = time.perf_counter()
+        self.last_tick = self.last_model_update = self.last_status_update = now
+        self.configure_keyboard()
+        self.plotter.camera_position = "iso"
+        self.plotter.reset_camera()
+        self.plotter.camera.focal_point = tuple(CAMERA_ORIGIN)
+
+    def calculate_backbone(self) -> tuple[np.ndarray, np.ndarray]:
+        result = superPosKin(
+            self.parameters,
+            {"ul": self.deployment.tolist(), "uphi": self.rotation.tolist()},
+            self.sim_parameters,
+        )
+        tip, sections = result[0], result[3]
+        points = []
+        for index, section in enumerate(sections):
+            part = np.column_stack([np.asarray(section[a]) for a in range(3)])
+            if index:
+                part = part[1:]
+            if len(part):
+                points.append(part)
+        if not points:
+            raise RuntimeError("Forward model returned no backbone.")
+        return np.vstack(points) * 1000.0, np.asarray(tip[:3]) * 1000.0
+
+    def translation_limits(self, tube: int) -> tuple[float, float]:
+        if tube == 0:
+            return self.deployment[1], self.total_lengths[0]
+        if tube == 1:
+            return self.deployment[2], min(self.deployment[0], self.total_lengths[1])
+        return 0.0, min(self.deployment[1], self.total_lengths[2])
+
+    def move(self, amount_mm: float) -> None:
+        low, high = self.translation_limits(self.selected_tube)
+        old = self.deployment[self.selected_tube]
+        new = float(np.clip(old + amount_mm / 1000.0, low, high))
+        if not np.isclose(old, new, atol=1e-12):
+            self.deployment[self.selected_tube] = new
+            self.robot_dirty = True
+
+    def rotate(self, amount_deg: float) -> None:
+        index = self.selected_tube
+        old = self.rotation[index]
+        new = (old + math.radians(amount_deg) + math.pi) % (2 * math.pi) - math.pi
+        if not np.isclose(old, new, atol=1e-12):
+            self.rotation[index] = new
+            self.robot_dirty = True
+
+    def select(self, index: int) -> None:
+        self.selected_tube = index % 3
+        self.update_status()
+
+    def reset(self) -> None:
+        self.deployment[:] = INITIAL_DEPLOYMENT_M
+        self.rotation[:] = INITIAL_ROTATION_RAD
+        self.selected_tube = 0
+        self.robot_dirty = True
+        print("Robot reset.")
+
+    def orbit(self, yaw_deg: float, pitch_deg: float) -> None:
+        camera = self.plotter.camera
+        relative = np.asarray(camera.position) - CAMERA_ORIGIN
+        radius = float(np.linalg.norm(relative))
+        if radius <= 1e-9:
+            radius, relative = 450.0, np.array([450.0, 0.0, 0.0])
+        yaw = math.atan2(relative[1], relative[0]) + math.radians(yaw_deg)
+        pitch = math.asin(float(np.clip(relative[2] / radius, -1, 1)))
+        pitch = float(
+            np.clip(pitch + math.radians(pitch_deg), math.radians(-80), math.radians(80))
+        )
+        camera.position = tuple(
+            radius
+            * np.array(
+                [math.cos(pitch) * math.cos(yaw),
+                 math.cos(pitch) * math.sin(yaw), math.sin(pitch)]
+            )
+        )
+        camera.focal_point = tuple(CAMERA_ORIGIN)
+        camera.up = (0.0, 0.0, 1.0)
+
+    def update_robot(self) -> None:
+        start = time.perf_counter()
+        backbone, tip = self.calculate_backbone()
+        self.last_model_ms = (time.perf_counter() - start) * 1000.0
+        self.backbone_poly.points[:] = resample_polyline(backbone)
+        self.backbone_poly.Modified()
+        self.tip_mm = tip.copy()
+        self.tip_actor.position = tuple(tip)
+        self.robot_dirty = False
+        self.model_count += 1
+        now = time.perf_counter()
+        elapsed = now - self.rate_start
+        if elapsed >= 1.0:
+            self.model_rate = self.model_count / elapsed
+            self.model_count, self.rate_start = 0, now
+
+    def status_text(self) -> str:
+        mm, deg = self.deployment * 1000, np.rad2deg(self.rotation)
+        state = "CONNECTED" if self.controller.connected else "DISCONNECTED"
+        text = f"""ACTIVE TUBE: {TUBE_NAMES[self.selected_tube]}
+PS5: {state}
+
+Inner   | {mm[0]:6.1f} mm   {deg[0]:7.1f} deg
+Middle  | {mm[1]:6.1f} mm   {deg[1]:7.1f} deg
+Outer   | {mm[2]:6.1f} mm   {deg[2]:7.1f} deg
+
+TIP XYZ
+X = {self.tip_mm[0]:7.1f} mm
+Y = {self.tip_mm[1]:7.1f} mm
+Z = {self.tip_mm[2]:7.1f} mm
+
+LIVE INPUT
+Left stick X/Y  = {self.inputs.left_x:+.2f}, {self.inputs.left_y:+.2f}
+Right stick L/R = {self.inputs.right_x:+.2f}
+L2 / R2         = {self.inputs.l2:.2f}, {self.inputs.r2:.2f}
+
+PERFORMANCE
+Model calc      = {self.last_model_ms:5.1f} ms
+Model updates   = {self.model_rate:4.1f} /s
+
+PS5 CONTROLS
+L1 / R1         previous / next tube
+L2 / R2         retract / insert selected tube
+Right stick L/R rotate selected tube
+Left stick      orbit camera about origin
+Cross           reset robot
+
+KEYBOARD BACKUP
+1 / 2 / 3       Inner / Middle / Outer
+W / S           insert / retract 1 mm
+A / D           rotate -/+ 5 deg
+J / L           camera left / right
+I / K           camera up / down
+R / Q           reset / quit
+Mouse           free camera control"""
+        return text + (f"\n\nERROR: {self.error_text}" if self.error_text else "")
+
+    def update_status(self) -> None:
+        self.status_actor.set_text("upper_left", self.status_text())
+
+    def configure_keyboard(self) -> None:
+        callbacks = {
+            "1": lambda: self.select(0), "2": lambda: self.select(1),
+            "3": lambda: self.select(2),
+            "w": lambda: self.move(KEYBOARD_TRANSLATION_STEP_MM),
+            "s": lambda: self.move(-KEYBOARD_TRANSLATION_STEP_MM),
+            "a": lambda: self.rotate(-KEYBOARD_ROTATION_STEP_DEG),
+            "d": lambda: self.rotate(KEYBOARD_ROTATION_STEP_DEG),
+            "j": lambda: self.orbit(-KEYBOARD_CAMERA_STEP_DEG, 0),
+            "l": lambda: self.orbit(KEYBOARD_CAMERA_STEP_DEG, 0),
+            "i": lambda: self.orbit(0, KEYBOARD_CAMERA_STEP_DEG),
+            "k": lambda: self.orbit(0, -KEYBOARD_CAMERA_STEP_DEG),
+            "r": self.reset,
+        }
+        for key, callback in callbacks.items():
+            try:
+                self.plotter.iren.clear_events_for_key(key)
+            except Exception:
+                pass
+            self.plotter.add_key_event(key, callback)
+
+    def record_error(self, exc: Exception, now: float) -> None:
+        self.error_text = f"{type(exc).__name__}: {exc}"
+        if now - self.last_error_print >= ERROR_PRINT_INTERVAL_S:
+            print(f"Controller timer error: {self.error_text}")
+            self.last_error_print = now
+
+    def tick(self, _step: int) -> None:
+        now = time.perf_counter()
+        dt = float(np.clip(now - self.last_tick, 0.0, 0.05))
+        self.last_tick = now
+        try:
+            self.controller.process_events(now)
+            if self.controller.connected:
+                if self.controller.pressed(BUTTON_L1):
+                    self.select(self.selected_tube - 1)
+                if self.controller.pressed(BUTTON_R1):
+                    self.select(self.selected_tube + 1)
+                if self.controller.pressed(BUTTON_CROSS):
+                    self.reset()
+                self.inputs = self.controller.axes()
+                if self.inputs.left_x or self.inputs.left_y:
+                    self.orbit(
+                        self.inputs.left_x * CAMERA_ORBIT_SPEED_DEG_S * dt,
+                        -self.inputs.left_y * CAMERA_ORBIT_SPEED_DEG_S * dt,
+                    )
+                if self.inputs.right_x:
+                    self.rotate(self.inputs.right_x * MAX_ROTATION_SPEED_DEG_S * dt)
+                translation = self.inputs.r2 - self.inputs.l2
+                if abs(translation) > TRIGGER_DEADZONE:
+                    self.move(translation * MAX_TRANSLATION_SPEED_MM_S * dt)
+            else:
+                self.inputs = InputSnapshot()
+            if self.robot_dirty and now - self.last_model_update >= 1 / MODEL_UPDATE_HZ:
+                self.update_robot()
+                self.last_model_update = now
+            if now - self.last_status_update >= 1 / STATUS_UPDATE_HZ:
+                self.update_status()
+                self.last_status_update = now
+            self.error_text = ""
+        except pygame.error as exc:
+            self.controller.disconnect()
+            self.inputs = InputSnapshot()
+            self.record_error(exc, now)
+        except Exception as exc:
+            self.record_error(exc, now)
+
+    def run(self) -> None:
+        print("\nPS5 CTR SIMULATOR\nL1/R1 select | L2/R2 move | right stick rotate | "
+              "left stick camera | Cross reset\nKeyboard backup: 1/2/3, W/S, A/D, "
+              "I/J/K/L, R, Q\n")
+        self.plotter.add_timer_event(10_000_000, TIMER_INTERVAL_MS, self.tick)
+        try:
+            self.plotter.show(title="PS5 CTR Simulator")
+        finally:
+            self.controller.disconnect()
+            pygame.quit()
+            print("CTR simulator closed.")
 
 
-# ============================================================
-# INITIAL CAMERA
-# ============================================================
-
-plotter.camera_position = (
-    "iso"
-)
+def main() -> None:
+    CTRViewer().run()
 
 
-plotter.reset_camera()
-
-
-plotter.camera.focal_point = (
-
-    0.0,
-
-    0.0,
-
-    0.0
-)
-
-
-update_status_text()
-
-
-# ============================================================
-# TERMINAL KEY
-# ============================================================
-
-print("")
-print("========================================")
-print("PS5 CTR SIMULATOR - RESPONSIVE VERSION")
-print("========================================")
-print("")
-print("PS5")
-print("L1 / R1         previous / next tube")
-print("L2              retract")
-print("R2              insert")
-print("Right stick L/R rotate selected tube")
-print("Left stick      orbit camera")
-print("Cross           reset robot")
-print("")
-print("KEYBOARD")
-print("1 / 2 / 3       select tubes")
-print("W / S           insert / retract 1 mm")
-print("A / D           rotate -/+ 5 deg")
-print("J / L           camera left / right")
-print("I / K           camera up / down")
-print("R               reset")
-print("Q               quit")
-print("")
-print(
-    "D-pad precision controls "
-    "are intentionally not added yet."
-)
-print("")
-
-
-# ============================================================
-# START TIMER
-# ============================================================
-
-plotter.add_timer_event(
-
-    max_steps=
-        10_000_000,
-
-    duration=
-        TIMER_INTERVAL_MS,
-
-    callback=
-        controller_tick
-)
-
-
-# ============================================================
-# START WINDOW
-# ============================================================
-
-try:
-
-    plotter.show(
-
-        title=
-            "PS5 CTR Simulator"
-    )
-
-
-finally:
-
-    pygame.quit()
-
-
-    print("")
-    print(
-        "CTR simulator closed."
-    )
+if __name__ == "__main__":
+    main()
