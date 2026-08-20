@@ -15,52 +15,25 @@ from tube_parameters import build_supervisor_ctr_parameters
 
 # Mapping confirmed by the controller-identification scripts on this Mac.
 BUTTON_CROSS, BUTTON_L1, BUTTON_R1 = 0, 9, 10
-LEFT_STICK_X, LEFT_STICK_Y, RIGHT_STICK_X = 0, 1, 2
-L2_AXIS, R2_AXIS = 4, 5
+DPAD_UP_BUTTON, DPAD_DOWN_BUTTON = 11, 12
+DPAD_LEFT_BUTTON, DPAD_RIGHT_BUTTON = 13, 14
 
-STICK_DEADZONE = 0.08
-TRIGGER_DEADZONE = 0.02
-MAX_ROTATION_SPEED_DEG_S = 300.0
-MAX_TRANSLATION_SPEED_MM_S = 80.0
-CAMERA_ORBIT_SPEED_DEG_S = 90.0
+DPAD_ROTATION_SPEED_DEG_S = 90.0
+DPAD_TRANSLATION_SPEED_MM_S = 30.0
 KEYBOARD_TRANSLATION_STEP_MM = 1.0
 KEYBOARD_ROTATION_STEP_DEG = 5.0
-KEYBOARD_CAMERA_STEP_DEG = 5.0
 
 TIMER_INTERVAL_MS = 16
 MODEL_UPDATE_HZ = 40.0
-STATUS_UPDATE_HZ = 5.0
-MODEL_POINTS_PER_SECTION = 12
-DISPLAY_POINTS = 80
+STATUS_UPDATE_HZ = 2.0
+MODEL_POINTS_PER_SECTION = 8
+DISPLAY_POINTS = 48
 CONTROLLER_RETRY_S = 1.0
 ERROR_PRINT_INTERVAL_S = 2.0
 
 TUBE_NAMES = ("INNER", "MIDDLE", "OUTER")
 INITIAL_DEPLOYMENT_M = np.array([120e-3, 70e-3, 40e-3])
 INITIAL_ROTATION_RAD = np.zeros(3)
-CAMERA_ORIGIN = np.zeros(3)
-
-
-def apply_axis_deadzone(value: float, deadzone: float = STICK_DEADZONE) -> float:
-    value = float(np.clip(value, -1.0, 1.0))
-    if abs(value) <= deadzone:
-        return 0.0
-    return math.copysign((abs(value) - deadzone) / (1.0 - deadzone), value)
-
-
-def apply_stick_deadzone(
-    x: float, y: float, deadzone: float = STICK_DEADZONE
-) -> tuple[float, float]:
-    magnitude = math.hypot(x, y)
-    if magnitude <= deadzone:
-        return 0.0, 0.0
-    scale = ((min(magnitude, 1.0) - deadzone) / (1.0 - deadzone)) / magnitude
-    return x * scale, y * scale
-
-
-def trigger_value(raw_value: float) -> float:
-    """Convert observed PS5 range (-1 released, +1 pressed) to 0..1."""
-    return float(np.clip((raw_value + 1.0) * 0.5, 0.0, 1.0))
 
 
 def resample_polyline(points: np.ndarray, count: int = DISPLAY_POINTS) -> np.ndarray:
@@ -85,11 +58,8 @@ def resample_polyline(points: np.ndarray, count: int = DISPLAY_POINTS) -> np.nda
 
 @dataclass
 class InputSnapshot:
-    left_x: float = 0.0
-    left_y: float = 0.0
-    right_x: float = 0.0
-    l2: float = 0.0
-    r2: float = 0.0
+    dpad_x: int = 0
+    dpad_y: int = 0
 
 
 class ControllerManager:
@@ -115,14 +85,16 @@ class ControllerManager:
             return False
         joystick = pygame.joystick.Joystick(0)
         joystick.init()
-        required_axes = max(LEFT_STICK_Y, RIGHT_STICK_X, L2_AXIS, R2_AXIS) + 1
         required_buttons = max(BUTTON_CROSS, BUTTON_L1, BUTTON_R1) + 1
-        axes, buttons = joystick.get_numaxes(), joystick.get_numbuttons()
-        if axes < required_axes or buttons < required_buttons:
+        buttons = joystick.get_numbuttons()
+        hats = joystick.get_numhats()
+        has_hat = hats > 0
+        has_dpad_buttons = buttons > DPAD_RIGHT_BUTTON
+        if buttons < required_buttons or not (has_hat or has_dpad_buttons):
             joystick.quit()
             raise RuntimeError(
-                f"Controller has {axes} axes/{buttons} buttons; expected at least "
-                f"{required_axes} axes/{required_buttons} buttons."
+                f"Controller has {buttons} buttons and {hats} hats; "
+                "the expected PS5 D-pad mapping was not found."
             )
         self.joystick = joystick
         self.previous = dict.fromkeys(self.previous, False)
@@ -159,20 +131,23 @@ class ControllerManager:
         self.previous[button] = current
         return rising_edge
 
-    def axes(self) -> InputSnapshot:
+    def read_dpad(self) -> InputSnapshot:
+        """Read either SDL hat input or the macOS PS5 D-pad button mapping."""
         if not self.connected:
             return InputSnapshot()
-        left_x, left_y = apply_stick_deadzone(
-            self.joystick.get_axis(LEFT_STICK_X),
-            self.joystick.get_axis(LEFT_STICK_Y),
-        )
-        return InputSnapshot(
-            left_x,
-            left_y,
-            apply_axis_deadzone(self.joystick.get_axis(RIGHT_STICK_X)),
-            trigger_value(self.joystick.get_axis(L2_AXIS)),
-            trigger_value(self.joystick.get_axis(R2_AXIS)),
-        )
+        if self.joystick.get_numhats() > 0:
+            x, y = self.joystick.get_hat(0)
+            if x or y:
+                return InputSnapshot(int(x), int(y))
+        if self.joystick.get_numbuttons() > DPAD_RIGHT_BUTTON:
+            x = int(self.joystick.get_button(DPAD_RIGHT_BUTTON)) - int(
+                self.joystick.get_button(DPAD_LEFT_BUTTON)
+            )
+            y = int(self.joystick.get_button(DPAD_UP_BUTTON)) - int(
+                self.joystick.get_button(DPAD_DOWN_BUTTON)
+            )
+            return InputSnapshot(x, y)
+        return InputSnapshot()
 
 
 class CTRViewer:
@@ -191,13 +166,18 @@ class CTRViewer:
         self.inputs = InputSnapshot()
         self.last_model_ms = 0.0
         self.model_rate = 0.0
+        self.ui_rate = 0.0
         self.model_count = 0
+        self.ui_count = 0
         self.rate_start = time.perf_counter()
         self.error_text = ""
         self.last_error_print = -ERROR_PRINT_INTERVAL_S
         self.controller = ControllerManager()
 
+        # Multisampling and tube-style line rendering are unnecessary for this
+        # centreline and can be disproportionately costly on macOS/Metal.
         self.plotter = pv.Plotter(window_size=(1200, 800))
+        self.plotter.render_window.SetMultiSamples(0)
         self.plotter.set_background("white")
         self.plotter.show_grid()
         self.plotter.add_axes()
@@ -205,19 +185,25 @@ class CTRViewer:
         self.backbone_poly = pv.lines_from_points(resample_polyline(backbone))
         self.plotter.add_mesh(
             self.backbone_poly,
-            line_width=7.0,
-            render_lines_as_tubes=True,
+            line_width=6.0,
+            render_lines_as_tubes=False,
             smooth_shading=False,
             reset_camera=False,
             name="ctr_backbone",
             render=False,
         )
         self.tip_actor = self.plotter.add_mesh(
-            pv.Sphere(radius=2.5), name="ctr_tip", reset_camera=False, render=False
+            pv.Sphere(radius=2.5, theta_resolution=12, phi_resolution=12),
+            name="ctr_tip",
+            reset_camera=False,
+            render=False,
         )
         self.tip_actor.position = tuple(self.tip_mm)
         self.plotter.add_mesh(
-            pv.Sphere(radius=2.5), name="ctr_origin", reset_camera=False, render=False
+            pv.Sphere(radius=2.5, theta_resolution=12, phi_resolution=12),
+            name="ctr_origin",
+            reset_camera=False,
+            render=False,
         )
         self.status_actor = self.plotter.add_text(
             self.status_text(),
@@ -231,7 +217,7 @@ class CTRViewer:
         self.configure_keyboard()
         self.plotter.camera_position = "iso"
         self.plotter.reset_camera()
-        self.plotter.camera.focal_point = tuple(CAMERA_ORIGIN)
+        self.plotter.camera.focal_point = (0.0, 0.0, 0.0)
 
     def calculate_backbone(self) -> tuple[np.ndarray, np.ndarray]:
         result = superPosKin(
@@ -285,27 +271,6 @@ class CTRViewer:
         self.robot_dirty = True
         print("Robot reset.")
 
-    def orbit(self, yaw_deg: float, pitch_deg: float) -> None:
-        camera = self.plotter.camera
-        relative = np.asarray(camera.position) - CAMERA_ORIGIN
-        radius = float(np.linalg.norm(relative))
-        if radius <= 1e-9:
-            radius, relative = 450.0, np.array([450.0, 0.0, 0.0])
-        yaw = math.atan2(relative[1], relative[0]) + math.radians(yaw_deg)
-        pitch = math.asin(float(np.clip(relative[2] / radius, -1, 1)))
-        pitch = float(
-            np.clip(pitch + math.radians(pitch_deg), math.radians(-80), math.radians(80))
-        )
-        camera.position = tuple(
-            radius
-            * np.array(
-                [math.cos(pitch) * math.cos(yaw),
-                 math.cos(pitch) * math.sin(yaw), math.sin(pitch)]
-            )
-        )
-        camera.focal_point = tuple(CAMERA_ORIGIN)
-        camera.up = (0.0, 0.0, 1.0)
-
     def update_robot(self) -> None:
         start = time.perf_counter()
         backbone, tip = self.calculate_backbone()
@@ -316,11 +281,17 @@ class CTRViewer:
         self.tip_actor.position = tuple(tip)
         self.robot_dirty = False
         self.model_count += 1
-        now = time.perf_counter()
+
+    def update_rates(self, now: float) -> None:
+        """Update independent UI and changed-configuration rates once a second."""
+        self.ui_count += 1
         elapsed = now - self.rate_start
         if elapsed >= 1.0:
+            self.ui_rate = self.ui_count / elapsed
             self.model_rate = self.model_count / elapsed
-            self.model_count, self.rate_start = 0, now
+            self.ui_count = 0
+            self.model_count = 0
+            self.rate_start = now
 
     def status_text(self) -> str:
         mm, deg = self.deployment * 1000, np.rad2deg(self.rotation)
@@ -338,29 +309,29 @@ Y = {self.tip_mm[1]:7.1f} mm
 Z = {self.tip_mm[2]:7.1f} mm
 
 LIVE INPUT
-Left stick X/Y  = {self.inputs.left_x:+.2f}, {self.inputs.left_y:+.2f}
-Right stick L/R = {self.inputs.right_x:+.2f}
-L2 / R2         = {self.inputs.l2:.2f}, {self.inputs.r2:.2f}
+D-pad X/Y       = {self.inputs.dpad_x:+d}, {self.inputs.dpad_y:+d}
 
 PERFORMANCE
 Model calc      = {self.last_model_ms:5.1f} ms
-Model updates   = {self.model_rate:4.1f} /s
+UI loop         = {self.ui_rate:4.1f} FPS
+Robot updates   = {self.model_rate:4.1f} /s
 
 PS5 CONTROLS
 L1 / R1         previous / next tube
-L2 / R2         retract / insert selected tube
-Right stick L/R rotate selected tube
-Left stick      orbit camera about origin
+D-pad Up / Down increase / decrease angle
+D-pad Left/Right retract / insert selected tube
+Left stick      unused (use mouse for view)
+Right stick     unused
+L2 / R2         unused
 Cross           reset robot
 
 KEYBOARD BACKUP
 1 / 2 / 3       Inner / Middle / Outer
 W / S           insert / retract 1 mm
 A / D           rotate -/+ 5 deg
-J / L           camera left / right
-I / K           camera up / down
 R / Q           reset / quit
-Mouse           free camera control"""
+Mouse drag      change view smoothly
+Mouse wheel     zoom"""
         return text + (f"\n\nERROR: {self.error_text}" if self.error_text else "")
 
     def update_status(self) -> None:
@@ -374,10 +345,6 @@ Mouse           free camera control"""
             "s": lambda: self.move(-KEYBOARD_TRANSLATION_STEP_MM),
             "a": lambda: self.rotate(-KEYBOARD_ROTATION_STEP_DEG),
             "d": lambda: self.rotate(KEYBOARD_ROTATION_STEP_DEG),
-            "j": lambda: self.orbit(-KEYBOARD_CAMERA_STEP_DEG, 0),
-            "l": lambda: self.orbit(KEYBOARD_CAMERA_STEP_DEG, 0),
-            "i": lambda: self.orbit(0, KEYBOARD_CAMERA_STEP_DEG),
-            "k": lambda: self.orbit(0, -KEYBOARD_CAMERA_STEP_DEG),
             "r": self.reset,
         }
         for key, callback in callbacks.items():
@@ -390,10 +357,10 @@ Mouse           free camera control"""
     def record_error(self, exc: Exception, now: float) -> None:
         self.error_text = f"{type(exc).__name__}: {exc}"
         if now - self.last_error_print >= ERROR_PRINT_INTERVAL_S:
-            print(f"Controller timer error: {self.error_text}")
+            print(f"Controller update error: {self.error_text}")
             self.last_error_print = now
 
-    def tick(self, _step: int) -> None:
+    def tick(self, _step: int = 0) -> None:
         now = time.perf_counter()
         dt = float(np.clip(now - self.last_tick, 0.0, 0.05))
         self.last_tick = now
@@ -406,17 +373,15 @@ Mouse           free camera control"""
                     self.select(self.selected_tube + 1)
                 if self.controller.pressed(BUTTON_CROSS):
                     self.reset()
-                self.inputs = self.controller.axes()
-                if self.inputs.left_x or self.inputs.left_y:
-                    self.orbit(
-                        self.inputs.left_x * CAMERA_ORBIT_SPEED_DEG_S * dt,
-                        -self.inputs.left_y * CAMERA_ORBIT_SPEED_DEG_S * dt,
+                self.inputs = self.controller.read_dpad()
+                if self.inputs.dpad_y:
+                    self.rotate(
+                        self.inputs.dpad_y * DPAD_ROTATION_SPEED_DEG_S * dt
                     )
-                if self.inputs.right_x:
-                    self.rotate(self.inputs.right_x * MAX_ROTATION_SPEED_DEG_S * dt)
-                translation = self.inputs.r2 - self.inputs.l2
-                if abs(translation) > TRIGGER_DEADZONE:
-                    self.move(translation * MAX_TRANSLATION_SPEED_MM_S * dt)
+                if self.inputs.dpad_x:
+                    self.move(
+                        self.inputs.dpad_x * DPAD_TRANSLATION_SPEED_MM_S * dt
+                    )
             else:
                 self.inputs = InputSnapshot()
             if self.robot_dirty and now - self.last_model_update >= 1 / MODEL_UPDATE_HZ:
@@ -432,17 +397,39 @@ Mouse           free camera control"""
             self.record_error(exc, now)
         except Exception as exc:
             self.record_error(exc, now)
+        finally:
+            self.update_rates(now)
 
     def run(self) -> None:
-        print("\nPS5 CTR SIMULATOR\nL1/R1 select | L2/R2 move | right stick rotate | "
-              "left stick camera | Cross reset\nKeyboard backup: 1/2/3, W/S, A/D, "
-              "I/J/K/L, R, Q\n")
-        self.plotter.add_timer_event(10_000_000, TIMER_INTERVAL_MS, self.tick)
+        print("\nPS5 CTR SIMULATOR\nL1/R1 select | D-pad Up/Down rotate | "
+              "D-pad Left/Right move | mouse changes view | Cross reset\n"
+              "Keyboard backup: 1/2/3, W/S, A/D, R, Q\n")
         try:
-            self.plotter.show(title="PS5 CTR Simulator")
+            # PyVista/VTK timer events can be heavily coalesced on macOS.  A
+            # continuously serviced interactive loop gives controller input
+            # the same event/render cadence as native mouse interaction.
+            self.plotter.show(
+                title="PS5 CTR Simulator",
+                interactive_update=True,
+                auto_close=False,
+            )
+            # PyVista 0.48 exposes only a getter on its wrapper.  Set the
+            # desired rate through the underlying VTK interactor instead.
+            self.plotter.iren.interactor.SetDesiredUpdateRate(
+                1000.0 / TIMER_INTERVAL_MS
+            )
+            frame_interval = TIMER_INTERVAL_MS / 1000.0
+            while self.plotter.iren is not None:
+                frame_start = time.perf_counter()
+                self.tick()
+                self.plotter.update(stime=1, force_redraw=True)
+                remaining = frame_interval - (time.perf_counter() - frame_start)
+                if remaining > 0.0:
+                    time.sleep(remaining)
         finally:
             self.controller.disconnect()
             pygame.quit()
+            self.plotter.close()
             print("CTR simulator closed.")
 
 
