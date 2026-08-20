@@ -3,20 +3,22 @@
 Controls
 --------
 PS5: L1/R1 select tube, D-pad Up/Down rotate, D-pad Left/Right move,
-Cross resets.  Mouse drag orbits the view and the wheel zooms.
+right stick orbits and L2/R2 zoom.  Mouse drag also orbits the view.
 Keyboard: 1/2/3 select, W/S move, A/D rotate, R reset, Q quit.
 """
 
 from __future__ import annotations
 
+import csv
 import math
 import os
 import time
 from dataclasses import dataclass
+from pathlib import Path
 
 import numpy as np
 import pygame
-from vispy import app, scene
+from vispy import app, io, scene
 from vispy.visuals import TextVisual
 from vispy.visuals.transforms import STTransform
 
@@ -26,15 +28,23 @@ from tube_parameters import build_supervisor_ctr_parameters
 
 app.use_app(os.environ.get("VISPY_APP", "glfw"))
 
-BUTTON_CROSS, BUTTON_L1, BUTTON_R1 = 0, 9, 10
+BUTTON_CROSS, BUTTON_CIRCLE, BUTTON_SQUARE, BUTTON_TRIANGLE = 0, 1, 2, 3
+BUTTON_OPTIONS, BUTTON_R3, BUTTON_L1, BUTTON_R1 = 6, 8, 9, 10
 DPAD_UP_BUTTON, DPAD_DOWN_BUTTON = 11, 12
 DPAD_LEFT_BUTTON, DPAD_RIGHT_BUTTON = 13, 14
+BUTTON_TOUCHPAD = 15
 RIGHT_STICK_X, RIGHT_STICK_Y = 2, 3
+L2_AXIS, R2_AXIS = 4, 5
 
 DPAD_ROTATION_SPEED_DEG_S = 90.0
 DPAD_TRANSLATION_SPEED_MM_S = 30.0
+PRECISION_ROTATION_SPEED_DEG_S = 10.0
+PRECISION_TRANSLATION_SPEED_MM_S = 5.0
 CAMERA_ORBIT_SPEED_DEG_S = 90.0
+CAMERA_ZOOM_RATE_S = 1.5
 STICK_DEADZONE = 0.10
+TRIGGER_DEADZONE = 0.02
+TOUCHPAD_RESET_HOLD_S = 1.0
 KEYBOARD_TRANSLATION_STEP_MM = 1.0
 KEYBOARD_ROTATION_STEP_DEG = 5.0
 
@@ -54,6 +64,11 @@ TUBE_COLOURS = (
     (0.95, 0.42, 0.05, 1.0),
 )
 TUBE_LINE_WIDTHS = (4.0, 6.0, 8.0)
+TUBE_STRIPE_OFFSETS_MM = (1.0, 1.5, 2.0)
+TUBE_STRIPE_COLOUR = (0.08, 0.08, 0.08, 1.0)
+TUBE_STRIPE_WIDTH = 1.5
+TIP_MARKER_SIZE = 8.0
+TIP_ARROW_LENGTH_MM = 30.0
 INITIAL_DEPLOYMENT_M = np.array([120e-3, 70e-3, 40e-3])
 INITIAL_ROTATION_RAD = np.zeros(3)
 
@@ -99,6 +114,11 @@ def apply_stick_deadzone(
     return x * scale, y * scale
 
 
+def trigger_value(raw_value: float) -> float:
+    """Convert the observed PS5 trigger range to 0 released .. 1 pressed."""
+    return float(np.clip((raw_value + 1.0) * 0.5, 0.0, 1.0))
+
+
 def polyline_interval(
     points: np.ndarray, start_mm: float, end_mm: float
 ) -> np.ndarray:
@@ -131,18 +151,129 @@ def visible_tube_segments(
     return inner, middle, outer
 
 
+def tube_surface_stripe(
+    centreline: np.ndarray, rotation_rad: float, offset_mm: float
+) -> np.ndarray:
+    """Offset a stripe from a tube centreline using a rotation-minimising frame."""
+    points = np.asarray(centreline, dtype=float)
+    if len(points) < 2:
+        return points.astype(np.float32)
+
+    tangents = np.gradient(points, axis=0)
+    tangent_lengths = np.linalg.norm(tangents, axis=1)
+    for index in range(len(tangents)):
+        if tangent_lengths[index] > 1e-9:
+            tangents[index] /= tangent_lengths[index]
+        elif index:
+            tangents[index] = tangents[index - 1]
+        else:
+            tangents[index] = (0.0, 0.0, 1.0)
+
+    first_tangent = tangents[0]
+    reference = np.array([1.0, 0.0, 0.0])
+    if abs(float(np.dot(first_tangent, reference))) > 0.9:
+        reference = np.array([0.0, 1.0, 0.0])
+    first_normal = reference - np.dot(reference, first_tangent) * first_tangent
+    first_normal /= np.linalg.norm(first_normal)
+
+    normals = np.empty_like(tangents)
+    normals[0] = first_normal
+    for index in range(1, len(points)):
+        previous_tangent = tangents[index - 1]
+        tangent = tangents[index]
+        axis = np.cross(previous_tangent, tangent)
+        sine = float(np.linalg.norm(axis))
+        cosine = float(np.clip(np.dot(previous_tangent, tangent), -1.0, 1.0))
+        normal = normals[index - 1]
+        if sine > 1e-9:
+            axis /= sine
+            normal = (
+                normal * cosine
+                + np.cross(axis, normal) * sine
+                + axis * np.dot(axis, normal) * (1.0 - cosine)
+            )
+        normal -= np.dot(normal, tangent) * tangent
+        normal_length = float(np.linalg.norm(normal))
+        normals[index] = (
+            normal / normal_length if normal_length > 1e-9 else normals[index - 1]
+        )
+
+    binormals = np.cross(tangents, normals)
+    radial = math.cos(rotation_rad) * normals + math.sin(rotation_rad) * binormals
+    return (points + float(offset_mm) * radial).astype(np.float32)
+
+
+def make_vertical_reference(
+    length_mm: float, dash_mm: float = 7.0, gap_mm: float = 5.0
+) -> np.ndarray:
+    """Create a dashed global +Z reference beginning at the tube base."""
+    length = max(0.0, float(length_mm))
+    vertices = []
+    start = 0.0
+    while start < length:
+        end = min(start + dash_mm, length)
+        vertices.extend(([0.0, 0.0, start], [0.0, 0.0, end]))
+        start += dash_mm + gap_mm
+    if not vertices:
+        vertices = [[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
+    return np.asarray(vertices, dtype=np.float32)
+
+
+def tip_arrow_geometry(
+    tip_mm: np.ndarray,
+    direction: np.ndarray,
+    length_mm: float = TIP_ARROW_LENGTH_MM,
+) -> tuple[np.ndarray, np.ndarray]:
+    """Return the arrow body and arrow-head direction vertices."""
+    tip = np.asarray(tip_mm, dtype=float).reshape(3)
+    unit = np.asarray(direction, dtype=float).reshape(3)
+    norm = float(np.linalg.norm(unit))
+    unit = np.array([0.0, 0.0, 1.0]) if norm <= 1e-12 else unit / norm
+    end = tip + float(length_mm) * unit
+    body = np.asarray([tip, end], dtype=np.float32)
+    arrows = np.asarray([[*tip, *end]], dtype=np.float32)
+    return body, arrows
+
+
+def orientation_from_vertical(direction: np.ndarray) -> tuple[float, float]:
+    """Return tip tilt from global +Z and XY azimuth, both in degrees."""
+    unit = np.asarray(direction, dtype=float).reshape(3)
+    norm = float(np.linalg.norm(unit))
+    if norm <= 1e-12:
+        return 0.0, 0.0
+    unit /= norm
+    tilt = math.degrees(math.acos(float(np.clip(unit[2], -1.0, 1.0))))
+    horizontal = math.hypot(unit[0], unit[1])
+    azimuth = 0.0 if horizontal <= 1e-12 else math.degrees(math.atan2(unit[1], unit[0]))
+    return tilt, azimuth
+
+
 @dataclass
 class InputSnapshot:
     dpad_x: int = 0
     dpad_y: int = 0
     right_x: float = 0.0
     right_y: float = 0.0
+    l2: float = 0.0
+    r2: float = 0.0
+    precision: bool = False
 
 
 class ControllerManager:
     def __init__(self) -> None:
         self.joystick = None
-        self.previous = {BUTTON_L1: False, BUTTON_R1: False, BUTTON_CROSS: False}
+        self.previous = dict.fromkeys(
+            (
+                BUTTON_CROSS,
+                BUTTON_CIRCLE,
+                BUTTON_TRIANGLE,
+                BUTTON_OPTIONS,
+                BUTTON_R3,
+                BUTTON_L1,
+                BUTTON_R1,
+            ),
+            False,
+        )
         self.last_retry = -CONTROLLER_RETRY_S
         self.connect()
 
@@ -164,8 +295,8 @@ class ControllerManager:
         hats = joystick.get_numhats()
         has_dpad_buttons = buttons > DPAD_RIGHT_BUTTON
         if (
-            buttons <= BUTTON_R1
-            or joystick.get_numaxes() <= RIGHT_STICK_Y
+            buttons <= BUTTON_TOUCHPAD
+            or joystick.get_numaxes() <= R2_AXIS
             or not (hats > 0 or has_dpad_buttons)
         ):
             joystick.quit()
@@ -207,6 +338,9 @@ class ControllerManager:
         self.previous[button] = current
         return rising_edge
 
+    def down(self, button: int) -> bool:
+        return self.connected and bool(self.joystick.get_button(button))
+
     def read_inputs(self) -> InputSnapshot:
         if not self.connected:
             return InputSnapshot()
@@ -225,7 +359,15 @@ class ControllerManager:
             self.joystick.get_axis(RIGHT_STICK_X),
             self.joystick.get_axis(RIGHT_STICK_Y),
         )
-        return InputSnapshot(int(dpad_x), int(dpad_y), right_x, right_y)
+        return InputSnapshot(
+            dpad_x=int(dpad_x),
+            dpad_y=int(dpad_y),
+            right_x=right_x,
+            right_y=right_y,
+            l2=trigger_value(self.joystick.get_axis(L2_AXIS)),
+            r2=trigger_value(self.joystick.get_axis(R2_AXIS)),
+            precision=self.down(BUTTON_SQUARE),
+        )
 
 
 class SidebarPanel(scene.Widget):
@@ -235,7 +377,7 @@ class SidebarPanel(scene.Widget):
         self.label = TextVisual(
             text=text,
             color=(0.05, 0.05, 0.05, 1.0),
-            font_size=8,
+            font_size=7,
             anchor_x="left",
             anchor_y="bottom",
         )
@@ -270,6 +412,14 @@ class VisPyCTRViewer:
         self.robot_dirty = True
         self.error_text = ""
         self.last_error_print = -ERROR_PRINT_INTERVAL_S
+        self.undo_stack = []
+        self.waypoints = []
+        self.previous_dpad = (0, 0)
+        self.touchpad_hold_start = None
+        self.touchpad_reset_fired = False
+        self.ui_visible = True
+        self.guides_visible = True
+        self.last_action = "Ready"
 
         self.last_model_ms = 0.0
         self.ui_rate = 0.0
@@ -298,8 +448,21 @@ class VisPyCTRViewer:
             up="+z",
         )
 
-        backbone, self.tip_mm = self.calculate_backbone()
+        backbone, self.tip_mm, self.tip_direction = self.calculate_backbone()
+        self.tip_tilt_deg, self.tip_azimuth_deg = orientation_from_vertical(
+            self.tip_direction
+        )
         segments = visible_tube_segments(backbone, self.deployment)
+
+        self.vertical_reference = scene.visuals.Line(
+            pos=make_vertical_reference(self.deployment[0] * 1000.0),
+            color=(0.42, 0.45, 0.5, 0.75),
+            width=2.0,
+            connect="segments",
+            method="gl",
+            antialias=True,
+            parent=self.view.scene,
+        )
         self.tube_lines = []
         # Outer is created first so the smaller distal tubes remain visible.
         for tube in (2, 1, 0):
@@ -313,12 +476,44 @@ class VisPyCTRViewer:
                 parent=self.view.scene,
             )
             self.tube_lines.append((tube, line))
+        self.rotation_stripes = []
+        for tube in (2, 1, 0):
+            stripe = scene.visuals.Line(
+                pos=tube_surface_stripe(
+                    segments[tube],
+                    self.rotation[tube],
+                    TUBE_STRIPE_OFFSETS_MM[tube],
+                ),
+                color=TUBE_STRIPE_COLOUR,
+                width=TUBE_STRIPE_WIDTH,
+                connect="strip",
+                method="gl",
+                antialias=True,
+                parent=self.view.scene,
+            )
+            self.rotation_stripes.append((tube, stripe))
         self.tip = scene.visuals.Markers(parent=self.view.scene)
         self.tip.set_data(
             np.asarray([self.tip_mm], dtype=np.float32),
             face_color=(0.9, 0.2, 0.15, 1.0),
             edge_color=(0.45, 0.05, 0.03, 1.0),
-            size=14.0,
+            size=TIP_MARKER_SIZE,
+        )
+        arrow_body, arrow_heads = tip_arrow_geometry(
+            self.tip_mm, self.tip_direction
+        )
+        self.tip_arrow = scene.visuals.Arrow(
+            pos=arrow_body,
+            arrows=arrow_heads,
+            color=(0.55, 0.05, 0.75, 1.0),
+            arrow_color=(0.55, 0.05, 0.75, 1.0),
+            width=3.0,
+            connect="strip",
+            method="gl",
+            antialias=True,
+            arrow_type="triangle_60",
+            arrow_size=10.0,
+            parent=self.view.scene,
         )
         self.origin = scene.visuals.Markers(parent=self.view.scene)
         self.origin.set_data(
@@ -355,13 +550,13 @@ class VisPyCTRViewer:
         self.canvas.events.close.connect(self.on_close)
         self.closed = False
 
-    def calculate_backbone(self) -> tuple[np.ndarray, np.ndarray]:
+    def calculate_backbone(self) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
         result = superPosKin(
             self.parameters,
             {"ul": self.deployment.tolist(), "uphi": self.rotation.tolist()},
             self.sim_parameters,
         )
-        tip, sections = result[0], result[3]
+        tip, sections, tip_direction = result[0], result[3], result[8]
         points = []
         for index, section in enumerate(sections):
             part = np.column_stack([np.asarray(section[axis]) for axis in range(3)])
@@ -371,7 +566,11 @@ class VisPyCTRViewer:
                 points.append(part)
         if not points:
             raise RuntimeError("Forward model returned no backbone.")
-        return np.vstack(points) * 1000.0, np.asarray(tip[:3]) * 1000.0
+        return (
+            np.vstack(points) * 1000.0,
+            np.asarray(tip[:3]) * 1000.0,
+            np.asarray(tip_direction, dtype=float).reshape(3),
+        )
 
     def translation_limits(self, tube: int) -> tuple[float, float]:
         if tube == 0:
@@ -405,21 +604,152 @@ class VisPyCTRViewer:
         self.rotation[:] = INITIAL_ROTATION_RAD
         self.selected_tube = 0
         self.robot_dirty = True
+        self.last_action = "Robot reset"
         print("Robot reset.")
+
+    def remember_undo_state(self) -> None:
+        self.undo_stack.append(
+            (
+                self.deployment.copy(),
+                self.rotation.copy(),
+                self.selected_tube,
+            )
+        )
+        if len(self.undo_stack) > 100:
+            self.undo_stack.pop(0)
+
+    def undo(self) -> None:
+        if not self.undo_stack:
+            self.last_action = "Nothing to undo"
+            return
+        deployment, rotation, selected = self.undo_stack.pop()
+        self.deployment[:] = deployment
+        self.rotation[:] = rotation
+        self.selected_tube = selected
+        self.robot_dirty = True
+        self.last_action = "Previous adjustment restored"
+
+    def keyboard_move(self, amount_mm: float) -> None:
+        self.remember_undo_state()
+        self.move(amount_mm)
+
+    def keyboard_rotate(self, amount_deg: float) -> None:
+        self.remember_undo_state()
+        self.rotate(amount_deg)
+
+    def reset_with_undo(self) -> None:
+        self.remember_undo_state()
+        self.reset()
+
+    def pose_record(self, label: str) -> dict[str, float | str]:
+        if self.robot_dirty:
+            self.update_robot()
+        mm = self.deployment * 1000.0
+        deg = np.rad2deg(self.rotation)
+        return {
+            "label": label,
+            "inner_extension_mm": float(mm[0]),
+            "middle_extension_mm": float(mm[1]),
+            "outer_extension_mm": float(mm[2]),
+            "inner_rotation_deg": float(deg[0]),
+            "middle_rotation_deg": float(deg[1]),
+            "outer_rotation_deg": float(deg[2]),
+            "tip_x_mm": float(self.tip_mm[0]),
+            "tip_y_mm": float(self.tip_mm[1]),
+            "tip_z_mm": float(self.tip_mm[2]),
+            "tip_tilt_deg": float(self.tip_tilt_deg),
+            "tip_azimuth_deg": float(self.tip_azimuth_deg),
+        }
+
+    def save_waypoint(self) -> None:
+        number = len(self.waypoints) + 1
+        self.waypoints.append(self.pose_record(f"waypoint_{number}"))
+        self.last_action = f"Waypoint {number} saved"
+        print(self.last_action)
+
+    def export_snapshot(self) -> None:
+        export_dir = Path(__file__).resolve().parent / "exports"
+        export_dir.mkdir(exist_ok=True)
+        stamp = time.strftime("%Y%m%d-%H%M%S")
+        image_path = export_dir / f"ctr-{stamp}.png"
+        csv_path = export_dir / f"ctr-{stamp}.csv"
+        current = self.pose_record("current")
+        io.write_png(str(image_path), self.canvas.render())
+        records = [*self.waypoints, current]
+        with csv_path.open("w", newline="", encoding="utf-8") as handle:
+            writer = csv.DictWriter(handle, fieldnames=records[0].keys())
+            writer.writeheader()
+            writer.writerows(records)
+        self.last_action = f"Exported {image_path.name}"
+        print(f"Screenshot: {image_path}")
+        print(f"Configuration: {csv_path}")
+
+    def toggle_guides(self) -> None:
+        self.guides_visible = not self.guides_visible
+        self.vertical_reference.visible = self.guides_visible
+        self.tip_arrow.visible = self.guides_visible
+        self.last_action = "Guides shown" if self.guides_visible else "Guides hidden"
+        self.canvas.update()
+
+    def toggle_ui(self) -> None:
+        self.ui_visible = not self.ui_visible
+        if self.ui_visible:
+            self.sidebar.width_max = 360
+            self.sidebar.width_min = 360
+            self.sidebar.visible = True
+            self.last_action = "UI shown"
+        else:
+            self.sidebar.width_min = 0
+            self.sidebar.width_max = 0
+            self.sidebar.visible = False
+            self.last_action = "UI hidden"
+        self.canvas.update()
+
+    def update_touchpad_reset(self, now: float) -> None:
+        if self.controller.down(BUTTON_TOUCHPAD):
+            if self.touchpad_hold_start is None:
+                self.touchpad_hold_start = now
+                self.touchpad_reset_fired = False
+            elif (
+                not self.touchpad_reset_fired
+                and now - self.touchpad_hold_start >= TOUCHPAD_RESET_HOLD_S
+            ):
+                self.reset_with_undo()
+                self.touchpad_reset_fired = True
+        else:
+            self.touchpad_hold_start = None
+            self.touchpad_reset_fired = False
 
     def update_robot(self) -> None:
         started = time.perf_counter()
-        backbone, tip = self.calculate_backbone()
+        backbone, tip, tip_direction = self.calculate_backbone()
         segments = visible_tube_segments(backbone, self.deployment)
         self.last_model_ms = (time.perf_counter() - started) * 1000.0
         for tube, line in self.tube_lines:
             line.set_data(pos=segments[tube])
+        for tube, stripe in self.rotation_stripes:
+            stripe.set_data(
+                pos=tube_surface_stripe(
+                    segments[tube],
+                    self.rotation[tube],
+                    TUBE_STRIPE_OFFSETS_MM[tube],
+                )
+            )
         self.tip_mm = tip.copy()
+        self.tip_direction = tip_direction.copy()
+        self.tip_tilt_deg, self.tip_azimuth_deg = orientation_from_vertical(
+            tip_direction
+        )
         self.tip.set_data(
             np.asarray([tip], dtype=np.float32),
             face_color=(0.9, 0.2, 0.15, 1.0),
             edge_color=(0.45, 0.05, 0.03, 1.0),
-            size=14.0,
+            size=TIP_MARKER_SIZE,
+        )
+        arrow_body, arrow_heads = tip_arrow_geometry(tip, tip_direction)
+        self.tip_arrow.set_data(pos=arrow_body, arrows=arrow_heads)
+        self.vertical_reference.set_data(
+            pos=make_vertical_reference(self.deployment[0] * 1000.0)
         )
         self.robot_dirty = False
         self.robot_count += 1
@@ -444,6 +774,9 @@ class VisPyCTRViewer:
 
 ACTIVE TUBE: {TUBE_NAMES[self.selected_tube]}
 PS5: {state}
+MODE: {"PRECISION" if self.inputs.precision else "NORMAL"}
+WAYPOINTS: {len(self.waypoints)}
+LAST: {self.last_action}
 
               EXTENSION     ROTATION
 {markers[0]} INNER      {mm[0]:6.1f} mm     {deg[0]:7.1f} deg
@@ -454,11 +787,19 @@ TUBE COLOURS
 INNER   Blue
 MIDDLE  Green
 OUTER   Orange
+Dark line = rotation stripe
 
 TIP POSITION
 X {self.tip_mm[0]:7.1f} mm
 Y {self.tip_mm[1]:7.1f} mm
 Z {self.tip_mm[2]:7.1f} mm
+
+TIP ORIENTATION
+Tilt from +Z  {self.tip_tilt_deg:7.1f} deg
+Azimuth       {self.tip_azimuth_deg:7.1f} deg
+Direction X   {self.tip_direction[0]:+7.3f}
+Direction Y   {self.tip_direction[1]:+7.3f}
+Direction Z   {self.tip_direction[2]:+7.3f}
 
 PERFORMANCE
 Model calculation   {self.last_model_ms:5.1f} ms
@@ -472,13 +813,18 @@ Robot updates       {self.robot_rate:5.1f} /s
     def control_key_text() -> str:
         return """CONTROLLER
 L1 / R1       Previous / next tube
-D-pad Up      Increase angle
-D-pad Down    Decrease angle
-D-pad Left    Decrease extension
-D-pad Right   Increase extension
+D-pad Up/Down Angle increase / decrease
+D-pad Left/Right Extension decrease / increase
 Right stick   Change view orientation
+L2 / R2       Zoom out / in
+R3            Hide / show UI
+Square (hold) Precision mode
+Triangle      Hide / show guides
+Circle        Undo adjustment
+Cross         Save waypoint
+Touchpad hold Reset robot
+Options       Export screenshot and data
 Left stick    Unused
-Cross         Reset robot
 
 MOUSE
 Drag          Change view
@@ -513,12 +859,35 @@ Q             Quit"""
                 if self.controller.pressed(BUTTON_R1):
                     self.select(self.selected_tube + 1)
                 if self.controller.pressed(BUTTON_CROSS):
-                    self.reset()
+                    self.save_waypoint()
+                if self.controller.pressed(BUTTON_CIRCLE):
+                    self.undo()
+                if self.controller.pressed(BUTTON_TRIANGLE):
+                    self.toggle_guides()
+                if self.controller.pressed(BUTTON_R3):
+                    self.toggle_ui()
+                if self.controller.pressed(BUTTON_OPTIONS):
+                    self.export_snapshot()
+                self.update_touchpad_reset(now)
                 self.inputs = self.controller.read_inputs()
+                dpad = (self.inputs.dpad_x, self.inputs.dpad_y)
+                if dpad != (0, 0) and dpad != self.previous_dpad:
+                    self.remember_undo_state()
+                self.previous_dpad = dpad
+                rotation_speed = (
+                    PRECISION_ROTATION_SPEED_DEG_S
+                    if self.inputs.precision
+                    else DPAD_ROTATION_SPEED_DEG_S
+                )
+                translation_speed = (
+                    PRECISION_TRANSLATION_SPEED_MM_S
+                    if self.inputs.precision
+                    else DPAD_TRANSLATION_SPEED_MM_S
+                )
                 if self.inputs.dpad_y:
-                    self.rotate(self.inputs.dpad_y * DPAD_ROTATION_SPEED_DEG_S * dt)
+                    self.rotate(self.inputs.dpad_y * rotation_speed * dt)
                 if self.inputs.dpad_x:
-                    self.move(self.inputs.dpad_x * DPAD_TRANSLATION_SPEED_MM_S * dt)
+                    self.move(self.inputs.dpad_x * translation_speed * dt)
                 if self.inputs.right_x or self.inputs.right_y:
                     camera = self.view.camera
                     camera.azimuth += (
@@ -533,8 +902,21 @@ Q             Quit"""
                         )
                     )
                     self.canvas.update()
+                zoom_command = self.inputs.r2 - self.inputs.l2
+                if abs(zoom_command) > TRIGGER_DEADZONE:
+                    camera = self.view.camera
+                    camera.distance = float(
+                        np.clip(
+                            camera.distance
+                            * math.exp(-zoom_command * CAMERA_ZOOM_RATE_S * dt),
+                            60.0,
+                            2000.0,
+                        )
+                    )
+                    self.canvas.update()
             else:
                 self.inputs = InputSnapshot()
+                self.previous_dpad = (0, 0)
 
             if self.robot_dirty and now - self.last_model_update >= 1 / MODEL_UPDATE_HZ:
                 self.update_robot()
@@ -558,11 +940,11 @@ Q             Quit"""
             "1": lambda: self.select(0),
             "2": lambda: self.select(1),
             "3": lambda: self.select(2),
-            "w": lambda: self.move(KEYBOARD_TRANSLATION_STEP_MM),
-            "s": lambda: self.move(-KEYBOARD_TRANSLATION_STEP_MM),
-            "a": lambda: self.rotate(-KEYBOARD_ROTATION_STEP_DEG),
-            "d": lambda: self.rotate(KEYBOARD_ROTATION_STEP_DEG),
-            "r": self.reset,
+            "w": lambda: self.keyboard_move(KEYBOARD_TRANSLATION_STEP_MM),
+            "s": lambda: self.keyboard_move(-KEYBOARD_TRANSLATION_STEP_MM),
+            "a": lambda: self.keyboard_rotate(-KEYBOARD_ROTATION_STEP_DEG),
+            "d": lambda: self.keyboard_rotate(KEYBOARD_ROTATION_STEP_DEG),
+            "r": self.reset_with_undo,
             "q": self.canvas.close,
         }
         action = actions.get(key)
@@ -581,7 +963,7 @@ Q             Quit"""
         print(
             "\nVISPY PS5 CTR SIMULATOR\n"
             "L1/R1 select | D-pad Up/Down rotate | D-pad Left/Right move | "
-            "mouse orbit/zoom | Cross reset\n"
+            "right stick orbit | L2/R2 zoom | R3 UI | Touchpad hold reset\n"
         )
         self.canvas.show()
         self.timer.start()
