@@ -1,7 +1,12 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import csv
+import sys
 from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
 
 from tube_parameters import (
     build_supervisor_ctr_parameters,
@@ -22,8 +27,9 @@ SEED = 42
 # We only need the tip for the workspace, so 30 is sufficient.
 N_POINTS_PER_SEGMENT = 30
 
-OUTPUT_CSV = "workspace_10000_sectioned.csv"
-OUTPUT_PNG = "workspace_10000_sectioned_3D.png"
+RESULTS_DIR = PROJECT_ROOT / "results"
+OUTPUT_CSV = RESULTS_DIR / "workspace_10000_sectioned.csv"
+OUTPUT_PNG = RESULTS_DIR / "workspace_10000_sectioned_3D.png"
 
 
 # ============================================================
@@ -77,6 +83,8 @@ def sample_valid_ul(rng, total_lengths):
 # ============================================================
 
 def main():
+
+    RESULTS_DIR.mkdir(exist_ok=True)
 
     print("======================================")
     print("CTR WORKSPACE GENERATOR")

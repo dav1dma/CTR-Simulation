@@ -11,7 +11,14 @@ Tube parameters:
     outer  : total 80 mm,  curved 65 mm
 """
 
+import sys
+from pathlib import Path
+
 import numpy as np
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
 
 from tube_parameters import (
     build_supervisor_ctr_parameters,
@@ -41,7 +48,7 @@ def run_case(name, ul_mm, uphi_deg):
 
     sim_par = {
         "n_p": 50,
-        "isPlot": True,
+        "isPlot": False,
     }
 
     (

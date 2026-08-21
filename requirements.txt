@@ -5,4 +5,3 @@ transforms3d>=0.4
 pygame-ce>=2.5
 vispy>=0.16
 glfw>=2.10
-pyvista>=0.48
