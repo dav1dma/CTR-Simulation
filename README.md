@@ -1,7 +1,8 @@
 # CTR Simulation
 
-Interactive concentric-tube robot simulation with PS5 controller, keyboard,
-and mouse control. The active viewer uses VisPy for responsive rendering.
+An interactive simulator for exploring the movement and workspace of a concentric-tube robot. The tubes can be extended and rotated using a PS5 controller, keyboard, or mouse, while the robot’s shape, tip position, and orientation update in real time.
+
+The workspace plot below shows the tip positions reached across 10,000 simulated tube configurations.
 
 ![Section-aware CTR workspace](docs/images/ctr_workspace_sectioned.png)
 
