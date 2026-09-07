@@ -1,0 +1,245 @@
+schema_version = 1
+protocol_id = "ctr-positional-design-optimisation"
+protocol_version = "1.0.0-draft.6"
+methodology_stage = "5A"
+status = "frozen-for-local-computational-pilot-not-manufacturing-certified"
+
+[scope]
+primary_endpoint = "inner"
+secondary_endpoints = ["middle", "outer"]
+secondary_endpoint_role = "report-only-no-equal-weighted-combination"
+included_quantities = [
+  "common-task-region-coverage",
+  "positional-isotropy",
+  "spatial-isotropy-uniformity",
+  "fixed-start-numerical-ik-residual",
+  "fixed-start-poor-convergence-fraction",
+]
+excluded_quantities = [
+  "tip-orientation",
+  "force-capability",
+  "loaded-stiffness-capability",
+  "collision-contact-and-buckling",
+  "clinical-safety-or-success",
+]
+
+[baseline_evidence]
+parameter_set_id = "supervisor-nominal-2026-08-29"
+parameter_sha256 = "dea553b3c01ff204403a052436e7959c167ebd061b0c192b65133d129c2055b3"
+stage4_run = "results/evaluation/ctr-eval-v1/baseline_extension_20260830_e576f056_30c927c2"
+stage4_protocol_sha256 = "e576f056902d99e3612f2f19047391f9366a7482d6e1f8899e2cae0aab91894a"
+stage4_manifest_sha256 = "f08afef6ae02d08f6961ee0fa20fcf2941c88bb99cf37e6da1baef2b3949e4a7"
+stage4_gates_sha256 = "f972bc9be67740a53b99bb397aaa8977b126752b4d634d0a3663849b79192864"
+task_region_sha256 = "d298078bbc467a08a984a83723ebb428d832cfbeb66a50c2642b05a6fb07ff5a"
+training_configurations_sha256 = "50abd7c55fcf7bfd6c73c17ada21a3ab4e62496b74747c1173c4d174fa6933c1"
+validation_configurations_sha256 = "2d8df8e282995719c1b3f6a981770529fa1eaf4b61d3d59a3b612fc4e778770f"
+stage4_1_run = "results/evaluation/ctr-eval-v1/baseline_ik_support_20260830_5bcca9d8_30c927c2"
+stage4_1_protocol_sha256 = "5bcca9d8df65199a86fdf9ec0e8006722d8c81ee65bae2e8326acd7acbec6223"
+stage4_1_manifest_sha256 = "5b63dd9b99866390ceec7b4cccbdab039f043644af05a1a50454fae76b5190dc"
+stage4_1_gates_sha256 = "590a882c0af3e0ce927d2c87b61ce5e1b069127e1c7d517b72742ac5874b92a8"
+reserved_validation_targets_sha256 = "3e4ee79cd64c1f2b0095c1e74c092044d8d9f8e7b0d82dcfdc783e11fcc9ef04"
+reserved_validation_results_sha256 = "05b408fa8da166e94682a7f4efec99396b24d4be067ac2c570bd2a2f493babe9"
+
+[task_space]
+definition = "frozen-stage4-baseline-inner-tip-occupied-cells"
+coordinate_system = "axisymmetric-r-z"
+cell_size_mm = 10.0
+cell_volume_weighting = "exact-swept-annular-volume"
+uncovered_or_under_supported_isotropy_value = 0.0
+candidate_workspace_outside_task_region_role = "reported-secondary-not-optimised"
+clinical_interpretation = false
+
+[fixed_parameters]
+youngs_modulus_gpa = [75.0, 75.0, 75.0]
+youngs_modulus_role = "fixed-nominal-uncertainty-only"
+od_mm = [0.5, 0.7, 0.9]
+id_mm = [0.0, 0.62, 0.8]
+diameter_role = "fixed-no-manufacturing-catalogue-or-discrete-stock-set"
+inner_curved_length_mm = 0.0
+inner_precurvature_per_m = 0.0
+precurvature_unit_status = "provisional-reported-values-treated-as-per-metre"
+
+[[design_variables]]
+name = "inner_total_length_mm"
+field = "total_length_mm"
+tube_index = 0
+unit = "mm"
+lower = 315.0
+baseline = 350.0
+upper = 385.0
+bound_basis = "local-plus-minus-10-percent-computational-neighbourhood"
+
+[[design_variables]]
+name = "middle_total_length_mm"
+field = "total_length_mm"
+tube_index = 1
+unit = "mm"
+lower = 153.0
+baseline = 170.0
+upper = 187.0
+bound_basis = "local-plus-minus-10-percent-computational-neighbourhood"
+
+[[design_variables]]
+name = "outer_total_length_mm"
+field = "total_length_mm"
+tube_index = 2
+unit = "mm"
+lower = 72.0
+baseline = 80.0
+upper = 88.0
+bound_basis = "local-plus-minus-10-percent-computational-neighbourhood"
+
+[[design_variables]]
+name = "middle_curved_length_mm"
+field = "curved_length_mm"
+tube_index = 1
+unit = "mm"
+lower = 81.0
+baseline = 90.0
+upper = 99.0
+bound_basis = "local-plus-minus-10-percent-computational-neighbourhood"
+
+[[design_variables]]
+name = "outer_curved_length_mm"
+field = "curved_length_mm"
+tube_index = 2
+unit = "mm"
+lower = 58.5
+baseline = 65.0
+upper = 71.5
+bound_basis = "local-plus-minus-10-percent-computational-neighbourhood"
+
+[[design_variables]]
+name = "middle_precurvature_per_m"
+field = "precurvature_per_m"
+tube_index = 1
+unit = "1/m"
+lower = 17.208
+baseline = 19.12
+upper = 21.032
+bound_basis = "local-plus-minus-10-percent-computational-neighbourhood"
+
+[[design_variables]]
+name = "outer_precurvature_per_m"
+field = "precurvature_per_m"
+tube_index = 2
+unit = "1/m"
+lower = 12.636
+baseline = 14.04
+upper = 15.444
+bound_basis = "local-plus-minus-10-percent-computational-neighbourhood"
+
+[constraints]
+length_order = "inner-total>=middle-total>=outer-total"
+curved_length_rule = "zero<=curved-length<=total-length"
+minimum_common_task_region_coverage = 0.95
+minimum_jacobian_valid_fraction = 0.999
+diameter_clearance_rule = "fixed-baseline-geometry"
+feasibility_handling = "constraint-domination-no-finite-penalty-scalarisation"
+coverage_threshold_interpretation = "methodological-design-retention-not-clinical"
+
+[[objectives]]
+name = "common_task_region_coverage"
+direction = "maximize"
+definition = "exact-annular-volume-fraction-of-frozen-task-cells-reached"
+aggregation = "physical-volume-weighted"
+
+[[objectives]]
+name = "mean_positional_isotropy"
+direction = "maximize"
+definition = "mean-of-candidate-cell-median-baseline-range-normalised-isotropy"
+aggregation = "full-frozen-task-region-exact-volume-weights-uncovered-cells-zero"
+
+[[objectives]]
+name = "spatial_isotropy_iqr"
+direction = "minimize"
+definition = "weighted-p75-minus-weighted-p25-of-candidate-cell-median-isotropy"
+aggregation = "full-frozen-task-region-exact-volume-weights-uncovered-cells-zero"
+
+[[objectives]]
+name = "ik_failure_fraction_0_5mm"
+direction = "minimize"
+definition = "fixed-start-target-weighted-fraction-with-final-residual-above-0.5mm"
+aggregation = "frozen-cell-volume-divided-by-targets-per-cell"
+
+[[objectives]]
+name = "ik_p95_residual_mm"
+direction = "minimize"
+definition = "fixed-start-volume-weighted-95th-percentile-final-numerical-residual"
+aggregation = "frozen-cell-volume-divided-by-targets-per-cell"
+
+[sampling]
+configuration_sampler = "ctr-canonical-pcg64-v1"
+configuration_training_seed = 42
+configuration_validation_seed = 1042
+ik_training_seed = 2042
+ik_validation_seed = 3042
+rotated_copies_are_independent = false
+common_rotation_role = "display-only"
+candidate_designs_share_canonical_configuration_ids = true
+validation_is_never_used_for-search-selection-or-tuning = true
+
+[stage5b_pilot]
+design_method = "maximin-latin-hypercube-in-seven-normalised-variables"
+design_seed = 5042
+design_count_including_baseline = 33
+low_fidelity_configurations = 15000
+low_fidelity_ik_targets = 2000
+calibration_design_count = 8
+medium_fidelity_configurations = 50000
+medium_fidelity_ik_targets = 5000
+rank_stability_method = "spearman"
+minimum_objective_rank_correlation = 0.8
+minimum_top_quartile_overlap = 0.5
+full_search_authorized = false
+
+[stage5c_search]
+planned_algorithm = "nsga-ii"
+constraint_handling = "deb-feasibility-first-constraint-domination"
+search_seed = 6042
+population_size = 32
+generations = 20
+search_configurations_per_design = 15000
+search_ik_targets_per_design = 2000
+pareto_reevaluation_maximum_designs = 32
+pareto_reevaluation_configurations = 50000
+pareto_reevaluation_ik_targets = 10000
+shortlist_maximum_designs_excluding_baseline = 5
+shortlist_training_configurations = 100000
+shortlist_training_ik_targets = 25000
+execution_status = "blocked-until-stage5b-gates-pass-and-new-run-authorization"
+
+[stage5d_validation]
+validation_configurations = 50000
+validation_ik_targets = 100000
+maximum_shortlisted_designs_excluding_baseline = 5
+baseline_is_always_included = true
+spatial_cell_bootstrap_repetitions = 2000
+bootstrap_seed = 7042
+selection_must_be_frozen_before_validation = true
+no_post_validation_retuning = true
+report_paired_differences = true
+
+[reporting]
+pareto_front_required = true
+single_weighted_winner_without_application_weights = false
+report_objective_extremes = true
+report_knee_candidate = true
+report_baseline_comparison = true
+report_middle_and_outer_secondary_endpoints = true
+report_own_workspace_volume_as_secondary = true
+label_numerical_ik_as_model_residual_not_physical_accuracy = true
+
+[unresolved_decisions]
+manufacturing_bounds_required_for_global_or_manufacturable_optimum = true
+discrete_available_tube_sizes_not_supplied = true
+anatomical_or_clinical_task_region_not_supplied = true
+precurvature_units_pending_supervisor_confirmation = true
+orientation_force_and_loaded_stiffness_out_of_scope = true
+local_bound_conclusion = "valid-only-within-plus-minus-10-percent-computational-neighbourhood"
+
+[versioning]
+formal_output_root = "results/evaluation/ctr-eval-v1"
+run_directory_pattern = "stage5a_{date}_{protocol_hash8}_{commit8}"
+overwrite_policy = "refuse-nonempty-formal-output"
+production_requires_manifest = true

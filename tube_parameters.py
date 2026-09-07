@@ -1,47 +1,63 @@
 
-"""
-Supervisor-provided CTR parameters.
+"""Supervisor-provided CTR specification and explicit model assumptions.
 
 Tube order:
 0 = innermost
 1 = middle
 2 = outermost
 
-IMPORTANT:
-The supervisor message labels pre-curvature as 1/mm. The inherited
-superPosKin() model expects kappa_0 in 1/m, and the numerical values
-19.12 and 14.04 match the earlier geometry only if interpreted as 1/m.
-Therefore this file uses [0, 19.12, 14.04] 1/m in the model.
+The supervisor-reported values and units are retained verbatim in ``TUBE_DATA``.
+The numerical model assumptions are stored separately because:
+
+* ``superPosKin()`` requires one scalar Young's modulus per tube, whereas the
+  specification supplies ranges. The existing 75 GPa nominal value is retained.
+* The specification labels pre-curvature as 1/mm, but applying 19.12 and 14.04
+  1/mm would imply sub-tube-radius bends. Until the unit is confirmed, the
+  existing physically plausible interpretation of those values as 1/m is
+  retained for simulation.
 """
 
 import numpy as np
 
 TUBE_DATA = {
     "inner": {
-        "material": "hobby-grade Nitinol",
+        "material": "hobby-grade",
+        "product": "Sourcing Map 3 Feet Nitinol Wire",
+        "product_url": "https://www.amazon.co.uk/sourcing-map-Nitinol-Pre-trained-Research/dp/B0G7T1DGBQ",
         "od_mm": 0.50,
         "id_mm": 0.00,
         "E_range_GPa": (40.0, 75.0),
+        "model_E_GPa": 75.0,
         "total_length_mm": 350.0,
         "curved_length_mm": 0.0,
+        "precurvature_reported": 0.0,
+        "precurvature_reported_unit": "1/mm",
         "precurvature_per_m": 0.0,
     },
     "middle": {
         "material": "PIERTECH",
+        "product": "PIERTECH 23D21",
         "od_mm": 0.70,
         "id_mm": 0.62,
         "E_range_GPa": (60.0, 83.0),
+        "model_E_GPa": 75.0,
         "total_length_mm": 170.0,
         "curved_length_mm": 90.0,
+        "precurvature_reported": 19.12,
+        "precurvature_reported_unit": "1/mm",
         "precurvature_per_m": 19.12,
     },
     "outer": {
         "material": "PIERTECH",
+        "product": "PIERTECH 23D21",
         "od_mm": 0.90,
         "id_mm": 0.80,
         "E_range_GPa": (60.0, 83.0),
+        "model_E_GPa": 75.0,
         "total_length_mm": 80.0,
         "curved_length_mm": 65.0,
+        "precurvature_reported": 14.04,
+        "precurvature_reported_unit": "1/mm",
         "precurvature_per_m": 14.04,
     },
 }
@@ -60,10 +76,15 @@ def build_supervisor_ctr_parameters():
     middle = TUBE_DATA["middle"]
     outer = TUBE_DATA["outer"]
 
-    # Nominal model value:
-    # 75 GPa is within both supplied E ranges and matches the inherited model.
-    E_nominal = 75e9
-    G_nominal = E_nominal / 3.0
+    # One nominal scalar per tube is required by the current forward model.
+    E_model = np.asarray(
+        [
+            inner["model_E_GPa"],
+            middle["model_E_GPa"],
+            outer["model_E_GPa"],
+        ],
+        dtype=float,
+    ) * 1e9
 
     return {
         "n_t": 3,
@@ -75,8 +96,8 @@ def build_supervisor_ctr_parameters():
             [mm_to_m(straight_length_mm(outer)),  mm_to_m(outer["curved_length_mm"])],
         ],
 
-        "E": [E_nominal, E_nominal, E_nominal],
-        "G": [G_nominal, G_nominal, G_nominal],
+        "E": E_model.tolist(),
+        "G": (E_model / 3.0).tolist(),
 
         # inherited model expects 1/m
         "kappa_0": [

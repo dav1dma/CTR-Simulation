@@ -1,0 +1,188 @@
+schema_version = 1
+protocol_id = "ctr-positional-evaluation"
+protocol_version = "1.0.0-draft.5"
+methodology_stage = 4
+status = "stage-4.1-inner-tip-ik-support-completion-frozen"
+
+[scope]
+primary_endpoint = "inner"
+primary_endpoint_index = 0
+secondary_endpoints = ["middle", "outer"]
+included_quantities = [
+  "positional_workspace",
+  "positional_isotropy",
+  "numerical_ik_residual",
+]
+excluded_quantities = [
+  "tip_orientation_objective",
+  "force_capability",
+  "loaded_stiffness_capability",
+]
+
+[baseline]
+parameter_set_id = "supervisor-nominal-2026-08-29"
+expected_model_parameter_sha256 = "dea553b3c01ff204403a052436e7959c167ebd061b0c192b65133d129c2055b3"
+total_length_mm = [350.0, 170.0, 80.0]
+curved_length_mm = [0.0, 90.0, 65.0]
+outer_diameter_mm = [0.5, 0.7, 0.9]
+inner_diameter_mm = [0.0, 0.62, 0.8]
+youngs_modulus_gpa = [75.0, 75.0, 75.0]
+youngs_modulus_role = "fixed-nominal-uncertainty-only"
+youngs_modulus_uncertainty_ranges_gpa = [
+  [40.0, 75.0],
+  [60.0, 83.0],
+  [60.0, 83.0],
+]
+precurvature_per_m = [0.0, 19.12, 14.04]
+precurvature_status = "provisional-pending-supervisor-confirmation"
+precurvature_interpretation = "reported-numeric-values-treated-as-per-metre"
+
+[task_space]
+definition = "baseline-inner-tip-occupied-workspace"
+status = "provisional-no-anatomical-region-supplied"
+candidate_coverage_region = "fixed-baseline-region"
+target_selection = "spatially-stratified-known-reachable-canonical-points"
+target_weighting = "swept-cell-volume-divided-by-targets-in-cell"
+task_discovery_and_target_candidates_are_independent = true
+target_ik_initialisation_uses_source_state = false
+
+[sampling]
+sampler_version = "ctr-canonical-pcg64-v1"
+independent_dimensions = 5
+deployment_dimensions = 3
+relative_rotation_dimensions = 2
+common_rotation_role = "symmetry-gauge-and-visualisation-only"
+training_seed = 42
+validation_seed = 1042
+pilot_independent_configurations = 15000
+final_convergence_counts = [50000, 100000, 150000, 200000]
+baseline_convergence_counts = [50000, 100000, 150000, 200000]
+baseline_training_configurations = 200000
+baseline_validation_configurations = 50000
+ik_target_training_seed = 2042
+ik_target_validation_seed = 3042
+ik_target_candidate_configurations = 600000
+ik_primary_training_targets = 25000
+ik_primary_validation_targets = 100000
+ik_secondary_validation_targets = 10000
+larger_samples_must_preserve_prefix = true
+boundary_cases_are_statistical_samples = false
+sample_id_basis = "sampler-version-split-seed-canonical-index"
+
+[sampling.streams]
+deployment_fractions = 0
+relative_rotations = 1
+
+[symmetry]
+axis = "z"
+period_degrees = 360.0
+canonical_space = "radius-z"
+canonical_plane = "positive-x-z"
+statistical_aggregation_before_sweep = true
+sweep_use = "visualisation-only"
+rotated_copies_are_independent = false
+independent_count_basis = "unique-canonical-sample-id"
+
+[spatial]
+provisional_cell_size_mm = 10.0
+cell_size_convergence_candidates_mm = [5.0, 10.0, 15.0]
+cell_size_status = "provisional-pending-full-baseline-convergence"
+primary_cell_size_mm = 10.0
+minimum_samples_median = 30
+minimum_samples_lower_tail = 50
+minimum_samples_failure_or_p95 = 100
+insufficient_cells = "masked"
+coordinate_system = "axisymmetric-r-z"
+radial_origin_mm = 0.0
+z_origin_mm = 0.0
+cell_intervals = "left-closed-right-open"
+occupancy_minimum_independent_samples = 1
+occupied_volume_method = "sum-full-swept-annular-cells"
+metric_smoothing = false
+void_connectivity = 4
+axis_is_exterior_boundary = false
+local_isotropy_representative = "median-over-independent-configurations"
+spatial_weighting = "exact-swept-annular-volume"
+weighted_quantile_method = "inverted-cdf"
+workspace_relative_change_limit = 0.02
+validation_coverage_minimum = 0.95
+spatial_isotropy_absolute_change_limit = 0.01
+numerical_gate_interpretation = "analysis-stability-not-clinical-performance"
+cell_size_sensitivity_required = true
+
+[ik]
+initial_deployment_mm = [0.0, 0.0, 0.0]
+initial_rotation_deg = [0.0, 0.0, 0.0]
+initialisation = "single-fully-retracted-fixed-actuator-state"
+evaluation_threshold_mm = 0.5
+reporting_thresholds_mm = [0.1, 0.5, 1.0]
+solver_tolerance_candidates_mm = [0.1, 0.01, 0.001]
+solver_tolerance_mm = 0.01
+solver_tolerance_status = "provisional-stage-2-pilot-selection"
+max_iterations = 40
+damping_mm = 1.0
+maximum_normalised_step = 0.1
+finite_difference_step_normalised = 0.0001
+pilot_target_count = 96
+pilot_task_discovery_configurations = 3000
+pilot_target_candidate_configurations = 5000
+pilot_revalidation_required_at_full_scale = true
+
+[jacobian]
+normalisation_status = "fixed-baseline-range-scale"
+coordinate_system = "physical-deployment-mm-and-rotation-rad"
+actuator_scale = [350.0, 170.0, 80.0, 3.141592653589793, 3.141592653589793, 3.141592653589793]
+actuator_scale_source = "supervisor-baseline-lengths-and-half-turn-rotation"
+interpretation = "baseline-range-normalised-positional-isotropy"
+actuator_velocity_interpretation = false
+finite_difference_status = "selected-stage-2-convergence-check"
+finite_difference_scheme = "three-point-central-adaptive-inside-constraints"
+translation_step_candidates_mm = [0.1, 0.03, 0.01, 0.003]
+rotation_step_candidates_rad = [0.001, 0.0003, 0.0001, 0.00003]
+translation_step_mm = 0.1
+rotation_step_rad = 0.001
+boundary_policy = "mask-no-six-dimensional-two-sided-neighbourhood"
+model_points_per_section = 2
+convergence_p95_relative_jacobian_limit = 0.005
+convergence_p95_absolute_isotropy_limit = 0.002
+pilot_independent_configurations = 64
+pilot_design_count = 3
+rotation_scale_sensitivity_factors = [0.5, 1.0, 2.0]
+rotation_scale_sensitivity_status = "pending-full-baseline-reporting"
+
+[endpoints]
+optimisation_endpoint = "inner"
+secondary_reporting = ["middle", "outer"]
+combination_policy = "no-arbitrary-equal-weighting"
+
+[optimisation]
+enabled = false
+youngs_modulus_is_design_variable = false
+orientation_is_objective = false
+force_or_loaded_stiffness_is_objective = false
+reason_disabled = "stage-4.1-ik-support-completion-not-yet-reviewed"
+
+[extension]
+extension_type = "controlled-primary-endpoint-ik-support-completion"
+primary_endpoint_only = true
+reuse_verified_stage4_task_region = true
+source_stage4_run = "results/evaluation/ctr-eval-v1/baseline_extension_20260830_e576f056_30c927c2"
+source_run_manifest_sha256 = "f08afef6ae02d08f6961ee0fa20fcf2941c88bb99cf37e6da1baef2b3949e4a7"
+source_protocol_sha256 = "e576f056902d99e3612f2f19047391f9366a7482d6e1f8899e2cae0aab91894a"
+source_task_region_sha256 = "d298078bbc467a08a984a83723ebb428d832cfbeb66a50c2642b05a6fb07ff5a"
+source_workspace_metrics_sha256 = "8d934f111dcb58f0d17039905b02d90c23ebf05977f1a951af132a2da3e12da6"
+source_validation_gates_sha256 = "f972bc9be67740a53b99bb397aaa8977b126752b4d634d0a3663849b79192864"
+source_ik_metrics_sha256 = "ff748bf2e77dd7bba5ad96873d3881da8973a2ddad9e8f43772a73d0f19074ff"
+previous_supported_task_volume_fraction = 0.8660898760330579
+ik_spatial_support_cell_size_mm = 10.0
+ik_spatial_support_minimum_independent_targets = 100
+ik_spatial_reportable_volume_minimum = 0.9
+post_hoc_objective_or_threshold_change = false
+
+[versioning]
+formal_output_root = "results/evaluation/ctr-eval-v1"
+run_directory_pattern = "{design}_{date}_{protocol_hash8}_{commit8}"
+legacy_output_policy = "never-mix-with-protocol-v1"
+overwrite_policy = "refuse-nonempty-formal-output"
+production_requires_manifest = true
+production_requires_parameter_hash_match = true

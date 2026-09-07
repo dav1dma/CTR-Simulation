@@ -10,6 +10,18 @@ import numpy as np
 from CTR_superPosKin_fun_sectioned import superPosKin
 
 
+IK_TERMINATION_REASONS = frozenset(
+    {
+        "initial-tolerance-met",
+        "tolerance-met",
+        "max-iterations",
+        "no-improving-step",
+        "nonfinite-step",
+        "linear-solve-failed",
+    }
+)
+
+
 @dataclass(frozen=True)
 class IKResult:
     """One inverse-kinematics solution and its tracking information."""
@@ -19,7 +31,7 @@ class IKResult:
     achieved_tip_mm: np.ndarray
     target_tip_mm: np.ndarray
     position_error_mm: float
-    reached: bool
+    solver_converged: bool
     iterations: int
     evaluations: int
     solve_time_ms: float
@@ -27,6 +39,16 @@ class IKResult:
     target_tube: int
     endpoint_positions_mm: np.ndarray
     endpoint_errors_mm: np.ndarray
+    termination_reason: str
+    solver_tolerance_mm: float
+    primary_tolerance_met: bool
+    locks_satisfied: bool
+    initial_position_error_mm: float
+
+    @property
+    def reached(self) -> bool:
+        """Compatibility alias used by the interactive motion planner."""
+        return self.solver_converged
 
 
 def wrap_angles(angles_rad: np.ndarray) -> np.ndarray:
@@ -51,7 +73,8 @@ class ConstrainedTipIK:
         *,
         model_points_per_section: int = 2,
         damping_mm: float = 2.0,
-        tolerance_mm: float = 0.15,
+        tolerance_mm: float | None = None,
+        solver_tolerance_mm: float | None = None,
         max_iterations: int = 4,
         finite_difference_step: float = 1e-4,
         max_normalised_step: float = 0.06,
@@ -74,11 +97,61 @@ class ConstrainedTipIK:
             raise ValueError(
                 "Tube lengths must be positive and ordered inner >= middle >= outer."
             )
+        if tolerance_mm is not None and solver_tolerance_mm is not None:
+            if not np.isclose(
+                float(tolerance_mm),
+                float(solver_tolerance_mm),
+                rtol=0.0,
+                atol=0.0,
+            ):
+                raise ValueError(
+                    "tolerance_mm and solver_tolerance_mm cannot disagree"
+                )
+        selected_tolerance = (
+            0.15
+            if tolerance_mm is None and solver_tolerance_mm is None
+            else float(
+                solver_tolerance_mm
+                if solver_tolerance_mm is not None
+                else tolerance_mm
+            )
+        )
         self.damping_mm = float(damping_mm)
-        self.tolerance_mm = float(tolerance_mm)
+        self.solver_tolerance_mm = selected_tolerance
         self.max_iterations = int(max_iterations)
         self.finite_difference_step = float(finite_difference_step)
         self.max_normalised_step = float(max_normalised_step)
+        if self.damping_mm <= 0.0 or not np.isfinite(self.damping_mm):
+            raise ValueError("damping_mm must be finite and positive")
+        if (
+            self.solver_tolerance_mm <= 0.0
+            or not np.isfinite(self.solver_tolerance_mm)
+        ):
+            raise ValueError("solver tolerance must be finite and positive")
+        if self.max_iterations < 1:
+            raise ValueError("max_iterations must be positive")
+        if (
+            self.finite_difference_step <= 0.0
+            or not np.isfinite(self.finite_difference_step)
+        ):
+            raise ValueError("finite_difference_step must be finite and positive")
+        if (
+            self.max_normalised_step <= 0.0
+            or not np.isfinite(self.max_normalised_step)
+        ):
+            raise ValueError("max_normalised_step must be finite and positive")
+
+    @property
+    def tolerance_mm(self) -> float:
+        """Legacy name for the numerical solver stopping tolerance."""
+        return self.solver_tolerance_mm
+
+    @tolerance_mm.setter
+    def tolerance_mm(self, value: float) -> None:
+        number = float(value)
+        if number <= 0.0 or not np.isfinite(number):
+            raise ValueError("tolerance_mm must be finite and positive")
+        self.solver_tolerance_mm = number
 
     @staticmethod
     def _vector(values: np.ndarray, name: str) -> np.ndarray:
@@ -261,6 +334,10 @@ class ConstrainedTipIK:
         endpoints = self.forward_endpoints_mm(deployment, rotation)
         evaluations = 1
         iterations = 0
+        initial_position_error = float(
+            np.linalg.norm(target - endpoints[primary_tube])
+        )
+        termination_reason = "max-iterations"
 
         for iteration in range(self.max_iterations):
             endpoint_errors = task_targets - endpoints[list(task_tubes)]
@@ -273,7 +350,10 @@ class ConstrainedTipIK:
                     for tube, error in zip(sorted(locks), locked_errors)
                 )
             )
-            if primary_error <= self.tolerance_mm and locks_satisfied:
+            if primary_error <= self.solver_tolerance_mm and locks_satisfied:
+                termination_reason = (
+                    "initial-tolerance-met" if iteration == 0 else "tolerance-met"
+                )
                 break
             weighted_error = (endpoint_errors * task_weights[:, None]).reshape(-1)
             error_norm = float(np.linalg.norm(weighted_error))
@@ -304,16 +384,23 @@ class ConstrainedTipIK:
                 jacobian.T @ jacobian
                 + self.damping_mm**2 * np.identity(6)
             )
-            state_change = np.linalg.solve(
-                normal_matrix,
-                jacobian.T @ weighted_error,
-            )
+            try:
+                state_change = np.linalg.solve(
+                    normal_matrix,
+                    jacobian.T @ weighted_error,
+                )
+            except np.linalg.LinAlgError:
+                termination_reason = "linear-solve-failed"
+                iterations = iteration + 1
+                break
             state_change = np.clip(
                 state_change,
                 -self.max_normalised_step,
                 self.max_normalised_step,
             )
             if not np.all(np.isfinite(state_change)):
+                termination_reason = "nonfinite-step"
+                iterations = iteration + 1
                 break
 
             accepted = False
@@ -336,7 +423,10 @@ class ConstrainedTipIK:
 
             iterations = iteration + 1
             if not accepted:
+                termination_reason = "no-improving-step"
                 break
+        else:
+            termination_reason = "max-iterations"
 
         solved_deployment, solved_rotation = self._decode_state(state)
         solved_rotation = wrap_angles(solved_rotation)
@@ -356,22 +446,25 @@ class ConstrainedTipIK:
         locks_satisfied = all(
             endpoint_error_values[tube] <= lock_tolerances[tube] for tube in locks
         )
-        reached = position_error <= self.tolerance_mm and locks_satisfied
+        primary_tolerance_met = position_error <= self.solver_tolerance_mm
+        solver_converged = primary_tolerance_met and locks_satisfied
         elapsed_ms = (time.perf_counter() - started) * 1000.0
         message = (
             "Target reached with endpoint locks preserved"
-            if reached and locks
+            if solver_converged and locks
             else "Target reached"
-            if reached
-            else "Nearest constrained position"
+            if solver_converged
+            else f"Nearest constrained position ({termination_reason})"
         )
+        if termination_reason not in IK_TERMINATION_REASONS:
+            raise RuntimeError(f"unknown IK termination reason: {termination_reason}")
         return IKResult(
             deployment_m=solved_deployment,
             rotation_rad=solved_rotation,
             achieved_tip_mm=endpoints[primary_tube].copy(),
             target_tip_mm=target.copy(),
             position_error_mm=position_error,
-            reached=reached,
+            solver_converged=solver_converged,
             iterations=iterations,
             evaluations=evaluations,
             solve_time_ms=elapsed_ms,
@@ -379,4 +472,9 @@ class ConstrainedTipIK:
             target_tube=primary_tube,
             endpoint_positions_mm=endpoints.copy(),
             endpoint_errors_mm=endpoint_error_values,
+            termination_reason=termination_reason,
+            solver_tolerance_mm=self.solver_tolerance_mm,
+            primary_tolerance_met=primary_tolerance_met,
+            locks_satisfied=bool(locks_satisfied),
+            initial_position_error_mm=initial_position_error,
         )

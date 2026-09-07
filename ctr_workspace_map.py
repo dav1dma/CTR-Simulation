@@ -1,4 +1,9 @@
-"""Generate and load a sampled reachable-tip workspace for the CTR viewer."""
+"""Generate and load sampled reachable-tip caches for the CTR viewer.
+
+These six-input XYZ caches support interaction, target projection and solver
+restarts. They are not protocol-v1 statistical analysis datasets; formal design
+analysis uses the five-DOF canonical banks in :mod:`ctr_sampling`.
+"""
 
 from __future__ import annotations
 
@@ -105,11 +110,13 @@ def sample_valid_configurations(
     sample_count: int,
     seed: int = DEFAULT_SEED,
 ) -> tuple[np.ndarray, np.ndarray]:
-    """Sample nested deployments and full-revolution tube rotations.
+    """Sample nested deployments and full-revolution rotations for the viewer.
 
     Deployments span the complete valid range, rather than holding any tube at
     full extension.  A small set of exact boundary samples is included so the
-    map represents both fully retracted and fully extended configurations.
+    map represents both fully retracted and fully extended configurations. The
+    injected boundary rows and redundant common rotation make this unsuitable
+    for protocol-v1 independent statistical counts.
     """
     lengths = np.asarray(total_lengths_m, dtype=float).reshape(-1)
     if lengths.shape != (3,) or np.any(lengths <= 0.0):

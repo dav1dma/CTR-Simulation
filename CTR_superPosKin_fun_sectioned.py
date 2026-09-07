@@ -280,20 +280,26 @@ def superPosKin(CTR_par, inputs, sim_par):
                     ]
                 )
 
-            # Preserve the inherited model's section transform convention.
-            R = np.array(
+            # Construct a constant-curvature section transform in its bending plane.
+            Rz_phi = np.array(
                 [
                     [np.cos(phi), -np.sin(phi), 0.0],
                     [np.sin(phi),  np.cos(phi), 0.0],
                     [0.0,          0.0,         1.0],
                 ]
-            ) @ np.array(
+            )
+            Ry_theta = np.array(
                 [
                     [ np.cos(theta), 0.0, np.sin(theta)],
                     [ 0.0,           1.0, 0.0],
                     [-np.sin(theta), 0.0, np.cos(theta)],
                 ]
             )
+            # Express bending in a plane at phi without introducing a
+            # spurious twist about the section tangent.  The closing
+            # Rz(-phi) is required for chained sections to remain equivariant
+            # under a common rotation of all tube inputs.
+            R = Rz_phi @ Ry_theta @ Rz_phi.T
 
             Tl = np.array(
                 [

@@ -1,14 +1,19 @@
 # CTR Simulation
 
-An interactive simulator for exploring the movement and workspace of a concentric-tube robot. The tubes can be extended and rotated using a PS5 controller, keyboard, or mouse, while the robot’s shape, tip position, and orientation update in real time.
+An interactive Python simulator for a three-tube concentric-tube robot (CTR), with real-time 3D visualisation, PS5/keyboard/mouse joint control, constrained Cartesian endpoint control, and reproducible positional workspace and design analysis.
 
-The workspace plot below shows the tip positions reached across 10,000 simulated tube configurations.
+Explore tube deployment and rotation, preview inverse-kinematics solutions and motion routes, and compare the reach of the inner, middle, and outer endpoints.
 
-![Section-aware CTR workspace](docs/images/ctr_workspace_sectioned.png)
+The map below shows all three endpoint workspaces from the **12,000 shared actuator configurations** in the current viewer cache. Every panel uses the same millimetre scale; the + marks the plate origin. These are sampled positions from the ideal model, not experimentally measured reach or a guarantee that every point inside an envelope is reachable.
+
+![Inner, middle, and outer CTR endpoint workspaces from 12,000 shared configurations, shown at the same scale](docs/images/ctr_workspace_sectioned.png)
+
+Reproduce this figure with `./.venv/bin/python tools/plot_readme_workspace.py`.
+The viewer cache is separate from the independent canonical datasets used for formal analysis.
 
 ## Run the simulator
 
-Create the project environment and install its dependencies:
+Use **Python 3.11 or newer** (the analysis protocols use the standard-library TOML reader). Create the project environment and install its dependencies:
 
 ```bash
 python3 -m venv .venv
@@ -88,19 +93,87 @@ when the red requested target lies away from that conditional region. Local
 Jacobian null-space samples supplement the global cache so narrow hard-lock
 regions do not disappear solely because the cached map is coarse.
 
+## Run the design study
+
+The analysis tools cover positional workspace, range-normalised Jacobian
+isotropy, and numerical IK residuals. The versioned protocols separate independent
+canonical samples from display rotations, and numerical solver tolerance from
+task-accuracy thresholds.
+
+| Stage | Implementation and current status |
+| --- | --- |
+| 2 | Method validation: sampling, symmetry, Jacobians, spatial aggregation and IK tolerances. |
+| 3 | Baseline evaluation runner and validation gates. |
+| 4 | Primary inner-tip workspace/isotropy convergence extension. |
+| 4.1 | Primary inner-tip IK spatial-support extension. |
+| 5A | Frozen optimisation methodology and evidence preflight; no optimised design result. |
+
+Local archived runs contain completed Stage-4 workspace/isotropy convergence
+and Stage-4.1 IK-support evidence. Those generated datasets are excluded from
+this repository. The later Stage-5B pilot was interrupted; full optimisation
+and independent final design validation are unfinished. The analysis runners
+preserve explicit gates and do not automatically authorise a full search.
+
+See [the methodology](docs/design_analysis_methodology.md),
+[protocol configuration](config/README.md), and [tool commands](tools/README.md).
+
+The existing command remains available as a **legacy exploratory** workflow.
+It predates the Stage-2 calculation layer and therefore remains non-compliant;
+its manifest records explicit deviations. Run the small software
+verification profile with:
+
+```bash
+MPLBACKEND=Agg ./.venv/bin/python tools/run_design_study.py --profile quick
+```
+
+Use `--profile standard` only for exploratory development. Do not treat the old
+`--profile publication` output as a final protocol-v1 result. Outputs are written to
+`results/design_analysis/`, which is deliberately excluded from Git because the
+figures and CSV tables are generated artifacts.
+
+Dexterity is defined as the dimensionless positional isotropy
+`sigma_min / sigma_max` of a baseline-range-normalised physical 3-by-6
+Jacobian. Its input scale is fixed at 350, 170 and 80 mm for deployment and
+pi radians for each rotation, so it is comparable across designs; it is not an
+actuator-velocity metric. Reported IK error
+is the numerical residual of the ideal model when every local solve starts at
+zero deployment and zero rotation; it is not experimentally measured robot
+error. The numerical stopping tolerance is provisionally 0.01 mm, whereas
+0.5 mm is the separate task-accuracy threshold. Full optimisation remains gated by the frozen optimisation protocol and
+completion of the pilot and evidence checks. Existing bounds remain exploratory and are not certified manufacturing
+limits.
+
+Dexterity figures use occupancy-aware filled voxels, XY cross-sections, and a
+radial–Z map. Voxel size and the minimum number of samples required for a median
+depend on the selected profile and are recorded in `study_manifest.json`; no
+values are interpolated into unsampled cells.
+
+To regenerate only these higher-density baseline figures without rerunning the
+sensitivity and optimisation stages, add `--baseline-only`.
+
+See `docs/design_analysis_methodology.md` for the Stage-2 definitions,
+reproducibility rules, pilot evidence, legacy-result warning and the checks
+required before optimisation.
+
 ## Project layout
 
 - `interactive_ctr_vispy.py` — current interactive application
 - `interactive_ctr_tip_control.py` — separate inverse-kinematics tip controller
 - `ctr_inverse_kinematics.py` — constrained numerical tip-position solver
+- `ctr_spatial_analysis.py` — occupied-volume and spatial isotropy aggregation
+- `ctr_task_space.py` — frozen baseline task region and stratified IK targets
 - `ctr_motion_planner.py` — confirmed target planning and smooth execution path
 - `ctr_workspace_map.py` — sampled workspace generation and loading
+- `ctr_sampling.py` — versioned canonical analysis sampling and display sweeps
+- `analysis_protocol.py` — protocol validation and reproducibility manifests
+- `optimization_protocol.py` — frozen optimisation protocol and evidence audit
+- `ctr_design_analysis.py` — dexterity, IK-error, sensitivity, and optimisation
 - `CTR_superPosKin_fun_sectioned.py` — section-aware forward kinematics
 - `tube_parameters.py` — tube geometry and material parameters
 - `tests/` — current model checks
 - `tools/` — controller diagnostics and workspace generation
 - `assets/cad/` — CAD assets prepared for the digital-twin stage
-- `config/` — future CAD joint and actuator calibration data
+- `config/` — analysis protocol and future CAD/actuator calibration data
 - `docs/images/` — selected documentation images
 - `legacy/` — superseded implementation retained for reference
 
@@ -109,6 +182,9 @@ created by the generator are written to `results/`. Both directories are
 excluded from Git.
 
 ## Validate the current model
+
+See [all automated checks](tests/README.md) for the controller, planner, workspace,
+analysis and protocol checks. The static geometry check is:
 
 ```bash
 MPLBACKEND=Agg ./.venv/bin/python tests/static_configuration_test_sectioned.py

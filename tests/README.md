@@ -19,6 +19,23 @@ retract/reorient/advance routes, including the fully retracted origin state.
 maps, target projection into the smooth envelope, continuous surface generation,
 and the optional cached blue/red/grey diagnostic meshes.
 
+`test_analysis_protocol.py` checks the versioned Stage-2 methodology configuration,
+baseline and source provenance, prefix-stable five-DOF canonical sampling,
+disjoint training/validation IDs, separate boundary diagnostics, render-only
+continuous sweeps, and arbitrary-angle rotational equivariance for every tube
+endpoint.
+
+`test_design_analysis.py` checks the compatibility analysis workflow, positional
+Jacobians, dexterity, local IK residuals from one fixed fully retracted state,
+workspace size metrics, bounded tube-design perturbations, sensitivity records,
+and exploratory optimisation.
+
+`test_stage2_analysis.py` checks the fixed physical Jacobian scale and central
+differences, boundary masking, exact swept-annular volumes, internal voids,
+common-region coverage, spatial weighting, canonical-copy deduplication,
+stratified target selection, and the separation of numerical convergence from
+the 0.5 mm evaluation threshold.
+
 Run it without opening plot windows:
 
 ```bash
@@ -27,4 +44,28 @@ MPLBACKEND=Agg ./.venv/bin/python tests/static_configuration_test_sectioned.py
 ./.venv/bin/python tests/test_tip_control_mapping.py
 ./.venv/bin/python tests/test_motion_planner.py
 ./.venv/bin/python tests/test_workspace_map.py
+./.venv/bin/python tests/test_analysis_protocol.py
+./.venv/bin/python tests/test_design_analysis.py
+./.venv/bin/python tests/test_stage2_analysis.py
 ```
+
+The later protocol checks are also runnable from a fresh checkout:
+
+```bash
+./.venv/bin/python tests/test_stage4_extension.py
+./.venv/bin/python tests/test_stage4_1_support.py
+./.venv/bin/python tests/test_stage5a_protocol.py
+```
+
+`test_stage4_extension.py` checks the frozen convergence gates;
+`test_stage4_1_support.py` checks physical-volume IK support requirements.
+`test_stage5a_protocol.py` validates the frozen optimisation protocol and all 128
+bound corners. To additionally audit the archived local Stage-4/4.1 datasets, run:
+
+```bash
+./.venv/bin/python tests/test_stage5a_protocol.py --with-evidence
+```
+
+The evidence audit requires `results/evaluation/` files that are deliberately not
+included in Git. It is explicitly opt-in; ordinary protocol checks do not require
+those local research outputs.

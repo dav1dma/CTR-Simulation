@@ -87,7 +87,7 @@ def run_checks() -> None:
 
     # This target stalls on the initial local branch but is reached from a
     # nearby valid configuration in the sampled workspace.
-    restart_target = initial_tip + np.asarray([-30.0, 0.0, 0.0])
+    restart_target = initial_tip + np.asarray([-80.0, -60.0, 0.0])
     restart_attempt = planner.plan(restart_target, deployment, rotation)
     assert restart_attempt.plan is not None, restart_attempt.message
     assert restart_attempt.plan.solution_source == "WORKSPACE RESTART"
