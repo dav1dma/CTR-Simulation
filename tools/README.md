@@ -51,7 +51,8 @@ Run tools from the repository root with the project environment, for example:
 ## Current formal analysis and documentation tools
 
 - `plot_readme_workspace.py` reproduces the GitHub map from the bundled 12,000-state
-  endpoint cache without rerunning an analysis study.
+  endpoint cache without rerunning an analysis study. Add `--gif` to render the
+  looping camera orbit around the tubes and smooth workspace field.
 - `run_stage3_baseline_evaluation.py` runs the versioned baseline evaluation.
 - `run_stage4_convergence_extension.py` extends primary-endpoint convergence evidence.
 - `run_stage4_1_ik_support_extension.py` extends primary-endpoint IK spatial support.

@@ -4,11 +4,12 @@ An interactive Python simulator for a three-tube concentric-tube robot (CTR), wi
 
 Explore tube deployment and rotation, preview inverse-kinematics solutions and motion routes, and compare the reach of the inner, middle, and outer endpoints.
 
-The image below shows a simulated CTR configuration inside a translucent cloud of **12,000 sampled inner-tip positions** from the current viewer cache. Blue, green, and orange identify the visible inner, middle, and outer tube sections; the + marks the plate origin. Tube thickness is exaggerated for visibility. The cloud illustrates ideal-model reach, not experimentally measured reach or a guarantee that every point inside the cloud is reachable.
+The animation below rotates around a simulated CTR configuration inside a **smooth, translucent inner-tip workspace field**, estimated from 12,000 sampled positions using the same envelope method as the interactive viewer. Blue, green, and orange identify the visible inner, middle, and outer tube sections; the + marks the plate origin. Tube thickness is exaggerated for visibility. The field illustrates an approximate ideal-model workspace boundary, not experimentally measured reach or a guarantee that every interior point is reachable.
 
-![Blue inner, green middle, and orange outer CTR tubes inside a translucent cloud of 12,000 sampled reachable inner-tip positions](docs/images/ctr_workspace_sectioned.png)
+![Blue inner, green middle, and orange outer CTR tubes inside a smooth translucent inner-tip workspace field](docs/images/ctr_workspace_sectioned.gif)
 
-Reproduce this figure with `./.venv/bin/python tools/plot_readme_workspace.py`.
+Reproduce the animation and still image with `./.venv/bin/python tools/plot_readme_workspace.py --gif`.
+[View the static image](docs/images/ctr_workspace_sectioned.png).
 The viewer cache is separate from the independent canonical datasets used for formal analysis.
 
 ## Run the simulator
