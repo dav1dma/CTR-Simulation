@@ -37,7 +37,7 @@ The frozen-candidate record contains **training/selection** metrics, not the den
 
 All results are numerical predictions of an ideal unloaded model. Full physical commissioning and independent tip-position validation were not completed. Installation lengths, internal guidance and curvature-unit assumptions remain provisional; torsion, friction, stability and anatomical collisions are not fully represented. The forward-model implementation was supplied by Dr S. M. Hadi Sadati; subsequent adaptations, simulation/control and evaluation work are distinguished in the report. Publication of these results does not grant a new licence over supplied code.
 
-The repository includes both measured-hardware viewers, the study code, frozen small result files and analytical checks. Larger raw banks and frozen source snapshots are available with the [research data release](../../research/README.md). CAD and the bill of materials will be added separately.
+The repository includes both measured-hardware viewers, the study code, frozen small result files and analytical checks. Larger raw banks and frozen source snapshots are prepared locally; see the [research data publication status](../../research/README.md#research-data-downloads). CAD and the bill of materials will be added separately.
 
 ## Figure gallery
 

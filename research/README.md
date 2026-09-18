@@ -10,14 +10,16 @@ The sampling routines draw feasible carriage positions and relative tube rotatio
 | Read the small saved statistics | [Summary](../docs/dissertation/data/summary.json), [path outcome](../docs/dissertation/data/path_outcome.json), [candidate](../docs/dissertation/data/frozen_candidate.json) |
 | Generate a small workspace example | `python research/sample_workspace.py --samples 4096` |
 | Check the packaged summary/figure provenance | `python research/check_saved_results.py` |
-| Download the original arrays and source snapshots | [Research data release](https://github.com/dav1dma/CTR-Simulation/releases/tag/final-project-2026) |
+| Download the original arrays and source snapshots | Prepared locally; public upload pending |
 | Reproduce the geometry search and dense study | Commands below and [detailed methodology](../docs/tube_configuration_methodology.md) |
 
 Activate the environment from the [main README](../README.md#install-and-launch) before running commands. Run them from the repository root. The small example saves a scatter plot, CSV positions and JSON metadata in `results/sample_workspace/`; it is an illustration, not a replacement for the dense report result.
 
 ## Research data downloads
 
-The Git checkout contains code, figures, small saved result records, and the 4.2 MB original reference-region map needed by research imports. Larger arrays are supplied as separate release assets so a normal clone stays manageable. Download the required `.tar.gz` files and extract them **from the repository root**; each archive restores its recorded `output/...` paths. The [download manifest](downloads.json) records sizes, member counts and SHA-256 checksums; `SHA256SUMS.txt` accompanies the downloads.
+**Publication status:** the five raw-data archives are prepared and checked locally. Public upload is pending explicit confirmation. The filenames and URLs in the manifest are planned release locations and are not live downloads yet. Code, small result summaries, figures and animations are already available in this repository.
+
+The Git checkout contains code, figures, small saved result records, and the 4.2 MB original reference-region map needed by research imports. Larger arrays are prepared as separate release assets so a normal clone stays manageable. Once published, download the required `.tar.gz` files and extract them **from the repository root**; each archive restores its recorded `output/...` paths. The [download manifest](downloads.json) records sizes, member counts and SHA-256 checksums; `SHA256SUMS.txt` accompanies the downloads.
 
 | Release asset | Contents and purpose |
 | --- | --- |
