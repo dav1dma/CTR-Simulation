@@ -1,0 +1,9 @@
+{
+  "batch_vs_viewer_max_error_difference_mm": 9.398119435455321e-11,
+  "jacobian_step_halving_max_difference": 1.0254030957668192e-09,
+  "validated_sample_states": 4096,
+  "live_configuration_unchanged": true,
+  "python": "3.14.3 (v3.14.3:323c59a5e34, Feb  3 2026, 11:41:37) [Clang 16.0.0 (clang-1600.0.26.6)]",
+  "numpy": "2.5.2",
+  "scipy": "1.18.0"
+}

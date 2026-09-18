@@ -1,0 +1,9 @@
+{
+  "passing_ids": [],
+  "selected_id": null,
+  "status": "No non-equivalent meaningful candidate passed every gate in this bounded search",
+  "live_configuration_changed": false,
+  "validation_replicates": 2,
+  "metrics_per_replicate": 25,
+  "not_proof_of_nonexistence": true
+}

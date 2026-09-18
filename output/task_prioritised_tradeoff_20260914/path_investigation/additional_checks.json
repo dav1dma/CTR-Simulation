@@ -1,0 +1,74 @@
+{
+  "bank0_path10": {
+    "alternative_start_same_20steps": {
+      "max_mm": 0.02682824337923484,
+      "p95_mm": 0.023893097325871828,
+      "above_05": 0,
+      "checks": 81
+    },
+    "dense_20steps": {
+      "max_mm": 0.02682824337923484,
+      "checks": 2001
+    },
+    "dense_200steps": {
+      "max_mm": 0.002247570874842799,
+      "checks": 20001
+    },
+    "trust_dense_max_mm": 5.262607311069896,
+    "original_start_exposure_mm": [
+      108.33528006142562,
+      69.09956298700722,
+      68.50118109831034
+    ],
+    "alternative_start_exposure_mm": [
+      107.97749830050101,
+      59.97296022251361,
+      55.09272037193796
+    ],
+    "original_start_rotation_deg": [
+      -127.8527386987994,
+      0.012070792310620306
+    ],
+    "alternative_start_rotation_deg": [
+      44.96088609580305,
+      -78.9461666926914
+    ],
+    "alternative_start_tip_difference_mm": 0.0022256693954105402
+  },
+  "bank1_path14": {
+    "alternative_start_same_20steps": {
+      "max_mm": 0.09553477086808207,
+      "p95_mm": 0.06417883695961295,
+      "above_05": 0,
+      "checks": 81
+    },
+    "dense_20steps": {
+      "max_mm": 0.11525479164886113,
+      "checks": 2001
+    },
+    "dense_200steps": {
+      "max_mm": 0.0032776459512908443,
+      "checks": 20001
+    },
+    "trust_dense_max_mm": 0.47982751516513833,
+    "original_start_exposure_mm": [
+      100.33305647382298,
+      17.413238340891308,
+      10.693765193070806
+    ],
+    "alternative_start_exposure_mm": [
+      100.3137243865986,
+      25.283428102599512,
+      21.454328532317707
+    ],
+    "original_start_rotation_deg": [
+      -82.91034253715068,
+      105.85849856280294
+    ],
+    "alternative_start_rotation_deg": [
+      -246.70655461918543,
+      -74.76854130624825
+    ],
+    "alternative_start_tip_difference_mm": 0.004650372139922336
+  }
+}

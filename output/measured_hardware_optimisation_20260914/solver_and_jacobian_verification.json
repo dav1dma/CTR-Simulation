@@ -1,0 +1,10 @@
+{
+  "original": {
+    "batch_vs_viewer_max_residual_difference_mm": 4.536387931963759e-11,
+    "jacobian_step_halving_max_isotropy_change": 1.1258227683441646e-09
+  },
+  "optimised": {
+    "batch_vs_viewer_max_residual_difference_mm": 1.374645108853656e-08,
+    "jacobian_step_halving_max_isotropy_change": 1.2392894488399975e-09
+  }
+}

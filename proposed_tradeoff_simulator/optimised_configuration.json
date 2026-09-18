@@ -1,0 +1,104 @@
+{
+  "name": "Proposed trade-off configuration \u2014 350 / 177.5 / 87.5 mm",
+  "hardware_model": "measured-ctr-20260914-v1",
+  "status": "Separate numerical candidate; see held-out validation; not installed or experimentally verified",
+  "tube_order": [
+    "inner/rear",
+    "middle/middle",
+    "outer/front"
+  ],
+  "total_length_mm": [
+    350.0,
+    177.5,
+    87.5
+  ],
+  "curved_length_mm": [
+    0,
+    90.0,
+    65.0
+  ],
+  "straight_length_mm": [
+    350.0,
+    87.5,
+    22.5
+  ],
+  "precurvature_per_m": [
+    0,
+    21.37,
+    14.04
+  ],
+  "model_parameters": {
+    "n_t": 3,
+    "l_t": [
+      [
+        0.35,
+        0.0
+      ],
+      [
+        0.0875,
+        0.09
+      ],
+      [
+        0.0225,
+        0.065
+      ]
+    ],
+    "E": [
+      75000000000.0,
+      75000000000.0,
+      75000000000.0
+    ],
+    "G": [
+      25000000000.0,
+      25000000000.0,
+      25000000000.0
+    ],
+    "kappa_0": [
+      0.0,
+      21.37,
+      14.04
+    ],
+    "r": [
+      [
+        0.0,
+        0.00025
+      ],
+      [
+        0.00031,
+        0.00035
+      ],
+      [
+        0.0004,
+        0.00045000000000000004
+      ]
+    ]
+  },
+  "hardware": {
+    "retracted_mm": [
+      275,
+      195,
+      115
+    ],
+    "extended_mm": [
+      175,
+      95,
+      15
+    ],
+    "body_mm": 71.5,
+    "gap_mm": [
+      8.5,
+      108
+    ],
+    "sensitivity_gap_mm": 108.5
+  },
+  "assumptions": [
+    "Lengths mean chuck-tip to distal-tip material length; no grip offset",
+    "Straight coaxial internal path assumed, guidance/contact not simulated",
+    "Distal precurves, straight inner wire, original diameters and 75 GPa stiffness fixed",
+    "Unrestricted rotations; no friction, torsion, elastic stability or loaded accuracy",
+    "Bounds exploratory, not supplier or manufacturing limits"
+  ],
+  "study": "output/task_prioritised_tradeoff_20260914",
+  "validation_accepted": false,
+  "validation_gate": "Volume/reach -5%; global supported reference retention -3pp; global mean isotropy -5%, P10 -10%; global fixed-start success -2pp; priority success -1pp; diagnostic success -1pp; weak P10 -5%; path completion no loss, tracking P95 +0.05mm. Meaningful: priority mean success +3pp OR weak P10 +10% with no priority success loss. Engineering benchmark choices, not clinical requirements."
+}

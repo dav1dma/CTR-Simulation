@@ -1,0 +1,648 @@
+{
+  "original": [
+    {
+      "metrics": {
+        "global_isotropy_mean": 0.3603370140487152,
+        "global_isotropy_p10": 0.19677057245953175,
+        "global_cell_retention": 1.0,
+        "weak_isotropy_mean": 0.1903800010701721,
+        "weak_isotropy_p10": 0.12743403584018972,
+        "weak_cell_retention": 1.0,
+        "corridor_isotropy_mean": 0.17790148564107408,
+        "corridor_isotropy_p10": 0.12258277899471207,
+        "corridor_cell_retention": 1.0,
+        "volume_cm3": 2371.9024534602936,
+        "radial_extent_mm": 112.30056842583028,
+        "z_max_mm": 169.38358780859312,
+        "z_min_mm": 63.87572559897413,
+        "tip_distance_max_mm": 172.19820603285106,
+        "global_ik_success": 0.6248148757610663,
+        "global_ik_p95_mm": 90.45152985006372,
+        "global_diagnostic_success": 0.9906203718940266,
+        "weak_ik_success": 0.5730928222472754,
+        "weak_ik_p95_mm": 54.47386462992562,
+        "weak_diagnostic_success": 0.9949267192784668,
+        "corridor_ik_success": 0.6752988047808764,
+        "corridor_ik_p95_mm": 14.377658132934458,
+        "corridor_diagnostic_success": 1.0,
+        "trajectory_completion": 0.9166666666666666,
+        "trajectory_p95_mm": 0.1912457152491339
+      },
+      "comparison": {
+        "pass_all": true,
+        "failures": [],
+        "failed_count": 0,
+        "maximum_relative_deficit": 0,
+        "sum_relative_deficit": 0
+      },
+      "meaningful": false
+    },
+    {
+      "metrics": {
+        "global_isotropy_mean": 0.3605079679363413,
+        "global_isotropy_p10": 0.19752453745506904,
+        "global_cell_retention": 1.0,
+        "weak_isotropy_mean": 0.19022341665833417,
+        "weak_isotropy_p10": 0.12678010877695395,
+        "weak_cell_retention": 1.0,
+        "corridor_isotropy_mean": 0.17730189786569928,
+        "corridor_isotropy_p10": 0.12044773021265057,
+        "corridor_cell_retention": 1.0,
+        "volume_cm3": 2363.2630736629217,
+        "radial_extent_mm": 111.29097731820923,
+        "z_max_mm": 169.99645611573635,
+        "z_min_mm": 63.94940199160003,
+        "tip_distance_max_mm": 172.73830849431977,
+        "global_ik_success": 0.6639051332033788,
+        "global_ik_p95_mm": 86.21111472064233,
+        "global_diagnostic_success": 0.9957223305176521,
+        "weak_ik_success": 0.4924299772899319,
+        "weak_ik_p95_mm": 52.86834500552961,
+        "weak_diagnostic_success": 1.0,
+        "corridor_ik_success": 0.6357421875,
+        "corridor_ik_p95_mm": 11.311005782046236,
+        "corridor_diagnostic_success": 1.0,
+        "trajectory_completion": 0.9583333333333334,
+        "trajectory_p95_mm": 0.09314659080772458
+      },
+      "comparison": {
+        "pass_all": true,
+        "failures": [],
+        "failed_count": 0,
+        "maximum_relative_deficit": 0,
+        "sum_relative_deficit": 0
+      },
+      "meaningful": false
+    }
+  ],
+  "s0999": [
+    {
+      "metrics": {
+        "global_isotropy_mean": 0.37010240656640353,
+        "global_isotropy_p10": 0.20466341803765667,
+        "global_cell_retention": 1.0,
+        "weak_isotropy_mean": 0.1966834804969197,
+        "weak_isotropy_p10": 0.13131756689854174,
+        "weak_cell_retention": 1.0,
+        "corridor_isotropy_mean": 0.18136495076275838,
+        "corridor_isotropy_p10": 0.12518222993129685,
+        "corridor_cell_retention": 1.0,
+        "volume_cm3": 2419.4190423458394,
+        "radial_extent_mm": 114.00407283340849,
+        "z_max_mm": 169.4833569357584,
+        "z_min_mm": 63.441976920550225,
+        "tip_distance_max_mm": 172.19974777276224,
+        "global_ik_success": 0.6164225769294059,
+        "global_ik_p95_mm": 91.66047959343467,
+        "global_diagnostic_success": 0.999314354670616,
+        "weak_ik_success": 0.5744081172491544,
+        "weak_ik_p95_mm": 54.47386462992562,
+        "weak_diagnostic_success": 1.0,
+        "corridor_ik_success": 0.6782868525896414,
+        "corridor_ik_p95_mm": 14.816447844122253,
+        "corridor_diagnostic_success": 1.0,
+        "trajectory_completion": 0.9166666666666666,
+        "trajectory_p95_mm": 0.1921764836923829
+      },
+      "comparison": {
+        "pass_all": false,
+        "failures": [
+          {
+            "metric": "global_ik_success",
+            "original": 0.6248148757610663,
+            "candidate": 0.6164225769294059,
+            "change": -0.008392298831660372
+          },
+          {
+            "metric": "global_ik_p95_mm",
+            "original": 90.45152985006372,
+            "candidate": 91.66047959343467,
+            "change": 1.208949743370951
+          },
+          {
+            "metric": "corridor_ik_p95_mm",
+            "original": 14.377658132934458,
+            "candidate": 14.816447844122253,
+            "change": 0.43878971118779475
+          },
+          {
+            "metric": "trajectory_p95_mm",
+            "original": 0.1912457152491339,
+            "candidate": 0.1921764836923829,
+            "change": 0.0009307684432490193
+          }
+        ],
+        "failed_count": 4,
+        "maximum_relative_deficit": 0.03051885829603033,
+        "sum_relative_deficit": 0.062183106141713615
+      },
+      "meaningful": true
+    },
+    {
+      "metrics": {
+        "global_isotropy_mean": 0.3698857821646872,
+        "global_isotropy_p10": 0.2037809174320118,
+        "global_cell_retention": 1.0,
+        "weak_isotropy_mean": 0.19665365725319447,
+        "weak_isotropy_p10": 0.1351334321113286,
+        "weak_cell_retention": 1.0,
+        "corridor_isotropy_mean": 0.1813703149426671,
+        "corridor_isotropy_p10": 0.12409773249829757,
+        "corridor_cell_retention": 1.0,
+        "volume_cm3": 2468.899126639879,
+        "radial_extent_mm": 112.98335300112163,
+        "z_max_mm": 170.09740289516353,
+        "z_min_mm": 63.516226237328965,
+        "tip_distance_max_mm": 172.71227793030394,
+        "global_ik_success": 0.6611706735975742,
+        "global_ik_p95_mm": 86.95643422282026,
+        "global_diagnostic_success": 0.9957223305176521,
+        "weak_ik_success": 0.49224072672218017,
+        "weak_ik_p95_mm": 52.86834500552961,
+        "weak_diagnostic_success": 1.0,
+        "corridor_ik_success": 0.6337890625,
+        "corridor_ik_p95_mm": 10.028512127338553,
+        "corridor_diagnostic_success": 1.0,
+        "trajectory_completion": 1.0,
+        "trajectory_p95_mm": 0.06596298235753734
+      },
+      "comparison": {
+        "pass_all": false,
+        "failures": [
+          {
+            "metric": "tip_distance_max_mm",
+            "original": 172.73830849431977,
+            "candidate": 172.71227793030394,
+            "change": -0.026030564015826485
+          },
+          {
+            "metric": "global_ik_success",
+            "original": 0.6639051332033788,
+            "candidate": 0.6611706735975742,
+            "change": -0.002734459605804651
+          },
+          {
+            "metric": "global_ik_p95_mm",
+            "original": 86.21111472064233,
+            "candidate": 86.95643422282026,
+            "change": 0.7453195021779351
+          },
+          {
+            "metric": "weak_ik_success",
+            "original": 0.4924299772899319,
+            "candidate": 0.49224072672218017,
+            "change": -0.00018925056775170868
+          },
+          {
+            "metric": "corridor_ik_success",
+            "original": 0.6357421875,
+            "candidate": 0.6337890625,
+            "change": -0.001953125
+          }
+        ],
+        "failed_count": 5,
+        "maximum_relative_deficit": 0.008645283204991158,
+        "sum_relative_deficit": 0.01637124372670159
+      },
+      "meaningful": true
+    }
+  ],
+  "s0998": [
+    {
+      "metrics": {
+        "global_isotropy_mean": 0.36987857190155,
+        "global_isotropy_p10": 0.2032641429464941,
+        "global_cell_retention": 1.0,
+        "weak_isotropy_mean": 0.19436490792587507,
+        "weak_isotropy_p10": 0.1296806072517257,
+        "weak_cell_retention": 1.0,
+        "corridor_isotropy_mean": 0.18038594782872439,
+        "corridor_isotropy_p10": 0.12415501934031613,
+        "corridor_cell_retention": 1.0,
+        "volume_cm3": 2403.3183799961917,
+        "radial_extent_mm": 112.88731459988642,
+        "z_max_mm": 169.77010270070022,
+        "z_min_mm": 63.75097678539505,
+        "tip_distance_max_mm": 172.22716683220096,
+        "global_ik_success": 0.6163402994898799,
+        "global_ik_p95_mm": 93.1280978723473,
+        "global_diagnostic_success": 0.9914979979156382,
+        "weak_ik_success": 0.5680195415257422,
+        "weak_ik_p95_mm": 54.47386462992562,
+        "weak_diagnostic_success": 0.9949267192784668,
+        "corridor_ik_success": 0.6703187250996016,
+        "corridor_ik_p95_mm": 10.982793900846756,
+        "corridor_diagnostic_success": 1.0,
+        "trajectory_completion": 0.9166666666666666,
+        "trajectory_p95_mm": 0.19128068359533512
+      },
+      "comparison": {
+        "pass_all": false,
+        "failures": [
+          {
+            "metric": "global_ik_success",
+            "original": 0.6248148757610663,
+            "candidate": 0.6163402994898799,
+            "change": -0.008474576271186418
+          },
+          {
+            "metric": "global_ik_p95_mm",
+            "original": 90.45152985006372,
+            "candidate": 93.1280978723473,
+            "change": 2.6765680222835755
+          },
+          {
+            "metric": "weak_ik_success",
+            "original": 0.5730928222472754,
+            "candidate": 0.5680195415257422,
+            "change": -0.005073280721533235
+          },
+          {
+            "metric": "corridor_ik_success",
+            "original": 0.6752988047808764,
+            "candidate": 0.6703187250996016,
+            "change": -0.004980079681274896
+          },
+          {
+            "metric": "trajectory_p95_mm",
+            "original": 0.1912457152491339,
+            "candidate": 0.19128068359533512,
+            "change": 3.496834620123068e-05
+          }
+        ],
+        "failed_count": 5,
+        "maximum_relative_deficit": 0.029591185762367623,
+        "sum_relative_deficit": 0.059564460648070645
+      },
+      "meaningful": true
+    },
+    {
+      "metrics": {
+        "global_isotropy_mean": 0.36778030732839556,
+        "global_isotropy_p10": 0.20259245912024562,
+        "global_cell_retention": 1.0,
+        "weak_isotropy_mean": 0.19447261450359662,
+        "weak_isotropy_p10": 0.1307468462232192,
+        "weak_cell_retention": 1.0,
+        "corridor_isotropy_mean": 0.1805526240660987,
+        "corridor_isotropy_p10": 0.12391357046128361,
+        "corridor_cell_retention": 1.0,
+        "volume_cm3": 2391.9301066269286,
+        "radial_extent_mm": 111.87382638145266,
+        "z_max_mm": 170.38183478949674,
+        "z_min_mm": 63.82831359201913,
+        "tip_distance_max_mm": 172.75150568185373,
+        "global_ik_success": 0.6477961880008664,
+        "global_ik_p95_mm": 88.46601343329269,
+        "global_diagnostic_success": 0.995316222655404,
+        "weak_ik_success": 0.4873202119606359,
+        "weak_ik_p95_mm": 52.86834500552961,
+        "weak_diagnostic_success": 1.0,
+        "corridor_ik_success": 0.6435546875,
+        "corridor_ik_p95_mm": 9.884900923541846,
+        "corridor_diagnostic_success": 1.0,
+        "trajectory_completion": 0.9166666666666666,
+        "trajectory_p95_mm": 0.1134363332659251
+      },
+      "comparison": {
+        "pass_all": false,
+        "failures": [
+          {
+            "metric": "global_ik_success",
+            "original": 0.6639051332033788,
+            "candidate": 0.6477961880008664,
+            "change": -0.016108945202512492
+          },
+          {
+            "metric": "global_ik_p95_mm",
+            "original": 86.21111472064233,
+            "candidate": 88.46601343329269,
+            "change": 2.254898712650359
+          },
+          {
+            "metric": "global_diagnostic_success",
+            "original": 0.9957223305176521,
+            "candidate": 0.995316222655404,
+            "change": -0.00040610786224815065
+          },
+          {
+            "metric": "weak_ik_success",
+            "original": 0.4924299772899319,
+            "candidate": 0.4873202119606359,
+            "change": -0.005109765329295968
+          },
+          {
+            "metric": "trajectory_completion",
+            "original": 0.9583333333333334,
+            "candidate": 0.9166666666666666,
+            "change": -0.04166666666666674
+          },
+          {
+            "metric": "trajectory_p95_mm",
+            "original": 0.09314659080772458,
+            "candidate": 0.1134363332659251,
+            "change": 0.02028974245820052
+          }
+        ],
+        "failed_count": 6,
+        "maximum_relative_deficit": 0.2178259266630927,
+        "sum_relative_deficit": 0.32250814493848
+      },
+      "meaningful": true
+    }
+  ],
+  "s1032": [
+    {
+      "metrics": {
+        "global_isotropy_mean": 0.3796070767873057,
+        "global_isotropy_p10": 0.20678832282915738,
+        "global_cell_retention": 1.0,
+        "weak_isotropy_mean": 0.20039366882849066,
+        "weak_isotropy_p10": 0.13518241395289252,
+        "weak_cell_retention": 1.0,
+        "corridor_isotropy_mean": 0.18461306606449193,
+        "corridor_isotropy_p10": 0.12654765232478582,
+        "corridor_cell_retention": 1.0,
+        "volume_cm3": 2456.3327560255193,
+        "radial_extent_mm": 114.11856841010787,
+        "z_max_mm": 170.06603819694357,
+        "z_min_mm": 63.45173120125565,
+        "tip_distance_max_mm": 172.24374964305545,
+        "global_ik_success": 0.5777521803521475,
+        "global_ik_p95_mm": 97.47008462724479,
+        "global_diagnostic_success": 0.999314354670616,
+        "weak_ik_success": 0.5559939872228485,
+        "weak_ik_p95_mm": 54.47386462992562,
+        "weak_diagnostic_success": 1.0,
+        "corridor_ik_success": 0.6832669322709163,
+        "corridor_ik_p95_mm": 9.864188471429266,
+        "corridor_diagnostic_success": 1.0,
+        "trajectory_completion": 0.9166666666666666,
+        "trajectory_p95_mm": 0.16993475663619537
+      },
+      "comparison": {
+        "pass_all": false,
+        "failures": [
+          {
+            "metric": "global_ik_success",
+            "original": 0.6248148757610663,
+            "candidate": 0.5777521803521475,
+            "change": -0.04706269540891883
+          },
+          {
+            "metric": "global_ik_p95_mm",
+            "original": 90.45152985006372,
+            "candidate": 97.47008462724479,
+            "change": 7.018554777181066
+          },
+          {
+            "metric": "weak_ik_success",
+            "original": 0.5730928222472754,
+            "candidate": 0.5559939872228485,
+            "change": -0.017098835024426884
+          }
+        ],
+        "failed_count": 3,
+        "maximum_relative_deficit": 0.0775946497402014,
+        "sum_relative_deficit": 0.18275333843749034
+      },
+      "meaningful": true
+    },
+    {
+      "metrics": {
+        "global_isotropy_mean": 0.37708572775080096,
+        "global_isotropy_p10": 0.2054663816698215,
+        "global_cell_retention": 1.0,
+        "weak_isotropy_mean": 0.2004192451482594,
+        "weak_isotropy_p10": 0.13806006074472588,
+        "weak_cell_retention": 1.0,
+        "corridor_isotropy_mean": 0.1850319209284501,
+        "corridor_isotropy_p10": 0.12665317978992852,
+        "corridor_cell_retention": 1.0,
+        "volume_cm3": 2470.8626220483725,
+        "radial_extent_mm": 113.0971916532032,
+        "z_max_mm": 170.67734142240988,
+        "z_min_mm": 63.5320946037349,
+        "tip_distance_max_mm": 172.7437504309744,
+        "global_ik_success": 0.6289798570500325,
+        "global_ik_p95_mm": 91.94281800733985,
+        "global_diagnostic_success": 0.9940437513536928,
+        "weak_ik_success": 0.47747918243754733,
+        "weak_ik_p95_mm": 52.86834500552961,
+        "weak_diagnostic_success": 1.0,
+        "corridor_ik_success": 0.6455078125,
+        "corridor_ik_p95_mm": 9.804267616081086,
+        "corridor_diagnostic_success": 1.0,
+        "trajectory_completion": 0.9166666666666666,
+        "trajectory_p95_mm": 0.09555310013485954
+      },
+      "comparison": {
+        "pass_all": false,
+        "failures": [
+          {
+            "metric": "global_ik_success",
+            "original": 0.6639051332033788,
+            "candidate": 0.6289798570500325,
+            "change": -0.034925276153346396
+          },
+          {
+            "metric": "global_ik_p95_mm",
+            "original": 86.21111472064233,
+            "candidate": 91.94281800733985,
+            "change": 5.731703286697524
+          },
+          {
+            "metric": "global_diagnostic_success",
+            "original": 0.9957223305176521,
+            "candidate": 0.9940437513536928,
+            "change": -0.001678579163959304
+          },
+          {
+            "metric": "weak_ik_success",
+            "original": 0.4924299772899319,
+            "candidate": 0.47747918243754733,
+            "change": -0.014950794852384541
+          },
+          {
+            "metric": "trajectory_completion",
+            "original": 0.9583333333333334,
+            "candidate": 0.9166666666666666,
+            "change": -0.04166666666666674
+          },
+          {
+            "metric": "trajectory_p95_mm",
+            "original": 0.09314659080772458,
+            "candidate": 0.09555310013485954,
+            "change": 0.002406509327134959
+          }
+        ],
+        "failed_count": 6,
+        "maximum_relative_deficit": 0.06648450498837047,
+        "sum_relative_deficit": 0.22045136113273925
+      },
+      "meaningful": true
+    }
+  ],
+  "current_tradeoff": [
+    {
+      "metrics": {
+        "global_isotropy_mean": 0.356020826810515,
+        "global_isotropy_p10": 0.16379182150813704,
+        "global_cell_retention": 0.9755460145603883,
+        "weak_isotropy_mean": 0.22032507334046314,
+        "weak_isotropy_p10": 0.1427842017492041,
+        "weak_cell_retention": 1.0,
+        "corridor_isotropy_mean": 0.2279847003915756,
+        "corridor_isotropy_p10": 0.13225481913338083,
+        "corridor_cell_retention": 1.0,
+        "volume_cm3": 2421.7752368360316,
+        "radial_extent_mm": 112.98561688262699,
+        "z_max_mm": 169.45399000183795,
+        "z_min_mm": 61.79551652318072,
+        "tip_distance_max_mm": 170.3201451544162,
+        "global_ik_success": 0.6876199879326422,
+        "global_ik_p95_mm": 82.40454379555382,
+        "global_diagnostic_success": 0.9752619165158247,
+        "weak_ik_success": 0.6634723788049606,
+        "weak_ik_p95_mm": 50.933449471968224,
+        "weak_diagnostic_success": 1.0,
+        "corridor_ik_success": 0.7649402390438247,
+        "corridor_ik_p95_mm": 9.976155242747437,
+        "corridor_diagnostic_success": 1.0,
+        "trajectory_completion": 0.875,
+        "trajectory_p95_mm": 0.22546259567707666
+      },
+      "comparison": {
+        "pass_all": false,
+        "failures": [
+          {
+            "metric": "global_isotropy_mean",
+            "original": 0.3603370140487152,
+            "candidate": 0.356020826810515,
+            "change": -0.004316187238200209
+          },
+          {
+            "metric": "global_isotropy_p10",
+            "original": 0.19677057245953175,
+            "candidate": 0.16379182150813704,
+            "change": -0.032978750951394714
+          },
+          {
+            "metric": "global_cell_retention",
+            "original": 1.0,
+            "candidate": 0.9755460145603883,
+            "change": -0.024453985439611747
+          },
+          {
+            "metric": "tip_distance_max_mm",
+            "original": 172.19820603285106,
+            "candidate": 170.3201451544162,
+            "change": -1.8780608784348658
+          },
+          {
+            "metric": "global_diagnostic_success",
+            "original": 0.9906203718940266,
+            "candidate": 0.9752619165158247,
+            "change": -0.015358455378201907
+          },
+          {
+            "metric": "trajectory_completion",
+            "original": 0.9166666666666666,
+            "candidate": 0.875,
+            "change": -0.04166666666666663
+          },
+          {
+            "metric": "trajectory_p95_mm",
+            "original": 0.1912457152491339,
+            "candidate": 0.22546259567707666,
+            "change": 0.03421688042794277
+          }
+        ],
+        "failed_count": 7,
+        "maximum_relative_deficit": 0.17891580150367697,
+        "sum_relative_deficit": 0.4548128097552859
+      },
+      "meaningful": true
+    },
+    {
+      "metrics": {
+        "global_isotropy_mean": 0.35916686915383533,
+        "global_isotropy_p10": 0.16506413295281036,
+        "global_cell_retention": 0.9957065521747247,
+        "weak_isotropy_mean": 0.22053850642622705,
+        "weak_isotropy_p10": 0.1431230009091026,
+        "weak_cell_retention": 1.0,
+        "corridor_isotropy_mean": 0.22891380513743279,
+        "corridor_isotropy_p10": 0.1314876117831116,
+        "corridor_cell_retention": 1.0,
+        "volume_cm3": 2515.237618280328,
+        "radial_extent_mm": 113.1985590308973,
+        "z_max_mm": 170.04169492451433,
+        "z_min_mm": 61.693628396369945,
+        "tip_distance_max_mm": 170.58667312607378,
+        "global_ik_success": 0.722953216374269,
+        "global_ik_p95_mm": 80.73205980046072,
+        "global_diagnostic_success": 0.9707331600606455,
+        "weak_ik_success": 0.5967070401211204,
+        "weak_ik_p95_mm": 52.600586563367735,
+        "weak_diagnostic_success": 1.0,
+        "corridor_ik_success": 0.77734375,
+        "corridor_ik_p95_mm": 10.523526404942444,
+        "corridor_diagnostic_success": 1.0,
+        "trajectory_completion": 0.875,
+        "trajectory_p95_mm": 0.10416879974325538
+      },
+      "comparison": {
+        "pass_all": false,
+        "failures": [
+          {
+            "metric": "global_isotropy_mean",
+            "original": 0.3605079679363413,
+            "candidate": 0.35916686915383533,
+            "change": -0.0013410987825059895
+          },
+          {
+            "metric": "global_isotropy_p10",
+            "original": 0.19752453745506904,
+            "candidate": 0.16506413295281036,
+            "change": -0.03246040450225868
+          },
+          {
+            "metric": "global_cell_retention",
+            "original": 1.0,
+            "candidate": 0.9957065521747247,
+            "change": -0.004293447825275298
+          },
+          {
+            "metric": "tip_distance_max_mm",
+            "original": 172.73830849431977,
+            "candidate": 170.58667312607378,
+            "change": -2.1516353682459908
+          },
+          {
+            "metric": "global_diagnostic_success",
+            "original": 0.9957223305176521,
+            "candidate": 0.9707331600606455,
+            "change": -0.02498917045700666
+          },
+          {
+            "metric": "trajectory_completion",
+            "original": 0.9583333333333334,
+            "candidate": 0.875,
+            "change": -0.08333333333333337
+          },
+          {
+            "metric": "trajectory_p95_mm",
+            "original": 0.09314659080772458,
+            "candidate": 0.10416879974325538,
+            "change": 0.011022208935530797
+          }
+        ],
+        "failed_count": 7,
+        "maximum_relative_deficit": 0.1643360613343669,
+        "sum_relative_deficit": 0.41519047748960963
+      },
+      "meaningful": true
+    }
+  ]
+}

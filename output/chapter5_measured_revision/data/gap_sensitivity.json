@@ -1,0 +1,4 @@
+{
+  "states_identical": true,
+  "reason": "Both length differences below179.5mm, so nesting already implies gap<108mm"
+}

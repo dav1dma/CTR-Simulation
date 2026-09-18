@@ -1,0 +1,1049 @@
+[
+  {
+    "id": "s0998",
+    "design": [
+      350.0,
+      170.0,
+      80.0,
+      90.0,
+      65.0,
+      19.745,
+      13.915
+    ],
+    "phase": "initial",
+    "equivalent": false,
+    "metrics": {
+      "global_isotropy_mean": 0.2539499845794699,
+      "global_isotropy_p10": 0.0,
+      "global_cell_retention": 0.9514653724099309,
+      "weak_isotropy_mean": 0.18214514717617963,
+      "weak_isotropy_p10": 0.1195657251364529,
+      "weak_cell_retention": 0.9748369058713886,
+      "corridor_isotropy_mean": 0.16752262091339878,
+      "corridor_isotropy_p10": 0.10834169640627517,
+      "corridor_cell_retention": 0.9791666666666666,
+      "volume_cm3": 2118.218846682918,
+      "radial_extent_mm": 112.81440281586498,
+      "z_max_mm": 168.0526443780695,
+      "z_min_mm": 63.730826764053454,
+      "tip_distance_max_mm": 172.06248050743122
+    },
+    "comparison": {
+      "pass_all": true,
+      "failures": [],
+      "failed_count": 0,
+      "maximum_relative_deficit": 0,
+      "sum_relative_deficit": 0
+    }
+  },
+  {
+    "id": "s1031",
+    "design": [
+      350.0,
+      170.0,
+      80.0,
+      90.0,
+      65.0,
+      20.495,
+      13.6025
+    ],
+    "phase": "initial",
+    "equivalent": false,
+    "metrics": {
+      "global_isotropy_mean": 0.26348487548604,
+      "global_isotropy_p10": 0.0,
+      "global_cell_retention": 0.949598655964159,
+      "weak_isotropy_mean": 0.18526134902229474,
+      "weak_isotropy_p10": 0.12144390857636396,
+      "weak_cell_retention": 0.9748369058713886,
+      "corridor_isotropy_mean": 0.17740530956019943,
+      "corridor_isotropy_p10": 0.12202665649415051,
+      "corridor_cell_retention": 0.9791666666666666,
+      "volume_cm3": 2124.1093329083988,
+      "radial_extent_mm": 112.95589264958566,
+      "z_max_mm": 168.52564715795643,
+      "z_min_mm": 63.745028230628094,
+      "tip_distance_max_mm": 172.0833795461084
+    },
+    "comparison": {
+      "pass_all": true,
+      "failures": [],
+      "failed_count": 0,
+      "maximum_relative_deficit": 0,
+      "sum_relative_deficit": 0
+    }
+  },
+  {
+    "id": "s1048",
+    "design": [
+      350.0,
+      170.0,
+      80.0,
+      90.0,
+      65.0,
+      20.87,
+      13.6025
+    ],
+    "phase": "initial",
+    "equivalent": false,
+    "metrics": {
+      "global_isotropy_mean": 0.2727441098959669,
+      "global_isotropy_p10": 0.0,
+      "global_cell_retention": 0.9529587455665485,
+      "weak_isotropy_mean": 0.18808555853918796,
+      "weak_isotropy_p10": 0.12551648653153308,
+      "weak_cell_retention": 0.9916123019571296,
+      "corridor_isotropy_mean": 0.17922348395598897,
+      "corridor_isotropy_p10": 0.1194518816427469,
+      "corridor_cell_retention": 1.0,
+      "volume_cm3": 2131.1779163789756,
+      "radial_extent_mm": 113.57453864443146,
+      "z_max_mm": 168.6361463602624,
+      "z_min_mm": 63.596713191440514,
+      "tip_distance_max_mm": 172.06508050154656
+    },
+    "comparison": {
+      "pass_all": true,
+      "failures": [],
+      "failed_count": 0,
+      "maximum_relative_deficit": 0,
+      "sum_relative_deficit": 0
+    }
+  },
+  {
+    "id": "s1081",
+    "design": [
+      350.0,
+      170.0,
+      80.0,
+      90.0,
+      65.0,
+      21.62,
+      13.29
+    ],
+    "phase": "initial",
+    "equivalent": false,
+    "metrics": {
+      "global_isotropy_mean": 0.2791156219986824,
+      "global_isotropy_p10": 0.0,
+      "global_cell_retention": 0.9510920291207765,
+      "weak_isotropy_mean": 0.19152254929091436,
+      "weak_isotropy_p10": 0.13005583918094013,
+      "weak_cell_retention": 0.9916123019571296,
+      "corridor_isotropy_mean": 0.18507392333099282,
+      "corridor_isotropy_p10": 0.12371096278509153,
+      "corridor_cell_retention": 1.0,
+      "volume_cm3": 2131.5706154606746,
+      "radial_extent_mm": 113.71484201220339,
+      "z_max_mm": 168.9989263955407,
+      "z_min_mm": 63.61095127335596,
+      "tip_distance_max_mm": 172.07210269215253
+    },
+    "comparison": {
+      "pass_all": true,
+      "failures": [],
+      "failed_count": 0,
+      "maximum_relative_deficit": 0,
+      "sum_relative_deficit": 0
+    }
+  },
+  {
+    "id": "s1167",
+    "design": [
+      350.1482,
+      170.0,
+      80.4664,
+      90.1069,
+      65.9985,
+      20.0132,
+      13.9251
+    ],
+    "phase": "local refinement",
+    "equivalent": false,
+    "metrics": {
+      "global_isotropy_mean": 0.26285730003819224,
+      "global_isotropy_p10": 0.0,
+      "global_cell_retention": 0.9518387156990853,
+      "weak_isotropy_mean": 0.18337801743624574,
+      "weak_isotropy_p10": 0.1201230059934079,
+      "weak_cell_retention": 0.9748369058713886,
+      "corridor_isotropy_mean": 0.16767630193967067,
+      "corridor_isotropy_p10": 0.11328721274469032,
+      "corridor_cell_retention": 0.9791666666666666,
+      "volume_cm3": 2119.789643009713,
+      "radial_extent_mm": 113.4522246994489,
+      "z_max_mm": 168.1777685158814,
+      "z_min_mm": 63.699970804357974,
+      "tip_distance_max_mm": 172.18876945378284
+    },
+    "comparison": {
+      "pass_all": true,
+      "failures": [],
+      "failed_count": 0,
+      "maximum_relative_deficit": 0,
+      "sum_relative_deficit": 0
+    }
+  },
+  {
+    "id": "s1206",
+    "design": [
+      350.2328,
+      170.1696,
+      80.6691,
+      90.4944,
+      65.6686,
+      20.7604,
+      13.7128
+    ],
+    "phase": "local refinement",
+    "equivalent": false,
+    "metrics": {
+      "global_isotropy_mean": 0.27121166197396623,
+      "global_isotropy_p10": 0.0,
+      "global_cell_retention": 0.9650924024640657,
+      "weak_isotropy_mean": 0.18974089421458598,
+      "weak_isotropy_p10": 0.12967938310988,
+      "weak_cell_retention": 0.9906803355079217,
+      "corridor_isotropy_mean": 0.18075093013804502,
+      "corridor_isotropy_p10": 0.11946038439472091,
+      "corridor_cell_retention": 0.9791666666666666,
+      "volume_cm3": 2155.525259444297,
+      "radial_extent_mm": 114.12243761974548,
+      "z_max_mm": 168.6541284585913,
+      "z_min_mm": 63.65772275512553,
+      "tip_distance_max_mm": 172.26937048600675
+    },
+    "comparison": {
+      "pass_all": true,
+      "failures": [],
+      "failed_count": 0,
+      "maximum_relative_deficit": 0,
+      "sum_relative_deficit": 0
+    }
+  },
+  {
+    "id": "s1213",
+    "design": [
+      350.1296,
+      170.0,
+      80.0,
+      88.0528,
+      63.2449,
+      20.445,
+      13.8417
+    ],
+    "phase": "local refinement",
+    "equivalent": false,
+    "metrics": {
+      "global_isotropy_mean": 0.27085033251477225,
+      "global_isotropy_p10": 0.0,
+      "global_cell_retention": 0.9563188351689378,
+      "weak_isotropy_mean": 0.18864825329090978,
+      "weak_isotropy_p10": 0.1265015495193764,
+      "weak_cell_retention": 0.9906803355079217,
+      "corridor_isotropy_mean": 0.1846723172776766,
+      "corridor_isotropy_p10": 0.12458865832063831,
+      "corridor_cell_retention": 0.9791666666666666,
+      "volume_cm3": 2135.497606277662,
+      "radial_extent_mm": 112.590628327229,
+      "z_max_mm": 168.47782961008352,
+      "z_min_mm": 63.84650997468875,
+      "tip_distance_max_mm": 172.17793319586403
+    },
+    "comparison": {
+      "pass_all": true,
+      "failures": [],
+      "failed_count": 0,
+      "maximum_relative_deficit": 0,
+      "sum_relative_deficit": 0
+    }
+  },
+  {
+    "id": "s1239",
+    "design": [
+      350.1882,
+      170.1967,
+      80.4566,
+      89.8842,
+      66.8591,
+      21.0149,
+      13.809
+    ],
+    "phase": "local refinement",
+    "equivalent": false,
+    "metrics": {
+      "global_isotropy_mean": 0.2715168568997037,
+      "global_isotropy_p10": 0.0,
+      "global_cell_retention": 0.9663991039761061,
+      "weak_isotropy_mean": 0.1916611097566098,
+      "weak_isotropy_p10": 0.1344036081770549,
+      "weak_cell_retention": 0.9906803355079217,
+      "corridor_isotropy_mean": 0.1879695085567663,
+      "corridor_isotropy_p10": 0.12471457447779019,
+      "corridor_cell_retention": 0.9791666666666666,
+      "volume_cm3": 2174.3748153658357,
+      "radial_extent_mm": 114.84067849136942,
+      "z_max_mm": 168.671949206266,
+      "z_min_mm": 63.43164170368489,
+      "tip_distance_max_mm": 172.1978863359149
+    },
+    "comparison": {
+      "pass_all": true,
+      "failures": [],
+      "failed_count": 0,
+      "maximum_relative_deficit": 0,
+      "sum_relative_deficit": 0
+    }
+  },
+  {
+    "id": "s1255",
+    "design": [
+      350.0609,
+      170.9526,
+      80.7217,
+      91.9818,
+      65.6649,
+      20.8675,
+      13.5452
+    ],
+    "phase": "local refinement",
+    "equivalent": false,
+    "metrics": {
+      "global_isotropy_mean": 0.26338860886339593,
+      "global_isotropy_p10": 0.0,
+      "global_cell_retention": 0.9662124323315289,
+      "weak_isotropy_mean": 0.1877814728210558,
+      "weak_isotropy_p10": 0.12464764928433714,
+      "weak_cell_retention": 0.9906803355079217,
+      "corridor_isotropy_mean": 0.18426428100817493,
+      "corridor_isotropy_p10": 0.11829491463392698,
+      "corridor_cell_retention": 0.9791666666666666,
+      "volume_cm3": 2160.63034750638,
+      "radial_extent_mm": 114.10072318342658,
+      "z_max_mm": 168.71527429631357,
+      "z_min_mm": 63.64654824840788,
+      "tip_distance_max_mm": 172.08204010676192
+    },
+    "comparison": {
+      "pass_all": true,
+      "failures": [],
+      "failed_count": 0,
+      "maximum_relative_deficit": 0,
+      "sum_relative_deficit": 0
+    }
+  },
+  {
+    "id": "s1278",
+    "design": [
+      350.4141,
+      170.0,
+      80.4086,
+      91.7675,
+      65.5327,
+      21.3424,
+      13.4769
+    ],
+    "phase": "local refinement",
+    "equivalent": false,
+    "metrics": {
+      "global_isotropy_mean": 0.2864898296495561,
+      "global_isotropy_p10": 0.0,
+      "global_cell_retention": 0.9607989546387904,
+      "weak_isotropy_mean": 0.1922099847709355,
+      "weak_isotropy_p10": 0.1335979323652523,
+      "weak_cell_retention": 0.9748369058713886,
+      "corridor_isotropy_mean": 0.17999999106631526,
+      "corridor_isotropy_p10": 0.1097246258812436,
+      "corridor_cell_retention": 0.9791666666666666,
+      "volume_cm3": 2165.735435568464,
+      "radial_extent_mm": 114.26465805482832,
+      "z_max_mm": 169.18089329165093,
+      "z_min_mm": 63.782466054286154,
+      "tip_distance_max_mm": 172.47136808764625
+    },
+    "comparison": {
+      "pass_all": true,
+      "failures": [],
+      "failed_count": 0,
+      "maximum_relative_deficit": 0,
+      "sum_relative_deficit": 0
+    }
+  },
+  {
+    "id": "s1311",
+    "design": [
+      350.2187,
+      170.0,
+      80.438,
+      89.7754,
+      64.1479,
+      22.2141,
+      13.1665
+    ],
+    "phase": "local refinement",
+    "equivalent": false,
+    "metrics": {
+      "global_isotropy_mean": 0.2877935282096543,
+      "global_isotropy_p10": 0.0,
+      "global_cell_retention": 0.9568788501026694,
+      "weak_isotropy_mean": 0.19841874625892697,
+      "weak_isotropy_p10": 0.1376825507435477,
+      "weak_cell_retention": 0.9906803355079217,
+      "corridor_isotropy_mean": 0.19708309570076596,
+      "corridor_isotropy_p10": 0.12899629485243946,
+      "corridor_cell_retention": 0.9791666666666666,
+      "volume_cm3": 2177.5164080194254,
+      "radial_extent_mm": 113.71876360269341,
+      "z_max_mm": 169.3424160085653,
+      "z_min_mm": 63.732239784681596,
+      "tip_distance_max_mm": 172.2760465221403
+    },
+    "comparison": {
+      "pass_all": true,
+      "failures": [],
+      "failed_count": 0,
+      "maximum_relative_deficit": 0,
+      "sum_relative_deficit": 0
+    }
+  },
+  {
+    "id": "s1098",
+    "design": [
+      350.0,
+      170.0,
+      80.0,
+      90.0,
+      65.0,
+      21.995,
+      13.29
+    ],
+    "phase": "initial",
+    "equivalent": false,
+    "metrics": {
+      "global_isotropy_mean": 0.2806007703770211,
+      "global_isotropy_p10": 0.0,
+      "global_cell_retention": 0.9535187605002801,
+      "weak_isotropy_mean": 0.1964319316532301,
+      "weak_isotropy_p10": 0.1364602064032729,
+      "weak_cell_retention": 0.9916123019571296,
+      "corridor_isotropy_mean": 0.19436444720347978,
+      "corridor_isotropy_p10": 0.12497514462428078,
+      "corridor_cell_retention": 1.0,
+      "volume_cm3": 2138.6391989312515,
+      "radial_extent_mm": 114.32660048834188,
+      "z_max_mm": 169.0793295197727,
+      "z_min_mm": 63.46190497781149,
+      "tip_distance_max_mm": 172.0495262502842
+    },
+    "comparison": {
+      "pass_all": false,
+      "failures": [
+        {
+          "metric": "tip_distance_max_mm",
+          "original": 172.06224180399894,
+          "candidate": 172.0495262502842,
+          "change": -0.012715553714741645
+        }
+      ],
+      "failed_count": 1,
+      "maximum_relative_deficit": 7.390089528896351e-05,
+      "sum_relative_deficit": 7.390089528896351e-05
+    }
+  },
+  {
+    "id": "s1015",
+    "design": [
+      350.0,
+      170.0,
+      80.0,
+      90.0,
+      65.0,
+      20.12,
+      13.915
+    ],
+    "phase": "initial",
+    "equivalent": false,
+    "metrics": {
+      "global_isotropy_mean": 0.26662830395542325,
+      "global_isotropy_p10": 0.0,
+      "global_cell_retention": 0.9555721485906291,
+      "weak_isotropy_mean": 0.18476406046397856,
+      "weak_isotropy_p10": 0.12186129832156084,
+      "weak_cell_retention": 0.9906803355079217,
+      "corridor_isotropy_mean": 0.17749580365107365,
+      "corridor_isotropy_p10": 0.12186658480708969,
+      "corridor_cell_retention": 0.9791666666666666,
+      "volume_cm3": 2131.5706154606746,
+      "radial_extent_mm": 113.434539919274,
+      "z_max_mm": 168.186702663265,
+      "z_min_mm": 63.58243208912089,
+      "tip_distance_max_mm": 172.04736019642064
+    },
+    "comparison": {
+      "pass_all": false,
+      "failures": [
+        {
+          "metric": "tip_distance_max_mm",
+          "original": 172.06224180399894,
+          "candidate": 172.04736019642064,
+          "change": -0.014881607578303147
+        }
+      ],
+      "failed_count": 1,
+      "maximum_relative_deficit": 8.64896761908706e-05,
+      "sum_relative_deficit": 8.64896761908706e-05
+    }
+  },
+  {
+    "id": "s1065",
+    "design": [
+      350.0,
+      170.0,
+      80.0,
+      90.0,
+      65.0,
+      21.245,
+      13.6025
+    ],
+    "phase": "initial",
+    "equivalent": false,
+    "metrics": {
+      "global_isotropy_mean": 0.2757773065563406,
+      "global_isotropy_p10": 0.0,
+      "global_cell_retention": 0.9563188351689378,
+      "weak_isotropy_mean": 0.19298666204003254,
+      "weak_isotropy_p10": 0.13489422572855495,
+      "weak_cell_retention": 0.9916123019571296,
+      "corridor_isotropy_mean": 0.1818165277929916,
+      "corridor_isotropy_p10": 0.12396157260900534,
+      "corridor_cell_retention": 1.0,
+      "volume_cm3": 2139.817296176348,
+      "radial_extent_mm": 114.187833852599,
+      "z_max_mm": 168.74019327278938,
+      "z_min_mm": 63.44758712638122,
+      "tip_distance_max_mm": 172.04568346702104
+    },
+    "comparison": {
+      "pass_all": false,
+      "failures": [
+        {
+          "metric": "tip_distance_max_mm",
+          "original": 172.06224180399894,
+          "candidate": 172.04568346702104,
+          "change": -0.01655833697790854
+        }
+      ],
+      "failed_count": 1,
+      "maximum_relative_deficit": 9.623457653638279e-05,
+      "sum_relative_deficit": 9.623457653638279e-05
+    }
+  },
+  {
+    "id": "s1293",
+    "design": [
+      349.9957,
+      170.0,
+      80.0,
+      89.8993,
+      65.2302,
+      22.1743,
+      13.2906
+    ],
+    "phase": "local refinement",
+    "equivalent": false,
+    "metrics": {
+      "global_isotropy_mean": 0.28067969781297825,
+      "global_isotropy_p10": 0.0,
+      "global_cell_retention": 0.9520253873436625,
+      "weak_isotropy_mean": 0.19858235271553976,
+      "weak_isotropy_p10": 0.13737699246033275,
+      "weak_cell_retention": 0.9916123019571296,
+      "corridor_isotropy_mean": 0.1956120002581155,
+      "corridor_isotropy_p10": 0.1253684695319821,
+      "corridor_cell_retention": 1.0,
+      "volume_cm3": 2165.342736486765,
+      "radial_extent_mm": 114.61569441834601,
+      "z_max_mm": 169.11093525221082,
+      "z_min_mm": 63.38718889478445,
+      "tip_distance_max_mm": 172.03397692123383
+    },
+    "comparison": {
+      "pass_all": false,
+      "failures": [
+        {
+          "metric": "tip_distance_max_mm",
+          "original": 172.06224180399894,
+          "candidate": 172.03397692123383,
+          "change": -0.028264882765114407
+        }
+      ],
+      "failed_count": 1,
+      "maximum_relative_deficit": 0.00016427126875001284,
+      "sum_relative_deficit": 0.00016427126875001284
+    }
+  },
+  {
+    "id": "s1032",
+    "design": [
+      350.0,
+      170.0,
+      80.0,
+      90.0,
+      65.0,
+      20.495,
+      13.915
+    ],
+    "phase": "initial",
+    "equivalent": false,
+    "metrics": {
+      "global_isotropy_mean": 0.27013202914909806,
+      "global_isotropy_p10": 0.0,
+      "global_cell_retention": 0.9686391637110323,
+      "weak_isotropy_mean": 0.18944402069359675,
+      "weak_isotropy_p10": 0.13045557081490025,
+      "weak_cell_retention": 0.9906803355079217,
+      "corridor_isotropy_mean": 0.1790418284314562,
+      "corridor_isotropy_p10": 0.12265334764213807,
+      "corridor_cell_retention": 0.9791666666666666,
+      "volume_cm3": 2147.6712778103224,
+      "radial_extent_mm": 114.04934736129002,
+      "z_max_mm": 168.3143289358147,
+      "z_min_mm": 63.43322643180664,
+      "tip_distance_max_mm": 172.03114188133537
+    },
+    "comparison": {
+      "pass_all": false,
+      "failures": [
+        {
+          "metric": "tip_distance_max_mm",
+          "original": 172.06224180399894,
+          "candidate": 172.03114188133537,
+          "change": -0.031099922663571533
+        }
+      ],
+      "failed_count": 1,
+      "maximum_relative_deficit": 0.0001807480963719998,
+      "sum_relative_deficit": 0.0001807480963719998
+    }
+  },
+  {
+    "id": "s1115",
+    "design": [
+      350.0,
+      170.0,
+      80.0,
+      90.0,
+      65.0,
+      22.37,
+      13.29
+    ],
+    "phase": "initial",
+    "equivalent": false,
+    "metrics": {
+      "global_isotropy_mean": 0.28201857353669674,
+      "global_isotropy_p10": 0.0,
+      "global_cell_retention": 0.9520253873436625,
+      "weak_isotropy_mean": 0.19980494269988502,
+      "weak_isotropy_p10": 0.13838424245955422,
+      "weak_cell_retention": 0.9916123019571296,
+      "corridor_isotropy_mean": 0.19602694999563622,
+      "corridor_isotropy_p10": 0.12581126376866936,
+      "corridor_cell_retention": 1.0,
+      "volume_cm3": 2179.8726025096175,
+      "radial_extent_mm": 114.93295390806574,
+      "z_max_mm": 169.1532608979354,
+      "z_min_mm": 63.312051729437385,
+      "tip_distance_max_mm": 172.02585225556038
+    },
+    "comparison": {
+      "pass_all": false,
+      "failures": [
+        {
+          "metric": "tip_distance_max_mm",
+          "original": 172.06224180399894,
+          "candidate": 172.02585225556038,
+          "change": -0.03638954843856368
+        }
+      ],
+      "failed_count": 1,
+      "maximum_relative_deficit": 0.00021149060977606034,
+      "sum_relative_deficit": 0.00021149060977606034
+    }
+  },
+  {
+    "id": "s1082",
+    "design": [
+      350.0,
+      170.0,
+      80.0,
+      90.0,
+      65.0,
+      21.62,
+      13.6025
+    ],
+    "phase": "initial",
+    "equivalent": false,
+    "metrics": {
+      "global_isotropy_mean": 0.27984057035740323,
+      "global_isotropy_p10": 0.0,
+      "global_cell_retention": 0.9551988053014747,
+      "weak_isotropy_mean": 0.1965371860876355,
+      "weak_isotropy_p10": 0.13586366405046213,
+      "weak_cell_retention": 0.9916123019571296,
+      "corridor_isotropy_mean": 0.1843838132903984,
+      "corridor_isotropy_p10": 0.12543055868589312,
+      "corridor_cell_retention": 1.0,
+      "volume_cm3": 2171.6259217939446,
+      "radial_extent_mm": 114.79574449052487,
+      "z_max_mm": 168.83778313642853,
+      "z_min_mm": 63.29765415128895,
+      "tip_distance_max_mm": 172.02518865826693
+    },
+    "comparison": {
+      "pass_all": false,
+      "failures": [
+        {
+          "metric": "tip_distance_max_mm",
+          "original": 172.06224180399894,
+          "candidate": 172.02518865826693,
+          "change": -0.0370531457320169
+        }
+      ],
+      "failed_count": 1,
+      "maximum_relative_deficit": 0.00021534733793730995,
+      "sum_relative_deficit": 0.00021534733793730995
+    }
+  },
+  {
+    "id": "s1315",
+    "design": [
+      350.5389,
+      170.0,
+      80.8298,
+      91.506,
+      65.2869,
+      22.0112,
+      13.2017
+    ],
+    "phase": "local refinement",
+    "equivalent": false,
+    "metrics": {
+      "global_isotropy_mean": 0.2789915991816588,
+      "global_isotropy_p10": 0.0,
+      "global_cell_retention": 0.9591189098375956,
+      "weak_isotropy_mean": 0.1954122768368677,
+      "weak_isotropy_p10": 0.1351755252848531,
+      "weak_cell_retention": 0.9906803355079217,
+      "corridor_isotropy_mean": 0.18396295290598208,
+      "corridor_isotropy_p10": 0.10976119339963478,
+      "corridor_cell_retention": 0.9791666666666666,
+      "volume_cm3": 2183.406894244906,
+      "radial_extent_mm": 114.48886442707462,
+      "z_max_mm": 169.55077184366502,
+      "z_min_mm": 63.86759268901003,
+      "tip_distance_max_mm": 172.6023242723264
+    },
+    "comparison": {
+      "pass_all": false,
+      "failures": [
+        {
+          "metric": "z_min_mm",
+          "original": 63.85311122036661,
+          "candidate": 63.86759268901003,
+          "change": 0.014481468643424478
+        }
+      ],
+      "failed_count": 1,
+      "maximum_relative_deficit": 0.00022679346967834928,
+      "sum_relative_deficit": 0.00022679346967834928
+    }
+  },
+  {
+    "id": "s1148",
+    "design": [
+      350.0,
+      170.0,
+      80.0,
+      90.0,
+      65.0,
+      23.12,
+      12.9775
+    ],
+    "phase": "initial",
+    "equivalent": false,
+    "metrics": {
+      "global_isotropy_mean": 0.281008284600138,
+      "global_isotropy_p10": 0.0,
+      "global_cell_retention": 0.9516520440545081,
+      "weak_isotropy_mean": 0.20331929468703586,
+      "weak_isotropy_p10": 0.14190195376120077,
+      "weak_cell_retention": 0.9916123019571296,
+      "corridor_isotropy_mean": 0.20148018161150835,
+      "corridor_isotropy_p10": 0.12313065565594884,
+      "corridor_cell_retention": 1.0,
+      "volume_cm3": 2197.936760267759,
+      "radial_extent_mm": 115.07040349355837,
+      "z_max_mm": 169.38176506756963,
+      "z_min_mm": 63.32640663758925,
+      "tip_distance_max_mm": 172.01581188875343
+    },
+    "comparison": {
+      "pass_all": false,
+      "failures": [
+        {
+          "metric": "tip_distance_max_mm",
+          "original": 172.06224180399894,
+          "candidate": 172.01581188875343,
+          "change": -0.04642991524551121
+        }
+      ],
+      "failed_count": 1,
+      "maximum_relative_deficit": 0.0002698437191025377,
+      "sum_relative_deficit": 0.0002698437191025377
+    }
+  },
+  {
+    "id": "s1049",
+    "design": [
+      350.0,
+      170.0,
+      80.0,
+      90.0,
+      65.0,
+      20.87,
+      13.915
+    ],
+    "phase": "initial",
+    "equivalent": false,
+    "metrics": {
+      "global_isotropy_mean": 0.26931766229599097,
+      "global_isotropy_p10": 0.0,
+      "global_cell_retention": 0.9609856262833676,
+      "weak_isotropy_mean": 0.1932293446094181,
+      "weak_isotropy_p10": 0.13379083663793487,
+      "weak_cell_retention": 0.9906803355079217,
+      "corridor_isotropy_mean": 0.18033663427803145,
+      "corridor_isotropy_p10": 0.12137513584547747,
+      "corridor_cell_retention": 0.9791666666666666,
+      "volume_cm3": 2181.8360979181116,
+      "radial_extent_mm": 114.6587910348346,
+      "z_max_mm": 168.43551723084832,
+      "z_min_mm": 63.283213908202285,
+      "tip_distance_max_mm": 172.01382572895167
+    },
+    "comparison": {
+      "pass_all": false,
+      "failures": [
+        {
+          "metric": "tip_distance_max_mm",
+          "original": 172.06224180399894,
+          "candidate": 172.01382572895167,
+          "change": -0.04841607504727108
+        }
+      ],
+      "failed_count": 1,
+      "maximum_relative_deficit": 0.0002813869826386618,
+      "sum_relative_deficit": 0.0002813869826386618
+    }
+  },
+  {
+    "id": "s1261",
+    "design": [
+      350.0048,
+      170.3076,
+      80.3351,
+      88.4766,
+      66.4455,
+      21.7965,
+      13.5664
+    ],
+    "phase": "local refinement",
+    "equivalent": false,
+    "metrics": {
+      "global_isotropy_mean": 0.2813771147730276,
+      "global_isotropy_p10": 0.0,
+      "global_cell_retention": 0.9551988053014747,
+      "weak_isotropy_mean": 0.20425447730758223,
+      "weak_isotropy_p10": 0.1419643216506782,
+      "weak_cell_retention": 0.9916123019571296,
+      "corridor_isotropy_mean": 0.1858210028340639,
+      "corridor_isotropy_p10": 0.1232037839617726,
+      "corridor_cell_retention": 1.0,
+      "volume_cm3": 2204.6126446566373,
+      "radial_extent_mm": 115.18282595206537,
+      "z_max_mm": 168.88550752305915,
+      "z_min_mm": 63.250231419612795,
+      "tip_distance_max_mm": 172.0078092942787
+    },
+    "comparison": {
+      "pass_all": false,
+      "failures": [
+        {
+          "metric": "tip_distance_max_mm",
+          "original": 172.06224180399894,
+          "candidate": 172.0078092942787,
+          "change": -0.05443250972024316
+        }
+      ],
+      "failed_count": 1,
+      "maximum_relative_deficit": 0.00031635360058977264,
+      "sum_relative_deficit": 0.00031635360058977264
+    }
+  },
+  {
+    "id": "s0999",
+    "design": [
+      350.0,
+      170.0,
+      80.0,
+      90.0,
+      65.0,
+      19.745,
+      14.2275
+    ],
+    "phase": "initial",
+    "equivalent": false,
+    "metrics": {
+      "global_isotropy_mean": 0.26730568316429265,
+      "global_isotropy_p10": 0.0,
+      "global_cell_retention": 0.9699458652230726,
+      "weak_isotropy_mean": 0.18718838657965006,
+      "weak_isotropy_p10": 0.12609123294748142,
+      "weak_cell_retention": 0.9906803355079217,
+      "corridor_isotropy_mean": 0.16751316132636873,
+      "corridor_isotropy_p10": 0.11003097473924667,
+      "corridor_cell_retention": 0.9791666666666666,
+      "volume_cm3": 2141.3880925031426,
+      "radial_extent_mm": 113.9111569098841,
+      "z_max_mm": 167.80199548511672,
+      "z_min_mm": 63.41882289924419,
+      "tip_distance_max_mm": 172.0059085754584
+    },
+    "comparison": {
+      "pass_all": false,
+      "failures": [
+        {
+          "metric": "tip_distance_max_mm",
+          "original": 172.06224180399894,
+          "candidate": 172.0059085754584,
+          "change": -0.05633322854055223
+        }
+      ],
+      "failed_count": 1,
+      "maximum_relative_deficit": 0.00032740029392807187,
+      "sum_relative_deficit": 0.00032740029392807187
+    }
+  },
+  {
+    "id": "s1099",
+    "design": [
+      350.0,
+      170.0,
+      80.0,
+      90.0,
+      65.0,
+      21.995,
+      13.6025
+    ],
+    "phase": "initial",
+    "equivalent": false,
+    "metrics": {
+      "global_isotropy_mean": 0.28363941842474355,
+      "global_isotropy_p10": 0.0,
+      "global_cell_retention": 0.9523987306328169,
+      "weak_isotropy_mean": 0.20790055071614308,
+      "weak_isotropy_p10": 0.142480475191896,
+      "weak_cell_retention": 0.9916123019571296,
+      "corridor_isotropy_mean": 0.18708111166346608,
+      "corridor_isotropy_p10": 0.12365922498426853,
+      "corridor_cell_retention": 1.0,
+      "volume_cm3": 2200.68565383965,
+      "radial_extent_mm": 115.39823719512556,
+      "z_max_mm": 168.92891152613032,
+      "z_min_mm": 63.14691840358763,
+      "tip_distance_max_mm": 172.00359630741715
+    },
+    "comparison": {
+      "pass_all": false,
+      "failures": [
+        {
+          "metric": "tip_distance_max_mm",
+          "original": 172.06224180399894,
+          "candidate": 172.00359630741715,
+          "change": -0.0586454965817893
+        }
+      ],
+      "failed_count": 1,
+      "maximum_relative_deficit": 0.00034083884974946496,
+      "sum_relative_deficit": 0.00034083884974946496
+    }
+  },
+  {
+    "id": "s0001",
+    "design": [
+      348.16,
+      181.98,
+      92.14,
+      95.02,
+      65.91,
+      22.03,
+      13.98
+    ],
+    "phase": "initial",
+    "equivalent": false,
+    "metrics": {
+      "global_isotropy_mean": 0.2489668621975949,
+      "global_isotropy_p10": 0.0,
+      "global_cell_retention": 0.893223819301848,
+      "weak_isotropy_mean": 0.2195839426920817,
+      "weak_isotropy_p10": 0.14289344281262956,
+      "weak_cell_retention": 1.0,
+      "corridor_isotropy_mean": 0.17913906729560516,
+      "corridor_isotropy_p10": 0.0,
+      "corridor_cell_retention": 0.9791666666666666,
+      "volume_cm3": 2152.383666790707,
+      "radial_extent_mm": 110.01668061541186,
+      "z_max_mm": 167.31610088488642,
+      "z_min_mm": 61.72197052685934,
+      "tip_distance_max_mm": 169.43135761152877
+    },
+    "comparison": {
+      "pass_all": false,
+      "failures": [
+        {
+          "metric": "global_cell_retention",
+          "original": 0.9481052828075416,
+          "candidate": 0.893223819301848,
+          "change": -0.05488146350569356
+        },
+        {
+          "metric": "corridor_isotropy_p10",
+          "original": 0.10799206350149401,
+          "candidate": 0.0,
+          "change": -0.10799206350149401
+        },
+        {
+          "metric": "radial_extent_mm",
+          "original": 112.21566233568167,
+          "candidate": 110.01668061541186,
+          "change": -2.1989817202698134
+        },
+        {
+          "metric": "z_max_mm",
+          "original": 167.70973864513655,
+          "candidate": 167.31610088488642,
+          "change": -0.39363776025012953
+        },
+        {
+          "metric": "tip_distance_max_mm",
+          "original": 172.06224180399894,
+          "candidate": 169.43135761152877,
+          "change": -2.6308841924701767
+        }
+      ],
+      "failed_count": 5,
+      "maximum_relative_deficit": 1.0,
+      "sum_relative_deficit": 1.095118884979582
+    }
+  }
+]

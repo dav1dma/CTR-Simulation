@@ -1,0 +1,41 @@
+{
+  "id": "t027",
+  "design": [
+    350.0,
+    177.5,
+    87.5,
+    90.0,
+    65.0,
+    21.37,
+    14.04
+  ],
+  "metrics": {
+    "global_isotropy_mean": 0.36028424309787077,
+    "global_isotropy_p10": 0.17630432637199733,
+    "global_cell_retention": 0.9949598655964159,
+    "weak_isotropy_mean": 0.21446539299559886,
+    "weak_isotropy_p10": 0.14215357313002056,
+    "weak_cell_retention": 1.0,
+    "corridor_isotropy_mean": 0.20982504987234743,
+    "corridor_isotropy_p10": 0.13168242457002372,
+    "corridor_cell_retention": 1.0,
+    "volume_cm3": 2475.9677101104558,
+    "radial_extent_mm": 115.4466527641672,
+    "z_max_mm": 169.7242382209899,
+    "z_min_mm": 63.02611040409645,
+    "tip_distance_max_mm": 172.5430855808654,
+    "global_ik_success": 0.7013422818791947,
+    "global_ik_p95_mm": 88.08622504701889,
+    "global_diagnostic_success": 0.9953453128382767,
+    "weak_ik_success": 0.5455202312138728,
+    "weak_ik_p95_mm": 55.133971412131295,
+    "weak_diagnostic_success": 1.0,
+    "corridor_ik_success": 0.753731343283582,
+    "corridor_ik_p95_mm": 9.685479601366096,
+    "corridor_diagnostic_success": 1.0,
+    "trajectory_completion": 0.9375,
+    "trajectory_p95_mm": 0.09128352347332845
+  },
+  "score": 0.31312640401604597,
+  "failures": []
+}

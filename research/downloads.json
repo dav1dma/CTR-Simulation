@@ -1,0 +1,45 @@
+{
+  "release": "final-project-2026",
+  "archives": [
+    {
+      "asset": "chapter5-dense-data.tar.gz",
+      "study": "chapter5_measured_revision",
+      "bytes": 71803466,
+      "files": 42,
+      "sha256": "a88d3e6f2d8601b3c558e7f422bf395d27a5000bf2fd9811c3d3361585efdaf5",
+      "url": "https://github.com/dav1dma/CTR-Simulation/releases/download/final-project-2026/chapter5-dense-data.tar.gz"
+    },
+    {
+      "asset": "tradeoff-search-data.tar.gz",
+      "study": "task_prioritised_tradeoff_20260914",
+      "bytes": 114830453,
+      "files": 122,
+      "sha256": "ce584db77e9158181aae9d5aca00121cc30ab20a6275eda27bbbaf9b4e91e0d9",
+      "url": "https://github.com/dav1dma/CTR-Simulation/releases/download/final-project-2026/tradeoff-search-data.tar.gz"
+    },
+    {
+      "asset": "measured-search-data.tar.gz",
+      "study": "measured_hardware_optimisation_20260914",
+      "bytes": 41949780,
+      "files": 49,
+      "sha256": "5f992a4d41920e8218ddf154430315276e94531f97eaa4c866077a139f6bb780",
+      "url": "https://github.com/dav1dma/CTR-Simulation/releases/download/final-project-2026/measured-search-data.tar.gz"
+    },
+    {
+      "asset": "strict-search-data.tar.gz",
+      "study": "strict_measured_optimisation_20260914",
+      "bytes": 212971338,
+      "files": 61,
+      "sha256": "ad59e44411f658c49f255fb455014f3a783810d618c5326f222b94df845d96e5",
+      "url": "https://github.com/dav1dma/CTR-Simulation/releases/download/final-project-2026/strict-search-data.tar.gz"
+    },
+    {
+      "asset": "supplementary-method-comparison.tar.gz",
+      "study": "final_geometry_method_comparison_20260916",
+      "bytes": 163228769,
+      "files": 147,
+      "sha256": "f274a37900d22e5155d0f33c72d3792557c05dd848d5e49ca0be8120865772d0",
+      "url": "https://github.com/dav1dma/CTR-Simulation/releases/download/final-project-2026/supplementary-method-comparison.tar.gz"
+    }
+  ]
+}

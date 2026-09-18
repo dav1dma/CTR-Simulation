@@ -1,0 +1,2183 @@
+[
+  {
+    "id": "original",
+    "design": [
+      350.0,
+      170.0,
+      80.0,
+      90.0,
+      65.0,
+      19.12,
+      14.04
+    ],
+    "metrics": {
+      "global_isotropy_mean": 0.3495611782527194,
+      "global_isotropy_p10": 0.1742317545772695,
+      "global_cell_retention": 1.0,
+      "weak_isotropy_mean": 0.19078728103569692,
+      "weak_isotropy_p10": 0.1268873026593574,
+      "weak_cell_retention": 1.0,
+      "corridor_isotropy_mean": 0.1770141792545787,
+      "corridor_isotropy_p10": 0.12563027754592443,
+      "corridor_cell_retention": 1.0,
+      "volume_cm3": 2261.554011502952,
+      "radial_extent_mm": 113.25000797164196,
+      "z_max_mm": 168.57301954681338,
+      "z_min_mm": 64.09362491967235,
+      "tip_distance_max_mm": 173.15191183762812,
+      "global_ik_success": 0.6520342612419701,
+      "global_ik_p95_mm": 91.33520616389069,
+      "global_diagnostic_success": 0.9968950749464668,
+      "weak_ik_success": 0.5828173374613003,
+      "weak_ik_p95_mm": 53.788245709542814,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.6976744186046512,
+      "corridor_ik_p95_mm": 9.486334776373978,
+      "corridor_diagnostic_success": 1.0
+    },
+    "comparison": {
+      "pass_all": true,
+      "failures": [],
+      "failed_count": 0,
+      "maximum_relative_deficit": 0,
+      "sum_relative_deficit": 0
+    },
+    "meaningful": false,
+    "equivalent": 1.0
+  },
+  {
+    "id": "s0998",
+    "design": [
+      350.0,
+      170.0,
+      80.0,
+      90.0,
+      65.0,
+      19.745,
+      13.915
+    ],
+    "metrics": {
+      "global_isotropy_mean": 0.36069140630326213,
+      "global_isotropy_p10": 0.187941262263791,
+      "global_cell_retention": 1.0,
+      "weak_isotropy_mean": 0.1947198394768973,
+      "weak_isotropy_p10": 0.13097945005313144,
+      "weak_cell_retention": 1.0,
+      "corridor_isotropy_mean": 0.1803748467765164,
+      "corridor_isotropy_p10": 0.12499663548736832,
+      "corridor_cell_retention": 1.0,
+      "volume_cm3": 2336.16683702571,
+      "radial_extent_mm": 113.84076363996064,
+      "z_max_mm": 168.92563417635694,
+      "z_min_mm": 63.96575693166589,
+      "tip_distance_max_mm": 173.1719994411362,
+      "global_ik_success": 0.6385438972162741,
+      "global_ik_p95_mm": 92.21726880715676,
+      "global_diagnostic_success": 0.9968950749464668,
+      "weak_ik_success": 0.5843653250773994,
+      "weak_ik_p95_mm": 53.788245709542814,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.7054263565891473,
+      "corridor_ik_p95_mm": 9.486334776373978,
+      "corridor_diagnostic_success": 1.0
+    },
+    "comparison": {
+      "pass_all": false,
+      "failures": [
+        {
+          "metric": "corridor_isotropy_p10",
+          "original": 0.12563027754592443,
+          "candidate": 0.12499663548736832,
+          "change": -0.0006336420585561081
+        },
+        {
+          "metric": "global_ik_success",
+          "original": 0.6520342612419701,
+          "candidate": 0.6385438972162741,
+          "change": -0.013490364025695922
+        },
+        {
+          "metric": "global_ik_p95_mm",
+          "original": 91.33520616389069,
+          "candidate": 92.21726880715676,
+          "change": 0.8820626432660674
+        }
+      ],
+      "failed_count": 3,
+      "maximum_relative_deficit": 0.02068965517241378,
+      "sum_relative_deficit": 0.03539078232081829
+    },
+    "meaningful": true,
+    "equivalent": false
+  },
+  {
+    "id": "s1031",
+    "design": [
+      350.0,
+      170.0,
+      80.0,
+      90.0,
+      65.0,
+      20.495,
+      13.6025
+    ],
+    "metrics": {
+      "global_isotropy_mean": 0.36801665463309974,
+      "global_isotropy_p10": 0.19247587168392344,
+      "global_cell_retention": 1.0,
+      "weak_isotropy_mean": 0.19854634887153974,
+      "weak_isotropy_p10": 0.13571403602693913,
+      "weak_cell_retention": 1.0,
+      "corridor_isotropy_mean": 0.18431533841754413,
+      "corridor_isotropy_p10": 0.12984398415809112,
+      "corridor_cell_retention": 1.0,
+      "volume_cm3": 2356.194490192345,
+      "radial_extent_mm": 113.96289464414671,
+      "z_max_mm": 169.45110806819218,
+      "z_min_mm": 63.97425535384706,
+      "tip_distance_max_mm": 173.20250816588978,
+      "global_ik_success": 0.6050321199143469,
+      "global_ik_p95_mm": 92.88453419826082,
+      "global_diagnostic_success": 0.9968950749464668,
+      "weak_ik_success": 0.5727554179566563,
+      "weak_ik_p95_mm": 53.788245709542814,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.686046511627907,
+      "corridor_ik_p95_mm": 9.791349686194646,
+      "corridor_diagnostic_success": 1.0
+    },
+    "comparison": {
+      "pass_all": false,
+      "failures": [
+        {
+          "metric": "global_ik_success",
+          "original": 0.6520342612419701,
+          "candidate": 0.6050321199143469,
+          "change": -0.04700214132762315
+        },
+        {
+          "metric": "global_ik_p95_mm",
+          "original": 91.33520616389069,
+          "candidate": 92.88453419826082,
+          "change": 1.5493280343701343
+        },
+        {
+          "metric": "weak_ik_success",
+          "original": 0.5828173374613003,
+          "candidate": 0.5727554179566563,
+          "change": -0.010061919504643968
+        },
+        {
+          "metric": "corridor_ik_success",
+          "original": 0.6976744186046512,
+          "candidate": 0.686046511627907,
+          "change": -0.011627906976744207
+        },
+        {
+          "metric": "corridor_ik_p95_mm",
+          "original": 9.486334776373978,
+          "candidate": 9.791349686194646,
+          "change": 0.3050149098206685
+        }
+      ],
+      "failed_count": 5,
+      "maximum_relative_deficit": 0.07208538587848935,
+      "sum_relative_deficit": 0.15513250961063801
+    },
+    "meaningful": true,
+    "equivalent": false
+  },
+  {
+    "id": "s1048",
+    "design": [
+      350.0,
+      170.0,
+      80.0,
+      90.0,
+      65.0,
+      20.87,
+      13.6025
+    ],
+    "metrics": {
+      "global_isotropy_mean": 0.37268061816343023,
+      "global_isotropy_p10": 0.19522533401627246,
+      "global_cell_retention": 1.0,
+      "weak_isotropy_mean": 0.20150231787447698,
+      "weak_isotropy_p10": 0.13798670413319739,
+      "weak_cell_retention": 1.0,
+      "corridor_isotropy_mean": 0.18684832509502702,
+      "corridor_isotropy_p10": 0.13015103581636212,
+      "corridor_cell_retention": 1.0,
+      "volume_cm3": 2401.354884587698,
+      "radial_extent_mm": 114.5809409967744,
+      "z_max_mm": 169.57443895556668,
+      "z_min_mm": 63.82194370083681,
+      "tip_distance_max_mm": 173.2011839989866,
+      "global_ik_success": 0.5934689507494647,
+      "global_ik_p95_mm": 95.50426414906039,
+      "global_diagnostic_success": 0.9968950749464668,
+      "weak_ik_success": 0.5657894736842105,
+      "weak_ik_p95_mm": 53.788245709542814,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.6550387596899225,
+      "corridor_ik_p95_mm": 9.850830638465077,
+      "corridor_diagnostic_success": 1.0
+    },
+    "comparison": {
+      "pass_all": false,
+      "failures": [
+        {
+          "metric": "global_ik_success",
+          "original": 0.6520342612419701,
+          "candidate": 0.5934689507494647,
+          "change": -0.05856531049250535
+        },
+        {
+          "metric": "global_ik_p95_mm",
+          "original": 91.33520616389069,
+          "candidate": 95.50426414906039,
+          "change": 4.169057985169701
+        },
+        {
+          "metric": "weak_ik_success",
+          "original": 0.5828173374613003,
+          "candidate": 0.5657894736842105,
+          "change": -0.017027863777089758
+        },
+        {
+          "metric": "corridor_ik_success",
+          "original": 0.6976744186046512,
+          "candidate": 0.6550387596899225,
+          "change": -0.04263565891472865
+        },
+        {
+          "metric": "corridor_ik_p95_mm",
+          "original": 9.486334776373978,
+          "candidate": 9.850830638465077,
+          "change": 0.36449586209109874
+        }
+      ],
+      "failed_count": 5,
+      "maximum_relative_deficit": 0.08981937602627257,
+      "sum_relative_deficit": 0.2642158940983591
+    },
+    "meaningful": true,
+    "equivalent": false
+  },
+  {
+    "id": "s1081",
+    "design": [
+      350.0,
+      170.0,
+      80.0,
+      90.0,
+      65.0,
+      21.62,
+      13.29
+    ],
+    "metrics": {
+      "global_isotropy_mean": 0.3785167432405672,
+      "global_isotropy_p10": 0.19564980992306072,
+      "global_cell_retention": 1.0,
+      "weak_isotropy_mean": 0.20541159321009558,
+      "weak_isotropy_p10": 0.14114461455692245,
+      "weak_cell_retention": 1.0,
+      "corridor_isotropy_mean": 0.19147007649540848,
+      "corridor_isotropy_p10": 0.12841140604549733,
+      "corridor_cell_retention": 1.0,
+      "volume_cm3": 2403.3183799961917,
+      "radial_extent_mm": 114.70105151512996,
+      "z_max_mm": 169.98213198250266,
+      "z_min_mm": 63.83025887702028,
+      "tip_distance_max_mm": 173.21522078945674,
+      "global_ik_success": 0.5197002141327624,
+      "global_ik_p95_mm": 95.50426414906039,
+      "global_diagnostic_success": 0.9940042826552462,
+      "weak_ik_success": 0.5332817337461301,
+      "weak_ik_p95_mm": 53.788245709542814,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.5116279069767442,
+      "corridor_ik_p95_mm": 17.567398441996833,
+      "corridor_diagnostic_success": 1.0
+    },
+    "comparison": {
+      "pass_all": false,
+      "failures": [
+        {
+          "metric": "global_ik_success",
+          "original": 0.6520342612419701,
+          "candidate": 0.5197002141327624,
+          "change": -0.1323340471092077
+        },
+        {
+          "metric": "global_ik_p95_mm",
+          "original": 91.33520616389069,
+          "candidate": 95.50426414906039,
+          "change": 4.169057985169701
+        },
+        {
+          "metric": "global_diagnostic_success",
+          "original": 0.9968950749464668,
+          "candidate": 0.9940042826552462,
+          "change": -0.0028907922912205786
+        },
+        {
+          "metric": "weak_ik_success",
+          "original": 0.5828173374613003,
+          "candidate": 0.5332817337461301,
+          "change": -0.049535603715170184
+        },
+        {
+          "metric": "corridor_ik_success",
+          "original": 0.6976744186046512,
+          "candidate": 0.5116279069767442,
+          "change": -0.18604651162790697
+        },
+        {
+          "metric": "corridor_ik_p95_mm",
+          "original": 9.486334776373978,
+          "candidate": 17.567398441996833,
+          "change": 8.081063665622855
+        }
+      ],
+      "failed_count": 6,
+      "maximum_relative_deficit": 0.8518636392370428,
+      "sum_relative_deficit": 1.4550248110529387
+    },
+    "meaningful": true,
+    "equivalent": false
+  },
+  {
+    "id": "s1167",
+    "design": [
+      350.1482,
+      170.0,
+      80.4664,
+      90.1069,
+      65.9985,
+      20.0132,
+      13.9251
+    ],
+    "metrics": {
+      "global_isotropy_mean": 0.3649018012923421,
+      "global_isotropy_p10": 0.1932893192306528,
+      "global_cell_retention": 0.9998133283554228,
+      "weak_isotropy_mean": 0.19493597134923435,
+      "weak_isotropy_p10": 0.1307477823059656,
+      "weak_cell_retention": 0.9990680335507922,
+      "corridor_isotropy_mean": 0.17802440038471648,
+      "corridor_isotropy_p10": 0.1214677502456004,
+      "corridor_cell_retention": 0.9791666666666666,
+      "volume_cm3": 2350.304003966864,
+      "radial_extent_mm": 114.47752368669626,
+      "z_max_mm": 169.0537499259683,
+      "z_min_mm": 63.9282036682806,
+      "tip_distance_max_mm": 173.31500647307058,
+      "global_ik_success": 0.6329764453961456,
+      "global_ik_p95_mm": 92.1806489962406,
+      "global_diagnostic_success": 1.0,
+      "weak_ik_success": 0.5882352941176471,
+      "weak_ik_p95_mm": 53.78744724138253,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.686046511627907,
+      "corridor_ik_p95_mm": 9.851740349970349,
+      "corridor_diagnostic_success": 1.0
+    },
+    "comparison": {
+      "pass_all": false,
+      "failures": [
+        {
+          "metric": "global_cell_retention",
+          "original": 1.0,
+          "candidate": 0.9998133283554228,
+          "change": -0.00018667164457719654
+        },
+        {
+          "metric": "weak_cell_retention",
+          "original": 1.0,
+          "candidate": 0.9990680335507922,
+          "change": -0.0009319664492077884
+        },
+        {
+          "metric": "corridor_isotropy_p10",
+          "original": 0.12563027754592443,
+          "candidate": 0.1214677502456004,
+          "change": -0.004162527300324029
+        },
+        {
+          "metric": "corridor_cell_retention",
+          "original": 1.0,
+          "candidate": 0.9791666666666666,
+          "change": -0.02083333333333337
+        },
+        {
+          "metric": "global_ik_success",
+          "original": 0.6520342612419701,
+          "candidate": 0.6329764453961456,
+          "change": -0.019057815845824444
+        },
+        {
+          "metric": "global_ik_p95_mm",
+          "original": 91.33520616389069,
+          "candidate": 92.1806489962406,
+          "change": 0.8454428323499172
+        },
+        {
+          "metric": "corridor_ik_success",
+          "original": 0.6976744186046512,
+          "candidate": 0.686046511627907,
+          "change": -0.011627906976744207
+        },
+        {
+          "metric": "corridor_ik_p95_mm",
+          "original": 9.486334776373978,
+          "candidate": 9.851740349970349,
+          "change": 0.36540557359637127
+        }
+      ],
+      "failed_count": 8,
+      "maximum_relative_deficit": 0.03851915225535005,
+      "sum_relative_deficit": 0.14875567064904166
+    },
+    "meaningful": true,
+    "equivalent": false
+  },
+  {
+    "id": "s1206",
+    "design": [
+      350.2328,
+      170.1696,
+      80.6691,
+      90.4944,
+      65.6686,
+      20.7604,
+      13.7128
+    ],
+    "metrics": {
+      "global_isotropy_mean": 0.37488984345042986,
+      "global_isotropy_p10": 0.2012257376886178,
+      "global_cell_retention": 0.9998133283554228,
+      "weak_isotropy_mean": 0.19917577870860484,
+      "weak_isotropy_p10": 0.13513033367726718,
+      "weak_cell_retention": 0.9990680335507922,
+      "corridor_isotropy_mean": 0.18165135199933416,
+      "corridor_isotropy_p10": 0.1263537478779987,
+      "corridor_cell_retention": 0.9791666666666666,
+      "volume_cm3": 2423.3460331628266,
+      "radial_extent_mm": 115.13759443556096,
+      "z_max_mm": 169.57335231622082,
+      "z_min_mm": 63.88106971068585,
+      "tip_distance_max_mm": 173.41973132261495,
+      "global_ik_success": 0.6032119914346895,
+      "global_ik_p95_mm": 92.8756035226409,
+      "global_diagnostic_success": 1.0,
+      "weak_ik_success": 0.576625386996904,
+      "weak_ik_p95_mm": 53.78742391598296,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.689922480620155,
+      "corridor_ik_p95_mm": 9.787359799777104,
+      "corridor_diagnostic_success": 1.0
+    },
+    "comparison": {
+      "pass_all": false,
+      "failures": [
+        {
+          "metric": "global_cell_retention",
+          "original": 1.0,
+          "candidate": 0.9998133283554228,
+          "change": -0.00018667164457719654
+        },
+        {
+          "metric": "weak_cell_retention",
+          "original": 1.0,
+          "candidate": 0.9990680335507922,
+          "change": -0.0009319664492077884
+        },
+        {
+          "metric": "corridor_cell_retention",
+          "original": 1.0,
+          "candidate": 0.9791666666666666,
+          "change": -0.02083333333333337
+        },
+        {
+          "metric": "global_ik_success",
+          "original": 0.6520342612419701,
+          "candidate": 0.6032119914346895,
+          "change": -0.04882226980728055
+        },
+        {
+          "metric": "global_ik_p95_mm",
+          "original": 91.33520616389069,
+          "candidate": 92.8756035226409,
+          "change": 1.5403973587502122
+        },
+        {
+          "metric": "weak_ik_success",
+          "original": 0.5828173374613003,
+          "candidate": 0.576625386996904,
+          "change": -0.006191950464396245
+        },
+        {
+          "metric": "corridor_ik_success",
+          "original": 0.6976744186046512,
+          "candidate": 0.689922480620155,
+          "change": -0.007751937984496138
+        },
+        {
+          "metric": "corridor_ik_p95_mm",
+          "original": 9.486334776373978,
+          "candidate": 9.787359799777104,
+          "change": 0.30102502340312576
+        }
+      ],
+      "failed_count": 8,
+      "maximum_relative_deficit": 0.07487684729064044,
+      "sum_relative_deficit": 0.16716190849398882
+    },
+    "meaningful": true,
+    "equivalent": false
+  },
+  {
+    "id": "s1213",
+    "design": [
+      350.1296,
+      170.0,
+      80.0,
+      88.0528,
+      63.2449,
+      20.445,
+      13.8417
+    ],
+    "metrics": {
+      "global_isotropy_mean": 0.3710339444011252,
+      "global_isotropy_p10": 0.19576155837506498,
+      "global_cell_retention": 0.9998133283554228,
+      "weak_isotropy_mean": 0.2022554547657891,
+      "weak_isotropy_p10": 0.13869597633494507,
+      "weak_cell_retention": 0.9990680335507922,
+      "corridor_isotropy_mean": 0.18177244859206124,
+      "corridor_isotropy_p10": 0.12553651264146035,
+      "corridor_cell_retention": 0.9791666666666666,
+      "volume_cm3": 2349.125906721768,
+      "radial_extent_mm": 113.43898944586974,
+      "z_max_mm": 169.64867788946648,
+      "z_min_mm": 63.900541760649176,
+      "tip_distance_max_mm": 173.31296716670732,
+      "global_ik_success": 0.6298715203426124,
+      "global_ik_p95_mm": 92.18523272864675,
+      "global_diagnostic_success": 0.9862955032119914,
+      "weak_ik_success": 0.5565015479876161,
+      "weak_ik_p95_mm": 53.78742418839906,
+      "weak_diagnostic_success": 0.9837461300309598,
+      "corridor_ik_success": 0.686046511627907,
+      "corridor_ik_p95_mm": 9.851540026694138,
+      "corridor_diagnostic_success": 1.0
+    },
+    "comparison": {
+      "pass_all": false,
+      "failures": [
+        {
+          "metric": "global_cell_retention",
+          "original": 1.0,
+          "candidate": 0.9998133283554228,
+          "change": -0.00018667164457719654
+        },
+        {
+          "metric": "weak_cell_retention",
+          "original": 1.0,
+          "candidate": 0.9990680335507922,
+          "change": -0.0009319664492077884
+        },
+        {
+          "metric": "corridor_isotropy_p10",
+          "original": 0.12563027754592443,
+          "candidate": 0.12553651264146035,
+          "change": -9.376490446408314e-05
+        },
+        {
+          "metric": "corridor_cell_retention",
+          "original": 1.0,
+          "candidate": 0.9791666666666666,
+          "change": -0.02083333333333337
+        },
+        {
+          "metric": "global_ik_success",
+          "original": 0.6520342612419701,
+          "candidate": 0.6298715203426124,
+          "change": -0.022162740899357658
+        },
+        {
+          "metric": "global_ik_p95_mm",
+          "original": 91.33520616389069,
+          "candidate": 92.18523272864675,
+          "change": 0.8500265647560639
+        },
+        {
+          "metric": "global_diagnostic_success",
+          "original": 0.9968950749464668,
+          "candidate": 0.9862955032119914,
+          "change": -0.010599571734475344
+        },
+        {
+          "metric": "weak_ik_success",
+          "original": 0.5828173374613003,
+          "candidate": 0.5565015479876161,
+          "change": -0.02631578947368418
+        },
+        {
+          "metric": "weak_diagnostic_success",
+          "original": 1.0,
+          "candidate": 0.9837461300309598,
+          "change": -0.016253869969040213
+        },
+        {
+          "metric": "corridor_ik_success",
+          "original": 0.6976744186046512,
+          "candidate": 0.686046511627907,
+          "change": -0.011627906976744207
+        },
+        {
+          "metric": "corridor_ik_p95_mm",
+          "original": 9.486334776373978,
+          "candidate": 9.851540026694138,
+          "change": 0.3652052503201606
+        }
+      ],
+      "failed_count": 11,
+      "maximum_relative_deficit": 0.04515272244355905,
+      "sum_relative_deficit": 0.1931990239282648
+    },
+    "meaningful": true,
+    "equivalent": false
+  },
+  {
+    "id": "s1239",
+    "design": [
+      350.1882,
+      170.1967,
+      80.4566,
+      89.8842,
+      66.8591,
+      21.0149,
+      13.809
+    ],
+    "metrics": {
+      "global_isotropy_mean": 0.38181840474126105,
+      "global_isotropy_p10": 0.20794511807288782,
+      "global_cell_retention": 0.9998133283554228,
+      "weak_isotropy_mean": 0.20212880114190165,
+      "weak_isotropy_p10": 0.13932368100621068,
+      "weak_cell_retention": 0.9990680335507922,
+      "corridor_isotropy_mean": 0.18473100785672636,
+      "corridor_isotropy_p10": 0.12870427737723905,
+      "corridor_cell_retention": 0.9791666666666666,
+      "volume_cm3": 2424.9168294896217,
+      "radial_extent_mm": 115.86230011039258,
+      "z_max_mm": 169.59576107698294,
+      "z_min_mm": 63.65340497621168,
+      "tip_distance_max_mm": 173.36737949601127,
+      "global_ik_success": 0.5896145610278373,
+      "global_ik_p95_mm": 92.88573853274418,
+      "global_diagnostic_success": 1.0,
+      "weak_ik_success": 0.5657894736842105,
+      "weak_ik_p95_mm": 53.787393748997765,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.6782945736434108,
+      "corridor_ik_p95_mm": 9.850970619810639,
+      "corridor_diagnostic_success": 1.0
+    },
+    "comparison": {
+      "pass_all": false,
+      "failures": [
+        {
+          "metric": "global_cell_retention",
+          "original": 1.0,
+          "candidate": 0.9998133283554228,
+          "change": -0.00018667164457719654
+        },
+        {
+          "metric": "weak_cell_retention",
+          "original": 1.0,
+          "candidate": 0.9990680335507922,
+          "change": -0.0009319664492077884
+        },
+        {
+          "metric": "corridor_cell_retention",
+          "original": 1.0,
+          "candidate": 0.9791666666666666,
+          "change": -0.02083333333333337
+        },
+        {
+          "metric": "global_ik_success",
+          "original": 0.6520342612419701,
+          "candidate": 0.5896145610278373,
+          "change": -0.06241970021413279
+        },
+        {
+          "metric": "global_ik_p95_mm",
+          "original": 91.33520616389069,
+          "candidate": 92.88573853274418,
+          "change": 1.5505323688534958
+        },
+        {
+          "metric": "weak_ik_success",
+          "original": 0.5828173374613003,
+          "candidate": 0.5657894736842105,
+          "change": -0.017027863777089758
+        },
+        {
+          "metric": "corridor_ik_success",
+          "original": 0.6976744186046512,
+          "candidate": 0.6782945736434108,
+          "change": -0.019379844961240345
+        },
+        {
+          "metric": "corridor_ik_p95_mm",
+          "original": 9.486334776373978,
+          "candidate": 9.850970619810639,
+          "change": 0.3646358434366608
+        }
+      ],
+      "failed_count": 8,
+      "maximum_relative_deficit": 0.0957307060755337,
+      "sum_relative_deficit": 0.23009121772470223
+    },
+    "meaningful": true,
+    "equivalent": false
+  },
+  {
+    "id": "s1255",
+    "design": [
+      350.0609,
+      170.9526,
+      80.7217,
+      91.9818,
+      65.6649,
+      20.8675,
+      13.5452
+    ],
+    "metrics": {
+      "global_isotropy_mean": 0.3728417424089444,
+      "global_isotropy_p10": 0.1946284771712684,
+      "global_cell_retention": 1.0,
+      "weak_isotropy_mean": 0.2008340632328389,
+      "weak_isotropy_p10": 0.13286941394029556,
+      "weak_cell_retention": 1.0,
+      "corridor_isotropy_mean": 0.18692473814305977,
+      "corridor_isotropy_p10": 0.12952116655373225,
+      "corridor_cell_retention": 1.0,
+      "volume_cm3": 2441.017491839269,
+      "radial_extent_mm": 115.12404132689619,
+      "z_max_mm": 169.6572526396399,
+      "z_min_mm": 63.89125774988841,
+      "tip_distance_max_mm": 173.24658447810447,
+      "global_ik_success": 0.5988222698072805,
+      "global_ik_p95_mm": 93.01502452851328,
+      "global_diagnostic_success": 0.9937901498929336,
+      "weak_ik_success": 0.5681114551083591,
+      "weak_ik_p95_mm": 53.78866257476762,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.6744186046511628,
+      "corridor_ik_p95_mm": 9.85116528862059,
+      "corridor_diagnostic_success": 1.0
+    },
+    "comparison": {
+      "pass_all": false,
+      "failures": [
+        {
+          "metric": "global_ik_success",
+          "original": 0.6520342612419701,
+          "candidate": 0.5988222698072805,
+          "change": -0.053211991434689576
+        },
+        {
+          "metric": "global_ik_p95_mm",
+          "original": 91.33520616389069,
+          "candidate": 93.01502452851328,
+          "change": 1.6798183646225908
+        },
+        {
+          "metric": "global_diagnostic_success",
+          "original": 0.9968950749464668,
+          "candidate": 0.9937901498929336,
+          "change": -0.003104925053533214
+        },
+        {
+          "metric": "weak_ik_success",
+          "original": 0.5828173374613003,
+          "candidate": 0.5681114551083591,
+          "change": -0.014705882352941124
+        },
+        {
+          "metric": "weak_ik_p95_mm",
+          "original": 53.788245709542814,
+          "candidate": 53.78866257476762,
+          "change": 0.0004168652248068838
+        },
+        {
+          "metric": "corridor_ik_success",
+          "original": 0.6976744186046512,
+          "candidate": 0.6744186046511628,
+          "change": -0.023255813953488413
+        },
+        {
+          "metric": "corridor_ik_p95_mm",
+          "original": 9.486334776373978,
+          "candidate": 9.85116528862059,
+          "change": 0.36483051224661267
+        }
+      ],
+      "failed_count": 7,
+      "maximum_relative_deficit": 0.08160919540229895,
+      "sum_relative_deficit": 0.20014760523789776
+    },
+    "meaningful": true,
+    "equivalent": false
+  },
+  {
+    "id": "s1278",
+    "design": [
+      350.4141,
+      170.0,
+      80.4086,
+      91.7675,
+      65.5327,
+      21.3424,
+      13.4769
+    ],
+    "metrics": {
+      "global_isotropy_mean": 0.3803476575638408,
+      "global_isotropy_p10": 0.20784075121640516,
+      "global_cell_retention": 0.9998133283554228,
+      "weak_isotropy_mean": 0.20219267626275328,
+      "weak_isotropy_p10": 0.13981714774300114,
+      "weak_cell_retention": 0.9990680335507922,
+      "corridor_isotropy_mean": 0.18532512448963043,
+      "corridor_isotropy_p10": 0.12704813398151815,
+      "corridor_cell_retention": 0.9791666666666666,
+      "volume_cm3": 2448.871473473244,
+      "radial_extent_mm": 115.26118772788605,
+      "z_max_mm": 170.13820267224938,
+      "z_min_mm": 63.99324352818755,
+      "tip_distance_max_mm": 173.62211463302364,
+      "global_ik_success": 0.5709850107066381,
+      "global_ik_p95_mm": 95.42713213427658,
+      "global_diagnostic_success": 1.0,
+      "weak_ik_success": 0.544891640866873,
+      "weak_ik_p95_mm": 53.78747204719332,
+      "weak_diagnostic_success": 0.9891640866873065,
+      "corridor_ik_success": 0.6085271317829457,
+      "corridor_ik_p95_mm": 10.325748962585719,
+      "corridor_diagnostic_success": 1.0
+    },
+    "comparison": {
+      "pass_all": false,
+      "failures": [
+        {
+          "metric": "global_cell_retention",
+          "original": 1.0,
+          "candidate": 0.9998133283554228,
+          "change": -0.00018667164457719654
+        },
+        {
+          "metric": "weak_cell_retention",
+          "original": 1.0,
+          "candidate": 0.9990680335507922,
+          "change": -0.0009319664492077884
+        },
+        {
+          "metric": "corridor_cell_retention",
+          "original": 1.0,
+          "candidate": 0.9791666666666666,
+          "change": -0.02083333333333337
+        },
+        {
+          "metric": "global_ik_success",
+          "original": 0.6520342612419701,
+          "candidate": 0.5709850107066381,
+          "change": -0.08104925053533196
+        },
+        {
+          "metric": "global_ik_p95_mm",
+          "original": 91.33520616389069,
+          "candidate": 95.42713213427658,
+          "change": 4.091925970385887
+        },
+        {
+          "metric": "weak_ik_success",
+          "original": 0.5828173374613003,
+          "candidate": 0.544891640866873,
+          "change": -0.03792569659442724
+        },
+        {
+          "metric": "weak_diagnostic_success",
+          "original": 1.0,
+          "candidate": 0.9891640866873065,
+          "change": -0.010835913312693513
+        },
+        {
+          "metric": "corridor_ik_success",
+          "original": 0.6976744186046512,
+          "candidate": 0.6085271317829457,
+          "change": -0.08914728682170547
+        },
+        {
+          "metric": "corridor_ik_p95_mm",
+          "original": 9.486334776373978,
+          "candidate": 10.325748962585719,
+          "change": 0.8394141862117408
+        }
+      ],
+      "failed_count": 9,
+      "maximum_relative_deficit": 0.12777777777777785,
+      "sum_relative_deficit": 0.4832287000256675
+    },
+    "meaningful": true,
+    "equivalent": false
+  },
+  {
+    "id": "s1311",
+    "design": [
+      350.2187,
+      170.0,
+      80.438,
+      89.7754,
+      64.1479,
+      22.2141,
+      13.1665
+    ],
+    "metrics": {
+      "global_isotropy_mean": 0.3874942162729618,
+      "global_isotropy_p10": 0.20252760610209414,
+      "global_cell_retention": 0.9998133283554228,
+      "weak_isotropy_mean": 0.2092983406922415,
+      "weak_isotropy_p10": 0.14205655741292655,
+      "weak_cell_retention": 0.9990680335507922,
+      "corridor_isotropy_mean": 0.1923321337833188,
+      "corridor_isotropy_p10": 0.13250462887171302,
+      "corridor_cell_retention": 0.9791666666666666,
+      "volume_cm3": 2384.076124992954,
+      "radial_extent_mm": 114.57131063177712,
+      "z_max_mm": 170.45903584432165,
+      "z_min_mm": 63.8376334126134,
+      "tip_distance_max_mm": 173.4370647808009,
+      "global_ik_success": 0.4964668094218415,
+      "global_ik_p95_mm": 95.46331210504714,
+      "global_diagnostic_success": 0.9940042826552462,
+      "weak_ik_success": 0.5208978328173375,
+      "weak_ik_p95_mm": 53.78749324626031,
+      "weak_diagnostic_success": 0.9837461300309598,
+      "corridor_ik_success": 0.4496124031007752,
+      "corridor_ik_p95_mm": 23.38824759904872,
+      "corridor_diagnostic_success": 1.0
+    },
+    "comparison": {
+      "pass_all": false,
+      "failures": [
+        {
+          "metric": "global_cell_retention",
+          "original": 1.0,
+          "candidate": 0.9998133283554228,
+          "change": -0.00018667164457719654
+        },
+        {
+          "metric": "weak_cell_retention",
+          "original": 1.0,
+          "candidate": 0.9990680335507922,
+          "change": -0.0009319664492077884
+        },
+        {
+          "metric": "corridor_cell_retention",
+          "original": 1.0,
+          "candidate": 0.9791666666666666,
+          "change": -0.02083333333333337
+        },
+        {
+          "metric": "global_ik_success",
+          "original": 0.6520342612419701,
+          "candidate": 0.4964668094218415,
+          "change": -0.15556745182012854
+        },
+        {
+          "metric": "global_ik_p95_mm",
+          "original": 91.33520616389069,
+          "candidate": 95.46331210504714,
+          "change": 4.1281059411564485
+        },
+        {
+          "metric": "global_diagnostic_success",
+          "original": 0.9968950749464668,
+          "candidate": 0.9940042826552462,
+          "change": -0.0028907922912205786
+        },
+        {
+          "metric": "weak_ik_success",
+          "original": 0.5828173374613003,
+          "candidate": 0.5208978328173375,
+          "change": -0.061919504643962786
+        },
+        {
+          "metric": "weak_diagnostic_success",
+          "original": 1.0,
+          "candidate": 0.9837461300309598,
+          "change": -0.016253869969040213
+        },
+        {
+          "metric": "corridor_ik_success",
+          "original": 0.6976744186046512,
+          "candidate": 0.4496124031007752,
+          "change": -0.24806201550387597
+        },
+        {
+          "metric": "corridor_ik_p95_mm",
+          "original": 9.486334776373978,
+          "candidate": 23.38824759904872,
+          "change": 13.901912822674744
+        }
+      ],
+      "failed_count": 10,
+      "maximum_relative_deficit": 1.465467237915523,
+      "sum_relative_deficit": 2.252155293048055
+    },
+    "meaningful": true,
+    "equivalent": false
+  },
+  {
+    "id": "s1098",
+    "design": [
+      350.0,
+      170.0,
+      80.0,
+      90.0,
+      65.0,
+      21.995,
+      13.29
+    ],
+    "metrics": {
+      "global_isotropy_mean": 0.38251114376455947,
+      "global_isotropy_p10": 0.1974637529269413,
+      "global_cell_retention": 1.0,
+      "weak_isotropy_mean": 0.20806367944521723,
+      "weak_isotropy_p10": 0.1419404237503715,
+      "weak_cell_retention": 1.0,
+      "corridor_isotropy_mean": 0.19456423115722699,
+      "corridor_isotropy_p10": 0.130105277436292,
+      "corridor_cell_retention": 1.0,
+      "volume_cm3": 2426.8803248981153,
+      "radial_extent_mm": 115.31223046527877,
+      "z_max_mm": 170.0734700833944,
+      "z_min_mm": 63.67710587912905,
+      "tip_distance_max_mm": 173.20899969695833,
+      "global_ik_success": 0.49625267665952894,
+      "global_ik_p95_mm": 95.50426414906039,
+      "global_diagnostic_success": 0.9940042826552462,
+      "weak_ik_success": 0.5208978328173375,
+      "weak_ik_p95_mm": 53.788245709542814,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.4728682170542636,
+      "corridor_ik_p95_mm": 18.62981229438373,
+      "corridor_diagnostic_success": 1.0
+    },
+    "comparison": {
+      "pass_all": false,
+      "failures": [
+        {
+          "metric": "global_ik_success",
+          "original": 0.6520342612419701,
+          "candidate": 0.49625267665952894,
+          "change": -0.15578158458244112
+        },
+        {
+          "metric": "global_ik_p95_mm",
+          "original": 91.33520616389069,
+          "candidate": 95.50426414906039,
+          "change": 4.169057985169701
+        },
+        {
+          "metric": "global_diagnostic_success",
+          "original": 0.9968950749464668,
+          "candidate": 0.9940042826552462,
+          "change": -0.0028907922912205786
+        },
+        {
+          "metric": "weak_ik_success",
+          "original": 0.5828173374613003,
+          "candidate": 0.5208978328173375,
+          "change": -0.061919504643962786
+        },
+        {
+          "metric": "corridor_ik_success",
+          "original": 0.6976744186046512,
+          "candidate": 0.4728682170542636,
+          "change": -0.2248062015503876
+        },
+        {
+          "metric": "corridor_ik_p95_mm",
+          "original": 9.486334776373978,
+          "candidate": 18.62981229438373,
+          "change": 9.143477518009751
+        }
+      ],
+      "failed_count": 6,
+      "maximum_relative_deficit": 0.9638577736874601,
+      "sum_relative_deficit": 1.6797834321653562
+    },
+    "meaningful": true,
+    "equivalent": false
+  },
+  {
+    "id": "s1015",
+    "design": [
+      350.0,
+      170.0,
+      80.0,
+      90.0,
+      65.0,
+      20.12,
+      13.915
+    ],
+    "metrics": {
+      "global_isotropy_mean": 0.3674724008223225,
+      "global_isotropy_p10": 0.19419966601077507,
+      "global_cell_retention": 1.0,
+      "weak_isotropy_mean": 0.19760403292583106,
+      "weak_isotropy_p10": 0.13269891572082304,
+      "weak_cell_retention": 1.0,
+      "corridor_isotropy_mean": 0.18250106667857416,
+      "corridor_isotropy_p10": 0.12506550405284492,
+      "corridor_cell_retention": 1.0,
+      "volume_cm3": 2382.505328666159,
+      "radial_extent_mm": 114.46033930349593,
+      "z_max_mm": 169.07402956838507,
+      "z_min_mm": 63.81343792337595,
+      "tip_distance_max_mm": 173.174415466532,
+      "global_ik_success": 0.6451820128479657,
+      "global_ik_p95_mm": 92.21726880715676,
+      "global_diagnostic_success": 0.9968950749464668,
+      "weak_ik_success": 0.5843653250773994,
+      "weak_ik_p95_mm": 53.788245709542814,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.6782945736434108,
+      "corridor_ik_p95_mm": 9.889752590877013,
+      "corridor_diagnostic_success": 1.0
+    },
+    "comparison": {
+      "pass_all": false,
+      "failures": [
+        {
+          "metric": "corridor_isotropy_p10",
+          "original": 0.12563027754592443,
+          "candidate": 0.12506550405284492,
+          "change": -0.0005647734930795123
+        },
+        {
+          "metric": "global_ik_success",
+          "original": 0.6520342612419701,
+          "candidate": 0.6451820128479657,
+          "change": -0.006852248394004334
+        },
+        {
+          "metric": "global_ik_p95_mm",
+          "original": 91.33520616389069,
+          "candidate": 92.21726880715676,
+          "change": 0.8820626432660674
+        },
+        {
+          "metric": "corridor_ik_success",
+          "original": 0.6976744186046512,
+          "candidate": 0.6782945736434108,
+          "change": -0.019379844961240345
+        },
+        {
+          "metric": "corridor_ik_p95_mm",
+          "original": 9.486334776373978,
+          "candidate": 9.889752590877013,
+          "change": 0.40341781450303493
+        }
+      ],
+      "failed_count": 5,
+      "maximum_relative_deficit": 0.04252620469475313,
+      "sum_relative_deficit": 0.09496595636264321
+    },
+    "meaningful": true,
+    "equivalent": false
+  },
+  {
+    "id": "s1065",
+    "design": [
+      350.0,
+      170.0,
+      80.0,
+      90.0,
+      65.0,
+      21.245,
+      13.6025
+    ],
+    "metrics": {
+      "global_isotropy_mean": 0.3769965624161844,
+      "global_isotropy_p10": 0.19844798740744268,
+      "global_cell_retention": 1.0,
+      "weak_isotropy_mean": 0.20426407751318393,
+      "weak_isotropy_p10": 0.14051053221962845,
+      "weak_cell_retention": 1.0,
+      "corridor_isotropy_mean": 0.18954141729110643,
+      "corridor_isotropy_p10": 0.12964407425602228,
+      "corridor_cell_retention": 1.0,
+      "volume_cm3": 2447.6933762281474,
+      "radial_extent_mm": 115.19366373970378,
+      "z_max_mm": 169.69094315418369,
+      "z_min_mm": 63.668782367529694,
+      "tip_distance_max_mm": 173.1987058334288,
+      "global_ik_success": 0.5759100642398287,
+      "global_ik_p95_mm": 95.50426414906039,
+      "global_diagnostic_success": 0.9968950749464668,
+      "weak_ik_success": 0.5541795665634675,
+      "weak_ik_p95_mm": 53.788245709542814,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.627906976744186,
+      "corridor_ik_p95_mm": 9.889752590877013,
+      "corridor_diagnostic_success": 1.0
+    },
+    "comparison": {
+      "pass_all": false,
+      "failures": [
+        {
+          "metric": "global_ik_success",
+          "original": 0.6520342612419701,
+          "candidate": 0.5759100642398287,
+          "change": -0.07612419700214135
+        },
+        {
+          "metric": "global_ik_p95_mm",
+          "original": 91.33520616389069,
+          "candidate": 95.50426414906039,
+          "change": 4.169057985169701
+        },
+        {
+          "metric": "weak_ik_success",
+          "original": 0.5828173374613003,
+          "candidate": 0.5541795665634675,
+          "change": -0.028637770897832815
+        },
+        {
+          "metric": "corridor_ik_success",
+          "original": 0.6976744186046512,
+          "candidate": 0.627906976744186,
+          "change": -0.06976744186046513
+        },
+        {
+          "metric": "corridor_ik_p95_mm",
+          "original": 9.486334776373978,
+          "candidate": 9.889752590877013,
+          "change": 0.40341781450303493
+        }
+      ],
+      "failed_count": 5,
+      "maximum_relative_deficit": 0.11674876847290643,
+      "sum_relative_deficit": 0.35405744364679353
+    },
+    "meaningful": true,
+    "equivalent": false
+  },
+  {
+    "id": "s1293",
+    "design": [
+      349.9957,
+      170.0,
+      80.0,
+      89.8993,
+      65.2302,
+      22.1743,
+      13.2906
+    ],
+    "metrics": {
+      "global_isotropy_mean": 0.3844414727929612,
+      "global_isotropy_p10": 0.1978827980105248,
+      "global_cell_retention": 1.0,
+      "weak_isotropy_mean": 0.20937970361657512,
+      "weak_isotropy_p10": 0.14199075172976128,
+      "weak_cell_retention": 1.0,
+      "corridor_isotropy_mean": 0.19613192760358547,
+      "corridor_isotropy_p10": 0.1310314721091981,
+      "corridor_cell_retention": 1.0,
+      "volume_cm3": 2409.6015653033714,
+      "radial_extent_mm": 115.60110686363394,
+      "z_max_mm": 170.11013627715425,
+      "z_min_mm": 63.600518599551144,
+      "tip_distance_max_mm": 173.20129055060443,
+      "global_ik_success": 0.4906852248394004,
+      "global_ik_p95_mm": 95.50507417741076,
+      "global_diagnostic_success": 0.9940042826552462,
+      "weak_ik_success": 0.5208978328173375,
+      "weak_ik_p95_mm": 53.7882216774724,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.45348837209302323,
+      "corridor_ik_p95_mm": 22.047887437683492,
+      "corridor_diagnostic_success": 1.0
+    },
+    "comparison": {
+      "pass_all": false,
+      "failures": [
+        {
+          "metric": "global_ik_success",
+          "original": 0.6520342612419701,
+          "candidate": 0.4906852248394004,
+          "change": -0.16134903640256965
+        },
+        {
+          "metric": "global_ik_p95_mm",
+          "original": 91.33520616389069,
+          "candidate": 95.50507417741076,
+          "change": 4.169868013520073
+        },
+        {
+          "metric": "global_diagnostic_success",
+          "original": 0.9968950749464668,
+          "candidate": 0.9940042826552462,
+          "change": -0.0028907922912205786
+        },
+        {
+          "metric": "weak_ik_success",
+          "original": 0.5828173374613003,
+          "candidate": 0.5208978328173375,
+          "change": -0.061919504643962786
+        },
+        {
+          "metric": "corridor_ik_success",
+          "original": 0.6976744186046512,
+          "candidate": 0.45348837209302323,
+          "change": -0.24418604651162795
+        },
+        {
+          "metric": "corridor_ik_p95_mm",
+          "original": 9.486334776373978,
+          "candidate": 22.047887437683492,
+          "change": 12.561552661309515
+        }
+      ],
+      "failed_count": 6,
+      "maximum_relative_deficit": 1.3241734513306938,
+      "sum_relative_deficit": 2.076424344176987
+    },
+    "meaningful": true,
+    "equivalent": false
+  },
+  {
+    "id": "s1032",
+    "design": [
+      350.0,
+      170.0,
+      80.0,
+      90.0,
+      65.0,
+      20.495,
+      13.915
+    ],
+    "metrics": {
+      "global_isotropy_mean": 0.3719014712094586,
+      "global_isotropy_p10": 0.19617884380873732,
+      "global_cell_retention": 1.0,
+      "weak_isotropy_mean": 0.2003923695011062,
+      "weak_isotropy_p10": 0.1359458893764256,
+      "weak_cell_retention": 1.0,
+      "corridor_isotropy_mean": 0.18501654542938964,
+      "corridor_isotropy_p10": 0.12873306023797854,
+      "corridor_cell_retention": 1.0,
+      "volume_cm3": 2425.3095285713202,
+      "radial_extent_mm": 115.07460073056826,
+      "z_max_mm": 169.21562239592396,
+      "z_min_mm": 63.660268790765166,
+      "tip_distance_max_mm": 173.17567810503152,
+      "global_ik_success": 0.6284796573875803,
+      "global_ik_p95_mm": 92.21726880715676,
+      "global_diagnostic_success": 0.9968950749464668,
+      "weak_ik_success": 0.5727554179566563,
+      "weak_ik_p95_mm": 53.788245709542814,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.689922480620155,
+      "corridor_ik_p95_mm": 9.850822820210295,
+      "corridor_diagnostic_success": 1.0
+    },
+    "comparison": {
+      "pass_all": false,
+      "failures": [
+        {
+          "metric": "global_ik_success",
+          "original": 0.6520342612419701,
+          "candidate": 0.6284796573875803,
+          "change": -0.02355460385438979
+        },
+        {
+          "metric": "global_ik_p95_mm",
+          "original": 91.33520616389069,
+          "candidate": 92.21726880715676,
+          "change": 0.8820626432660674
+        },
+        {
+          "metric": "weak_ik_success",
+          "original": 0.5828173374613003,
+          "candidate": 0.5727554179566563,
+          "change": -0.010061919504643968
+        },
+        {
+          "metric": "corridor_ik_success",
+          "original": 0.6976744186046512,
+          "candidate": 0.689922480620155,
+          "change": -0.007751937984496138
+        },
+        {
+          "metric": "corridor_ik_p95_mm",
+          "original": 9.486334776373978,
+          "candidate": 9.850822820210295,
+          "change": 0.3644880438363174
+        }
+      ],
+      "failed_count": 5,
+      "maximum_relative_deficit": 0.038422431047245624,
+      "sum_relative_deficit": 0.1125800352842765
+    },
+    "meaningful": true,
+    "equivalent": false
+  },
+  {
+    "id": "s1115",
+    "design": [
+      350.0,
+      170.0,
+      80.0,
+      90.0,
+      65.0,
+      22.37,
+      13.29
+    ],
+    "metrics": {
+      "global_isotropy_mean": 0.38683282338926395,
+      "global_isotropy_p10": 0.1988112665741056,
+      "global_cell_retention": 1.0,
+      "weak_isotropy_mean": 0.21089128866827894,
+      "weak_isotropy_p10": 0.14317986312133502,
+      "weak_cell_retention": 1.0,
+      "corridor_isotropy_mean": 0.19758083885531072,
+      "corridor_isotropy_p10": 0.1323450124964122,
+      "corridor_cell_retention": 1.0,
+      "volume_cm3": 2442.588288166064,
+      "radial_extent_mm": 115.91804812380377,
+      "z_max_mm": 170.15795802272504,
+      "z_min_mm": 63.523108255412,
+      "tip_distance_max_mm": 173.2016241785212,
+      "global_ik_success": 0.4849036402569593,
+      "global_ik_p95_mm": 95.50426414906039,
+      "global_diagnostic_success": 0.9940042826552462,
+      "weak_ik_success": 0.5208978328173375,
+      "weak_ik_p95_mm": 53.788245709542814,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.4496124031007752,
+      "corridor_ik_p95_mm": 23.603124571870406,
+      "corridor_diagnostic_success": 1.0
+    },
+    "comparison": {
+      "pass_all": false,
+      "failures": [
+        {
+          "metric": "global_ik_success",
+          "original": 0.6520342612419701,
+          "candidate": 0.4849036402569593,
+          "change": -0.16713062098501075
+        },
+        {
+          "metric": "global_ik_p95_mm",
+          "original": 91.33520616389069,
+          "candidate": 95.50426414906039,
+          "change": 4.169057985169701
+        },
+        {
+          "metric": "global_diagnostic_success",
+          "original": 0.9968950749464668,
+          "candidate": 0.9940042826552462,
+          "change": -0.0028907922912205786
+        },
+        {
+          "metric": "weak_ik_success",
+          "original": 0.5828173374613003,
+          "candidate": 0.5208978328173375,
+          "change": -0.061919504643962786
+        },
+        {
+          "metric": "corridor_ik_success",
+          "original": 0.6976744186046512,
+          "candidate": 0.4496124031007752,
+          "change": -0.24806201550387597
+        },
+        {
+          "metric": "corridor_ik_p95_mm",
+          "original": 9.486334776373978,
+          "candidate": 23.603124571870406,
+          "change": 14.116789795496429
+        }
+      ],
+      "failed_count": 6,
+      "maximum_relative_deficit": 1.4881184491458965,
+      "sum_relative_deficit": 2.25478302387995
+    },
+    "meaningful": true,
+    "equivalent": false
+  },
+  {
+    "id": "s1082",
+    "design": [
+      350.0,
+      170.0,
+      80.0,
+      90.0,
+      65.0,
+      21.62,
+      13.6025
+    ],
+    "metrics": {
+      "global_isotropy_mean": 0.3813197735517185,
+      "global_isotropy_p10": 0.19956604263605177,
+      "global_cell_retention": 1.0,
+      "weak_isotropy_mean": 0.20705561416148988,
+      "weak_isotropy_p10": 0.14147517824514094,
+      "weak_cell_retention": 1.0,
+      "corridor_isotropy_mean": 0.19201925880361317,
+      "corridor_isotropy_p10": 0.12950236377103191,
+      "corridor_cell_retention": 1.0,
+      "volume_cm3": 2436.3051028588848,
+      "radial_extent_mm": 115.80103439175817,
+      "z_max_mm": 169.8006149791592,
+      "z_min_mm": 63.514775958218024,
+      "tip_distance_max_mm": 173.1950735874723,
+      "global_ik_success": 0.5516059957173447,
+      "global_ik_p95_mm": 95.50426414906039,
+      "global_diagnostic_success": 0.9940042826552462,
+      "weak_ik_success": 0.5441176470588235,
+      "weak_ik_p95_mm": 53.788245709542814,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.6007751937984496,
+      "corridor_ik_p95_mm": 10.679975463140577,
+      "corridor_diagnostic_success": 1.0
+    },
+    "comparison": {
+      "pass_all": false,
+      "failures": [
+        {
+          "metric": "global_ik_success",
+          "original": 0.6520342612419701,
+          "candidate": 0.5516059957173447,
+          "change": -0.10042826552462536
+        },
+        {
+          "metric": "global_ik_p95_mm",
+          "original": 91.33520616389069,
+          "candidate": 95.50426414906039,
+          "change": 4.169057985169701
+        },
+        {
+          "metric": "global_diagnostic_success",
+          "original": 0.9968950749464668,
+          "candidate": 0.9940042826552462,
+          "change": -0.0028907922912205786
+        },
+        {
+          "metric": "weak_ik_success",
+          "original": 0.5828173374613003,
+          "candidate": 0.5441176470588235,
+          "change": -0.03869969040247678
+        },
+        {
+          "metric": "corridor_ik_success",
+          "original": 0.6976744186046512,
+          "candidate": 0.6007751937984496,
+          "change": -0.09689922480620161
+        },
+        {
+          "metric": "corridor_ik_p95_mm",
+          "original": 9.486334776373978,
+          "candidate": 10.679975463140577,
+          "change": 1.1936406867665994
+        }
+      ],
+      "failed_count": 6,
+      "maximum_relative_deficit": 0.15402298850574725,
+      "sum_relative_deficit": 0.5336858038429503
+    },
+    "meaningful": true,
+    "equivalent": false
+  },
+  {
+    "id": "s1315",
+    "design": [
+      350.5389,
+      170.0,
+      80.8298,
+      91.506,
+      65.2869,
+      22.0112,
+      13.2017
+    ],
+    "metrics": {
+      "global_isotropy_mean": 0.3864278303969834,
+      "global_isotropy_p10": 0.20873030391404093,
+      "global_cell_retention": 0.9981332835542281,
+      "weak_isotropy_mean": 0.20611683309705808,
+      "weak_isotropy_p10": 0.13996684445410337,
+      "weak_cell_retention": 0.9906803355079217,
+      "corridor_isotropy_mean": 0.18831150322620246,
+      "corridor_isotropy_p10": 0.12831618671104064,
+      "corridor_cell_retention": 0.9791666666666666,
+      "volume_cm3": 2430.4146166334035,
+      "radial_extent_mm": 115.19320359352523,
+      "z_max_mm": 170.5756501614615,
+      "z_min_mm": 64.06944801581503,
+      "tip_distance_max_mm": 173.76177494391015,
+      "global_ik_success": 0.5036402569593148,
+      "global_ik_p95_mm": 95.40422660346954,
+      "global_diagnostic_success": 0.9911134903640257,
+      "weak_ik_success": 0.5170278637770898,
+      "weak_ik_p95_mm": 53.78782997725836,
+      "weak_diagnostic_success": 0.9698142414860681,
+      "corridor_ik_success": 0.44573643410852715,
+      "corridor_ik_p95_mm": 21.456647507919,
+      "corridor_diagnostic_success": 1.0
+    },
+    "comparison": {
+      "pass_all": false,
+      "failures": [
+        {
+          "metric": "global_cell_retention",
+          "original": 1.0,
+          "candidate": 0.9981332835542281,
+          "change": -0.0018667164457718544
+        },
+        {
+          "metric": "weak_cell_retention",
+          "original": 1.0,
+          "candidate": 0.9906803355079217,
+          "change": -0.009319664492078328
+        },
+        {
+          "metric": "corridor_cell_retention",
+          "original": 1.0,
+          "candidate": 0.9791666666666666,
+          "change": -0.02083333333333337
+        },
+        {
+          "metric": "global_ik_success",
+          "original": 0.6520342612419701,
+          "candidate": 0.5036402569593148,
+          "change": -0.14839400428265526
+        },
+        {
+          "metric": "global_ik_p95_mm",
+          "original": 91.33520616389069,
+          "candidate": 95.40422660346954,
+          "change": 4.06902043957885
+        },
+        {
+          "metric": "global_diagnostic_success",
+          "original": 0.9968950749464668,
+          "candidate": 0.9911134903640257,
+          "change": -0.005781584582441046
+        },
+        {
+          "metric": "weak_ik_success",
+          "original": 0.5828173374613003,
+          "candidate": 0.5170278637770898,
+          "change": -0.06578947368421051
+        },
+        {
+          "metric": "weak_diagnostic_success",
+          "original": 1.0,
+          "candidate": 0.9698142414860681,
+          "change": -0.030185758513931904
+        },
+        {
+          "metric": "corridor_ik_success",
+          "original": 0.6976744186046512,
+          "candidate": 0.44573643410852715,
+          "change": -0.25193798449612403
+        },
+        {
+          "metric": "corridor_ik_p95_mm",
+          "original": 9.486334776373978,
+          "candidate": 21.456647507919,
+          "change": 11.970312731545024
+        }
+      ],
+      "failed_count": 10,
+      "maximum_relative_deficit": 1.2618480175670663,
+      "sum_relative_deficit": 2.075982611504993
+    },
+    "meaningful": true,
+    "equivalent": false
+  },
+  {
+    "id": "s1148",
+    "design": [
+      350.0,
+      170.0,
+      80.0,
+      90.0,
+      65.0,
+      23.12,
+      12.9775
+    ],
+    "metrics": {
+      "global_isotropy_mean": 0.3960052813652812,
+      "global_isotropy_p10": 0.20500985675558311,
+      "global_cell_retention": 1.0,
+      "weak_isotropy_mean": 0.21467812517917712,
+      "weak_isotropy_p10": 0.14528298254607686,
+      "weak_cell_retention": 1.0,
+      "corridor_isotropy_mean": 0.2056315387248057,
+      "corridor_isotropy_p10": 0.131134479184806,
+      "corridor_cell_retention": 1.0,
+      "volume_cm3": 2473.218816538564,
+      "radial_extent_mm": 116.03455830617582,
+      "z_max_mm": 170.42220789338677,
+      "z_min_mm": 63.53125111122359,
+      "tip_distance_max_mm": 173.19543231908966,
+      "global_ik_success": 0.4720556745182013,
+      "global_ik_p95_mm": 95.50426414906039,
+      "global_diagnostic_success": 0.9971092077087794,
+      "weak_ik_success": 0.5178018575851393,
+      "weak_ik_p95_mm": 53.788245709542814,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.4108527131782946,
+      "corridor_ik_p95_mm": 23.603124571870406,
+      "corridor_diagnostic_success": 1.0
+    },
+    "comparison": {
+      "pass_all": false,
+      "failures": [
+        {
+          "metric": "global_ik_success",
+          "original": 0.6520342612419701,
+          "candidate": 0.4720556745182013,
+          "change": -0.17997858672376876
+        },
+        {
+          "metric": "global_ik_p95_mm",
+          "original": 91.33520616389069,
+          "candidate": 95.50426414906039,
+          "change": 4.169057985169701
+        },
+        {
+          "metric": "weak_ik_success",
+          "original": 0.5828173374613003,
+          "candidate": 0.5178018575851393,
+          "change": -0.06501547987616096
+        },
+        {
+          "metric": "corridor_ik_success",
+          "original": 0.6976744186046512,
+          "candidate": 0.4108527131782946,
+          "change": -0.2868217054263566
+        },
+        {
+          "metric": "corridor_ik_p95_mm",
+          "original": 9.486334776373978,
+          "candidate": 23.603124571870406,
+          "change": 14.116789795496429
+        }
+      ],
+      "failed_count": 5,
+      "maximum_relative_deficit": 1.4881184491458965,
+      "sum_relative_deficit": 2.332455301986117
+    },
+    "meaningful": true,
+    "equivalent": false
+  },
+  {
+    "id": "s1049",
+    "design": [
+      350.0,
+      170.0,
+      80.0,
+      90.0,
+      65.0,
+      20.87,
+      13.915
+    ],
+    "metrics": {
+      "global_isotropy_mean": 0.3791517240350703,
+      "global_isotropy_p10": 0.2075421139054675,
+      "global_cell_retention": 1.0,
+      "weak_isotropy_mean": 0.20325255676551546,
+      "weak_isotropy_p10": 0.13947921996843202,
+      "weak_cell_retention": 1.0,
+      "corridor_isotropy_mean": 0.18716219535773357,
+      "corridor_isotropy_p10": 0.12859567263247973,
+      "corridor_cell_retention": 1.0,
+      "volume_cm3": 2425.3095285713202,
+      "radial_extent_mm": 115.68351932703304,
+      "z_max_mm": 169.35040561090779,
+      "z_min_mm": 63.50625413522507,
+      "tip_distance_max_mm": 173.17578721539144,
+      "global_ik_success": 0.6051391862955032,
+      "global_ik_p95_mm": 92.88453419826082,
+      "global_diagnostic_success": 0.9968950749464668,
+      "weak_ik_success": 0.5727554179566563,
+      "weak_ik_p95_mm": 53.788245709542814,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.6821705426356589,
+      "corridor_ik_p95_mm": 9.791349686194646,
+      "corridor_diagnostic_success": 1.0
+    },
+    "comparison": {
+      "pass_all": false,
+      "failures": [
+        {
+          "metric": "global_ik_success",
+          "original": 0.6520342612419701,
+          "candidate": 0.6051391862955032,
+          "change": -0.04689507494646683
+        },
+        {
+          "metric": "global_ik_p95_mm",
+          "original": 91.33520616389069,
+          "candidate": 92.88453419826082,
+          "change": 1.5493280343701343
+        },
+        {
+          "metric": "weak_ik_success",
+          "original": 0.5828173374613003,
+          "candidate": 0.5727554179566563,
+          "change": -0.010061919504643968
+        },
+        {
+          "metric": "corridor_ik_success",
+          "original": 0.6976744186046512,
+          "candidate": 0.6821705426356589,
+          "change": -0.015503875968992276
+        },
+        {
+          "metric": "corridor_ik_p95_mm",
+          "original": 9.486334776373978,
+          "candidate": 9.791349686194646,
+          "change": 0.3050149098206685
+        }
+      ],
+      "failed_count": 5,
+      "maximum_relative_deficit": 0.07192118226600988,
+      "sum_relative_deficit": 0.1605238615537141
+    },
+    "meaningful": true,
+    "equivalent": false
+  },
+  {
+    "id": "s1261",
+    "design": [
+      350.0048,
+      170.3076,
+      80.3351,
+      88.4766,
+      66.4455,
+      21.7965,
+      13.5664
+    ],
+    "metrics": {
+      "global_isotropy_mean": 0.3817844699910982,
+      "global_isotropy_p10": 0.19779647438758574,
+      "global_cell_retention": 1.0,
+      "weak_isotropy_mean": 0.20813781585195165,
+      "weak_isotropy_p10": 0.1421602329180348,
+      "weak_cell_retention": 1.0,
+      "corridor_isotropy_mean": 0.19400024782494305,
+      "corridor_isotropy_p10": 0.13005050866027335,
+      "corridor_cell_retention": 1.0,
+      "volume_cm3": 2454.3692606170257,
+      "radial_extent_mm": 116.19225285355053,
+      "z_max_mm": 169.85500919301262,
+      "z_min_mm": 63.47253708208095,
+      "tip_distance_max_mm": 173.19435169175193,
+      "global_ik_success": 0.5277301927194861,
+      "global_ik_p95_mm": 95.56176135232343,
+      "global_diagnostic_success": 0.9940042826552462,
+      "weak_ik_success": 0.5340557275541795,
+      "weak_ik_p95_mm": 53.7875172096472,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.5852713178294574,
+      "corridor_ik_p95_mm": 12.653457837949967,
+      "corridor_diagnostic_success": 1.0
+    },
+    "comparison": {
+      "pass_all": false,
+      "failures": [
+        {
+          "metric": "global_ik_success",
+          "original": 0.6520342612419701,
+          "candidate": 0.5277301927194861,
+          "change": -0.12430406852248399
+        },
+        {
+          "metric": "global_ik_p95_mm",
+          "original": 91.33520616389069,
+          "candidate": 95.56176135232343,
+          "change": 4.226555188432741
+        },
+        {
+          "metric": "global_diagnostic_success",
+          "original": 0.9968950749464668,
+          "candidate": 0.9940042826552462,
+          "change": -0.0028907922912205786
+        },
+        {
+          "metric": "weak_ik_success",
+          "original": 0.5828173374613003,
+          "candidate": 0.5340557275541795,
+          "change": -0.04876160990712075
+        },
+        {
+          "metric": "corridor_ik_success",
+          "original": 0.6976744186046512,
+          "candidate": 0.5852713178294574,
+          "change": -0.11240310077519378
+        },
+        {
+          "metric": "corridor_ik_p95_mm",
+          "original": 9.486334776373978,
+          "candidate": 12.653457837949967,
+          "change": 3.167123061575989
+        }
+      ],
+      "failed_count": 6,
+      "maximum_relative_deficit": 0.3338616163393064,
+      "sum_relative_deficit": 0.8184534589293778
+    },
+    "meaningful": true,
+    "equivalent": false
+  },
+  {
+    "id": "s0999",
+    "design": [
+      350.0,
+      170.0,
+      80.0,
+      90.0,
+      65.0,
+      19.745,
+      14.2275
+    ],
+    "metrics": {
+      "global_isotropy_mean": 0.3656217521758142,
+      "global_isotropy_p10": 0.19770993683967417,
+      "global_cell_retention": 1.0,
+      "weak_isotropy_mean": 0.19673370545319613,
+      "weak_isotropy_p10": 0.13217107979473103,
+      "weak_cell_retention": 1.0,
+      "corridor_isotropy_mean": 0.18078724188197381,
+      "corridor_isotropy_p10": 0.12772415670931073,
+      "corridor_cell_retention": 1.0,
+      "volume_cm3": 2381.327231421063,
+      "radial_extent_mm": 114.95504368434045,
+      "z_max_mm": 168.64781903992434,
+      "z_min_mm": 63.651565068694055,
+      "tip_distance_max_mm": 173.13992651681383,
+      "global_ik_success": 0.6461456102783726,
+      "global_ik_p95_mm": 91.29393954886713,
+      "global_diagnostic_success": 0.9968950749464668,
+      "weak_ik_success": 0.608359133126935,
+      "weak_ik_p95_mm": 53.788245709542814,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.6937984496124031,
+      "corridor_ik_p95_mm": 9.486334776373978,
+      "corridor_diagnostic_success": 1.0
+    },
+    "comparison": {
+      "pass_all": false,
+      "failures": [
+        {
+          "metric": "tip_distance_max_mm",
+          "original": 173.15191183762812,
+          "candidate": 173.13992651681383,
+          "change": -0.011985320814289935
+        },
+        {
+          "metric": "global_ik_success",
+          "original": 0.6520342612419701,
+          "candidate": 0.6461456102783726,
+          "change": -0.005888650963597475
+        },
+        {
+          "metric": "corridor_ik_success",
+          "original": 0.6976744186046512,
+          "candidate": 0.6937984496124031,
+          "change": -0.003875968992248069
+        }
+      ],
+      "failed_count": 3,
+      "maximum_relative_deficit": 0.009031198686371167,
+      "sum_relative_deficit": 0.014655972771985638
+    },
+    "meaningful": true,
+    "equivalent": false
+  },
+  {
+    "id": "s1099",
+    "design": [
+      350.0,
+      170.0,
+      80.0,
+      90.0,
+      65.0,
+      21.995,
+      13.6025
+    ],
+    "metrics": {
+      "global_isotropy_mean": 0.384239461283179,
+      "global_isotropy_p10": 0.1989960620439577,
+      "global_cell_retention": 1.0,
+      "weak_isotropy_mean": 0.21003064495524296,
+      "weak_isotropy_p10": 0.1430657142767482,
+      "weak_cell_retention": 1.0,
+      "corridor_isotropy_mean": 0.1947090946624687,
+      "corridor_isotropy_p10": 0.1310904215747499,
+      "corridor_cell_retention": 1.0,
+      "volume_cm3": 2469.684524803276,
+      "radial_extent_mm": 116.40302476940514,
+      "z_max_mm": 169.90344912128927,
+      "z_min_mm": 63.35992910197394,
+      "tip_distance_max_mm": 173.1902871968897,
+      "global_ik_success": 0.5086723768736616,
+      "global_ik_p95_mm": 95.50426414906039,
+      "global_diagnostic_success": 0.9940042826552462,
+      "weak_ik_success": 0.5340557275541795,
+      "weak_ik_p95_mm": 53.788245709542814,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.5465116279069767,
+      "corridor_ik_p95_mm": 14.292802221787253,
+      "corridor_diagnostic_success": 1.0
+    },
+    "comparison": {
+      "pass_all": false,
+      "failures": [
+        {
+          "metric": "global_ik_success",
+          "original": 0.6520342612419701,
+          "candidate": 0.5086723768736616,
+          "change": -0.14336188436830843
+        },
+        {
+          "metric": "global_ik_p95_mm",
+          "original": 91.33520616389069,
+          "candidate": 95.50426414906039,
+          "change": 4.169057985169701
+        },
+        {
+          "metric": "global_diagnostic_success",
+          "original": 0.9968950749464668,
+          "candidate": 0.9940042826552462,
+          "change": -0.0028907922912205786
+        },
+        {
+          "metric": "weak_ik_success",
+          "original": 0.5828173374613003,
+          "candidate": 0.5340557275541795,
+          "change": -0.04876160990712075
+        },
+        {
+          "metric": "corridor_ik_success",
+          "original": 0.6976744186046512,
+          "candidate": 0.5465116279069767,
+          "change": -0.15116279069767447
+        },
+        {
+          "metric": "corridor_ik_p95_mm",
+          "original": 9.486334776373978,
+          "candidate": 14.292802221787253,
+          "change": 4.806467445413276
+        }
+      ],
+      "failed_count": 6,
+      "maximum_relative_deficit": 0.5066727623174271,
+      "sum_relative_deficit": 1.0754188849703694
+    },
+    "meaningful": true,
+    "equivalent": false
+  },
+  {
+    "id": "s0001",
+    "design": [
+      348.16,
+      181.98,
+      92.14,
+      95.02,
+      65.91,
+      22.03,
+      13.98
+    ],
+    "metrics": {
+      "global_isotropy_mean": 0.3446781388397759,
+      "global_isotropy_p10": 0.1310632251798452,
+      "global_cell_retention": 0.9727459398917304,
+      "weak_isotropy_mean": 0.22026945762994438,
+      "weak_isotropy_p10": 0.14328393250015783,
+      "weak_cell_retention": 1.0,
+      "corridor_isotropy_mean": 0.2191800696651988,
+      "corridor_isotropy_p10": 0.12897237757159552,
+      "corridor_cell_retention": 1.0,
+      "volume_cm3": 2404.4964772412877,
+      "radial_extent_mm": 113.7065198205347,
+      "z_max_mm": 168.57813841691143,
+      "z_min_mm": 61.7785856934127,
+      "tip_distance_max_mm": 171.10282403297987,
+      "global_ik_success": 0.6977516059957174,
+      "global_ik_p95_mm": 82.63447116838879,
+      "global_diagnostic_success": 0.9797644539614561,
+      "weak_ik_success": 0.6664086687306502,
+      "weak_ik_p95_mm": 54.03858594617175,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.7751937984496124,
+      "corridor_ik_p95_mm": 7.876847437428506,
+      "corridor_diagnostic_success": 1.0
+    },
+    "comparison": {
+      "pass_all": false,
+      "failures": [
+        {
+          "metric": "global_isotropy_mean",
+          "original": 0.3495611782527194,
+          "candidate": 0.3446781388397759,
+          "change": -0.004883039412943491
+        },
+        {
+          "metric": "global_isotropy_p10",
+          "original": 0.1742317545772695,
+          "candidate": 0.1310632251798452,
+          "change": -0.0431685293974243
+        },
+        {
+          "metric": "global_cell_retention",
+          "original": 1.0,
+          "candidate": 0.9727459398917304,
+          "change": -0.027254060108269584
+        },
+        {
+          "metric": "tip_distance_max_mm",
+          "original": 173.15191183762812,
+          "candidate": 171.10282403297987,
+          "change": -2.049087804648252
+        },
+        {
+          "metric": "global_diagnostic_success",
+          "original": 0.9968950749464668,
+          "candidate": 0.9797644539614561,
+          "change": -0.017130620985010725
+        },
+        {
+          "metric": "weak_ik_p95_mm",
+          "original": 53.788245709542814,
+          "candidate": 54.03858594617175,
+          "change": 0.25034023662893645
+        }
+      ],
+      "failed_count": 6,
+      "maximum_relative_deficit": 0.24776499267979088,
+      "sum_relative_deficit": 0.3226603117472785
+    },
+    "meaningful": true,
+    "equivalent": false
+  }
+]

@@ -1,0 +1,740 @@
+{
+  "archive": "supplementary-method-comparison.tar.gz",
+  "files": [
+    {
+      "file": "output/final_geometry_method_comparison_20260916/banks/bank_71100.npz",
+      "bytes": 100740,
+      "sha256": "2d9b9ab59ad2d6cc41f761ec81ddf2c7e2bf810e8a8d0a19c3a97b933e4d1cd0"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/banks/bank_72100.npz",
+      "bytes": 386389,
+      "sha256": "565026d3466f02948083f3dff6b4439e338db9f2e14ac73d449ee1a94c48a005"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/banks/bank_73100.npz",
+      "bytes": 775594,
+      "sha256": "732180c880004ea59360c9378d1878ceb14e13d520477092c64882dee6cd904d"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/banks/bank_74100.npz",
+      "bytes": 776973,
+      "sha256": "039e265d8d926dd6e45a3aead59de3b186452914c37682650452b21a90e569d5"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/candidate_nsga2.json",
+      "bytes": 767,
+      "sha256": "bf0dc99c61290cfe12931f1cfeab4e9b0322bebb252c00c902b1f551b55be6db"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/candidate_staged.json",
+      "bytes": 824,
+      "sha256": "f7ac0a801e5faea1c57d5a7bcf6a62c9cae22f32d2a1bc814eafa7207499644a"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/checks.json",
+      "bytes": 196,
+      "sha256": "a5fd20f7f592e3c7d7149c80c13cedec0cc24ed1101b8cafb83757683d452763"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/environment.json",
+      "bytes": 136,
+      "sha256": "d5e9a3fe6fa44eaf1e7a4046d997953f4f2827d69b76a1bcb894c459abde7886"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/figures/final_validation.png",
+      "bytes": 131104,
+      "sha256": "ca0c9f9d279abf60f76d5ea558fe58bbfe61005fe1213f31225ebb3a16c9b20c"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/figures/method_comparison.png",
+      "bytes": 237963,
+      "sha256": "de132ed0aa76d6764669912f4be096a283af10fa82632e07617c931f47bb59c3"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/figures/validation_differences.png",
+      "bytes": 61617,
+      "sha256": "00fc3f4d569ba4584d689b2db7df0342436b1188bcefa2706e93a9249264f5e3"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/figures/workspace_samples.png",
+      "bytes": 1042505,
+      "sha256": "146aa1bf385bbb05cccd19ece027475c8499abac00b8a9eaf94c571bab2b6709"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/frozen_champions.json",
+      "bytes": 3516,
+      "sha256": "d5141ed0577413898a2d3b9d3914808eb6ee643dc2201ac596c193708e7ccbd2"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/gap_sensitivity.json",
+      "bytes": 6536,
+      "sha256": "2a078b02c379870371cdac23928fa5bbec0335208fae57dd68f114edd0705e36"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/isolated_dependency_versions.json",
+      "bytes": 564,
+      "sha256": "941f01809f551e17c25354258042c23b5c9f86e37cf751d5bfc62a11a21875a9"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/isolated_requirements_lock.txt",
+      "bytes": 394,
+      "sha256": "ff287b44d7b69d5ce77ae707ae333d94ac473841003f4f9577e4f3e302bffc62"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/matched_initial_batch_verification.json",
+      "bytes": 272,
+      "sha256": "5dcaabd5a7af5a2f1229b5dab5a6c745bbafe01f6c3f34d9e5100bf0f2dc6f79"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/outcome.json",
+      "bytes": 12343,
+      "sha256": "501786c880b943eb8d331f2b97dc1315cf84460120c76914bb1ceb0fbd24d28c"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/pilot.json",
+      "bytes": 14455,
+      "sha256": "6c4a98056314bd2ce028986972df772a4bd58019c4485918d2ca61f16f339c61"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/pilot_0.npz",
+      "bytes": 288771,
+      "sha256": "196ea36a988be13d9ebd8d15de0d86feb0bf69e1e09cad131256ced4c99962d7"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/pilot_1.npz",
+      "bytes": 291072,
+      "sha256": "ea0d0e41043510a1466d39c2d8808f340d18d2d24af873f4ef3d337a7c39d892"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/preflight_amendment.json",
+      "bytes": 373,
+      "sha256": "50ec270e002287dd6ea49eb894724e05b7441ff56a957280408435d096e25d70"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/preservation_verification.json",
+      "bytes": 47,
+      "sha256": "b5a017f6684e818877eae33532d3e74203d06d9b0107adc6f7408d718e1cb19c"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/protected_hashes.json",
+      "bytes": 524,
+      "sha256": "5aa3720d4bb10b693a5c8fb7c460656ba2e84c843d221c434ee7063fbea03f7e"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/protocol.json",
+      "bytes": 5317,
+      "sha256": "9dbfef5e18b1d8bb0b80f5fafda588b3912df7666fa406b51223d029ca505fd6"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/region_basis.json",
+      "bytes": 385,
+      "sha256": "51aa5bfcbde73a50f534c05f45985a78d7f86af51938e893076151ffe3631f1d"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/regions.json",
+      "bytes": 8309,
+      "sha256": "825c829c74650aab84ecb3058119b4d3bc55515d2bbf65688e7fed223b7922a5"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/reported_metrics.json",
+      "bytes": 6377,
+      "sha256": "1ee29cc6de228856339b9250594f68deba1f1f772259833027c96dd4dd4a8a59"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/runs/nsga2_71011/complete.json",
+      "bytes": 116,
+      "sha256": "10306c5daead3885aad1b7bf6f6262443031ca09d344e831ad370e9bf25a4015"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/runs/nsga2_71011/geometry_rejections.json",
+      "bytes": 5626,
+      "sha256": "c6f5f91f6f96e133e70b350f957c6832dd636d4359869ed0d647b18f502fae1f"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/runs/nsga2_71011/progress.json",
+      "bytes": 723,
+      "sha256": "eeab7f922c99c155a695459394ee0d8b8d05f23ca15170688dcae9c077378a86"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/runs/nsga2_71011/records.json",
+      "bytes": 506892,
+      "sha256": "1035c7c8793866e3d942eb53cbe6bcff42e0ff5117257401fa106df6f69f37da"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/runs/nsga2_71011/shortlist.json",
+      "bytes": 7622,
+      "sha256": "17f0f924bfe269620d4b1fc06c2703a24f2e777690e72a307f099b01d866777f"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/runs/nsga2_71012/complete.json",
+      "bytes": 115,
+      "sha256": "237a6c388b71dda2299ecb011f24c62afe94fd53d7cf20cbcdaae5a16cb7d440"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/runs/nsga2_71012/geometry_rejections.json",
+      "bytes": 8905,
+      "sha256": "41b587aacc5f49157767d20e2f52ae3ace16fa4f31e7ef2c906badc1efcdbfd3"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/runs/nsga2_71012/progress.json",
+      "bytes": 709,
+      "sha256": "d28ac198b9abbfc8038c4779522e836eec68c57804117aaaa5e4dad9834cf8bd"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/runs/nsga2_71012/records.json",
+      "bytes": 507567,
+      "sha256": "4948b2b602d0ec18d36b6dcaacc34b0eaf3c37bff4523311a5f443a552271788"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/runs/nsga2_71012/shortlist.json",
+      "bytes": 7858,
+      "sha256": "d014a6ef64b823d033ee8ba9dc21b900477681389e5455fe447182eda653f3d5"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/runs/nsga2_71013/complete.json",
+      "bytes": 116,
+      "sha256": "e2af69ca955dbeb783e7df42c4b0ad44950a19298f343c22a02276f527896436"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/runs/nsga2_71013/geometry_rejections.json",
+      "bytes": 7837,
+      "sha256": "8d36a030535298e6988262acc4bd6e604a60d026f42a741dbdb398d5d0d916d3"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/runs/nsga2_71013/progress.json",
+      "bytes": 711,
+      "sha256": "7669e7a49e443ab55fa4523f04c2b037f02afdd3d6eb12a21d90986430c6410f"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/runs/nsga2_71013/records.json",
+      "bytes": 508949,
+      "sha256": "53c1d90c60586660d630dfe13b481feaa38cd2d6749e1b960c77b4aa965ebe62"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/runs/nsga2_71013/shortlist.json",
+      "bytes": 7534,
+      "sha256": "cedc3c4f30aba0bb6e7ff03afdcca33cf1db86acf91cbd05d32ee4bc89a74cfa"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/runs/staged_71011/complete.json",
+      "bytes": 116,
+      "sha256": "6d22b2236b983bca190c70e8ae5b51759f2229f554a4a8f89d792dd0090f2c5c"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/runs/staged_71011/geometry_rejections.json",
+      "bytes": 22398,
+      "sha256": "5fd97d66660ea9bfa3f3d97d512c273b85cb06719108c4503de6758c2b34d422"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/runs/staged_71011/progress.json",
+      "bytes": 710,
+      "sha256": "43c8cf093bfeb758a47867add61ba1a43ea84c5f74e52f350aac5c00537ae8f4"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/runs/staged_71011/records.json",
+      "bytes": 504451,
+      "sha256": "47a2553ffa6e2784e105337aaf329a628cb37f74e68e188645d40f6984a4143b"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/runs/staged_71011/shortlist.json",
+      "bytes": 7726,
+      "sha256": "548f8a6ac19196114322c3982bccd5bd14c7d8df95e108005e15331fa1b89391"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/runs/staged_71012/complete.json",
+      "bytes": 117,
+      "sha256": "b33c540e0a520d71bc2a0c66c37dd1723454a50e1a63213fa01936cdf0606a46"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/runs/staged_71012/geometry_rejections.json",
+      "bytes": 21865,
+      "sha256": "f48aee97d0fb9b9426a8eb5fb8140be30315ec7f4cc3a0c858731c42a5ba389a"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/runs/staged_71012/progress.json",
+      "bytes": 722,
+      "sha256": "cc0cc93ae497668881452ddac7ca8735e4dbc6689f3867eb8915173b86470467"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/runs/staged_71012/records.json",
+      "bytes": 506132,
+      "sha256": "1e0597b3c58f6c44dfd1e14a600d29c44fd089e4305eb7e8c747969f805d0f4d"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/runs/staged_71012/shortlist.json",
+      "bytes": 7520,
+      "sha256": "1e70eb43403c31040cb633bcb70a67ea2bd3102fdfa28ab2af4b371bf7ebc4c3"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/runs/staged_71013/complete.json",
+      "bytes": 116,
+      "sha256": "cc520608007908dd6206038375c8dda3d1ebdcd7fc1a94de862a9f7d391c0698"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/runs/staged_71013/geometry_rejections.json",
+      "bytes": 22653,
+      "sha256": "d43ef56b17a50063ef34b0400b306ea66fee551ec1e0288304ab91c1536eca31"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/runs/staged_71013/progress.json",
+      "bytes": 716,
+      "sha256": "99f7f1a18c5eeffab419ecad6834b22536c2a556ba3552b0d7bd700b5e4e500e"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/runs/staged_71013/records.json",
+      "bytes": 507861,
+      "sha256": "db34ba5f1d8020698e6ee296122c87a76be66b027563bf49126bb369876560af"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/runs/staged_71013/shortlist.json",
+      "bytes": 7859,
+      "sha256": "7f124a5042e80a903be1e79e7b1d4d0fa14673947eaf6954893c172299117f36"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection/nsga2_71011_0.json",
+      "bytes": 1535,
+      "sha256": "833d155160cb921b6b2f1adc74c7ee4bcc3698bebeca8753577164896ac2120c"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection/nsga2_71011_0.npz",
+      "bytes": 2129552,
+      "sha256": "dc7b0ef49bd7d5d3bb9d5445f72f427e1f74b8937e4b9d284e554530c7fb4357"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection/nsga2_71011_1.json",
+      "bytes": 1550,
+      "sha256": "284817e95584ab78d7321c5634b61e4494495786375a5c70bf2be7a5af829d9f"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection/nsga2_71011_1.npz",
+      "bytes": 2129769,
+      "sha256": "1ff0bf0fe55fa417fa20741450e83343c1ae1623288e30c9dc09759616c1fff8"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection/nsga2_71011_2.json",
+      "bytes": 1548,
+      "sha256": "c1383b9acb609e0db7d75c3f3b80ed5ffda52763abc6f801b24dbf332690879e"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection/nsga2_71011_2.npz",
+      "bytes": 2129703,
+      "sha256": "63b79be5a9116a101a2fc95febe8ae26a36fba8b84bf29c7b2dfb57e69c6637a"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection/nsga2_71011_3.json",
+      "bytes": 1573,
+      "sha256": "f3340b699729d5969487bcce466143fa2f3b92b5e390cacc2b1dc5166dd1141c"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection/nsga2_71011_3.npz",
+      "bytes": 2129704,
+      "sha256": "42fe9422065ebf630bcf445f3e23abe3490305749763bd4e0ae260be2838290c"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection/nsga2_71012_0.json",
+      "bytes": 1589,
+      "sha256": "c85f84f2bd08b27920a22ee9d398565e2bb64cac6a782f0fe5f92b117c308d1e"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection/nsga2_71012_0.npz",
+      "bytes": 2124816,
+      "sha256": "9f85f0d877cee82317c2a8446f0ca123bf359d1e7dd05c5ec413c9e69c756c89"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection/nsga2_71012_1.json",
+      "bytes": 1536,
+      "sha256": "b8fa5cbf68072ead9f738e08fdab1b33d4523718e348d98977db1628b6817fb4"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection/nsga2_71012_1.npz",
+      "bytes": 2128668,
+      "sha256": "f3a72906a648d8a3c23d317fa5dc152cd00487ee199ae42ba257d2b49b3dbbf3"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection/nsga2_71012_2.json",
+      "bytes": 1542,
+      "sha256": "ef061038efb0c7f53c47b29d7d34c6573dcf3ed1ab8438c867c5ca18afed6360"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection/nsga2_71012_2.npz",
+      "bytes": 2126992,
+      "sha256": "65bb0ec5653159d2731c5ff28025d70e85fed068520e9d510628feececec7d71"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection/nsga2_71012_3.json",
+      "bytes": 1562,
+      "sha256": "eea91194bb8dadcdb26d85cb8560b79762dc1a5a5a46ec16eac8be624b53d07b"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection/nsga2_71012_3.npz",
+      "bytes": 2127219,
+      "sha256": "534482c7787b446ab466d6c93c5eb28dc0bc6f05a0c249335c48d1981c4400aa"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection/nsga2_71013_0.json",
+      "bytes": 1557,
+      "sha256": "ebdae09179cb146e4c4f16ee4d03da6b212b7d72f6a8624d8d6c69427c0f1756"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection/nsga2_71013_0.npz",
+      "bytes": 2130167,
+      "sha256": "d60d31bb38c9a7946c24e7831404adc12061da5a4f5217e0502a43c12da363fc"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection/nsga2_71013_1.json",
+      "bytes": 1520,
+      "sha256": "6dceeeb07d47e6eac85c3458b82acc666b39cfb6ade305323ceb0125c9f705a3"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection/nsga2_71013_1.npz",
+      "bytes": 2129941,
+      "sha256": "41e22ebfaa7d9fa540bc31e87e6e3feb4580238f48dedf713b70ab74836227dd"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection/nsga2_71013_2.json",
+      "bytes": 1529,
+      "sha256": "41a98d94c1d6638118c4ebf161d16746fa39947e190f32a0e5fd4c425c0e4f8b"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection/nsga2_71013_2.npz",
+      "bytes": 2129900,
+      "sha256": "e5da536f7f783d7ae60639f9d4df6aaf89398c14dd9d3f6694ce0c974860dfd6"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection/nsga2_71013_3.json",
+      "bytes": 1518,
+      "sha256": "4e00778eacf0305f3e33ff280521383b3492254489f9ddd9e9578fd819a71702"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection/nsga2_71013_3.npz",
+      "bytes": 2129959,
+      "sha256": "cec67c19ced6c6865b8069f51571682e552034b909ccbf85bd44e9a482cb9674"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection/original.json",
+      "bytes": 1499,
+      "sha256": "5ad8bab7ff8b77438c92987ee07acc1a9efd74ce9fd27a245b1f0396011dcb66"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection/original.npz",
+      "bytes": 2117425,
+      "sha256": "b18db7f6b567f043c5099f4c48ea8a48b37f44d937b38c6c14f71bec387bb06a"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection/proposed.json",
+      "bytes": 1502,
+      "sha256": "4ff3add6bba63a4d435b15890fd704e5cb0ca9b5d4ae50fca6e6aed56674d4ea"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection/proposed.npz",
+      "bytes": 2128328,
+      "sha256": "dcb7617de201b958cd87c3ac2a68aba3c2b6205669515a31bb9ad4cf23a32967"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection/staged_71011_0.json",
+      "bytes": 1639,
+      "sha256": "14d47f380dd9e1931838c63c8f90b0e83ffafd0cb3301ed9b377d9203455cc7a"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection/staged_71011_0.npz",
+      "bytes": 2129534,
+      "sha256": "d9eafbae91b8d0ca478aa37356cd7e62e80cbd8c80baa50c9bb8fd5186ead141"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection/staged_71011_1.json",
+      "bytes": 1612,
+      "sha256": "9d55929373b35f9a3c9f75ec943183064c7f5e6f47cf45462e2965f0516670fb"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection/staged_71011_1.npz",
+      "bytes": 2133784,
+      "sha256": "b30eff927b3e7ca89c475a65194bc337d49d89e345117eeacbae29c337761b87"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection/staged_71011_2.json",
+      "bytes": 1540,
+      "sha256": "ac75900873ff38940ac0d387baf6664f41b8d8607dd819e198cc6675e53226e0"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection/staged_71011_2.npz",
+      "bytes": 2129825,
+      "sha256": "198b6987329eee143334d9097e613ea5d1d8ae493b8d3590d4a296f703b06caf"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection/staged_71011_3.json",
+      "bytes": 1547,
+      "sha256": "75fdacdc08c1c8c12d4d1b948a88a55b7fd8ae69ea20f20e1fb165a849d1b443"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection/staged_71011_3.npz",
+      "bytes": 2129317,
+      "sha256": "e6d3be41a3632cf330c5a2d4e6bcee13c369019521b79bfc6e9b27bc4e4d99b8"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection/staged_71012_0.json",
+      "bytes": 1540,
+      "sha256": "ec2ec108c091b141d699c46cced79c8534b5d17a8e67f72b25e9f1b267fed72d"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection/staged_71012_0.npz",
+      "bytes": 2129825,
+      "sha256": "198b6987329eee143334d9097e613ea5d1d8ae493b8d3590d4a296f703b06caf"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection/staged_71012_1.json",
+      "bytes": 1547,
+      "sha256": "61503785ba17c78f7789f6336e1100e13b7497d1ed9cc7c31ea741dd6a00ae9e"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection/staged_71012_1.npz",
+      "bytes": 2129317,
+      "sha256": "e6d3be41a3632cf330c5a2d4e6bcee13c369019521b79bfc6e9b27bc4e4d99b8"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection/staged_71012_2.json",
+      "bytes": 1533,
+      "sha256": "50bf1caf660fc6f899cd61e0c52aabf1536e8d32c717a14b590ff3f59ffcefd6"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection/staged_71012_2.npz",
+      "bytes": 2128587,
+      "sha256": "8d6537ab2d4184ca5c34eee20ed67654eb3bc4b2ef4efcab3ad8ffcc5a19bf75"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection/staged_71012_3.json",
+      "bytes": 1521,
+      "sha256": "52f2156edeef343d42af98f755c57b72b824e79b72944a9ea30a596e181f7eeb"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection/staged_71012_3.npz",
+      "bytes": 2129184,
+      "sha256": "dbf3f6506d7719cd4386686c69a2f08224f709f10a0a219d0df25633e3af1952"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection/staged_71013_0.json",
+      "bytes": 1670,
+      "sha256": "a7651ad20b3aff376a785ec4ee0ef77c05d74dbb556d017abd4a12a1d322abfe"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection/staged_71013_0.npz",
+      "bytes": 2133186,
+      "sha256": "7213eb80fdb2c751a8b3b8638465092f68ebde781016269649de49c8fe024d65"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection/staged_71013_1.json",
+      "bytes": 1653,
+      "sha256": "5cdbc1ceeedc2946b6bc665421ae6dd4001eab9ba823a50f428ff9f1c5888233"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection/staged_71013_1.npz",
+      "bytes": 2131500,
+      "sha256": "47bc9968d5884528bdf1d560ff2f6cdcbc191569d16cccc78c486da31576d583"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection/staged_71013_2.json",
+      "bytes": 1583,
+      "sha256": "7c06f8bb22524fcd9714ad84c2ac84a3cddddfaf1510cd6c2661e331802e59e9"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection/staged_71013_2.npz",
+      "bytes": 2130497,
+      "sha256": "3d68d93c53a505237f81c3110b1f7c5168faa8ced437775e1afca78c33675a9c"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection/staged_71013_3.json",
+      "bytes": 1540,
+      "sha256": "ddc20b3ba1e9175d7eeb94ebb240b606360a65e2bd940c99dd8470b1fe3f5d5a"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection/staged_71013_3.npz",
+      "bytes": 2129825,
+      "sha256": "198b6987329eee143334d9097e613ea5d1d8ae493b8d3590d4a296f703b06caf"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/selection_records.json",
+      "bytes": 45170,
+      "sha256": "95d002b3f01dc72088dbeba6c931da36115c98d9d6f18e6c3093664be3a71822"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/sensitivity/nsga2.json",
+      "bytes": 1545,
+      "sha256": "dcbbe489bbcc79aa462ff422f7de110ce8608b00367aed801b0bdddfdba8324c"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/sensitivity/nsga2.npz",
+      "bytes": 8568419,
+      "sha256": "da8064a226c59ff178a11061d84b11910dcf4c9fcf9758d1b400fdc15732dab7"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/sensitivity/original.json",
+      "bytes": 1494,
+      "sha256": "283fa13a70b0472a48237d467242e17023bf88fe50930a19a07b101b2facfae9"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/sensitivity/original.npz",
+      "bytes": 8552231,
+      "sha256": "74e14715cd0338830e2693763e597d9fdfd9eae31f03ccd999d132d659b5567e"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/sensitivity/proposed.json",
+      "bytes": 1484,
+      "sha256": "a9508d6c534a21af6db79d632686293f64387a9466321379aee2310cd0e7ec21"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/sensitivity/proposed.npz",
+      "bytes": 8571463,
+      "sha256": "ed3cb4b011b55e605de4f8106799185ea365c32a9e449e2bc546e4636dbe4270"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/sensitivity/staged.json",
+      "bytes": 1584,
+      "sha256": "e8d5a7e458f8e06d6e119af2e77223f4970c2fbe239b17c6c74b2ab7ef8808c8"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/sensitivity/staged.npz",
+      "bytes": 8577964,
+      "sha256": "6d28ec7451901f0d975ac22157ddfc4a0c4108f95c05573ec1ad0d2d25341dbd"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/source_hashes.json",
+      "bytes": 933,
+      "sha256": "21c12d3e510255ab3cac8e0a9c69ccf548ea81221eea584af12e19b79a89290b"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/source_snapshot/measured_hardware_simulator/CTR_superPosKin_fun_sectioned.py",
+      "bytes": 12082,
+      "sha256": "aeebd1f9562e907fa7cd07449608a66aa0b067ef76775d9b4329e1b992f40b0d"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/source_snapshot/measured_hardware_simulator/ctr_inverse_kinematics.py",
+      "bytes": 18701,
+      "sha256": "4bb60600740f98825a8906c8055822d7125c66f026da55b2d577815a55da032e"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/source_snapshot/measured_hardware_simulator/design_constraints.py",
+      "bytes": 3789,
+      "sha256": "be8241df83ebdeb9d687cf9cd7755bb8ca92c29a98d52d62e2ded51109e8accb"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/source_snapshot/measured_hardware_simulator/tube_parameters.py",
+      "bytes": 4498,
+      "sha256": "96bca31d76cd34d1b4f87c5e4d82ec9feae5426bfcfbfba5b4c4ae770a009efb"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/source_snapshot/tools/final_geometry_comparison.py",
+      "bytes": 29680,
+      "sha256": "44b8b52d2a1d13c910043917bd9707cc6e19af052b14b138c3d8897ff7dd7326"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/source_snapshot/tools/optimise_measured_ctr.py",
+      "bytes": 21613,
+      "sha256": "4590eb64f9c8e148e40138d2ab1d3152da55d600376d3ecd06af64b78f27af0f"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/source_snapshot/tools/run_broad_hardware_study.py",
+      "bytes": 13341,
+      "sha256": "fef35ba8edb72582a4647583e49842b617ca0691aaf8380558c2e469537ff624"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/source_snapshot/tools/run_hardware_optimisation.py",
+      "bytes": 13093,
+      "sha256": "17f1ddc6a7040f2adebdfc13a8337f17210e04ac2b173a8ea620f30e35f8c56b"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/study_report.md",
+      "bytes": 11272,
+      "sha256": "157245b1fc951d295ff300a9045159161bb204af70d304372fc77a60baeb6982"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/validation/nsga2_0.json",
+      "bytes": 1545,
+      "sha256": "5fbafa0445d360ba49c99fe03d9efe24a2e617155a59985285e9142638354c40"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/validation/nsga2_0.npz",
+      "bytes": 8568419,
+      "sha256": "da8064a226c59ff178a11061d84b11910dcf4c9fcf9758d1b400fdc15732dab7"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/validation/nsga2_1.json",
+      "bytes": 1551,
+      "sha256": "4a73069060cf2687ec4b4cf3efea458c28bbabd9c8fbf0901435f51800ff7adf"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/validation/nsga2_1.npz",
+      "bytes": 8572213,
+      "sha256": "64b41b59f2bd3dccc137db0d86921bc1e74f3a1f8c321af1e37ce4a38114660b"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/validation/original_0.json",
+      "bytes": 1494,
+      "sha256": "43192fd2f0a9c4ed4b36398cd62992a6e41bc95ed96504ac50e59e54920d8982"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/validation/original_0.npz",
+      "bytes": 8552232,
+      "sha256": "a91c483adc00e76ddda33f4aa712bee4786e8e925b19776601847cb0eaef469d"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/validation/original_1.json",
+      "bytes": 1499,
+      "sha256": "4448633f45abcb15644d823aaed2e54a99d7307efa119e3c3ddf46625126eaa1"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/validation/original_1.npz",
+      "bytes": 8556020,
+      "sha256": "ea776d1b6ad02ac7ff1af8ced30e78e28b6fe318c299a2193a2ce9fe341bf140"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/validation/proposed_0.json",
+      "bytes": 1484,
+      "sha256": "2be64fab4762ed2cdfba3fa56f86303889500d74691c1ff58ea1b811307cd5b4"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/validation/proposed_0.npz",
+      "bytes": 8571463,
+      "sha256": "ed3cb4b011b55e605de4f8106799185ea365c32a9e449e2bc546e4636dbe4270"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/validation/proposed_1.json",
+      "bytes": 1494,
+      "sha256": "fc3e2f7ed1b4fbd5fadbfa7d39419b0c7b763ee52529d955e6fd0b019cebcca1"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/validation/proposed_1.npz",
+      "bytes": 8576000,
+      "sha256": "0c3ade3deb218ffc70d7c3b02b7165358a1e0f44cc6fbbb5245959a156519f3e"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/validation/staged_0.json",
+      "bytes": 1585,
+      "sha256": "52f988a5a1fabb67305db370991211f17837c8e8f6a42ecd1e3864258d119b6e"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/validation/staged_0.npz",
+      "bytes": 8577964,
+      "sha256": "6d28ec7451901f0d975ac22157ddfc4a0c4108f95c05573ec1ad0d2d25341dbd"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/validation/staged_1.json",
+      "bytes": 1582,
+      "sha256": "166a28323d84b8f3da1eaffec9b01801a9142df7ca20ef5661fa9db31ce04152"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/validation/staged_1.npz",
+      "bytes": 8582213,
+      "sha256": "32c5baf9b7aec8b31994ccf961b3a137fa1355089656eece64fac717a73c18a2"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/validation_freeze_hash.json",
+      "bytes": 175,
+      "sha256": "16ea7f9ed6a8bfa2f42e3b8ee424247d1819ccfbb179d2f551740dd39bf01888"
+    },
+    {
+      "file": "output/final_geometry_method_comparison_20260916/validation_records.json",
+      "bytes": 13831,
+      "sha256": "aefb0c2271faa7efe53fe51dcc94266d52d8e2007f4e876f258188d28bc91f8d"
+    }
+  ]
+}

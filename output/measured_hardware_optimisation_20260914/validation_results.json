@@ -1,0 +1,194 @@
+{
+  "original": {
+    "global": {
+      "success": 0.6619589732574375,
+      "p95_mm": 86.94759520792238,
+      "effective_isotropy_mean": 0.2504005310153179,
+      "effective_isotropy_p10": 0.0
+    },
+    "weak": {
+      "success": 0.5749185667752443,
+      "p95_mm": 51.06328631832933,
+      "effective_isotropy_mean": 0.11582567845248477,
+      "effective_isotropy_p10": 0.0
+    },
+    "corridor": {
+      "success": 0.6784351145038168,
+      "p95_mm": 9.8881916591499,
+      "effective_isotropy_mean": 0.08913587616118536,
+      "effective_isotropy_p10": 0.0
+    },
+    "diagnostic": {
+      "global": {
+        "success": 0.9934754591343572,
+        "p95_mm": 0.008359379490982855,
+        "effective_isotropy_mean": 0.36009110126024996,
+        "effective_isotropy_p10": 0.19771566260434484
+      },
+      "weak": {
+        "success": 1.0,
+        "p95_mm": 0.0020682314277305287,
+        "effective_isotropy_mean": 0.1958214561762488,
+        "effective_isotropy_p10": 0.1244345594911757
+      },
+      "corridor": {
+        "success": 1.0,
+        "p95_mm": 0.001027827313549125,
+        "effective_isotropy_mean": 0.18353252354055877,
+        "effective_isotropy_p10": 0.1047567659100477
+      }
+    },
+    "workspace": {
+      "sample_count": 65536,
+      "occupied_annular_volume_cm3": 2306.714405898306,
+      "baseline_cell_retention": 0.9678230266465561,
+      "max_radius_mm": 110.88318441860893,
+      "z_min_mm": 63.88585613120157,
+      "z_max_mm": 169.55381087253275
+    }
+  },
+  "optimised": {
+    "global": {
+      "success": 0.7348029212759102,
+      "p95_mm": 81.47466844866224,
+      "effective_isotropy_mean": 0.29620835276344215,
+      "effective_isotropy_p10": 0.0
+    },
+    "weak": {
+      "success": 0.665218964893232,
+      "p95_mm": 51.0489899253168,
+      "effective_isotropy_mean": 0.15363986774340735,
+      "effective_isotropy_p10": 0.0
+    },
+    "corridor": {
+      "success": 0.7853053435114504,
+      "p95_mm": 9.345086115124765,
+      "effective_isotropy_mean": 0.15283125737171646,
+      "effective_isotropy_p10": 0.0
+    },
+    "diagnostic": {
+      "global": {
+        "success": 0.9879980668027065,
+        "p95_mm": 0.007745644103844792,
+        "effective_isotropy_mean": 0.38692593960894,
+        "effective_isotropy_p10": 0.21978915534350718
+      },
+      "weak": {
+        "success": 1.0,
+        "p95_mm": 0.0005003211951999796,
+        "effective_isotropy_mean": 0.22579457983884782,
+        "effective_isotropy_p10": 0.15378229621921513
+      },
+      "corridor": {
+        "success": 1.0,
+        "p95_mm": 0.001919808907560937,
+        "effective_isotropy_mean": 0.24375849374682038,
+        "effective_isotropy_p10": 0.1227633853881866
+      }
+    },
+    "workspace": {
+      "sample_count": 65536,
+      "occupied_annular_volume_cm3": 2417.0628478556473,
+      "baseline_cell_retention": 0.9128540305010894,
+      "max_radius_mm": 112.95786671168186,
+      "z_min_mm": 61.80305344536364,
+      "z_max_mm": 169.57372918195074
+    }
+  },
+  "lengths_only": {
+    "global": {
+      "success": 0.7011599183761142,
+      "p95_mm": 81.26934513967333,
+      "effective_isotropy_mean": 0.2573492336821309,
+      "effective_isotropy_p10": 0.0
+    },
+    "weak": {
+      "success": 0.663590300398118,
+      "p95_mm": 47.2410199691703,
+      "effective_isotropy_mean": 0.13878009278301107,
+      "effective_isotropy_p10": 0.0
+    },
+    "corridor": {
+      "success": 0.6507633587786259,
+      "p95_mm": 27.190165255322498,
+      "effective_isotropy_mean": 0.11060033071257039,
+      "effective_isotropy_p10": 0.0
+    },
+    "diagnostic": {
+      "global": {
+        "success": 0.9774728815379659,
+        "p95_mm": 0.008311394581457288,
+        "effective_isotropy_mean": 0.34458044945075317,
+        "effective_isotropy_p10": 0.19174852090726283
+      },
+      "weak": {
+        "success": 0.9916757148027506,
+        "p95_mm": 0.0020672375167701106,
+        "effective_isotropy_mean": 0.2032951018990834,
+        "effective_isotropy_p10": 0.13928730269808196
+      },
+      "corridor": {
+        "success": 0.9809160305343512,
+        "p95_mm": 0.008479550318664875,
+        "effective_isotropy_mean": 0.2111763379633832,
+        "effective_isotropy_p10": 0.11765171230175803
+      }
+    },
+    "workspace": {
+      "sample_count": 65536,
+      "occupied_annular_volume_cm3": 2164.5573383233673,
+      "baseline_cell_retention": 0.9103402044578515,
+      "max_radius_mm": 107.57667247299761,
+      "z_min_mm": 62.85983189610599,
+      "z_max_mm": 168.8405841588616
+    }
+  },
+  "curves_only": {
+    "global": {
+      "success": 0.5787509397486843,
+      "p95_mm": 94.56043459001832,
+      "effective_isotropy_mean": 0.2339446546643707,
+      "effective_isotropy_p10": 0.0
+    },
+    "weak": {
+      "success": 0.5351067680057908,
+      "p95_mm": 51.06328631832933,
+      "effective_isotropy_mean": 0.11918829194605954,
+      "effective_isotropy_p10": 0.0
+    },
+    "corridor": {
+      "success": 0.6269083969465649,
+      "p95_mm": 9.87507079860659,
+      "effective_isotropy_mean": 0.08693862720173988,
+      "effective_isotropy_p10": 0.0
+    },
+    "diagnostic": {
+      "global": {
+        "success": 0.9988454516163677,
+        "p95_mm": 0.005722295579022998,
+        "effective_isotropy_mean": 0.39830870648817995,
+        "effective_isotropy_p10": 0.22004168703030763
+      },
+      "weak": {
+        "success": 1.0,
+        "p95_mm": 0.0012697151698698977,
+        "effective_isotropy_mean": 0.21982048716389294,
+        "effective_isotropy_p10": 0.14490224501368357
+      },
+      "corridor": {
+        "success": 1.0,
+        "p95_mm": 0.0008894815390165141,
+        "effective_isotropy_mean": 0.20392970025116855,
+        "effective_isotropy_p10": 0.10866911325726086
+      }
+    },
+    "workspace": {
+      "sample_count": 65536,
+      "occupied_annular_volume_cm3": 2550.973234714912,
+      "baseline_cell_retention": 0.9715099715099715,
+      "max_radius_mm": 115.37765872501294,
+      "z_min_mm": 62.75481681075144,
+      "z_max_mm": 170.7067124938701
+    }
+  }
+}

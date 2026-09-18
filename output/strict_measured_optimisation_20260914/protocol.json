@@ -1,0 +1,121 @@
+{
+  "id": "strict-measured-nonregression-v1",
+  "baseline": [
+    350.0,
+    170.0,
+    80.0,
+    90.0,
+    65.0,
+    19.12,
+    14.04
+  ],
+  "current_tradeoff": [
+    348.16,
+    181.98,
+    92.14,
+    95.02,
+    65.91,
+    22.03,
+    13.98
+  ],
+  "bounds": [
+    [
+      320.0,
+      380.0
+    ],
+    [
+      170.0,
+      230.0
+    ],
+    [
+      80.0,
+      140.0
+    ],
+    [
+      30.0,
+      110.0
+    ],
+    [
+      20.0,
+      90.0
+    ],
+    [
+      12.0,
+      27.0
+    ],
+    [
+      9.0,
+      21.0
+    ]
+  ],
+  "physical_constraints": {
+    "retracted_mm": [
+      275,
+      195,
+      115
+    ],
+    "extended_mm": [
+      175,
+      95,
+      15
+    ],
+    "body_mm": 71.5,
+    "gap_mm": [
+      8.5,
+      108
+    ],
+    "sensitivity_gap_mm": 108.5
+  },
+  "assumptions": [
+    "Lengths mean chuck-tip to distal-tip material length; no grip offset",
+    "Straight coaxial internal path assumed, guidance/contact not simulated",
+    "Distal precurves, straight inner wire, original diameters and 75 GPa stiffness fixed",
+    "Unrestricted rotations; no friction, torsion, elastic stability or loaded accuracy",
+    "Bounds exploratory, not supplier or manufacturing limits"
+  ],
+  "acceptance": "Every gated estimate must be no worse; no averaging gains against losses. Only floating-point tolerances: rates1e-10, isotropy1e-8, mm/cm3 1e-6. At least one success improvement0.5 percentage point, isotropy1%, or volume1% required. No physical uncertainty allowance.",
+  "metrics": [
+    "global/weak/corridor mean and P10 cell isotropy",
+    "global/weak/corridor reference cell retention",
+    "annular occupancy volume",
+    "radial maximum, z maximum, z minimum, maximum tip distance",
+    "global/weak/corridor fixed-start success and P95 error",
+    "global/weak/corridor two-start diagnostic success",
+    "trajectory completion and P95 tracking residual"
+  ],
+  "screen": {
+    "n": 8192,
+    "seed": 41101,
+    "shortlist": 24,
+    "refinement": "top6 distinct designs, 32 local Sobol each",
+    "sampling_budget": "Up to1000 batches of8192 physical proposals; exceptionally thin domains exhausting the sampler are logged separately, not declared infeasible"
+  },
+  "selection": {
+    "n": 65536,
+    "seed": 42101,
+    "targets": 512,
+    "target_seed": 42102
+  },
+  "validation": {
+    "n": 131072,
+    "seeds": [
+      43101,
+      44101
+    ],
+    "targets": 2048,
+    "target_seeds": [
+      43102,
+      44102
+    ],
+    "gap_cases": [
+      108,
+      108.5
+    ],
+    "trajectory_seed": 43103
+  },
+  "trajectories": "24 smooth baseline joint paths, 21 waypoints; candidate starts by two-nearest-start IK then 40-iteration warm-start IK. Five intermediate joint positions per segment checked against the continuous baseline path, <=0.5mm completion. No anatomy or contact.",
+  "regions": "Unchanged from previous original-tube region bank; benchmark regions, not anatomy",
+  "directional_extent": "Preserve sampled radial/z bounds and maximal distance; symmetry assumes unrestricted common rotation",
+  "selection_rule": "Freeze all meaningful stage2 passes (up to8) plus up to3 nearest failing candidates for diagnostic validation. Failing candidates cannot be promoted unless they also pass stage2. No validation-driven redesign.",
+  "scope": "Straight inner wire and original diameters/stiffness fixed. Bounded search is not proof of nonexistence or a global optimum."
+}

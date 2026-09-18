@@ -1,0 +1,164 @@
+{
+  "id": "final-geometry-method-comparison-v1",
+  "status": "Frozen before candidate search",
+  "original": [
+    350.0,
+    170.0,
+    80.0,
+    90.0,
+    65.0,
+    19.12,
+    14.04
+  ],
+  "proposed": [
+    350.0,
+    177.5,
+    87.5,
+    90.0,
+    65.0,
+    21.37,
+    14.04
+  ],
+  "bounds": [
+    [
+      320.0,
+      380.0
+    ],
+    [
+      170.0,
+      230.0
+    ],
+    [
+      80.0,
+      140.0
+    ],
+    [
+      30.0,
+      110.0
+    ],
+    [
+      20.0,
+      90.0
+    ],
+    [
+      12.0,
+      27.0
+    ],
+    [
+      9.0,
+      21.0
+    ]
+  ],
+  "variables": [
+    "inner_total_mm",
+    "middle_total_mm",
+    "outer_total_mm",
+    "middle_curved_mm",
+    "outer_curved_mm",
+    "middle_kappa_per_m",
+    "outer_kappa_per_m"
+  ],
+  "objectives": [
+    "minimise global fixed-start IK failure fraction",
+    "minimise trajectory failure fraction"
+  ],
+  "constraints": {
+    "chuck_distances_retracted_mm": [
+      275,
+      195,
+      115
+    ],
+    "chuck_distances_extended_mm": [
+      175,
+      95,
+      15
+    ],
+    "actuator_length_mm": 71.5,
+    "gap_mm": [
+      8.5,
+      108
+    ],
+    "sensitivity_gap_mm": 108.5,
+    "exterior_order": "inner>=middle>=outer>=0"
+  },
+  "sampling": {
+    "screen_states": 8192,
+    "screen_targets": [
+      1024,
+      256,
+      256,
+      128
+    ],
+    "screen_paths": 24,
+    "selection_states": 65536,
+    "selection_targets": [
+      4096,
+      1024,
+      1024,
+      512
+    ],
+    "selection_paths": 96,
+    "validation_states": 262144,
+    "validation_targets": [
+      8192,
+      2048,
+      2048,
+      1024
+    ],
+    "validation_paths_per_bank": 128,
+    "validation_banks": 2
+  },
+  "search": {
+    "methods": [
+      "nsga2",
+      "staged"
+    ],
+    "seeds": [
+      71011,
+      71012,
+      71013
+    ],
+    "budget_per_run": 256,
+    "nsga": "32 population +7 offspring batches32; SBX p=.9 eta15; polynomial mutation per-variable1/7 eta20; feasibility-first rank/crowding; common Sobol initial32 including references",
+    "staged": "Common initial32 +128 Sobol +32 curvature grids (4x4 around each reference) +64 local proposals around4 development leaders",
+    "dense_allowance": "4 distinct candidates/run; references extra equal shared overhead",
+    "comparison": "Same objectives/guards/fidelity, not an exact rerun of historical hand-weighted scoring",
+    "stop": "256 evaluator slots after analytic feasibility filtering; same Sobol rejection-replacement rule for both methods; log rejected proposals, cache hits, sampler failures and actual time separately.",
+    "proposal_replacement": "8192-point scrambled Sobol reserve seeded run_seed+900; replace analytically infeasible geometry before evaluator. NSGA-II receives repaired design coordinates."
+  },
+  "evaluation": {
+    "fixed_start": "Existing most-retracted feasible exterior decode([0,0,0]), zero rotations; unchanged40-iteration DLS",
+    "path_initialisation": "Existing two-nearest-start diagnostic,60 iterations each; same for all geometries; no recovery",
+    "paths": "Original feasible joint-linear shortest-angle paths; 21 waypoints,40 iterations/warm-start; 4 checks/segment screen,100 checks/segment final; dense maximum must<=0.5mm",
+    "global_targets": "Annular-volume-proportional cell draws, random full-azimuth original-FK points; no hidden canonical-plane targets",
+    "rotation": "Unrestricted middle/outer rotation; inner straight rotation has no effect",
+    "isotropy": "Existing fixed range-scaled positional Jacobian; missing/low-support cell values zero; fixed original region denominators"
+  },
+  "margins": {
+    "global_ik_gain": 0.03,
+    "regional_ik_loss": 0.02,
+    "completion_observed_loss": 0,
+    "completion_noninferiority": 0.02,
+    "p95_increase_mm": 0.05,
+    "coverage_loss": 0.02,
+    "reach_loss_fraction": 0.02,
+    "isotropy_loss_fraction": 0.05
+  },
+  "statistical_rule": "IK gain>=3pp and paired95% interval lower>0; regional interval lower>=-2pp. Path observed completion>=baseline AND conservative paired-binomial difference lower>=-2pp. P95 path-block bootstrap upper increase<=.05mm. Coverage robust supported-reference loss<=2% in each equal-budget repeat and resolution sensitivity; if sampling calibration cannot resolve2%, coverage is inconclusive, not relaxed. Reach/isotropy point margins required in both repeats; sampling sensitivity reported. All gates conjunctions; no validation tuning.",
+  "classification": "accepted only if selection and all final gates pass; failed or inconclusive otherwise. Two frozen method champions evaluated; Bonferroni intervals97.5% for their statistical gates. Three seeds descriptive, not universal algorithm superiority.",
+  "assumptions": [
+    "Lengths provisional chuck-tip-to-distal-tip material lengths; no35mm offset",
+    "Straight internal guidance/retention unverified",
+    "Curves beyond maximum exposure exterior-equivalent; material choices not interchangeable physically",
+    "No manufacture-certified bounds, torsion, friction, elastic stability, contact, physical measurement or clinical validation"
+  ],
+  "seeds": {
+    "screen": 71100,
+    "selection": 72100,
+    "validation": [
+      73100,
+      74100
+    ]
+  },
+  "historical": "All previously inspected results are development evidence; reserved seeds not opened until champions frozen"
+}

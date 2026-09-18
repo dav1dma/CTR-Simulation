@@ -1,0 +1,147 @@
+{
+  "report_title": "Design, Simulation and Kinematic Evaluation of an Open-Source Concentric-Tube Robot Platform",
+  "report_sha256": "e130679f335543f77e9e5b0b5b32e4cb01d408076ae8ed3d8ca2a3977c658e20",
+  "report_pdf_pages": 88,
+  "review_date": "2026-09-18",
+  "scope": "Final-report figure images extracted unchanged; original study data retained separately. No numerical search rerun for publication.",
+  "figures": [
+    {
+      "report_figure": "5.1",
+      "pdf_page": 49,
+      "printed_page": 45,
+      "file": "figures/target_support.png",
+      "sha256": "c48a82e192a123a76d5ff1e28e07923e50b43bee760bc962fd759dc051096ad6",
+      "title": "Spatial distribution of shared IK targets"
+    },
+    {
+      "report_figure": "5.2",
+      "pdf_page": 50,
+      "printed_page": 46,
+      "file": "figures/sampling_support.png",
+      "sha256": "8731b4c3fbc1113c909ee606a1ccc462305067d3c1f5c06e0f0ccdefdab85bd9",
+      "title": "Workspace sampling and cell-size sensitivity"
+    },
+    {
+      "report_figure": "5.3",
+      "pdf_page": 52,
+      "printed_page": 48,
+      "file": "figures/tube_shapes.png",
+      "sha256": "c20a2aa808d34c9f4dad34c541a73cf697219265c2724d0d2353677794baa0be",
+      "title": "Original and proposed intrinsic tube shapes"
+    },
+    {
+      "report_figure": "5.4",
+      "pdf_page": 54,
+      "printed_page": 50,
+      "file": "figures/proposed_viewer.png",
+      "sha256": "46209ef4b1ab5374ba0b84a7ebef0f9c7a0daf3db0b223c770a4264a6d41acbc",
+      "title": "Proposed-configuration simulation interface"
+    },
+    {
+      "report_figure": "5.5",
+      "pdf_page": 55,
+      "printed_page": 51,
+      "file": "figures/workspace.png",
+      "sha256": "2abf599870959ec674ae8c0ceb6ac9fffae5901da9c2f697e089e77ced3bad66",
+      "title": "Hardware-constrained workspace comparison"
+    },
+    {
+      "report_figure": "5.6",
+      "pdf_page": 56,
+      "printed_page": 52,
+      "file": "figures/workspace_overlay.png",
+      "sha256": "dbe3dda74fd244b43654cdac8a0c790bbbd284a81a640e9b609dd2116f26f051",
+      "title": "Shared, gained and lost workspace occupancy"
+    },
+    {
+      "report_figure": "5.7",
+      "pdf_page": 57,
+      "printed_page": 53,
+      "file": "figures/isotropy_median.png",
+      "sha256": "c6841d0e215ea7758b1a1991156b494f47441ff7a02678162cd32512fbcf2657",
+      "title": "Median positional isotropy comparison"
+    },
+    {
+      "report_figure": "5.8",
+      "pdf_page": 58,
+      "printed_page": 54,
+      "file": "figures/dexterity_difference.png",
+      "sha256": "48563e3c4f3455807caf71fc0cd9913cb9efd6c671287377ab123f036a55f4b0",
+      "title": "Change in median positional isotropy"
+    },
+    {
+      "report_figure": "5.9",
+      "pdf_page": 59,
+      "printed_page": 55,
+      "file": "figures/ik_median.png",
+      "sha256": "aac42ac75398e21a202d821a1031e897f8144c9f3d0de2f2c59a9298d81026c5",
+      "title": "Median fixed-start IK residual"
+    },
+    {
+      "report_figure": "5.10",
+      "pdf_page": 60,
+      "printed_page": 56,
+      "file": "figures/ik_p95.png",
+      "sha256": "8d157ee32d468fd3440582f69932f2ff490c86388b616fa9337aebb731e551f2",
+      "title": "95th-percentile fixed-start IK residual"
+    },
+    {
+      "report_figure": "5.11",
+      "pdf_page": 60,
+      "printed_page": 56,
+      "file": "figures/ik_failure.png",
+      "sha256": "c54a3b2dc94dc679542404231d2eb6559258079ed5933bfc002c824a29d6c2b2",
+      "title": "Fixed-start IK failure fraction"
+    },
+    {
+      "report_figure": "C.1",
+      "pdf_page": 84,
+      "printed_page": 80,
+      "file": "figures/path_recovery.png",
+      "sha256": "58f73e2c78018238cca9464508b7ba826b42fbdd86ccadc6333308facaa869df",
+      "title": "Post-hoc trajectory diagnosis using alternative starting configurations"
+    }
+  ],
+  "data": [
+    {
+      "file": "data/summary.json",
+      "local_archive_path": "output/chapter5_measured_revision/data/summary.json",
+      "sha256": "b34fae76f70cc7231b223f56b2323af5e896921fd9334ee59dec6bcc3e1efbe1"
+    },
+    {
+      "file": "data/spatial_regions.json",
+      "local_archive_path": "output/chapter5_measured_revision/data/spatial_regions.json",
+      "sha256": "cb906eb7e46183442d5ffd3e3882a41739ba5cb89e19124a1d1d1159b92a31bb"
+    },
+    {
+      "file": "data/overlay.json",
+      "local_archive_path": "output/chapter5_measured_revision/data/overlay.json",
+      "sha256": "aa31b6ff1c8369d3fba69be7b4dfae2060057c6e2ae76969b90ae16a1f9443b7"
+    },
+    {
+      "file": "data/sampling_checks.json",
+      "local_archive_path": "output/chapter5_measured_revision/data/sampling_checks.json",
+      "sha256": "e50fc7526e9c4a66216e0a30fea3956a8c0057951c2883c99246d40f7f45a24d"
+    },
+    {
+      "file": "data/protocol.json",
+      "local_archive_path": "output/chapter5_measured_revision/data/protocol.json",
+      "sha256": "37869d04e5d2f25e3374b6f3ff32b64fb38d7e279ab768989e90c8baca2ca4e1"
+    },
+    {
+      "file": "data/path_bank_means.json",
+      "local_archive_path": "output/task_prioritised_tradeoff_20260914/mean_metrics.json",
+      "sha256": "67ab7c07c9cfb00ae4cc25dfbdfda69aadfd8f3b6dfbe3bb11cb8dd07069f6cf"
+    },
+    {
+      "file": "data/path_outcome.json",
+      "local_archive_path": "output/task_prioritised_tradeoff_20260914/outcome.json",
+      "sha256": "f3373168d728f25b7dc60d4793d5a960774e51ba62f0b714f6ef9816fd78a40e"
+    },
+    {
+      "file": "data/frozen_candidate.json",
+      "local_archive_path": "output/task_prioritised_tradeoff_20260914/frozen_candidate.json",
+      "sha256": "9939e8fbf6f36d7cf60393cf84e3bbc460c947d86bec9f768f513bb5891c10ca"
+    }
+  ]
+}

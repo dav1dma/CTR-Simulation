@@ -1,0 +1,18 @@
+{
+  "source_hashes": {
+    "output/task_prioritised_tradeoff_20260914/mean_metrics.json": "67ab7c07c9cfb00ae4cc25dfbdfda69aadfd8f3b6dfbe3bb11cb8dd07069f6cf",
+    "output/task_prioritised_tradeoff_20260914/validation_records.json": "4125b74c4041f8789399de211aa84f6c1df359d27389b301f2c93e33f2126d0d",
+    "output/task_prioritised_tradeoff_20260914/frozen_candidate.json": "9939e8fbf6f36d7cf60393cf84e3bbc460c947d86bec9f768f513bb5891c10ca",
+    "output/task_prioritised_tradeoff_20260914/original_validation_0.npz": "beb256eb06ca06677e04ce8853621ae0bc8f8083a64606bac0f9ac00600abaad",
+    "output/task_prioritised_tradeoff_20260914/original_validation_1.npz": "b49ebf580c26c52f81ff4c0dd63c548431d143bcf2c7e388d01b668a6db6b48c",
+    "output/task_prioritised_tradeoff_20260914/proposed_validation_0.npz": "2efa2cf287d03e142eaba5df26575e175052c6ab7b3c743649f82abc4a22100b",
+    "output/task_prioritised_tradeoff_20260914/proposed_validation_1.npz": "ab11a529428dba88d91729105a5ba93363650859b396057da79b3a681f75ecf4",
+    "output/task_prioritised_tradeoff_20260914/path_investigation/bank0_path10_reproduced.npz": "fe5690d1c29faf896f3556430dc28185fcc4be03838eaeb0487a0b1c2bd7ea0a",
+    "output/task_prioritised_tradeoff_20260914/path_investigation/bank1_path14_reproduced.npz": "de5020cb50d1122930a0a524bc23a04c3223918f12564fd042089f4743c01871",
+    "output/task_prioritised_tradeoff_20260914/path_investigation/bank1_path14_dense_check.npz": "93d6da5969611286640382f2c0021e0717e5045e804f80d71bb3b089bfe48f45",
+    "output/task_prioritised_tradeoff_20260914/path_investigation/bank0_path10_dense_check.npz": "e3f4bf1c894ce1bbfd8068defe1ac9f0475f90c5d18745284e36c8d365affadb",
+    "output/task_prioritised_tradeoff_20260914/path_investigation/results.json": "c6a0ba887224a7b67e4b24d4bc74781a4cb8fe3683d9674c9567313b0ee10321"
+  },
+  "script_sha256": "606fae6cae99eb8416aa917bbe518e42ba5111084a779b653c81ccacbb626899",
+  "note": "Frozen first candidate, no new study or selection; existing-controller evaluation and post-hoc recovery distinguished."
+}

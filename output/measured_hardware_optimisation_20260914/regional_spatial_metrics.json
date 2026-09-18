@@ -1,0 +1,38 @@
+{
+  "global": {
+    "original": {
+      "mean_cell_median": 0.34890132504184307,
+      "p10_cell_median": 0.17268903591396398,
+      "supported_fraction": 0.971252566735113
+    },
+    "optimised": {
+      "mean_cell_median": 0.3437214192176266,
+      "p10_cell_median": 0.13089535998587845,
+      "supported_fraction": 0.9064775060668284
+    }
+  },
+  "weak": {
+    "original": {
+      "mean_cell_median": 0.19045271275694842,
+      "p10_cell_median": 0.1264565468386006,
+      "supported_fraction": 1.0
+    },
+    "optimised": {
+      "mean_cell_median": 0.22008371319208653,
+      "p10_cell_median": 0.14345910520502342,
+      "supported_fraction": 1.0
+    }
+  },
+  "corridor": {
+    "original": {
+      "mean_cell_median": 0.17792252409793027,
+      "p10_cell_median": 0.1225726122988382,
+      "supported_fraction": 1.0
+    },
+    "optimised": {
+      "mean_cell_median": 0.2180240100165456,
+      "p10_cell_median": 0.12361876117901391,
+      "supported_fraction": 0.9791666666666666
+    }
+  }
+}

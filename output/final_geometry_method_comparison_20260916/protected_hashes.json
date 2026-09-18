@@ -1,0 +1,6 @@
+{
+  "proposed_tradeoff_simulator/optimised_configuration.json": "6c2734471b177f6601b60861c02772bcac230c558ec613e8fa982b636f0f8c1c",
+  "measured_hardware_simulator/optimised_configuration.json": "96dfbeb3bf0595ca48f08497b66ff7935750ee3459203074aba7283ef243e872",
+  "output/task_prioritised_tradeoff_20260914/frozen_candidate.json": "9939e8fbf6f36d7cf60393cf84e3bbc460c947d86bec9f768f513bb5891c10ca",
+  "output/chapter5_measured_revision/data/summary.json": "b34fae76f70cc7231b223f56b2323af5e896921fd9334ee59dec6bcc3e1efbe1"
+}

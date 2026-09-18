@@ -1,0 +1,41 @@
+{
+  "designs": {
+    "original": [
+      350.0,
+      170.0,
+      80.0,
+      90.0,
+      65.0,
+      19.12,
+      14.04
+    ],
+    "proposed": [
+      350.0,
+      177.5,
+      87.5,
+      90.0,
+      65.0,
+      21.37,
+      14.04
+    ]
+  },
+  "primary_cell_mm": 5,
+  "spatial_n": 262144,
+  "spatial_seed": 61101,
+  "spatial_repeat_n": 131072,
+  "repeat_seed": 62101,
+  "spatial_support": 30,
+  "reference": "Original primary spatial cells; regions frozen before main comparison",
+  "targets": "Full azimuth actual original-FK positions, NOT canonical positive-x-z targets; same targets for both designs. Equal cap of192 per reference cell from four independent262144 feasible pools.",
+  "target_seed": 61202,
+  "target_cap": 192,
+  "target_support": 100,
+  "support_goal": 0.9,
+  "calibration_seed": 61302,
+  "calibration_cap": 128,
+  "regions": "Corridor r<10,z40..130; weak region frozen in earlier measured study mapped to5mm cells; IK-problem cells defined using independent original-only calibration, >=100 targets and >=10% failures; remaining excludes union. Regions overlap.",
+  "solver": "Existing 40-iteration DLS, damping1, step0.1, derivative1e-4, stop0.01mm, success0.5mm, no restarts, zero rotations, same75/0/0mm start for these designs.",
+  "weighting": "Each target weight proportional to swept cell volume / target count in cell; failed attempts retained.",
+  "checks": "Sample-count prefixes65536/131072/262144, grid2.5/5/10mm, independent spatial repeat, candidate gap108.5 sensitivity, scalar/viewer solver check.",
+  "scope": "Post-selection dense characterisation; design fixed. No improved initialization implemented or retuning. Historical and new results not directly comparable."
+}

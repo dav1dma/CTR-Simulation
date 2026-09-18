@@ -69,3 +69,7 @@ bound corners. To additionally audit the archived local Stage-4/4.1 datasets, ru
 The evidence audit requires `results/evaluation/` files that are deliberately not
 included in Git. It is explicitly opt-in; ordinary protocol checks do not require
 those local research outputs.
+
+## Historical live profile check
+
+Run `python tests/test_viewer_profiles_live.py` on a graphical desktop to check the older root viewer. It uses the current earlier measured candidate from its JSON configuration. These files are standalone scripts, not a unittest discovery suite; invoke the commands above individually. The current final-report viewers have separate unittest suites documented in the research guide.

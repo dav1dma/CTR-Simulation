@@ -1,0 +1,9 @@
+* text=auto
+*.py text eol=lf
+*.md text eol=lf
+# Preserve recorded evidence byte-for-byte across operating systems.
+output/** -text
+docs/dissertation/data/** -text
+docs/dissertation/manifest.json -text
+research/manifests/** -text
+research/verification/evaluated_candidates.csv -text

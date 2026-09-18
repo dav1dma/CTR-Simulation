@@ -1,0 +1,5 @@
+{
+  "non_compensatory_gates": true,
+  "direction_of_error_metrics": true,
+  "equivalent_curve_family_control": true
+}

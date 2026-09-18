@@ -1,0 +1,1 @@
+Snapshot of the obsolete active optimised profile before replacement. Original candidate D used total350/170/80mm, curved0/47/27.5mm and curvature0/20/14 per m, with estimated exposure38..135/0..47/0..27.5mm and a35mm grip offset. Historical research datasets remain in their existing directories.

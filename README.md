@@ -1,223 +1,120 @@
-# CTR Simulation
+# Concentric-Tube Robot: design, simulation and kinematic evaluation
 
-An interactive Python simulator for a three-tube concentric-tube robot (CTR), with real-time 3D visualisation, PS5/keyboard/mouse joint control, constrained Cartesian endpoint control, and reproducible positional workspace and design analysis.
+An interactive three-tube robot simulator and research companion to **Design, Simulation and Kinematic Evaluation of an Open-Source Concentric-Tube Robot Platform**, by **David Tze Hin Ma**, Queen Mary University of London, MSc Extended Research Project, September 2026. Supervisor: **Dr S. M. Hadi Sadati**.
 
-Explore tube deployment and rotation, preview inverse-kinematics solutions and motion routes, and compare the reach of the inner, middle, and outer endpoints.
+The project developed a three-carriage CTR platform and investigated how tube geometry changes its predicted reach and positional dexterity under measured actuator limits. After a laboratory fire prevented access to the assembled robot, the final evaluation used an ideal numerical model. This repository brings together the interactive simulation, sampling and optimisation code, saved results and figures. The [CAD and bill of materials section](hardware/README.md) is reserved for the assembly package to follow.
 
-The animation below rotates around a simulated CTR configuration inside a **smooth, translucent inner-tip workspace field**, estimated from 12,000 sampled positions using the same envelope method as the interactive viewer. Blue, green, and orange identify the visible inner, middle, and outer tube sections; the + marks the plate origin. Tube thickness is exaggerated for visibility. The field illustrates an approximate ideal-model workspace boundary, not experimentally measured reach or a guarantee that every interior point is reachable.
+**Start here:** [Run and control the simulator](docs/SIMULATION.md) · [Sampling and optimisation](research/README.md) · [Results gallery](docs/dissertation/README.md) · [File guide](docs/FILE_GUIDE.md)
 
-![Blue inner, green middle, and orange outer CTR tubes inside a smooth translucent inner-tip workspace field](docs/images/ctr_workspace_sectioned.gif)
+## Interactive 3D simulation
 
-Reproduce the animation and still image with `./.venv/bin/python tools/plot_readme_workspace.py --gif`.
-[View the static image](docs/images/ctr_workspace_sectioned.png).
-The viewer cache is separate from the independent canonical datasets used for formal analysis.
+![Proposed CTR simulation animation from slide 5 of the final viva presentation](docs/media/simulation-demo.gif)
 
-## Run the simulator
+*The animation from the final presentation shows scripted motion of the proposed tubes and an approximate sampled workspace. Run the application below to control the robot yourself.*
 
-Use **Python 3.11 or newer** (the analysis protocols use the standard-library TOML reader). Create the project environment and install its dependencies:
+![Actuator-position schematic from the same presentation slide](docs/media/actuator-positions.gif)
 
-```bash
-python3 -m venv .venv
-./.venv/bin/pip install -r requirements.txt
-```
+The desktop simulator supports joint translation and rotation, Cartesian endpoint targets, inverse-kinematics previews, independent or coordinated carriage movement, and keyboard, mouse or PS5 controller input. Both configurations use the measured 100 mm actuator strokes and coupled carriage clearances. **F7 switches original/proposed tubes** and resets the pose.
 
-Start the current viewer:
+### Install and launch
+
+Use Python 3.11 or newer and a desktop with OpenGL support. Download this repository, open a terminal in its folder, and run:
 
 ```bash
-./.venv/bin/python interactive_ctr_vispy.py
+python -m venv .venv
 ```
 
-The full controller and keyboard key is displayed in the viewer sidebar.
-The status and parameter interface stays consistent between Joint and Tip mode,
-including all three endpoint XYZ positions. Only the Controls section switches
-to show the bindings relevant to the active mode.
-
-To try constrained Cartesian tip-position control while keeping the original
-joint-control viewer unchanged, run:
+Activate it on **macOS/Linux**:
 
 ```bash
-./.venv/bin/python interactive_ctr_tip_control.py
+source .venv/bin/activate
 ```
 
-In this version, L3 or Tab switches between joint and tip-control modes. In tip
-mode, L1/R1 cycle the controlled inner, middle, or outer endpoint. The left
-stick moves its red target in global X/Y, L2/R2 move it backwards/forwards along
-the endpoint's current direction, and the D-pad provides fine X/Y movement.
-Holding Square changes D-pad Up/Down to fine Z movement and also enables slower
-analogue movement. Press Cross once to calculate and preview a solution, then
-press Cross again to run the smooth simulated movement. Circle cancels a target
-or stops an executing movement. Keyboard users can choose an endpoint with
-1/2/3, select X/Y/Z and adjust with Left/Right, use Enter to confirm, and Escape
-to cancel. Camera orbit uses the right stick or mouse drag; zoom uses the mouse
-wheel. Normal target motion is 40 mm/s; Square reduces it to 5 mm/s for
-precision placement.
+Or on **Windows PowerShell**:
 
-While a solution preview is displayed, D-pad Up/Down chooses the direct or
-three-stage retract/reorient/advance route, and D-pad Left/Right cycles through
-meaningfully different IK configurations for the same target. Alternative tube
-shapes appear as translucent ghosts. Keyboard users can press M for the route
-and Left/Right for the solution. The retract route brings all exposed lengths to
-zero, changes the rotations at the plate origin, and advances to the confirmed
-IK configuration.
+```powershell
+.venv\Scripts\Activate.ps1
+```
 
-Endpoints remain FREE after reaching a target. In tip mode, tap Options to cycle
-the selected endpoint through FREE, SOFT LOCK, and HARD LOCK; hold Options to
-export. Soft locks permit a 5 mm error and hard locks use a 1.5 mm tolerance.
-The sidebar reports each constraint and error. Three XYZ endpoint targets create
-nine constraints for only six actuator inputs, so an arbitrary three-point
-shape is not always exactly achievable. Reset releases all locks.
+Then install the dependencies and choose a configuration:
 
-The viewer uses the plate reference at Z=0. Exposed robot geometry and the
-sampled workspace lie mainly at positive Z, while the portions of each tube
-parked behind the plate are drawn as straight nested shafts at negative Z. At
-full retraction the curved backbone collapses to the origin, but the complete
-colour-coded tube lengths remain visible behind the translucent plate.
+```bash
+python -m pip install -r requirements.txt
+python launch_simulation.py --configuration original
+python launch_simulation.py --configuration proposed
+```
 
-The preview includes translucent final tube positions. A cyan path represents
-direct simultaneous actuator interpolation, while a purple path represents the
-retract/reorient/advance sequence. These are simulation aids, not
-collision-checked surgical trajectories; the current model does not yet
-represent a straight introducer sheath. Anatomy collision checking, sheath
-constraints, and scan registration are later integration stages.
+If your system names Python `python3`, use that for the first command. The first launch builds a workspace cache and can take longer. A controller is optional.
 
-The live viewer displays the earlier smooth, translucent 360-degree workspace
-boundary. It changes with the selected endpoint because the outer and middle
-tubes have smaller workspaces than the inner tube. Every controller and keyboard
-target step is constrained to this surface, so the red target cannot leave the
-displayed reachable envelope. The boundary and restart maps use 12,000 shared
-valid actuator configurations. Press Triangle to hide or show the workspace
-together with the orientation guides. When other endpoints are locked, green
-points show sampled configurations satisfying their strict tolerances and amber
-points show the additional positions available within the relaxed soft-lock
-tolerance. A diamond marker identifies the nearest sampled feasible projection
-when the red requested target lies away from that conditional region. Local
-Jacobian null-space samples supplement the global cache so narrow hard-lock
-regions do not disappear solely because the cached map is coarse.
-
-## Run the design study
-
-The analysis tools cover positional workspace, range-normalised Jacobian
-isotropy, and numerical IK residuals. The versioned protocols separate independent
-canonical samples from display rotations, and numerical solver tolerance from
-task-accuracy thresholds.
-
-| Stage | Implementation and current status |
+| Action | Keyboard / mouse |
 | --- | --- |
-| 2 | Method validation: sampling, symmetry, Jacobians, spatial aggregation and IK tolerances. |
-| 3 | Baseline evaluation runner and validation gates. |
-| 4 | Primary inner-tip workspace/isotropy convergence extension. |
-| 4.1 | Primary inner-tip IK spatial-support extension. |
-| 5A | Frozen optimisation methodology and evidence preflight; no optimised design result. |
+| Select inner / middle / outer tube | 1 / 2 / 3 |
+| Translate / rotate selected tube | W/S / A/D |
+| Switch joint / Cartesian control | Tab |
+| Choose target axis and adjust it | X/Y/Z, then Left/Right |
+| Calculate a target preview, then execute | Enter, then Enter again |
+| Switch independent / coordinated carriages | C |
+| Compare original / proposed tubes | F7 |
+| Orbit / zoom | Drag / mouse wheel |
+| Reset / close | R / Q |
 
-Local archived runs contain completed Stage-4 workspace/isotropy convergence
-and Stage-4.1 IK-support evidence. Those generated datasets are excluded from
-this repository. The later Stage-5B pilot was interrupted; full optimisation
-and independent final design validation are unfinished. The analysis runners
-preserve explicit gates and do not automatically authorise a full search.
+See the [full controls and troubleshooting guide](docs/SIMULATION.md).
 
-See [the methodology](docs/design_analysis_methodology.md),
-[protocol configuration](config/README.md), and [tool commands](tools/README.md).
+### Original and proposed tube configurations
 
-The existing command remains available as a **legacy exploratory** workflow.
-It predates the Stage-2 calculation layer and therefore remains non-compliant;
-its manifest records explicit deviations. Run the small software
-verification profile with:
+All arrays use **inner / middle / outer** order. Material lengths run from chuck front to distal tip; they are not straight-line endpoint distances.
 
-```bash
-MPLBACKEND=Agg ./.venv/bin/python tools/run_design_study.py --profile quick
-```
+| Parameter | Original | Proposed, candidate t027 |
+| --- | --- | --- |
+| Total lengths (mm) | 350 / 170 / 80 | 350 / 177.5 / 87.5 |
+| Curved lengths (mm) | 0 / 90 / 65 | 0 / 90 / 65 |
+| Precurvature (m⁻¹) | 0 / 19.12 / 14.04 | 0 / 21.37 / 14.04 |
 
-Use `--profile standard` only for exploratory development. Do not treat the old
-`--profile publication` output as a final protocol-v1 result. Outputs are written to
-`results/design_analysis/`, which is deliberately excluded from Git because the
-figures and CSV tables are generated artifacts.
+![Original and proposed intrinsic tube geometry, final-report Figure 5.3](docs/dissertation/figures/tube_shapes.png)
 
-Dexterity is defined as the dimensionless positional isotropy
-`sigma_min / sigma_max` of a baseline-range-normalised physical 3-by-6
-Jacobian. Its input scale is fixed at 350, 170 and 80 mm for deployment and
-pi radians for each rotation, so it is comparable across designs; it is not an
-actuator-velocity metric. Reported IK error
-is the numerical residual of the ideal model when every local solve starts at
-zero deployment and zero rotation; it is not experimentally measured robot
-error. The numerical stopping tolerance is provisionally 0.01 mm, whereas
-0.5 mm is the separate task-accuracy threshold. Full optimisation remains gated by the frozen optimisation protocol and
-completion of the pilot and evidence checks. Existing bounds remain exploratory and are not certified manufacturing
-limits.
+The proposed design is a **selected numerical trade-off**, not a universally better design or a fabrication specification. The software's internal label `optimised` refers to t027 in the main viewer; an earlier search candidate is retained separately for research provenance.
 
-Dexterity figures use occupancy-aware filled voxels, XY cross-sections, and a
-radial–Z map. Voxel size and the minimum number of samples required for a median
-depend on the selected profile and are recorded in `study_manifest.json`; no
-values are interpolated into unsampled cells.
+## Sampling and optimisation
 
-To regenerate only these higher-density baseline figures without rerunning the
-sensitivity and optimisation stages, add `--baseline-only`.
+The sampling code generates feasible tube deployments and rotations within the measured carriage limits, predicts their positions with the section-aware forward model, and estimates occupied workspace and positional isotropy. The optimisation studies screen tube lengths, curved lengths and precurvatures, prioritise fixed-start reaching gains in weak regions and a forward corridor, then test frozen candidates on independent target and path banks. A separate dense study compares the original tubes with t027 using 262,144 feasible states per design and 59,341 shared targets. The code, seeds, saved outcomes and failed acceptance checks are retained so the reported trade-offs can be inspected and reproduced.
 
-See `docs/design_analysis_methodology.md` for the Stage-2 definitions,
-reproducibility rules, pilot evidence, legacy-result warning and the checks
-required before optimisation.
+[Study commands and data downloads](research/README.md) · [Detailed geometry-search methodology](docs/tube_configuration_methodology.md) · [Every code file explained](docs/FILE_GUIDE.md)
 
-## Project layout
+![Sampled workspace comparison, final-report Figure 5.5](docs/dissertation/figures/workspace.png)
 
-- `interactive_ctr_vispy.py` — current interactive application
-- `interactive_ctr_tip_control.py` — separate inverse-kinematics tip controller
-- `ctr_inverse_kinematics.py` — constrained numerical tip-position solver
-- `ctr_spatial_analysis.py` — occupied-volume and spatial isotropy aggregation
-- `ctr_task_space.py` — frozen baseline task region and stratified IK targets
-- `ctr_motion_planner.py` — confirmed target planning and smooth execution path
-- `ctr_workspace_map.py` — sampled workspace generation and loading
-- `ctr_sampling.py` — versioned canonical analysis sampling and display sweeps
-- `analysis_protocol.py` — protocol validation and reproducibility manifests
-- `optimization_protocol.py` — frozen optimisation protocol and evidence audit
-- `ctr_design_analysis.py` — dexterity, IK-error, sensitivity, and optimisation
-- `CTR_superPosKin_fun_sectioned.py` — section-aware forward kinematics
-- `tube_parameters.py` — tube geometry and material parameters
-- `tests/` — current model checks
-- `tools/` — controller diagnostics and workspace generation
-- `assets/cad/` — CAD assets prepared for the digital-twin stage
-- `config/` — analysis protocol and future CAD/actuator calibration data
-- `docs/images/` — selected documentation images
-- `legacy/` — superseded implementation retained for reference
+| Reported numerical comparison | Original | Proposed |
+| --- | ---: | ---: |
+| Sampled occupied workspace (cm³) | 2396.25 | 2582.78 |
+| Fixed-start IK success within 0.5 mm | 62.28% | 66.99% |
+| Forward-corridor mean cell-median isotropy | 0.17757 | 0.20871 |
+| Completed held-out paths | 44 / 48 | 43 / 48 |
 
-Generated screenshots are written to `exports/`. Workspace datasets and plots
-created by the generator are written to `results/`. Both directories are
-excluded from Git.
+The workspace estimate increased **7.78%**, fixed-start success increased **4.71 percentage points**, and corridor isotropy increased **17.53%**. Some original workspace was lost and one fewer path completed; **t027 failed the combined held-out acceptance rule**. The path evaluation is separate from the dense target comparison. See the [complete figure gallery and saved results](docs/dissertation/README.md), including the unsuccessful paths and later diagnostic recovery.
 
-## Validate the current model
+## CAD, assembly and bill of materials
 
-See [all automated checks](tests/README.md) for the controller, planner, workspace,
-analysis and protocol checks. The static geometry check is:
+[Open the hardware section](hardware/README.md). Individual STL parts, CAD assembly views, rotating and actuator-motion animations, full-robot and single-carriage exploded views, and a checked bill of materials will be added when the final assembly information is supplied. This section is currently pending; part counts have not been guessed.
 
-```bash
-MPLBACKEND=Agg ./.venv/bin/python tests/static_configuration_test_sectioned.py
-```
+## Repository guide
 
-## Generate a workspace
+| Location | Purpose |
+| --- | --- |
+| `launch_simulation.py` | Simple launcher for the final-report original/proposed comparison |
+| `proposed_tradeoff_simulator/` | Main desktop simulator; original and t027 profiles |
+| `measured_hardware_simulator/` | Measured-hardware model and earlier candidate retained by the research pipeline |
+| `tools/` | Sampling, search, evaluation and plotting programs |
+| `research/` | Reproduction guide, download manifest, verification and results checks |
+| `output/` | Frozen small study records and source snapshots; larger arrays come from release downloads |
+| `docs/dissertation/` | Final-report figures, short explanations and numerical summaries |
+| `docs/media/` | Original animations extracted from the presentation |
+| `hardware/` | Reserved assembly, STL and bill of materials section |
+| `tests/`, `config/`, root numerical modules | Model checks, historical protocols and shared dependencies |
+| `legacy/`, `docs/archive/` | Earlier development material, clearly separated from the main launch route |
 
-```bash
-./.venv/bin/python tools/workspace_generator.py
-```
+The [file guide](docs/FILE_GUIDE.md) explains the individual programs. Temporary files, local environments, editor settings and report drafts are not part of the release.
 
-The generator uses 10,000 configurations by default and may take some time.
-The compact sampled map can be regenerated with:
+## Model scope and credits
 
-```bash
-./.venv/bin/python tools/generate_workspace_map.py
-```
+These are predictions of an ideal unloaded model. Full physical commissioning and independent tip-position validation were not completed. Friction, torsion, contact, elastic stability, anatomical collisions and manufacturing effects are not fully represented; the sampled envelope is not proof that every enclosed target is reachable. Installation and curvature-unit assumptions remain provisional, as described in the report.
 
-Regenerate the optional legacy three-zone diagnostic map with:
-
-```bash
-./.venv/bin/python tools/generate_reachability_zones.py
-```
-
-Regenerate the endpoint-specific maps used by tip control with:
-
-```bash
-./.venv/bin/python tools/generate_endpoint_workspace_maps.py
-```
-
-## CAD integration
-
-See `assets/cad/README.md` for the required assembly layout. Moving components
-must remain separate so their linear and rotary transforms can be driven by the
-simulator's deployment and rotation values.
+The forward-model implementation was supplied by **Dr S. M. Hadi Sadati** and subsequently adapted for section-aware geometry, simulation and evaluation. David Tze Hin Ma led the project and completed the CAD work. AI assistance with software development and numerical analysis is disclosed in the dissertation. See [credits and reuse information](NOTICE.md).

@@ -1,0 +1,7 @@
+{
+  "python": "3.14.3",
+  "numpy": "2.5.2",
+  "scipy": "1.18.0",
+  "pymoo": "0.6.2",
+  "platform": "macOS-26.2-arm64-arm-64bit-Mach-O"
+}

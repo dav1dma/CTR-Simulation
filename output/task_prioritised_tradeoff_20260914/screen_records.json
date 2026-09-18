@@ -1,0 +1,2762 @@
+[
+  {
+    "id": "t000",
+    "design": [
+      350.0,
+      170.0,
+      80.0,
+      90.0,
+      65.0,
+      19.12,
+      14.04
+    ],
+    "metrics": {
+      "global_ik_success": 0.6393158692357653,
+      "global_ik_p95_mm": 91.21895341846525,
+      "global_diagnostic_success": 0.9962113011474345,
+      "weak_ik_success": 0.528179190751445,
+      "weak_ik_p95_mm": 55.13301564648459,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.6455223880597015,
+      "corridor_ik_p95_mm": 9.685479601366096,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": 0.0
+  },
+  {
+    "id": "t001",
+    "design": [
+      348.16,
+      181.98,
+      92.14,
+      95.02,
+      65.91,
+      22.03,
+      13.98
+    ],
+    "metrics": {
+      "global_ik_success": 0.7081619398138125,
+      "global_ik_p95_mm": 81.70508952481497,
+      "global_diagnostic_success": 0.9709893916432129,
+      "weak_ik_success": 0.6148843930635838,
+      "weak_ik_p95_mm": 51.379470528236844,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.7873134328358209,
+      "corridor_ik_p95_mm": 9.563085219296019,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": 0.5258385647545634
+  },
+  {
+    "id": "t002",
+    "design": [
+      349.1179,
+      173.5238,
+      83.6941,
+      89.9052,
+      65.0144,
+      19.9058,
+      13.9146
+    ],
+    "metrics": {
+      "global_ik_success": 0.6595583459623295,
+      "global_ik_p95_mm": 88.21472805949871,
+      "global_diagnostic_success": 0.9917731110630007,
+      "weak_ik_success": 0.5404624277456648,
+      "weak_ik_p95_mm": 55.133231873169784,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.6977611940298507,
+      "corridor_ik_p95_mm": 9.782408054584167,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": 0.14928656265530205
+  },
+  {
+    "id": "t003",
+    "design": [
+      348.2358,
+      177.0475,
+      87.3883,
+      89.8103,
+      65.0288,
+      20.6915,
+      13.7892
+    ],
+    "metrics": {
+      "global_ik_success": 0.6870534747780905,
+      "global_ik_p95_mm": 84.68451242965656,
+      "global_diagnostic_success": 0.9810565057371725,
+      "weak_ik_success": 0.5520231213872833,
+      "weak_ik_p95_mm": 55.13311324531535,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.7649253731343284,
+      "corridor_ik_p95_mm": 9.558106104969994,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": 0.3342314369632554
+  },
+  {
+    "id": "t004",
+    "design": [
+      347.3536,
+      180.5713,
+      91.0824,
+      89.7155,
+      65.0433,
+      21.4773,
+      13.6638
+    ],
+    "metrics": {
+      "global_ik_success": 0.6716821822905391,
+      "global_ik_p95_mm": 86.66990425873138,
+      "global_diagnostic_success": 0.9682831781770946,
+      "weak_ik_success": 0.6141618497109826,
+      "weak_ik_p95_mm": 51.50300966199911,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.7947761194029851,
+      "corridor_ik_p95_mm": 9.557509940394917,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": 0.5028390936604161
+  },
+  {
+    "id": "t005",
+    "design": [
+      346.4715,
+      184.0951,
+      94.7765,
+      89.6206,
+      65.0577,
+      22.263,
+      13.5384
+    ],
+    "metrics": {
+      "global_ik_success": 0.6335786966875947,
+      "global_ik_p95_mm": 97.55844787882049,
+      "global_diagnostic_success": 0.9418705347477809,
+      "weak_ik_success": 0.5700867052023122,
+      "weak_ik_p95_mm": 55.13325951628354,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.8171641791044776,
+      "corridor_ik_p95_mm": 9.671180383248746,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": 0.4213614384431158
+  },
+  {
+    "id": "t006",
+    "design": [
+      349.54,
+      172.995,
+      83.035,
+      91.255,
+      65.2275,
+      19.8475,
+      14.025
+    ],
+    "metrics": {
+      "global_ik_success": 0.6594500974236848,
+      "global_ik_p95_mm": 88.07928108520042,
+      "global_diagnostic_success": 0.9917731110630007,
+      "weak_ik_success": 0.5404624277456648,
+      "weak_ik_p95_mm": 55.13872743004018,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.664179104477612,
+      "corridor_ik_p95_mm": 10.897746441030666,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": 0.0820141350121798
+  },
+  {
+    "id": "t007",
+    "design": [
+      349.08,
+      175.99,
+      86.07,
+      92.51,
+      65.455,
+      20.575,
+      14.01
+    ],
+    "metrics": {
+      "global_ik_success": 0.668109980515263,
+      "global_ik_p95_mm": 84.46626384157888,
+      "global_diagnostic_success": 0.9932885906040269,
+      "weak_ik_success": 0.5397398843930635,
+      "weak_ik_p95_mm": 55.133065094275935,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.7164179104477612,
+      "corridor_ik_p95_mm": 12.407726420016594,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": 0.19370654333885395
+  },
+  {
+    "id": "t008",
+    "design": [
+      348.62,
+      178.985,
+      89.105,
+      93.765,
+      65.6825,
+      21.3025,
+      13.995
+    ],
+    "metrics": {
+      "global_ik_success": 0.6993938081835895,
+      "global_ik_p95_mm": 83.63096964869253,
+      "global_diagnostic_success": 0.9778090495778307,
+      "weak_ik_success": 0.5932080924855492,
+      "weak_ik_p95_mm": 53.062535665229824,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.7723880597014925,
+      "corridor_ik_p95_mm": 9.662489869374864,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": 0.4438670856996144
+  },
+  {
+    "id": "t009",
+    "design": [
+      349.9472,
+      172.3373,
+      82.9198,
+      88.0282,
+      66.9725,
+      19.4345,
+      13.8662
+    ],
+    "metrics": {
+      "global_ik_success": 0.6477592552500542,
+      "global_ik_p95_mm": 87.914896599522,
+      "global_diagnostic_success": 0.9962113011474345,
+      "weak_ik_success": 0.5303468208092486,
+      "weak_ik_p95_mm": 55.13399622858734,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.6902985074626866,
+      "corridor_ik_p95_mm": 9.558163060037106,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": 0.10233088493586606
+  },
+  {
+    "id": "t010",
+    "design": [
+      349.8945,
+      174.6745,
+      85.8396,
+      86.0565,
+      68.9449,
+      19.749,
+      13.6924
+    ],
+    "metrics": {
+      "global_ik_success": 0.67330591037021,
+      "global_ik_p95_mm": 82.4928289362144,
+      "global_diagnostic_success": 0.9907988742151981,
+      "weak_ik_success": 0.5476878612716763,
+      "weak_ik_p95_mm": 55.135065273485175,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.7201492537313433,
+      "corridor_ik_p95_mm": 9.558541778029506,
+      "corridor_diagnostic_success": 0.9888059701492538
+    },
+    "score": 0.2222611135181909
+  },
+  {
+    "id": "t011",
+    "design": [
+      349.8417,
+      177.0118,
+      88.7594,
+      84.0847,
+      70.9174,
+      20.0635,
+      13.5185
+    ],
+    "metrics": {
+      "global_ik_success": 0.6783935916865123,
+      "global_ik_p95_mm": 84.1849018390521,
+      "global_diagnostic_success": 0.9937215847586057,
+      "weak_ik_success": 0.5476878612716763,
+      "weak_ik_p95_mm": 55.13437082803151,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.7574626865671642,
+      "corridor_ik_p95_mm": 9.557727967411369,
+      "corridor_diagnostic_success": 0.996268656716418
+    },
+    "score": 0.3019756605061349
+  },
+  {
+    "id": "t012",
+    "design": [
+      349.789,
+      179.3491,
+      91.6792,
+      82.1129,
+      72.8898,
+      20.378,
+      13.3447
+    ],
+    "metrics": {
+      "global_ik_success": 0.7037237497293787,
+      "global_ik_p95_mm": 84.76345789408781,
+      "global_diagnostic_success": 0.9930720935267374,
+      "weak_ik_success": 0.5816473988439307,
+      "weak_ik_p95_mm": 53.0621167090114,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.7873134328358209,
+      "corridor_ik_p95_mm": 9.561582384519495,
+      "corridor_diagnostic_success": 0.9850746268656716
+    },
+    "score": 0.4549263862308234
+  },
+  {
+    "id": "t013",
+    "design": [
+      350.0,
+      172.5,
+      82.5,
+      90.0,
+      65.0,
+      20.12,
+      14.165
+    ],
+    "metrics": {
+      "global_ik_success": 0.6373673955401602,
+      "global_ik_p95_mm": 90.87291926878292,
+      "global_diagnostic_success": 0.9955618099155661,
+      "weak_ik_success": 0.5303468208092486,
+      "weak_ik_p95_mm": 55.133971412131295,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.667910447761194,
+      "corridor_ik_p95_mm": 9.80007936616127,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": 0.04716290582298688
+  },
+  {
+    "id": "t014",
+    "design": [
+      350.0,
+      175.0,
+      85.0,
+      90.0,
+      65.0,
+      21.12,
+      14.29
+    ],
+    "metrics": {
+      "global_ik_success": 0.6703831998268024,
+      "global_ik_p95_mm": 91.24271715783595,
+      "global_diagnostic_success": 1.0,
+      "weak_ik_success": 0.5354046242774566,
+      "weak_ik_p95_mm": 55.13485679198877,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.7089552238805971,
+      "corridor_ik_p95_mm": 9.80007936616127,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": 0.17238386928485128
+  },
+  {
+    "id": "t015",
+    "design": [
+      350.0,
+      177.5,
+      87.5,
+      90.0,
+      65.0,
+      22.12,
+      14.415
+    ],
+    "metrics": {
+      "global_ik_success": 0.6819657934617883,
+      "global_ik_p95_mm": 88.66188918480555,
+      "global_diagnostic_success": 0.9953453128382767,
+      "weak_ik_success": 0.5455202312138728,
+      "weak_ik_p95_mm": 55.133971412131295,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.753731343283582,
+      "corridor_ik_p95_mm": 9.685479601366096,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": 0.2937499155986396
+  },
+  {
+    "id": "t016",
+    "design": [
+      350.0,
+      180.0,
+      90.0,
+      90.0,
+      65.0,
+      23.12,
+      14.54
+    ],
+    "metrics": {
+      "global_ik_success": 0.6835895215414592,
+      "global_ik_p95_mm": 94.48269449306444,
+      "global_diagnostic_success": 0.9979432777657502,
+      "weak_ik_success": 0.5527456647398844,
+      "weak_ik_p95_mm": 55.13301564648459,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.7649253731343284,
+      "corridor_ik_p95_mm": 9.558027305467764,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": 0.3322125704318264
+  },
+  {
+    "id": "t017",
+    "design": [
+      350.0,
+      172.5,
+      82.5,
+      90.0,
+      65.0,
+      19.62,
+      13.915
+    ],
+    "metrics": {
+      "global_ik_success": 0.6427798224723966,
+      "global_ik_p95_mm": 90.91148883177252,
+      "global_diagnostic_success": 0.9917731110630007,
+      "weak_ik_success": 0.5382947976878613,
+      "weak_ik_p95_mm": 55.133971412131295,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.6791044776119403,
+      "corridor_ik_p95_mm": 9.80007936616127,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": 0.0908593462139412
+  },
+  {
+    "id": "t018",
+    "design": [
+      350.0,
+      175.0,
+      85.0,
+      90.0,
+      65.0,
+      20.12,
+      13.79
+    ],
+    "metrics": {
+      "global_ik_success": 0.6577181208053692,
+      "global_ik_p95_mm": 86.09810286980053,
+      "global_diagnostic_success": 0.9917731110630007,
+      "weak_ik_success": 0.5404624277456648,
+      "weak_ik_p95_mm": 55.13485679198877,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.6977611940298507,
+      "corridor_ik_p95_mm": 9.80007936616127,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": 0.14744633749834168
+  },
+  {
+    "id": "t019",
+    "design": [
+      350.0,
+      177.5,
+      87.5,
+      90.0,
+      65.0,
+      20.62,
+      13.665
+    ],
+    "metrics": {
+      "global_ik_success": 0.692790647326261,
+      "global_ik_p95_mm": 83.92450321258539,
+      "global_diagnostic_success": 0.9922061052175796,
+      "weak_ik_success": 0.5455202312138728,
+      "weak_ik_p95_mm": 55.133971412131295,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.753731343283582,
+      "corridor_ik_p95_mm": 9.685479601366096,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": 0.30457476946311235
+  },
+  {
+    "id": "t020",
+    "design": [
+      350.0,
+      180.0,
+      90.0,
+      90.0,
+      65.0,
+      21.12,
+      13.54
+    ],
+    "metrics": {
+      "global_ik_success": 0.700368045031392,
+      "global_ik_p95_mm": 84.61035989278307,
+      "global_diagnostic_success": 0.9892833946741719,
+      "weak_ik_success": 0.559971098265896,
+      "weak_ik_p95_mm": 55.13301564648459,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.7798507462686567,
+      "corridor_ik_p95_mm": 9.558027305467764,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": 0.3932927072424389
+  },
+  {
+    "id": "t021",
+    "design": [
+      349.4714,
+      172.4837,
+      82.4958,
+      89.9305,
+      66.8402,
+      20.2168,
+      14.2189
+    ],
+    "metrics": {
+      "global_ik_success": 0.6321714656852132,
+      "global_ik_p95_mm": 90.93513964337542,
+      "global_diagnostic_success": 1.0,
+      "weak_ik_success": 0.5382947976878613,
+      "weak_ik_p95_mm": 55.14085468025807,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.6828358208955224,
+      "corridor_ik_p95_mm": 9.782589938829842,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": 0.0877136759939221
+  },
+  {
+    "id": "t022",
+    "design": [
+      348.9428,
+      174.9674,
+      84.9916,
+      89.8609,
+      68.6803,
+      21.3136,
+      14.3978
+    ],
+    "metrics": {
+      "global_ik_success": 0.6742801472180125,
+      "global_ik_p95_mm": 88.41074224186217,
+      "global_diagnostic_success": 0.9932885906040269,
+      "weak_ik_success": 0.5447976878612717,
+      "weak_ik_p95_mm": 55.134523743849115,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.7052238805970149,
+      "corridor_ik_p95_mm": 14.79556574275465,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": 0.1876042572765273
+  },
+  {
+    "id": "t023",
+    "design": [
+      348.4142,
+      177.4512,
+      87.4875,
+      89.7914,
+      70.5205,
+      22.4104,
+      14.5767
+    ],
+    "metrics": {
+      "global_ik_success": 0.6791513314570253,
+      "global_ik_p95_mm": 91.89949767756973,
+      "global_diagnostic_success": 0.9979432777657502,
+      "weak_ik_success": 0.5455202312138728,
+      "weak_ik_p95_mm": 55.13305416414358,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.7611940298507462,
+      "corridor_ik_p95_mm": 9.55760588634459,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": 0.305860826728205
+  },
+  {
+    "id": "t024",
+    "design": [
+      347.8856,
+      179.9349,
+      89.9833,
+      89.7219,
+      72.3607,
+      23.5072,
+      14.7557
+    ],
+    "metrics": {
+      "global_ik_success": 0.6946308724832215,
+      "global_ik_p95_mm": 95.25311657149136,
+      "global_diagnostic_success": 0.9867936782853431,
+      "weak_ik_success": 0.5498554913294798,
+      "weak_ik_p95_mm": 55.13315110569883,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.7649253731343284,
+      "corridor_ik_p95_mm": 9.662491756096978,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": 0.3374735745527794
+  },
+  {
+    "id": "t025",
+    "design": [
+      350.0,
+      172.5,
+      82.5,
+      90.0,
+      65.0,
+      19.87,
+      14.04
+    ],
+    "metrics": {
+      "global_ik_success": 0.6503572201775276,
+      "global_ik_p95_mm": 87.96443720359588,
+      "global_diagnostic_success": 0.9917731110630007,
+      "weak_ik_success": 0.5382947976878613,
+      "weak_ik_p95_mm": 55.133971412131295,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.6791044776119403,
+      "corridor_ik_p95_mm": 9.80007936616127,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": 0.0984367439190722
+  },
+  {
+    "id": "t026",
+    "design": [
+      350.0,
+      175.0,
+      85.0,
+      90.0,
+      65.0,
+      20.62,
+      14.04
+    ],
+    "metrics": {
+      "global_ik_success": 0.6543624161073825,
+      "global_ik_p95_mm": 88.30063707287331,
+      "global_diagnostic_success": 0.9953453128382767,
+      "weak_ik_success": 0.5404624277456648,
+      "weak_ik_p95_mm": 55.13485679198877,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.6977611940298507,
+      "corridor_ik_p95_mm": 9.882202265641364,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": 0.14409063280035506
+  },
+  {
+    "id": "t027",
+    "design": [
+      350.0,
+      177.5,
+      87.5,
+      90.0,
+      65.0,
+      21.37,
+      14.04
+    ],
+    "metrics": {
+      "global_ik_success": 0.7013422818791947,
+      "global_ik_p95_mm": 88.08622504701889,
+      "global_diagnostic_success": 0.9953453128382767,
+      "weak_ik_success": 0.5455202312138728,
+      "weak_ik_p95_mm": 55.133971412131295,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.753731343283582,
+      "corridor_ik_p95_mm": 9.685479601366096,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": 0.31312640401604597
+  },
+  {
+    "id": "t028",
+    "design": [
+      350.0,
+      180.0,
+      90.0,
+      90.0,
+      65.0,
+      22.12,
+      14.04
+    ],
+    "metrics": {
+      "global_ik_success": 0.6941978783286425,
+      "global_ik_p95_mm": 92.12310102282684,
+      "global_diagnostic_success": 0.9953453128382767,
+      "weak_ik_success": 0.546242774566474,
+      "weak_ik_p95_mm": 55.13301564648459,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.7798507462686567,
+      "corridor_ik_p95_mm": 9.558027305467764,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": 0.3596658931408454
+  },
+  {
+    "id": "t029",
+    "design": [
+      350.0,
+      172.5,
+      82.5,
+      90.0,
+      65.0,
+      20.245,
+      14.29
+    ],
+    "metrics": {
+      "global_ik_success": 0.6476510067114094,
+      "global_ik_p95_mm": 87.96788304116562,
+      "global_diagnostic_success": 1.0,
+      "weak_ik_success": 0.5303468208092486,
+      "weak_ik_p95_mm": 55.133971412131295,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.667910447761194,
+      "corridor_ik_p95_mm": 9.80007936616127,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": 0.057446516994236085
+  },
+  {
+    "id": "t030",
+    "design": [
+      350.0,
+      175.0,
+      85.0,
+      90.0,
+      65.0,
+      21.37,
+      14.54
+    ],
+    "metrics": {
+      "global_ik_success": 0.6864039835462221,
+      "global_ik_p95_mm": 88.3034857940338,
+      "global_diagnostic_success": 1.0,
+      "weak_ik_success": 0.5354046242774566,
+      "weak_ik_p95_mm": 55.13485679198877,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.6940298507462687,
+      "corridor_ik_p95_mm": 11.430021691155838,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": 0.1585539067356142
+  },
+  {
+    "id": "t031",
+    "design": [
+      350.0,
+      177.5,
+      87.5,
+      90.0,
+      65.0,
+      22.495,
+      14.79
+    ],
+    "metrics": {
+      "global_ik_success": 0.6937648841740637,
+      "global_ik_p95_mm": 86.85195878064738,
+      "global_diagnostic_success": 0.9953453128382767,
+      "weak_ik_success": 0.5447976878612717,
+      "weak_ik_p95_mm": 55.133971412131295,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.7350746268656716,
+      "corridor_ik_p95_mm": 9.80007936616127,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": 0.2667904867698918
+  },
+  {
+    "id": "t032",
+    "design": [
+      350.0,
+      180.0,
+      90.0,
+      90.0,
+      65.0,
+      23.62,
+      15.04
+    ],
+    "metrics": {
+      "global_ik_success": 0.7077289456592336,
+      "global_ik_p95_mm": 88.48872834940722,
+      "global_diagnostic_success": 0.985278198744317,
+      "weak_ik_success": 0.546242774566474,
+      "weak_ik_p95_mm": 55.13301564648459,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.7761194029850746,
+      "corridor_ik_p95_mm": 9.558027305467764,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": 0.3657342739042724
+  },
+  {
+    "id": "t033",
+    "design": [
+      350.0,
+      172.5,
+      82.5,
+      90.0,
+      65.0,
+      19.745,
+      13.915
+    ],
+    "metrics": {
+      "global_ik_success": 0.6448365447066464,
+      "global_ik_p95_mm": 90.87291926878292,
+      "global_diagnostic_success": 0.9917731110630007,
+      "weak_ik_success": 0.5382947976878613,
+      "weak_ik_p95_mm": 55.133971412131295,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.6902985074626866,
+      "corridor_ik_p95_mm": 9.80007936616127,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": 0.11530412814968372
+  },
+  {
+    "id": "t034",
+    "design": [
+      350.0,
+      175.0,
+      85.0,
+      90.0,
+      65.0,
+      20.37,
+      13.79
+    ],
+    "metrics": {
+      "global_ik_success": 0.6547954102619614,
+      "global_ik_p95_mm": 88.24900601054523,
+      "global_diagnostic_success": 0.9962113011474345,
+      "weak_ik_success": 0.5404624277456648,
+      "weak_ik_p95_mm": 55.13485679198877,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.7126865671641791,
+      "corridor_ik_p95_mm": 9.685479601366096,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": 0.17437437322359073
+  },
+  {
+    "id": "t035",
+    "design": [
+      350.0,
+      177.5,
+      87.5,
+      90.0,
+      65.0,
+      20.995,
+      13.665
+    ],
+    "metrics": {
+      "global_ik_success": 0.6875947174713142,
+      "global_ik_p95_mm": 91.60444340508143,
+      "global_diagnostic_success": 0.9901493829833298,
+      "weak_ik_success": 0.5527456647398844,
+      "weak_ik_p95_mm": 55.133971412131295,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.7723880597014925,
+      "corridor_ik_p95_mm": 9.557540601938944,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": 0.3511431394960095
+  },
+  {
+    "id": "t036",
+    "design": [
+      350.0,
+      180.0,
+      90.0,
+      90.0,
+      65.0,
+      21.62,
+      13.54
+    ],
+    "metrics": {
+      "global_ik_success": 0.6723316735224074,
+      "global_ik_p95_mm": 94.40139241921942,
+      "global_diagnostic_success": 0.9930720935267374,
+      "weak_ik_success": 0.5469653179190751,
+      "weak_ik_p95_mm": 55.13301564648459,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.7611940298507462,
+      "corridor_ik_p95_mm": 9.558027305467764,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": 0.30193134220399165
+  },
+  {
+    "id": "t037",
+    "design": [
+      349.0126,
+      172.848,
+      82.2249,
+      90.767,
+      65.9655,
+      19.5665,
+      14.0622
+    ],
+    "metrics": {
+      "global_ik_success": 0.6318467200692791,
+      "global_ik_p95_mm": 85.45579427885205,
+      "global_diagnostic_success": 0.9935050876813163,
+      "weak_ik_success": 0.5404624277456648,
+      "weak_ik_p95_mm": 55.133961916157254,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.6940298507462687,
+      "corridor_ik_p95_mm": 9.782408070345607,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": 0.11411225019508753
+  },
+  {
+    "id": "t038",
+    "design": [
+      348.0253,
+      175.6959,
+      84.4497,
+      91.5341,
+      66.931,
+      20.0131,
+      14.0845
+    ],
+    "metrics": {
+      "global_ik_success": 0.6637800389694739,
+      "global_ik_p95_mm": 80.96035034597239,
+      "global_diagnostic_success": 0.9838709677419355,
+      "weak_ik_success": 0.5585260115606936,
+      "weak_ik_p95_mm": 55.13314976679096,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.6865671641791045,
+      "corridor_ik_p95_mm": 14.586077402630147,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": 0.16724736359101156
+  },
+  {
+    "id": "t039",
+    "design": [
+      347.0379,
+      178.5439,
+      86.6746,
+      92.3011,
+      67.8965,
+      20.4596,
+      14.1067
+    ],
+    "metrics": {
+      "global_ik_success": 0.6806668109980515,
+      "global_ik_p95_mm": 78.86330273596286,
+      "global_diagnostic_success": 0.9655769647109764,
+      "weak_ik_success": 0.6011560693641619,
+      "weak_ik_p95_mm": 51.379428939221135,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.7126865671641791,
+      "corridor_ik_p95_mm": 22.369621761357983,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": 0.321633057196675
+  },
+  {
+    "id": "t040",
+    "design": [
+      346.0505,
+      181.3918,
+      88.8995,
+      93.0682,
+      68.8619,
+      20.9062,
+      14.129
+    ],
+    "metrics": {
+      "global_ik_success": 0.6878112145486036,
+      "global_ik_p95_mm": 79.05449602926319,
+      "global_diagnostic_success": 0.9567005845421087,
+      "weak_ik_success": 0.6763005780346821,
+      "weak_ik_p95_mm": 45.486574877355224,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.7052238805970149,
+      "corridor_ik_p95_mm": 25.66913984753702,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": 0.46414110495393923
+  },
+  {
+    "id": "t041",
+    "design": [
+      349.3214,
+      172.146,
+      83.1066,
+      89.1981,
+      66.0293,
+      20.1372,
+      14.3208
+    ],
+    "metrics": {
+      "global_ik_success": 0.6369344013855813,
+      "global_ik_p95_mm": 88.06432606191197,
+      "global_diagnostic_success": 0.9922061052175796,
+      "weak_ik_success": 0.5303468208092486,
+      "weak_ik_p95_mm": 55.14060480489928,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.7052238805970149,
+      "corridor_ik_p95_mm": 9.558446693890298,
+      "corridor_diagnostic_success": 0.9888059701492538
+    },
+    "score": 0.12135677734004979
+  },
+  {
+    "id": "t042",
+    "design": [
+      348.6427,
+      174.292,
+      86.2132,
+      88.3963,
+      67.0586,
+      21.1544,
+      14.6016
+    ],
+    "metrics": {
+      "global_ik_success": 0.6822905390777224,
+      "global_ik_p95_mm": 86.22833372658872,
+      "global_diagnostic_success": 0.9919896081402901,
+      "weak_ik_success": 0.5426300578034682,
+      "weak_ik_p95_mm": 55.13455239209996,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.7388059701492538,
+      "corridor_ik_p95_mm": 9.662489549828354,
+      "corridor_diagnostic_success": 0.996268656716418
+    },
+    "score": 0.2584435681251078
+  },
+  {
+    "id": "t043",
+    "design": [
+      347.9641,
+      176.438,
+      89.3198,
+      87.5944,
+      68.0879,
+      22.1716,
+      14.8823
+    ],
+    "metrics": {
+      "global_ik_success": 0.6710326910586707,
+      "global_ik_p95_mm": 86.6322022416896,
+      "global_diagnostic_success": 0.9769430612686729,
+      "weak_ik_success": 0.5614161849710982,
+      "weak_ik_p95_mm": 55.13323413267508,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.753731343283582,
+      "corridor_ik_p95_mm": 9.559618781303856,
+      "corridor_diagnostic_success": 0.9626865671641791
+    },
+    "score": 0.3146087207099728
+  },
+  {
+    "id": "t044",
+    "design": [
+      347.2855,
+      178.584,
+      92.4264,
+      86.7926,
+      69.1172,
+      23.1889,
+      15.1631
+    ],
+    "metrics": {
+      "global_ik_success": 0.6795843256116042,
+      "global_ik_p95_mm": 86.75531247728247,
+      "global_diagnostic_success": 0.9640614851699502,
+      "weak_ik_success": 0.6011560693641619,
+      "weak_ik_p95_mm": 53.066559497762746,
+      "weak_diagnostic_success": 0.9978323699421965,
+      "corridor_ik_success": 0.7611940298507462,
+      "corridor_ik_p95_mm": 9.293962820444083,
+      "corridor_diagnostic_success": 0.9291044776119403
+    },
+    "score": 0.417565497183362
+  },
+  {
+    "id": "t045",
+    "design": [
+      350.0,
+      172.5,
+      82.5,
+      90.0,
+      65.0,
+      19.495,
+      14.04
+    ],
+    "metrics": {
+      "global_ik_success": 0.6400736090062784,
+      "global_ik_p95_mm": 87.52269191991407,
+      "global_diagnostic_success": 0.9917731110630007,
+      "weak_ik_success": 0.5303468208092486,
+      "weak_ik_p95_mm": 55.133971412131295,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.667910447761194,
+      "corridor_ik_p95_mm": 9.80007936616127,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": 0.04986911928910509
+  },
+  {
+    "id": "t046",
+    "design": [
+      350.0,
+      175.0,
+      85.0,
+      90.0,
+      65.0,
+      19.87,
+      14.04
+    ],
+    "metrics": {
+      "global_ik_success": 0.6708161939813813,
+      "global_ik_p95_mm": 82.750932862852,
+      "global_diagnostic_success": 0.9917731110630007,
+      "weak_ik_success": 0.5404624277456648,
+      "weak_ik_p95_mm": 55.13485679198877,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.6865671641791045,
+      "corridor_ik_p95_mm": 13.947550786178919,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": 0.13815635097286127
+  },
+  {
+    "id": "t047",
+    "design": [
+      350.0,
+      177.5,
+      87.5,
+      90.0,
+      65.0,
+      20.245,
+      14.04
+    ],
+    "metrics": {
+      "global_ik_success": 0.704373240961247,
+      "global_ik_p95_mm": 80.54400738323578,
+      "global_diagnostic_success": 0.9885256549036588,
+      "weak_ik_success": 0.5729768786127167,
+      "weak_ik_p95_mm": 53.06394975664622,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.7089552238805971,
+      "corridor_ik_p95_mm": 12.271982756219202,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": 0.2815184190898161
+  },
+  {
+    "id": "t048",
+    "design": [
+      350.0,
+      180.0,
+      90.0,
+      90.0,
+      65.0,
+      20.62,
+      14.04
+    ],
+    "metrics": {
+      "global_ik_success": 0.6946308724832215,
+      "global_ik_p95_mm": 81.53233914847566,
+      "global_diagnostic_success": 0.9927473479108032,
+      "weak_ik_success": 0.6011560693641619,
+      "weak_ik_p95_mm": 51.382234112357175,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.7350746268656716,
+      "corridor_ik_p95_mm": 14.189932702403866,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": 0.38037323808483003
+  },
+  {
+    "id": "t049",
+    "design": [
+      353.687,
+      179.1886,
+      82.7149,
+      81.0517,
+      60.1766,
+      19.4168,
+      11.2099
+    ],
+    "metrics": {
+      "global_ik_success": 0.3901277332756008,
+      "global_ik_p95_mm": 95.72710011121391,
+      "global_diagnostic_success": 0.7665079021433211,
+      "weak_ik_success": 0.3504335260115607,
+      "weak_ik_p95_mm": 55.13307384653591,
+      "weak_diagnostic_success": 0.740606936416185,
+      "corridor_ik_success": 0.43283582089552236,
+      "corridor_ik_p95_mm": 26.836084362947346,
+      "corridor_diagnostic_success": 0.8843283582089553
+    },
+    "score": -1.0300525997682914
+  },
+  {
+    "id": "t050",
+    "design": [
+      346.6653,
+      170.9926,
+      89.5809,
+      55.5581,
+      48.6187,
+      23.6907,
+      14.9526
+    ],
+    "metrics": {
+      "global_ik_success": 0.37670491448365445,
+      "global_ik_p95_mm": 94.11245534667397,
+      "global_diagnostic_success": 0.6311972288374107,
+      "weak_ik_success": 0.4161849710982659,
+      "weak_ik_p95_mm": 55.14441163127495,
+      "weak_diagnostic_success": 0.8078034682080925,
+      "corridor_ik_success": 0.44776119402985076,
+      "corridor_ik_p95_mm": 21.124698096814793,
+      "corridor_diagnostic_success": 0.8134328358208955
+    },
+    "score": -0.8821217821181706
+  },
+  {
+    "id": "t051",
+    "design": [
+      348.4038,
+      176.9634,
+      85.0014,
+      83.242,
+      53.3022,
+      22.2994,
+      13.383
+    ],
+    "metrics": {
+      "global_ik_success": 0.443819008443386,
+      "global_ik_p95_mm": 96.52480163735724,
+      "global_diagnostic_success": 0.898029876596666,
+      "weak_ik_success": 0.3908959537572254,
+      "weak_ik_p95_mm": 55.13302354929278,
+      "weak_diagnostic_success": 0.9515895953757225,
+      "corridor_ik_success": 0.5335820895522388,
+      "corridor_ik_p95_mm": 29.74392140029692,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": -0.6939439317957439
+  },
+  {
+    "id": "t052",
+    "design": [
+      351.4014,
+      173.2649,
+      87.4643,
+      70.8645,
+      67.9878,
+      21.4712,
+      15.6404
+    ],
+    "metrics": {
+      "global_ik_success": 0.6297899978350292,
+      "global_ik_p95_mm": 86.43742401794782,
+      "global_diagnostic_success": 0.9679584325611604,
+      "weak_ik_success": 0.5260115606936416,
+      "weak_ik_p95_mm": 55.13427059443606,
+      "weak_diagnostic_success": 0.9891618497109826,
+      "corridor_ik_success": 0.6156716417910447,
+      "corridor_ik_p95_mm": 9.558121684454262,
+      "corridor_diagnostic_success": 0.8880597014925373
+    },
+    "score": -0.07356262405365654
+  },
+  {
+    "id": "t053",
+    "design": [
+      350.1813,
+      177.6783,
+      91.2202,
+      63.7759,
+      66.3867,
+      18.1855,
+      12.5072
+    ],
+    "metrics": {
+      "global_ik_success": 0.4660099588655553,
+      "global_ik_p95_mm": 87.53760506500525,
+      "global_diagnostic_success": 0.6742801472180125,
+      "weak_ik_success": 0.4884393063583815,
+      "weak_ik_p95_mm": 53.06518026976203,
+      "weak_diagnostic_success": 0.7463872832369942,
+      "corridor_ik_success": 0.7164179104477612,
+      "corridor_ik_p95_mm": 9.699650452383556,
+      "corridor_diagnostic_success": 0.9850746268656716
+    },
+    "score": -0.11099463438021784
+  },
+  {
+    "id": "t054",
+    "design": [
+      349.3908,
+      175.386,
+      81.2575,
+      89.2695,
+      54.8241,
+      24.2624,
+      16.2529
+    ],
+    "metrics": {
+      "global_ik_success": 0.6853214981597748,
+      "global_ik_p95_mm": 93.26294873772746,
+      "global_diagnostic_success": 0.9887421519809483,
+      "weak_ik_success": 0.5426300578034682,
+      "weak_ik_p95_mm": 55.1332887105796,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.6156716417910447,
+      "corridor_ik_p95_mm": 20.73439747381268,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": 0.01520587049074218
+  },
+  {
+    "id": "t055",
+    "design": [
+      345.5429,
+      181.4036,
+      88.8136,
+      61.5866,
+      47.0098,
+      22.5977,
+      12.0567
+    ],
+    "metrics": {
+      "global_ik_success": 0.24734791080320415,
+      "global_ik_p95_mm": 99.21219015793054,
+      "global_diagnostic_success": 0.5677635851915999,
+      "weak_ik_success": 0.342485549132948,
+      "weak_ik_p95_mm": 55.13348661828593,
+      "weak_diagnostic_success": 0.7478323699421965,
+      "corridor_ik_success": 0.48507462686567165,
+      "corridor_ik_p95_mm": 36.76728877632799,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": -1.084250764057615
+  },
+  {
+    "id": "t056",
+    "design": [
+      354.7325,
+      171.6139,
+      83.4474,
+      73.964,
+      61.6941,
+      20.0759,
+      14.3112
+    ],
+    "metrics": {
+      "global_ik_success": 0.6079237930287941,
+      "global_ik_p95_mm": 90.37847899419161,
+      "global_diagnostic_success": 0.959731543624161,
+      "weak_ik_success": 0.5043352601156069,
+      "weak_ik_p95_mm": 55.1331029467547,
+      "weak_diagnostic_success": 0.9364161849710982,
+      "corridor_ik_success": 0.6231343283582089,
+      "corridor_ik_p95_mm": 9.38497764590355,
+      "corridor_diagnostic_success": 0.8656716417910447
+    },
+    "score": -0.1238560568816327
+  },
+  {
+    "id": "t057",
+    "design": [
+      353.7846,
+      176.1151,
+      87.7352,
+      85.9706,
+      50.764,
+      20.9434,
+      13.1574
+    ],
+    "metrics": {
+      "global_ik_success": 0.45280363715089844,
+      "global_ik_p95_mm": 93.71173663548979,
+      "global_diagnostic_success": 0.6766616150681966,
+      "weak_ik_success": 0.3959537572254335,
+      "weak_ik_p95_mm": 55.132997562406224,
+      "weak_diagnostic_success": 0.7254335260115607,
+      "corridor_ik_success": 0.6194029850746269,
+      "corridor_ik_p95_mm": 10.638606538640493,
+      "corridor_diagnostic_success": 0.8843283582089553
+    },
+    "score": -0.5032019051070392
+  },
+  {
+    "id": "t058",
+    "design": [
+      345.7862,
+      173.9082,
+      83.7755,
+      67.048,
+      58.0261,
+      21.7301,
+      16.9149
+    ],
+    "metrics": {
+      "global_ik_success": 0.6271920329075558,
+      "global_ik_p95_mm": 80.84894727417317,
+      "global_diagnostic_success": 0.9372158475860576,
+      "weak_ik_success": 0.5939306358381503,
+      "weak_ik_p95_mm": 51.37932491305367,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.6305970149253731,
+      "corridor_ik_p95_mm": 22.340715528212257,
+      "corridor_diagnostic_success": 0.9925373134328358
+    },
+    "score": 0.08952830757654417
+  },
+  {
+    "id": "t059",
+    "design": [
+      349.1264,
+      179.8906,
+      91.5483,
+      75.0434,
+      68.968,
+      23.3945,
+      12.1562
+    ],
+    "metrics": {
+      "global_ik_success": 0.4847369560510933,
+      "global_ik_p95_mm": 97.15554859846469,
+      "global_diagnostic_success": 0.9757523273435809,
+      "weak_ik_success": 0.46604046242774566,
+      "weak_ik_p95_mm": 55.13676911506624,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.48880597014925375,
+      "corridor_ik_p95_mm": 31.851498022383296,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": -0.5922892056529663
+  },
+  {
+    "id": "t060",
+    "design": [
+      351.1478,
+      170.1796,
+      80.1791,
+      60.4699,
+      52.3274,
+      19.0535,
+      14.3989
+    ],
+    "metrics": {
+      "global_ik_success": 0.46038103485602944,
+      "global_ik_p95_mm": 90.61570673036243,
+      "global_diagnostic_success": 0.7200692790647326,
+      "weak_ik_success": 0.4263005780346821,
+      "weak_ik_p95_mm": 55.14293507570286,
+      "weak_diagnostic_success": 0.8034682080924855,
+      "corridor_ik_success": 0.6044776119402985,
+      "corridor_ik_p95_mm": 9.935260854883326,
+      "corridor_diagnostic_success": 0.917910447761194
+    },
+    "score": -0.4647816120520679
+  },
+  {
+    "id": "t061",
+    "design": [
+      352.2714,
+      180.7694,
+      85.4235,
+      58.86,
+      56.97,
+      20.5904,
+      11.4855
+    ],
+    "metrics": {
+      "global_ik_success": 0.2949772678068846,
+      "global_ik_p95_mm": 96.50784161946629,
+      "global_diagnostic_success": 0.5927689976185322,
+      "weak_ik_success": 0.33815028901734107,
+      "weak_ik_p95_mm": 55.13457002613388,
+      "weak_diagnostic_success": 0.7124277456647399,
+      "corridor_ik_success": 0.4141791044776119,
+      "corridor_ik_p95_mm": 29.685234792400205,
+      "corridor_diagnostic_success": 0.8880597014925373
+    },
+    "score": -1.187082972061268
+  },
+  {
+    "id": "t062",
+    "design": [
+      348.0821,
+      172.4646,
+      86.2925,
+      77.7827,
+      64.2338,
+      23.1802,
+      15.2399
+    ],
+    "metrics": {
+      "global_ik_success": 0.6174496644295302,
+      "global_ik_p95_mm": 94.1224431285118,
+      "global_diagnostic_success": 0.9856029443602511,
+      "weak_ik_success": 0.5325144508670521,
+      "weak_ik_p95_mm": 55.133110743918124,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.7164179104477612,
+      "corridor_ik_p95_mm": 9.568065273054078,
+      "corridor_diagnostic_success": 0.9888059701492538
+    },
+    "score": 0.12859536020109819
+  },
+  {
+    "id": "t063",
+    "design": [
+      347.0075,
+      178.4939,
+      81.5431,
+      69.7863,
+      62.6734,
+      24.5711,
+      13.8578
+    ],
+    "metrics": {
+      "global_ik_success": 0.4260662481056506,
+      "global_ik_p95_mm": 97.37213954240939,
+      "global_diagnostic_success": 0.950205672223425,
+      "weak_ik_success": 0.46098265895953755,
+      "weak_ik_p95_mm": 55.13332124351714,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.40298507462686567,
+      "corridor_ik_p95_mm": 33.56070652255237,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": -0.8327173115796014
+  },
+  {
+    "id": "t064",
+    "design": [
+      352.7989,
+      174.6932,
+      90.003,
+      84.3598,
+      46.0372,
+      18.5364,
+      16.1035
+    ],
+    "metrics": {
+      "global_ik_success": 0.3718337302446417,
+      "global_ik_p95_mm": 87.69821682274664,
+      "global_diagnostic_success": 0.604784585408097,
+      "weak_ik_success": 0.43786127167630057,
+      "weak_ik_p95_mm": 53.06206769485571,
+      "weak_diagnostic_success": 0.7203757225433526,
+      "corridor_ik_success": 0.48880597014925375,
+      "corridor_ik_p95_mm": 10.265270508607344,
+      "corridor_diagnostic_success": 0.8694029850746269
+    },
+    "score": -0.7615508129623081
+  },
+  {
+    "id": "t065",
+    "design": [
+      352.8943,
+      178.7849,
+      84.2642,
+      63.7326,
+      67.4919,
+      22.9618,
+      14.8325
+    ],
+    "metrics": {
+      "global_ik_success": 0.6919246590171033,
+      "global_ik_p95_mm": 93.333405909119,
+      "global_diagnostic_success": 0.9822472396622646,
+      "weak_ik_success": 0.5101156069364162,
+      "weak_ik_p95_mm": 55.13340264451525,
+      "weak_diagnostic_success": 0.9573699421965318,
+      "corridor_ik_success": 0.585820895522388,
+      "corridor_ik_p95_mm": 20.208988568859013,
+      "corridor_diagnostic_success": 0.8843283582089553
+    },
+    "score": -0.10292136292334664
+  },
+  {
+    "id": "t066",
+    "design": [
+      347.4544,
+      174.9809,
+      88.2248,
+      73.2216,
+      53.6151,
+      20.3713,
+      11.0898
+    ],
+    "metrics": {
+      "global_ik_success": 0.2578480190517428,
+      "global_ik_p95_mm": 96.24518235174372,
+      "global_diagnostic_success": 0.5310673305910371,
+      "weak_ik_success": 0.3179190751445087,
+      "weak_ik_p95_mm": 55.13305815201863,
+      "weak_diagnostic_success": 0.7124277456647399,
+      "corridor_ik_success": 0.4925373134328358,
+      "corridor_ik_p95_mm": 28.761293640370713,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": -1.1079582306516267
+  },
+  {
+    "id": "t067",
+    "design": [
+      347.6303,
+      181.0571,
+      80.4513,
+      65.9044,
+      48.9285,
+      18.7548,
+      15.8484
+    ],
+    "metrics": {
+      "global_ik_success": 0.6436458107815545,
+      "global_ik_p95_mm": 99.26796652862916,
+      "global_diagnostic_success": 0.8917514613552717,
+      "weak_ik_success": 0.6502890173410405,
+      "weak_ik_p95_mm": 53.06244884937403,
+      "weak_diagnostic_success": 0.9833815028901735,
+      "corridor_ik_success": 0.48880597014925375,
+      "corridor_ik_p95_mm": 28.416039696809353,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": -0.06488324109591548
+  },
+  {
+    "id": "t068",
+    "design": [
+      352.1712,
+      172.7556,
+      91.821,
+      88.5443,
+      59.6838,
+      24.7902,
+      13.591
+    ],
+    "metrics": {
+      "global_ik_success": 0.4588655553150032,
+      "global_ik_p95_mm": 94.6390040587259,
+      "global_diagnostic_success": 0.8888287508118641,
+      "weak_ik_success": 0.4313583815028902,
+      "weak_ik_p95_mm": 55.13330708641299,
+      "weak_diagnostic_success": 0.9479768786127167,
+      "corridor_ik_success": 0.3619402985074627,
+      "corridor_ik_p95_mm": 22.277119681995917,
+      "corridor_diagnostic_success": 0.8582089552238806
+    },
+    "score": -0.9412561115223494
+  },
+  {
+    "id": "t069",
+    "design": [
+      350.6569,
+      180.3423,
+      86.5771,
+      81.44,
+      61.3843,
+      21.5119,
+      16.5136
+    ],
+    "metrics": {
+      "global_ik_success": 0.700368045031392,
+      "global_ik_p95_mm": 91.23044475892253,
+      "global_diagnostic_success": 0.9938298332972505,
+      "weak_ik_success": 0.5809248554913294,
+      "weak_ik_p95_mm": 51.38144908191147,
+      "weak_diagnostic_success": 0.9992774566473989,
+      "corridor_ik_success": 0.5410447761194029,
+      "corridor_ik_p95_mm": 27.501533262853403,
+      "corridor_diagnostic_success": 0.9664179104477612
+    },
+    "score": -0.042411718605201654
+  },
+  {
+    "id": "t070",
+    "design": [
+      348.909,
+      170.6346,
+      85.7073,
+      71.9509,
+      47.5027,
+      20.7242,
+      12.7679
+    ],
+    "metrics": {
+      "global_ik_success": 0.2937865338817926,
+      "global_ik_p95_mm": 94.86893761732831,
+      "global_diagnostic_success": 0.5228404416540376,
+      "weak_ik_success": 0.32514450867052025,
+      "weak_ik_p95_mm": 55.14413176588876,
+      "weak_diagnostic_success": 0.721820809248555,
+      "corridor_ik_success": 0.5559701492537313,
+      "corridor_ik_p95_mm": 13.646499740384485,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": -0.9307031771277627
+  },
+  {
+    "id": "t071",
+    "design": [
+      345.9987,
+      176.5702,
+      90.4574,
+      79.2669,
+      55.3199,
+      19.2718,
+      14.1501
+    ],
+    "metrics": {
+      "global_ik_success": 0.46189651439705565,
+      "global_ik_p95_mm": 88.74479701326665,
+      "global_diagnostic_success": 0.7087031825070361,
+      "weak_ik_success": 0.513728323699422,
+      "weak_ik_p95_mm": 51.381263222937385,
+      "weak_diagnostic_success": 0.8020231213872833,
+      "corridor_ik_success": 0.6604477611940298,
+      "corridor_ik_p95_mm": 9.786214364252803,
+      "corridor_diagnostic_success": 0.9067164179104478
+    },
+    "score": -0.17647034267409917
+  },
+  {
+    "id": "t072",
+    "design": [
+      354.2706,
+      174.3599,
+      81.9969,
+      56.627,
+      66.0738,
+      23.6137,
+      11.8956
+    ],
+    "metrics": {
+      "global_ik_success": 0.35667893483437974,
+      "global_ik_p95_mm": 94.58852132096021,
+      "global_diagnostic_success": 0.7215847586057588,
+      "weak_ik_success": 0.34609826589595377,
+      "weak_ik_p95_mm": 55.139572871056956,
+      "weak_diagnostic_success": 0.7102601156069365,
+      "corridor_ik_success": 0.3880597014925373,
+      "corridor_ik_p95_mm": 22.27607201578526,
+      "corridor_diagnostic_success": 0.8656716417910447
+    },
+    "score": -1.1617241572466965
+  },
+  {
+    "id": "t073",
+    "design": [
+      354.5542,
+      181.8644,
+      89.2854,
+      68.6488,
+      51.859,
+      24.4808,
+      16.8005
+    ],
+    "metrics": {
+      "global_ik_success": 0.7261311972288375,
+      "global_ik_p95_mm": 89.98035950679437,
+      "global_diagnostic_success": 0.9840874648192249,
+      "weak_ik_success": 0.5469653179190751,
+      "weak_ik_p95_mm": 53.062067334193536,
+      "weak_diagnostic_success": 0.9530346820809249,
+      "corridor_ik_success": 0.5485074626865671,
+      "corridor_ik_p95_mm": 20.384326860276907,
+      "corridor_diagnostic_success": 0.8544776119402985
+    },
+    "score": -0.06964226841793653
+  },
+  {
+    "id": "t074",
+    "design": [
+      345.013,
+      172.0714,
+      82.4185,
+      84.7089,
+      69.2533,
+      18.4047,
+      13.0431
+    ],
+    "metrics": {
+      "global_ik_success": 0.5477376055423252,
+      "global_ik_p95_mm": 87.94082161204312,
+      "global_diagnostic_success": 0.8561376921411561,
+      "weak_ik_success": 0.4934971098265896,
+      "weak_ik_p95_mm": 55.133049049722,
+      "weak_diagnostic_success": 0.898121387283237,
+      "corridor_ik_success": 0.7164179104477612,
+      "corridor_ik_p95_mm": 9.784194801500716,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": -0.01915138076703171
+  },
+  {
+    "id": "t075",
+    "design": [
+      349.9158,
+      178.1359,
+      86.9987,
+      57.7054,
+      58.3145,
+      19.8575,
+      14.6128
+    ],
+    "metrics": {
+      "global_ik_success": 0.557371725481706,
+      "global_ik_p95_mm": 79.46485322596794,
+      "global_diagnostic_success": 0.7950855163455294,
+      "weak_ik_success": 0.49783236994219654,
+      "weak_ik_p95_mm": 53.062345954918165,
+      "weak_diagnostic_success": 0.8273121387283237,
+      "corridor_ik_success": 0.6268656716417911,
+      "corridor_ik_p95_mm": 20.848030384806435,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": -0.17995121820837723
+  },
+  {
+    "id": "t076",
+    "design": [
+      350.3547,
+      175.8469,
+      84.5353,
+      78.1492,
+      50.2924,
+      22.3785,
+      12.3701
+    ],
+    "metrics": {
+      "global_ik_success": 0.35548820090928773,
+      "global_ik_p95_mm": 95.72478841129373,
+      "global_diagnostic_success": 0.7159558345962329,
+      "weak_ik_success": 0.3583815028901734,
+      "weak_ik_p95_mm": 55.13499006809314,
+      "weak_diagnostic_success": 0.778179190751445,
+      "corridor_ik_success": 0.4701492537313433,
+      "corridor_ik_p95_mm": 26.83746381666325,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": -0.9741693127057374
+  },
+  {
+    "id": "t077",
+    "design": [
+      351.8092,
+      177.2569,
+      80.7795,
+      76.5205,
+      45.7489,
+      23.909,
+      15.4949
+    ],
+    "metrics": {
+      "global_ik_success": 0.6885689543191167,
+      "global_ik_p95_mm": 93.99000755008277,
+      "global_diagnostic_success": 0.9883091578263693,
+      "weak_ik_success": 0.5209537572254336,
+      "weak_ik_p95_mm": 55.13300311340635,
+      "weak_diagnostic_success": 0.9804913294797688,
+      "corridor_ik_success": 0.5783582089552238,
+      "corridor_ik_p95_mm": 20.18588664922312,
+      "corridor_diagnostic_success": 0.8880597014925373
+    },
+    "score": -0.09952614017762695
+  },
+  {
+    "id": "t078",
+    "design": [
+      348.5382,
+      173.5616,
+      90.7431,
+      60.4603,
+      63.145,
+      19.636,
+      11.7404
+    ],
+    "metrics": {
+      "global_ik_success": 0.3011474345096341,
+      "global_ik_p95_mm": 95.6105999890341,
+      "global_diagnostic_success": 0.5765317168218229,
+      "weak_ik_success": 0.3598265895953757,
+      "weak_ik_p95_mm": 55.13309098324493,
+      "weak_diagnostic_success": 0.7355491329479769,
+      "corridor_ik_success": 0.47761194029850745,
+      "corridor_ik_p95_mm": 26.396470056626153,
+      "corridor_diagnostic_success": 0.9477611940298507
+    },
+    "score": -1.010694532560658
+  },
+  {
+    "id": "t079",
+    "design": [
+      346.526,
+      179.4855,
+      83.1863,
+      87.465,
+      64.7023,
+      21.2529,
+      15.9365
+    ],
+    "metrics": {
+      "global_ik_success": 0.7146568521324962,
+      "global_ik_p95_mm": 78.63258037825668,
+      "global_diagnostic_success": 0.9691491664862525,
+      "weak_ik_success": 0.6705202312138728,
+      "weak_ik_p95_mm": 45.48309986175214,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.5485074626865671,
+      "corridor_ik_p95_mm": 29.396095436958507,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": 0.16599321307531767
+  },
+  {
+    "id": "t080",
+    "design": [
+      353.2743,
+      171.2862,
+      88.553,
+      67.0212,
+      56.6847,
+      22.0802,
+      13.6908
+    ],
+    "metrics": {
+      "global_ik_success": 0.4197878328642563,
+      "global_ik_p95_mm": 94.31577424102876,
+      "global_diagnostic_success": 0.737064299631955,
+      "weak_ik_success": 0.36416184971098264,
+      "weak_ik_p95_mm": 55.1349996058015,
+      "weak_diagnostic_success": 0.7825144508670521,
+      "corridor_ik_success": 0.48880597014925375,
+      "corridor_ik_p95_mm": 13.25551812247896,
+      "corridor_diagnostic_success": 0.8544776119402985
+    },
+    "score": -0.8609955542733294
+  },
+  {
+    "id": "t081",
+    "design": [
+      353.3703,
+      176.8485,
+      91.3838,
+      56.8043,
+      62.0437,
+      22.5112,
+      15.6905
+    ],
+    "metrics": {
+      "global_ik_success": 0.6251353106733059,
+      "global_ik_p95_mm": 86.10230792893199,
+      "global_diagnostic_success": 0.9432777657501624,
+      "weak_ik_success": 0.5346820809248555,
+      "weak_ik_p95_mm": 55.13417876715039,
+      "weak_diagnostic_success": 0.9566473988439307,
+      "corridor_ik_success": 0.6231343283582089,
+      "corridor_ik_p95_mm": 9.557657032378021,
+      "corridor_diagnostic_success": 0.8619402985074627
+    },
+    "score": -0.04595089761862381
+  },
+  {
+    "id": "t082",
+    "design": [
+      346.3483,
+      173.1499,
+      80.3435,
+      80.1108,
+      46.6486,
+      19.9472,
+      13.4479
+    ],
+    "metrics": {
+      "global_ik_success": 0.43797358735657066,
+      "global_ik_p95_mm": 94.50625214185791,
+      "global_diagnostic_success": 0.6517644511799091,
+      "weak_ik_success": 0.45014450867052025,
+      "weak_ik_p95_mm": 55.13366965539043,
+      "weak_diagnostic_success": 0.7630057803468208,
+      "corridor_ik_success": 0.6977611940298507,
+      "corridor_ik_p95_mm": 12.019063440987308,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": -0.2529340341007459
+  },
+  {
+    "id": "t083",
+    "design": [
+      348.7119,
+      179.1206,
+      87.5707,
+      72.1155,
+      54.4651,
+      18.276,
+      14.8782
+    ],
+    "metrics": {
+      "global_ik_success": 0.5516345529335354,
+      "global_ik_p95_mm": 82.03360601152593,
+      "global_diagnostic_success": 0.8035289023598181,
+      "weak_ik_success": 0.5173410404624278,
+      "weak_ik_p95_mm": 45.48305854324128,
+      "weak_diagnostic_success": 0.8880057803468208,
+      "corridor_ik_success": 0.5783582089552238,
+      "corridor_ik_p95_mm": 27.563804283147494,
+      "corridor_diagnostic_success": 0.9925373134328358
+    },
+    "score": -0.24368597508921985
+  },
+  {
+    "id": "t084",
+    "design": [
+      351.7098,
+      170.9246,
+      83.9398,
+      82.3051,
+      66.7325,
+      24.3943,
+      11.121
+    ],
+    "metrics": {
+      "global_ik_success": 0.4547521108465036,
+      "global_ik_p95_mm": 94.5056242312038,
+      "global_diagnostic_success": 0.9043082918380602,
+      "weak_ik_success": 0.4356936416184971,
+      "weak_ik_p95_mm": 55.1332949385131,
+      "weak_diagnostic_success": 0.921242774566474,
+      "corridor_ik_success": 0.3805970149253731,
+      "corridor_ik_p95_mm": 21.41512265475506,
+      "corridor_diagnostic_success": 0.8992537313432836
+    },
+    "score": -0.8993856029238144
+  },
+  {
+    "id": "t085",
+    "design": [
+      350.4885,
+      181.5229,
+      81.7075,
+      88.2986,
+      68.3461,
+      21.9891,
+      14.0142
+    ],
+    "metrics": {
+      "global_ik_success": 0.6915999134011691,
+      "global_ik_p95_mm": 88.82990855294828,
+      "global_diagnostic_success": 1.0,
+      "weak_ik_success": 0.5635838150289018,
+      "weak_ik_p95_mm": 55.13299824939189,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.6343283582089553,
+      "corridor_ik_p95_mm": 22.487680659470623,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": 0.10070523301882472
+  },
+  {
+    "id": "t086",
+    "design": [
+      349.6977,
+      171.7332,
+      89.8385,
+      64.9923,
+      52.9554,
+      21.122,
+      11.7686
+    ],
+    "metrics": {
+      "global_ik_success": 0.2620697120588872,
+      "global_ik_p95_mm": 94.93400288330615,
+      "global_diagnostic_success": 0.5234899328859061,
+      "weak_ik_success": 0.3345375722543353,
+      "weak_ik_p95_mm": 55.13378003926219,
+      "weak_diagnostic_success": 0.6986994219653179,
+      "corridor_ik_success": 0.44776119402985076,
+      "corridor_ik_p95_mm": 23.61098315773948,
+      "corridor_diagnostic_success": 0.9776119402985075
+    },
+    "score": -1.1600517822307992
+  },
+  {
+    "id": "t087",
+    "design": [
+      345.2247,
+      177.7507,
+      85.5879,
+      72.9888,
+      48.2696,
+      19.7243,
+      16.5724
+    ],
+    "metrics": {
+      "global_ik_success": 0.5580212167135744,
+      "global_ik_p95_mm": 80.45122612398887,
+      "global_diagnostic_success": 0.8594933968391427,
+      "weak_ik_success": 0.5852601156069365,
+      "weak_ik_p95_mm": 40.515739361749034,
+      "weak_diagnostic_success": 0.9804913294797688,
+      "corridor_ik_success": 0.5447761194029851,
+      "corridor_ik_p95_mm": 29.551873526734774,
+      "corridor_diagnostic_success": 0.9365671641791045
+    },
+    "score": -0.16862534012464092
+  },
+  {
+    "id": "t088",
+    "design": [
+      354.4146,
+      175.4584,
+      86.128,
+      62.7991,
+      60.5388,
+      24.0363,
+      12.8182
+    ],
+    "metrics": {
+      "global_ik_success": 0.4479324529118857,
+      "global_ik_p95_mm": 94.72920138648324,
+      "global_diagnostic_success": 0.870101753626326,
+      "weak_ik_success": 0.42846820809248554,
+      "weak_ik_p95_mm": 55.13845562507245,
+      "weak_diagnostic_success": 0.9002890173410405,
+      "corridor_ik_success": 0.373134328358209,
+      "corridor_ik_p95_mm": 22.697848002369586,
+      "corridor_diagnostic_success": 0.8656716417910447
+    },
+    "score": -0.9355815010447837
+  },
+  {
+    "id": "t089",
+    "design": [
+      354.0928,
+      179.9571,
+      85.1658,
+      66.1047,
+      46.4566,
+      24.9059,
+      14.6761
+    ],
+    "metrics": {
+      "global_ik_success": 0.47575232734358086,
+      "global_ik_p95_mm": 95.81695897042815,
+      "global_diagnostic_success": 0.9496644295302014,
+      "weak_ik_success": 0.4356936416184971,
+      "weak_ik_p95_mm": 55.13384782894079,
+      "weak_diagnostic_success": 0.9364161849710982,
+      "corridor_ik_success": 0.41044776119402987,
+      "corridor_ik_p95_mm": 27.18815559044982,
+      "corridor_diagnostic_success": 0.8805970149253731
+    },
+    "score": -0.8186838938894236
+  },
+  {
+    "id": "t090",
+    "design": [
+      346.0946,
+      170.2462,
+      87.2998,
+      87.2151,
+      62.2412,
+      18.8546,
+      12.4189
+    ],
+    "metrics": {
+      "global_ik_success": 0.3947824204373241,
+      "global_ik_p95_mm": 95.40401240379406,
+      "global_diagnostic_success": 0.6694089629789998,
+      "weak_ik_success": 0.4096820809248555,
+      "weak_ik_p95_mm": 55.14074666547816,
+      "weak_diagnostic_success": 0.7456647398843931,
+      "corridor_ik_success": 0.5485074626865671,
+      "corridor_ik_p95_mm": 10.423545822885306,
+      "corridor_diagnostic_success": 0.9067164179104478
+    },
+    "score": -0.6755575191978891
+  },
+  {
+    "id": "t091",
+    "design": [
+      348.8097,
+      176.2286,
+      82.8792,
+      59.5311,
+      63.7993,
+      20.2528,
+      16.6602
+    ],
+    "metrics": {
+      "global_ik_success": 0.6618315652738688,
+      "global_ik_p95_mm": 78.93919207384889,
+      "global_diagnostic_success": 0.9609222775492531,
+      "weak_ik_success": 0.588150289017341,
+      "weak_ik_p95_mm": 51.37975919177899,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.48507462686567165,
+      "corridor_ik_p95_mm": 24.829592857055165,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": -0.17843762981816436
+  },
+  {
+    "id": "t092",
+    "design": [
+      350.8307,
+      174.0216,
+      89.4164,
+      76.2918,
+      57.3932,
+      22.8584,
+      12.9176
+    ],
+    "metrics": {
+      "global_ik_success": 0.3811431045680883,
+      "global_ik_p95_mm": 95.18508727190083,
+      "global_diagnostic_success": 0.7932452911885689,
+      "weak_ik_success": 0.36416184971098264,
+      "weak_ik_p95_mm": 55.13308942737121,
+      "weak_diagnostic_success": 0.8171965317919075,
+      "corridor_ik_success": 0.48880597014925375,
+      "corridor_ik_p95_mm": 24.682497783395384,
+      "corridor_diagnostic_success": 0.9440298507462687
+    },
+    "score": -0.8996402825694974
+  },
+  {
+    "id": "t093",
+    "design": [
+      351.9532,
+      178.4201,
+      88.6491,
+      78.9973,
+      52.7626,
+      23.5123,
+      15.9778
+    ],
+    "metrics": {
+      "global_ik_success": 0.7272136826152847,
+      "global_ik_p95_mm": 79.64616963544047,
+      "global_diagnostic_success": 0.9864689326694089,
+      "weak_ik_success": 0.5339595375722543,
+      "weak_ik_p95_mm": 55.133392468704876,
+      "weak_diagnostic_success": 0.9855491329479769,
+      "corridor_ik_success": 0.6417910447761194,
+      "corridor_ik_p95_mm": 12.391764583150348,
+      "corridor_diagnostic_success": 0.8880597014925373
+    },
+    "score": 0.0919958204539737
+  },
+  {
+    "id": "t094",
+    "design": [
+      347.7642,
+      174.6193,
+      83.6118,
+      57.887,
+      68.5457,
+      19.158,
+      13.7235
+    ],
+    "metrics": {
+      "global_ik_success": 0.5191599913401169,
+      "global_ik_p95_mm": 82.19585768145039,
+      "global_diagnostic_success": 0.7749512881576098,
+      "weak_ik_success": 0.45014450867052025,
+      "weak_ik_p95_mm": 55.13450208109754,
+      "weak_diagnostic_success": 0.7630057803468208,
+      "corridor_ik_success": 0.7014925373134329,
+      "corridor_ik_p95_mm": 11.275944043338027,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": -0.1642849435500353
+  },
+  {
+    "id": "t095",
+    "design": [
+      347.3147,
+      180.6486,
+      91.0558,
+      85.5698,
+      57.6062,
+      20.8296,
+      15.3413
+    ],
+    "metrics": {
+      "global_ik_success": 0.6551201558778956,
+      "global_ik_p95_mm": 82.67187427518519,
+      "global_diagnostic_success": 0.9637367395540161,
+      "weak_ik_success": 0.6799132947976878,
+      "weak_ik_p95_mm": 45.48725146322042,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.6305970149253731,
+      "corridor_ik_p95_mm": 25.47051474584113,
+      "corridor_diagnostic_success": 0.9888059701492538
+    },
+    "score": 0.28942174846595903
+  },
+  {
+    "id": "t096",
+    "design": [
+      353.1059,
+      172.3439,
+      81.4219,
+      68.809,
+      51.1953,
+      21.6288,
+      11.5958
+    ],
+    "metrics": {
+      "global_ik_success": 0.3335137475644079,
+      "global_ik_p95_mm": 94.5077198943397,
+      "global_diagnostic_success": 0.6544706646460273,
+      "weak_ik_success": 0.3265895953757225,
+      "weak_ik_p95_mm": 55.1330693155629,
+      "weak_diagnostic_success": 0.7138728323699421,
+      "corridor_ik_success": 0.40298507462686567,
+      "corridor_ik_p95_mm": 21.053372031963747,
+      "corridor_diagnostic_success": 0.8843283582089553
+    },
+    "score": -1.1940559392884742
+  },
+  {
+    "id": "t097",
+    "design": [
+      352.5858,
+      181.1311,
+      86.8336,
+      74.1926,
+      65.6782,
+      18.9397,
+      13.3278
+    ],
+    "metrics": {
+      "global_ik_success": 0.6497077289456592,
+      "global_ik_p95_mm": 89.466322571705,
+      "global_diagnostic_success": 0.9272569820307426,
+      "weak_ik_success": 0.5592485549132948,
+      "weak_ik_p95_mm": 53.06498593638541,
+      "weak_diagnostic_success": 0.9183526011560693,
+      "corridor_ik_success": 0.585820895522388,
+      "corridor_ik_p95_mm": 18.665159885948093,
+      "corridor_diagnostic_success": 0.8880597014925373
+    },
+    "score": -0.04687239704103352
+  },
+  {
+    "id": "t098",
+    "design": [
+      347.1462,
+      172.8297,
+      84.7005,
+      62.5158,
+      55.7271,
+      23.2932,
+      15.5704
+    ],
+    "metrics": {
+      "global_ik_success": 0.608356787183373,
+      "global_ik_p95_mm": 94.07872105087999,
+      "global_diagnostic_success": 0.9443602511366097,
+      "weak_ik_success": 0.5476878612716763,
+      "weak_ik_p95_mm": 55.137243023915666,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.7126865671641791,
+      "corridor_ik_p95_mm": 9.56760386428424,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": 0.1423866171970255
+  },
+  {
+    "id": "t099",
+    "design": [
+      347.9473,
+      178.9058,
+      89.1203,
+      89.5194,
+      47.9136,
+      21.8471,
+      11.329
+    ],
+    "metrics": {
+      "global_ik_success": 0.240636501407231,
+      "global_ik_p95_mm": 97.21333991461333,
+      "global_diagnostic_success": 0.5581294652522191,
+      "weak_ik_success": 0.3273121387283237,
+      "weak_ik_p95_mm": 55.13302492856802,
+      "weak_diagnostic_success": 0.7369942196531792,
+      "corridor_ik_success": 0.48134328358208955,
+      "corridor_ik_p95_mm": 32.03787316743024,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": -1.1287716808300008
+  },
+  {
+    "id": "t100",
+    "design": [
+      352.4879,
+      175.1018,
+      82.5837,
+      64.6923,
+      60.9863,
+      21.0488,
+      15.0862
+    ],
+    "metrics": {
+      "global_ik_success": 0.6600995886555532,
+      "global_ik_p95_mm": 79.90028148986742,
+      "global_diagnostic_success": 0.9837627192032907,
+      "weak_ik_success": 0.5187861271676301,
+      "weak_ik_p95_mm": 55.140511399180305,
+      "weak_diagnostic_success": 0.9595375722543352,
+      "corridor_ik_success": 0.5522388059701493,
+      "corridor_ik_p95_mm": 16.915626575130403,
+      "corridor_diagnostic_success": 0.8880597014925373
+    },
+    "score": -0.18456957192694656
+  },
+  {
+    "id": "t101",
+    "design": [
+      350.9748,
+      176.5034,
+      83.3515,
+      70.7043,
+      59.2738,
+      18.6363,
+      12.0293
+    ],
+    "metrics": {
+      "global_ik_success": 0.49025763152197444,
+      "global_ik_p95_mm": 94.33687492408413,
+      "global_diagnostic_success": 0.6982030742584975,
+      "weak_ik_success": 0.440028901734104,
+      "weak_ik_p95_mm": 55.13918971008741,
+      "weak_diagnostic_success": 0.7622832369942196,
+      "corridor_ik_success": 0.7388059701492538,
+      "corridor_ik_p95_mm": 9.565783871122111,
+      "corridor_diagnostic_success": 0.9402985074626866
+    },
+    "score": -0.13879165156936846
+  },
+  {
+    "id": "t102",
+    "design": [
+      349.2272,
+      174.2932,
+      88.3879,
+      82.381,
+      49.327,
+      24.6867,
+      14.2748
+    ],
+    "metrics": {
+      "global_ik_success": 0.4085299848452046,
+      "global_ik_p95_mm": 95.62088702064128,
+      "global_diagnostic_success": 0.8264775925525005,
+      "weak_ik_success": 0.375,
+      "weak_ik_p95_mm": 55.13300808574474,
+      "weak_diagnostic_success": 0.8684971098265896,
+      "corridor_ik_success": 0.5,
+      "corridor_ik_p95_mm": 26.436503767616774,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": -0.8281890420128539
+  },
+  {
+    "id": "t103",
+    "design": [
+      345.6917,
+      180.2287,
+      80.9447,
+      55.3765,
+      54.0098,
+      23.0766,
+      12.6571
+    ],
+    "metrics": {
+      "global_ik_success": 0.31727646676769866,
+      "global_ik_p95_mm": 98.70822003007005,
+      "global_diagnostic_success": 0.695605109331024,
+      "weak_ik_success": 0.375,
+      "weak_ik_p95_mm": 55.13300889157682,
+      "weak_diagnostic_success": 0.7630057803468208,
+      "corridor_ik_success": 0.44776119402985076,
+      "corridor_ik_p95_mm": 35.48562260089877,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": -1.0239201720306583
+  },
+  {
+    "id": "t105",
+    "design": [
+      354.8712,
+      178.0164,
+      80.6165,
+      83.4946,
+      56.3113,
+      21.3404,
+      12.3046
+    ],
+    "metrics": {
+      "global_ik_success": 0.4254167568737822,
+      "global_ik_p95_mm": 95.17490219091347,
+      "global_diagnostic_success": 0.8922927040484954,
+      "weak_ik_success": 0.41401734104046245,
+      "weak_ik_p95_mm": 55.137709060191725,
+      "weak_diagnostic_success": 0.9075144508670521,
+      "corridor_ik_success": 0.3283582089552239,
+      "corridor_ik_p95_mm": 25.053928309486178,
+      "corridor_diagnostic_success": 0.8619402985074627
+    },
+    "score": -1.0765511699929036
+  },
+  {
+    "id": "t106",
+    "design": [
+      345.3297,
+      175.7274,
+      91.6558,
+      69.6218,
+      65.0886,
+      22.2083,
+      14.5618
+    ],
+    "metrics": {
+      "global_ik_success": 0.5939597315436241,
+      "global_ik_p95_mm": 93.64600256034882,
+      "global_diagnostic_success": 0.9292054557263477,
+      "weak_ik_success": 0.5520231213872833,
+      "weak_ik_p95_mm": 55.13386664102631,
+      "weak_diagnostic_success": 0.9971098265895953,
+      "corridor_ik_success": 0.5895522388059702,
+      "corridor_ik_p95_mm": 10.433490200137662,
+      "corridor_diagnostic_success": 0.8582089552238806
+    },
+    "score": -0.10960857492792742
+  },
+  {
+    "id": "t107",
+    "design": [
+      349.6073,
+      181.7918,
+      84.4294,
+      76.9388,
+      63.5275,
+      23.8179,
+      13.1315
+    ],
+    "metrics": {
+      "global_ik_success": 0.4471747131413726,
+      "global_ik_p95_mm": 97.66452055261267,
+      "global_diagnostic_success": 0.9905823771379086,
+      "weak_ik_success": 0.46604046242774566,
+      "weak_ik_p95_mm": 55.13299760543596,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.4664179104477612,
+      "corridor_ik_p95_mm": 30.625987028722847,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": -0.6746275679656721
+  },
+  {
+    "id": "t108",
+    "design": [
+      350.0466,
+      171.9988,
+      88.0597,
+      58.6828,
+      45.3778,
+      19.5051,
+      16.8741
+    ],
+    "metrics": {
+      "global_ik_success": 0.37670491448365445,
+      "global_ik_p95_mm": 89.99980961597551,
+      "global_diagnostic_success": 0.6303312405282528,
+      "weak_ik_success": 0.434971098265896,
+      "weak_ik_p95_mm": 53.062118515008464,
+      "weak_diagnostic_success": 0.778179190751445,
+      "corridor_ik_success": 0.48134328358208955,
+      "corridor_ik_p95_mm": 10.119966173522323,
+      "corridor_diagnostic_success": 0.8470149253731343
+    },
+    "score": -0.777385348678433
+  },
+  {
+    "id": "t109",
+    "design": [
+      351.5023,
+      179.6006,
+      90.2923,
+      61.4035,
+      49.909,
+      20.1655,
+      13.9784
+    ],
+    "metrics": {
+      "global_ik_success": 0.46460272786317386,
+      "global_ik_p95_mm": 81.84618886739405,
+      "global_diagnostic_success": 0.6460272786317385,
+      "weak_ik_success": 0.4667630057803468,
+      "weak_ik_p95_mm": 53.06232104165114,
+      "weak_diagnostic_success": 0.7586705202312138,
+      "corridor_ik_success": 0.667910447761194,
+      "corridor_ik_p95_mm": 12.634348862146567,
+      "corridor_diagnostic_success": 0.8917910447761194
+    },
+    "score": -0.252769391911803
+  },
+  {
+    "id": "t110",
+    "design": [
+      348.2309,
+      171.4013,
+      82.1621,
+      75.2762,
+      58.685,
+      22.7304,
+      16.2327
+    ],
+    "metrics": {
+      "global_ik_success": 0.6489499891751461,
+      "global_ik_p95_mm": 88.19451516026275,
+      "global_diagnostic_success": 0.9849534531283828,
+      "weak_ik_success": 0.5332369942196532,
+      "weak_ik_p95_mm": 55.13313372593369,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.6716417910447762,
+      "corridor_ik_p95_mm": 10.27071552192469,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": 0.07198853284594642
+  },
+  {
+    "id": "t111",
+    "design": [
+      346.844,
+      177.325,
+      86.412,
+      67.9601,
+      69.6277,
+      24.1761,
+      11.4288
+    ],
+    "metrics": {
+      "global_ik_success": 0.3691275167785235,
+      "global_ik_p95_mm": 97.07195036692626,
+      "global_diagnostic_success": 0.849426282745183,
+      "weak_ik_success": 0.42557803468208094,
+      "weak_ik_p95_mm": 55.13305189871326,
+      "weak_diagnostic_success": 0.8815028901734104,
+      "corridor_ik_success": 0.44776119402985076,
+      "corridor_ik_p95_mm": 31.58001990497719,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": -0.8709130526556715
+  },
+  {
+    "id": "t112",
+    "design": [
+      353.5925,
+      173.6298,
+      85.8724,
+      86.2163,
+      51.4732,
+      18.0568,
+      15.1743
+    ],
+    "metrics": {
+      "global_ik_success": 0.44739121021866207,
+      "global_ik_p95_mm": 85.53879833529012,
+      "global_diagnostic_success": 0.7028577614202208,
+      "weak_ik_success": 0.42991329479768786,
+      "weak_ik_p95_mm": 55.13392172846484,
+      "weak_diagnostic_success": 0.7514450867052023,
+      "corridor_ik_success": 0.5746268656716418,
+      "corridor_ik_p95_mm": 10.55966704358683,
+      "corridor_diagnostic_success": 0.8768656716417911
+    },
+    "score": -0.530247495700737
+  },
+  {
+    "id": "t113",
+    "design": [
+      350.0,
+      170.0,
+      80.0,
+      90.0,
+      65.0,
+      19.745,
+      14.2275
+    ],
+    "metrics": {
+      "global_ik_success": 0.6203723749729378,
+      "global_ik_p95_mm": 92.16869080271132,
+      "global_diagnostic_success": 1.0,
+      "weak_ik_success": 0.528179190751445,
+      "weak_ik_p95_mm": 55.13301564648459,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.6492537313432836,
+      "corridor_ik_p95_mm": 9.80007936616127,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": -0.011480807695663398
+  },
+  {
+    "id": "t114",
+    "design": [
+      350.0,
+      170.0,
+      80.0,
+      90.0,
+      65.0,
+      19.745,
+      13.915
+    ],
+    "metrics": {
+      "global_ik_success": 0.6321714656852132,
+      "global_ik_p95_mm": 93.24734678372232,
+      "global_diagnostic_success": 0.9962113011474345,
+      "weak_ik_success": 0.528179190751445,
+      "weak_ik_p95_mm": 55.13301564648459,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.664179104477612,
+      "corridor_ik_p95_mm": 9.685636362681297,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": 0.030169029285268767
+  },
+  {
+    "id": "t115",
+    "design": [
+      350.0,
+      170.0,
+      80.0,
+      90.0,
+      65.0,
+      20.495,
+      13.915
+    ],
+    "metrics": {
+      "global_ik_success": 0.6082485386447283,
+      "global_ik_p95_mm": 93.24734678372232,
+      "global_diagnostic_success": 1.0,
+      "weak_ik_success": 0.5202312138728323,
+      "weak_ik_p95_mm": 55.13301564648459,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.6716417910447762,
+      "corridor_ik_p95_mm": 9.685479601366096,
+      "corridor_diagnostic_success": 1.0
+    },
+    "score": 0.005275521621886825
+  }
+]

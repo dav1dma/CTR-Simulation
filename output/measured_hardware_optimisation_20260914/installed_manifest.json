@@ -1,0 +1,12 @@
+{
+  "measured_hardware_simulator/optimised_configuration.json": "96dfbeb3bf0595ca48f08497b66ff7935750ee3459203074aba7283ef243e872",
+  "measured_hardware_simulator/design_constraints.py": "be8241df83ebdeb9d687cf9cd7755bb8ca92c29a98d52d62e2ded51109e8accb",
+  "measured_hardware_simulator/ctr_operating_profile.py": "55cc2f4467153d94900cf037fe325846ceff29e9b202cbfc0be472dcd39c8999",
+  "measured_hardware_simulator/coordinated_control.py": "cc6cfd584330c3cebfbb656e91d0a9e18553ef3738897c591faa7e46942efaca",
+  "measured_hardware_simulator/ctr_viewer_workspace.py": "16789534267334e3170cfa528fbbabf498d0d7cc3644016f9090c5ad87dded3c",
+  "measured_hardware_simulator/actuator_diagram.py": "3e44684b6f9e346227496453bfb4194d540a98b79f68ccfda099313a2de3fa9d",
+  "measured_hardware_simulator/interactive_ctr_vispy.py": "11710f20a59a9acb869e608d93376022e5fe328b3ecff3341a719250f7db7800",
+  "measured_hardware_simulator/interactive_ctr_tip_control.py": "b09a3e9048e33a75db72d3498248873d9ca2142e73329b839290ef7800142d5b",
+  "ctr_operating_profile.py": "5538f0ef23bce7533b36f41ca1da3f2283e06b13ce48b71049069a883da591d9",
+  "tools/report_measured_optimisation.py": "14e29cbec163e7db7105e22f95eba02f950c804e683fdd7054a47ad145a5d473"
+}

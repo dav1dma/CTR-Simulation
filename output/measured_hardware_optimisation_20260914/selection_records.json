@@ -1,0 +1,431 @@
+[
+  {
+    "design": [
+      350.0,
+      170.0,
+      80.0,
+      90.0,
+      65.0,
+      19.12,
+      14.04
+    ],
+    "metrics": {
+      "global": {
+        "success": 0.638822765635144,
+        "p95_mm": 91.1742454492382,
+        "effective_isotropy_mean": 0.24468397401706637,
+        "effective_isotropy_p10": 0.0
+      },
+      "weak": {
+        "success": 0.5863836017569546,
+        "p95_mm": 55.44261232260234,
+        "effective_isotropy_mean": 0.11171092994230916,
+        "effective_isotropy_p10": 0.0
+      },
+      "corridor": {
+        "success": 0.6222222222222222,
+        "p95_mm": 9.966745573145177,
+        "effective_isotropy_mean": 0.08123432703560456,
+        "effective_isotropy_p10": 0.0
+      }
+    },
+    "eligible": true,
+    "score": 2.3474285896143208
+  },
+  {
+    "design": [
+      364.9227390252054,
+      211.60274133086205,
+      113.31059699878097,
+      92.38593868911266,
+      89.16810323484242,
+      26.036785676144063,
+      13.390053514391184
+    ],
+    "metrics": {
+      "global": {
+        "success": 0.05583207098030729,
+        "p95_mm": 101.24472313940724,
+        "effective_isotropy_mean": 0.024790823366086342,
+        "effective_isotropy_p10": 0.0
+      },
+      "weak": {
+        "success": 0.1281112737920937,
+        "p95_mm": 44.15712918683018,
+        "effective_isotropy_mean": 0.033688559354503676,
+        "effective_isotropy_p10": 0.0
+      },
+      "corridor": {
+        "success": 0.044444444444444446,
+        "p95_mm": 44.984026137648975,
+        "effective_isotropy_mean": 0.008368652137098743,
+        "effective_isotropy_p10": 0.0
+      }
+    },
+    "eligible": false,
+    "score": 0.32953471937915674
+  },
+  {
+    "design": [
+      360.5992458574474,
+      203.32703301683068,
+      101.79765865206718,
+      101.74064926803112,
+      65.57106450200081,
+      26.648735797964036,
+      10.500529367476702
+    ],
+    "metrics": {
+      "global": {
+        "success": 0.10246699848517637,
+        "p95_mm": 104.31831778523573,
+        "effective_isotropy_mean": 0.03834384336696489,
+        "effective_isotropy_p10": 0.0
+      },
+      "weak": {
+        "success": 0.2452415812591508,
+        "p95_mm": 52.211525423737214,
+        "effective_isotropy_mean": 0.06637792364105324,
+        "effective_isotropy_p10": 0.0
+      },
+      "corridor": {
+        "success": 0.011111111111111112,
+        "p95_mm": 44.50369399678313,
+        "effective_isotropy_mean": 0.001346324849234178,
+        "effective_isotropy_p10": 0.0
+      }
+    },
+    "eligible": false,
+    "score": 0.5115114370894787
+  },
+  {
+    "design": [
+      359.8468170501292,
+      178.04098987951875,
+      85.38652775809169,
+      77.2908229380846,
+      50.16956587322056,
+      23.497339652851224,
+      19.77453948184848
+    ],
+    "metrics": {
+      "global": {
+        "success": 0.6618697251677126,
+        "p95_mm": 87.29704633253192,
+        "effective_isotropy_mean": 0.30550242836058555,
+        "effective_isotropy_p10": 0.0
+      },
+      "weak": {
+        "success": 0.513177159590044,
+        "p95_mm": 55.43108864428154,
+        "effective_isotropy_mean": 0.12922020253807948,
+        "effective_isotropy_p10": 0.0
+      },
+      "corridor": {
+        "success": 0.3592592592592593,
+        "p95_mm": 19.010882731179688,
+        "effective_isotropy_mean": 0.06436569979344685,
+        "effective_isotropy_p10": 0.0
+      }
+    },
+    "eligible": false,
+    "score": 2.0215769934108163
+  },
+  {
+    "design": [
+      356.6945275478065,
+      183.69349079206586,
+      81.1385796777904,
+      83.6310001462698,
+      79.4805283844471,
+      21.495960446074605,
+      11.966267991811037
+    ],
+    "metrics": {
+      "global": {
+        "success": 0.47522181346028997,
+        "p95_mm": 101.2417282151047,
+        "effective_isotropy_mean": 0.18907336623045867,
+        "effective_isotropy_p10": 0.0
+      },
+      "weak": {
+        "success": 0.4765739385065886,
+        "p95_mm": 55.43091775779129,
+        "effective_isotropy_mean": 0.09326189714096916,
+        "effective_isotropy_p10": 0.0
+      },
+      "corridor": {
+        "success": 0.35555555555555557,
+        "p95_mm": 27.66227004034138,
+        "effective_isotropy_mean": 0.0595696282723593,
+        "effective_isotropy_p10": 0.0
+      }
+    },
+    "eligible": false,
+    "score": 1.6993903958094805
+  },
+  {
+    "design": [
+      369.5608654245734,
+      202.35845923423767,
+      93.61089076846838,
+      97.14843846857548,
+      51.454732501879334,
+      21.5974141638726,
+      15.281711295247078
+    ],
+    "metrics": {
+      "global": {
+        "success": 0.48961263795715215,
+        "p95_mm": 95.3003563272808,
+        "effective_isotropy_mean": 0.2246104766035272,
+        "effective_isotropy_p10": 0.0
+      },
+      "weak": {
+        "success": 0.30234260614934116,
+        "p95_mm": 54.70462828214047,
+        "effective_isotropy_mean": 0.08328255454591509,
+        "effective_isotropy_p10": 0.0
+      },
+      "corridor": {
+        "success": 0.0,
+        "p95_mm": 35.040276329951595,
+        "effective_isotropy_mean": 0.0,
+        "effective_isotropy_p10": 0.0
+      }
+    },
+    "eligible": false,
+    "score": 0.9783348458807437
+  },
+  {
+    "design": [
+      373.8831414282322,
+      204.26455207169056,
+      89.42134600132704,
+      103.17645899951458,
+      73.82668022066355,
+      23.595011902973056,
+      13.341449104249477
+    ],
+    "metrics": {
+      "global": {
+        "success": 0.3994806318978576,
+        "p95_mm": 98.63088542379269,
+        "effective_isotropy_mean": 0.21394641828009414,
+        "effective_isotropy_p10": 0.0
+      },
+      "weak": {
+        "success": 0.24963396778916544,
+        "p95_mm": 48.91732331033296,
+        "effective_isotropy_mean": 0.07985262829003818,
+        "effective_isotropy_p10": 0.0
+      },
+      "corridor": {
+        "success": 0.003703703703703704,
+        "p95_mm": 32.55160999693531,
+        "effective_isotropy_mean": 0.00029654918698780134,
+        "effective_isotropy_p10": 0.0
+      }
+    },
+    "eligible": false,
+    "score": 0.8324346434983905
+  },
+  {
+    "design": [
+      374.74437918514013,
+      196.78812969475985,
+      98.18711563944817,
+      105.12918800115585,
+      44.9739252589643,
+      24.329014004208148,
+      14.873035792261362
+    ],
+    "metrics": {
+      "global": {
+        "success": 0.5674096515905648,
+        "p95_mm": 83.11173468077936,
+        "effective_isotropy_mean": 0.2750016104925563,
+        "effective_isotropy_p10": 0.0
+      },
+      "weak": {
+        "success": 0.27232796486090777,
+        "p95_mm": 44.32918905900898,
+        "effective_isotropy_mean": 0.0768502303643852,
+        "effective_isotropy_p10": 0.0
+      },
+      "corridor": {
+        "success": 0.14814814814814814,
+        "p95_mm": 28.393514365174056,
+        "effective_isotropy_mean": 0.044111083258182485,
+        "effective_isotropy_p10": 0.0
+      }
+    },
+    "eligible": false,
+    "score": 1.2956229430335373
+  },
+  {
+    "design": [
+      350.0,
+      180.0,
+      90.0,
+      90.0,
+      65.0,
+      19.12,
+      14.04
+    ],
+    "metrics": {
+      "global": {
+        "success": 0.6683618264444925,
+        "p95_mm": 84.74543943220876,
+        "effective_isotropy_mean": 0.2520530193326112,
+        "effective_isotropy_p10": 0.0
+      },
+      "weak": {
+        "success": 0.6493411420204978,
+        "p95_mm": 55.02572325852872,
+        "effective_isotropy_mean": 0.12939193415480527,
+        "effective_isotropy_p10": 0.0
+      },
+      "corridor": {
+        "success": 0.6555555555555556,
+        "p95_mm": 20.96518421444257,
+        "effective_isotropy_mean": 0.10876843505713155,
+        "effective_isotropy_p10": 0.0
+      }
+    },
+    "eligible": true,
+    "score": 2.5975638552000664
+  },
+  {
+    "design": [
+      372.265717536211,
+      194.94063060730696,
+      102.43503153324127,
+      93.95013436675072,
+      84.67604487203062,
+      22.562117085792124,
+      16.86731391772628
+    ],
+    "metrics": {
+      "global": {
+        "success": 0.4575849383250379,
+        "p95_mm": 100.00687800005196,
+        "effective_isotropy_mean": 0.20749418245740875,
+        "effective_isotropy_p10": 0.0
+      },
+      "weak": {
+        "success": 0.23865300146412885,
+        "p95_mm": 56.066689382006146,
+        "effective_isotropy_mean": 0.06384168900008692,
+        "effective_isotropy_p10": 0.0
+      },
+      "corridor": {
+        "success": 0.12962962962962962,
+        "p95_mm": 27.538912265337174,
+        "effective_isotropy_mean": 0.0290041686649472,
+        "effective_isotropy_p10": 0.0
+      }
+    },
+    "eligible": false,
+    "score": 1.058000905135549
+  },
+  {
+    "design": [
+      350.0,
+      180.0,
+      80.0,
+      90.0,
+      65.0,
+      19.12,
+      14.04
+    ],
+    "metrics": {
+      "global": {
+        "success": 0.660030296472625,
+        "p95_mm": 88.67571836142176,
+        "effective_isotropy_mean": 0.2638018121209558,
+        "effective_isotropy_p10": 0.0
+      },
+      "weak": {
+        "success": 0.6390922401171303,
+        "p95_mm": 54.8537977590764,
+        "effective_isotropy_mean": 0.12491625269735415,
+        "effective_isotropy_p10": 0.0
+      },
+      "corridor": {
+        "success": 0.5777777777777777,
+        "p95_mm": 22.892385044940905,
+        "effective_isotropy_mean": 0.08826381157618339,
+        "effective_isotropy_p10": 0.0
+      }
+    },
+    "eligible": false,
+    "score": 2.428086111803152
+  },
+  {
+    "design": [
+      375.9360867738724,
+      222.08172414451838,
+      81.4963841252029,
+      70.83557263016701,
+      60.37502138875425,
+      25.84726669639349,
+      17.651943113654852
+    ],
+    "metrics": {
+      "global": {
+        "success": 0.09489288032893313,
+        "p95_mm": 115.16361696811154,
+        "effective_isotropy_mean": 0.04263321119237236,
+        "effective_isotropy_p10": 0.0
+      },
+      "weak": {
+        "success": 0.16325036603221083,
+        "p95_mm": 84.5452143567846,
+        "effective_isotropy_mean": 0.07166549067687715,
+        "effective_isotropy_p10": 0.0
+      },
+      "corridor": {
+        "success": 0.0,
+        "p95_mm": 50.46608900294692,
+        "effective_isotropy_mean": 0.0,
+        "effective_isotropy_p10": 0.0
+      }
+    },
+    "eligible": false,
+    "score": 0.41852480149162075
+  },
+  {
+    "design": [
+      374.89208905026317,
+      177.1816971153021,
+      84.0720689855516,
+      91.72496668994427,
+      65.88157447986305,
+      18.179520087316632,
+      18.657024409621954
+    ],
+    "metrics": {
+      "global": {
+        "success": 0.6003029647262498,
+        "p95_mm": 90.01081392184189,
+        "effective_isotropy_mean": 0.25799040057951045,
+        "effective_isotropy_p10": 0.0
+      },
+      "weak": {
+        "success": 0.21742313323572474,
+        "p95_mm": 56.52087324342651,
+        "effective_isotropy_mean": 0.05612813548712603,
+        "effective_isotropy_p10": 0.0
+      },
+      "corridor": {
+        "success": 0.31851851851851853,
+        "p95_mm": 26.01040870914492,
+        "effective_isotropy_mean": 0.038513451615911,
+        "effective_isotropy_p10": 0.0
+      }
+    },
+    "eligible": false,
+    "score": 1.3803806224179473
+  }
+]

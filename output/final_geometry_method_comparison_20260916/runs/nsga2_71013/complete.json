@@ -1,0 +1,7 @@
+{
+  "method": "nsga2",
+  "seed": 71013,
+  "slots": 256,
+  "unique_evaluated": 253,
+  "seconds": 1887.9458529936383
+}

@@ -1,0 +1,13 @@
+report_figure,pdf_page,printed_page,published_image,source
+5.1,49,45,figures/target_support.png,Final supplied report; see manifest.json for SHA-256
+5.2,50,46,figures/sampling_support.png,Final supplied report; see manifest.json for SHA-256
+5.3,52,48,figures/tube_shapes.png,Final supplied report; see manifest.json for SHA-256
+5.4,54,50,figures/proposed_viewer.png,Final supplied report; see manifest.json for SHA-256
+5.5,55,51,figures/workspace.png,Final supplied report; see manifest.json for SHA-256
+5.6,56,52,figures/workspace_overlay.png,Final supplied report; see manifest.json for SHA-256
+5.7,57,53,figures/isotropy_median.png,Final supplied report; see manifest.json for SHA-256
+5.8,58,54,figures/dexterity_difference.png,Final supplied report; see manifest.json for SHA-256
+5.9,59,55,figures/ik_median.png,Final supplied report; see manifest.json for SHA-256
+5.10,60,56,figures/ik_p95.png,Final supplied report; see manifest.json for SHA-256
+5.11,60,56,figures/ik_failure.png,Final supplied report; see manifest.json for SHA-256
+C.1,84,80,figures/path_recovery.png,Final supplied report; see manifest.json for SHA-256

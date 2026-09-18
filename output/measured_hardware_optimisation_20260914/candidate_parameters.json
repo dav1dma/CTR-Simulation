@@ -1,0 +1,104 @@
+{
+  "name": "Optimised configuration \u2014 measured hardware",
+  "hardware_model": "measured-ctr-20260914-v1",
+  "status": "independently evaluated ideal-model candidate; not experimentally verified",
+  "tube_order": [
+    "inner/rear",
+    "middle/middle",
+    "outer/front"
+  ],
+  "total_length_mm": [
+    348.16,
+    181.98,
+    92.14
+  ],
+  "curved_length_mm": [
+    0.0,
+    95.02,
+    65.91
+  ],
+  "straight_length_mm": [
+    348.16,
+    86.96,
+    26.23
+  ],
+  "precurvature_per_m": [
+    0.0,
+    22.03,
+    13.98
+  ],
+  "model_parameters": {
+    "n_t": 3,
+    "l_t": [
+      [
+        0.34816,
+        0.0
+      ],
+      [
+        0.08696,
+        0.09502
+      ],
+      [
+        0.026230000000000003,
+        0.06591
+      ]
+    ],
+    "E": [
+      75000000000.0,
+      75000000000.0,
+      75000000000.0
+    ],
+    "G": [
+      25000000000.0,
+      25000000000.0,
+      25000000000.0
+    ],
+    "kappa_0": [
+      0.0,
+      22.03,
+      13.98
+    ],
+    "r": [
+      [
+        0.0,
+        0.00025
+      ],
+      [
+        0.00031,
+        0.00035
+      ],
+      [
+        0.0004,
+        0.00045000000000000004
+      ]
+    ]
+  },
+  "hardware": {
+    "retracted_mm": [
+      275,
+      195,
+      115
+    ],
+    "extended_mm": [
+      175,
+      95,
+      15
+    ],
+    "body_mm": 71.5,
+    "gap_mm": [
+      8.5,
+      108
+    ],
+    "sensitivity_gap_mm": 108.5
+  },
+  "assumptions": [
+    "Lengths mean chuck-tip to distal-tip material length; no grip offset",
+    "Straight coaxial internal path assumed, guidance/contact not simulated",
+    "Distal precurves, straight inner wire, original diameters and 75 GPa stiffness fixed",
+    "Unrestricted rotations; no friction, torsion, elastic stability or loaded accuracy",
+    "Bounds exploratory, not supplier or manufacturing limits"
+  ],
+  "study": "output/measured_hardware_optimisation_20260914",
+  "validation_accepted": true,
+  "validation_gate": "All regional fixed-start success losses <=2 percentage points and at least one gain >0.5 point; geometry differs. Additional coverage/dexterity/tail tradeoffs reported explicitly."
+}

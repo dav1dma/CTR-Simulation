@@ -1,0 +1,8 @@
+{
+  "profile": "measured-ctr-20260914-v1-gap-108-optimised-e3cb79332832",
+  "coordinated_movement_and_undo": true,
+  "both_route_previews": true,
+  "executed_valid_states": 100,
+  "csv_roundtrip": true,
+  "tip_residual_mm": 0.0006312982507036153
+}

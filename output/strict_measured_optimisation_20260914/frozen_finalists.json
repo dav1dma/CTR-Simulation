@@ -1,0 +1,209 @@
+[
+  {
+    "id": "s0999",
+    "design": [
+      350.0,
+      170.0,
+      80.0,
+      90.0,
+      65.0,
+      19.745,
+      14.2275
+    ],
+    "metrics": {
+      "global_isotropy_mean": 0.3656217521758142,
+      "global_isotropy_p10": 0.19770993683967417,
+      "global_cell_retention": 1.0,
+      "weak_isotropy_mean": 0.19673370545319613,
+      "weak_isotropy_p10": 0.13217107979473103,
+      "weak_cell_retention": 1.0,
+      "corridor_isotropy_mean": 0.18078724188197381,
+      "corridor_isotropy_p10": 0.12772415670931073,
+      "corridor_cell_retention": 1.0,
+      "volume_cm3": 2381.327231421063,
+      "radial_extent_mm": 114.95504368434045,
+      "z_max_mm": 168.64781903992434,
+      "z_min_mm": 63.651565068694055,
+      "tip_distance_max_mm": 173.13992651681383,
+      "global_ik_success": 0.6461456102783726,
+      "global_ik_p95_mm": 91.29393954886713,
+      "global_diagnostic_success": 0.9968950749464668,
+      "weak_ik_success": 0.608359133126935,
+      "weak_ik_p95_mm": 53.788245709542814,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.6937984496124031,
+      "corridor_ik_p95_mm": 9.486334776373978,
+      "corridor_diagnostic_success": 1.0
+    },
+    "comparison": {
+      "pass_all": false,
+      "failures": [
+        {
+          "metric": "tip_distance_max_mm",
+          "original": 173.15191183762812,
+          "candidate": 173.13992651681383,
+          "change": -0.011985320814289935
+        },
+        {
+          "metric": "global_ik_success",
+          "original": 0.6520342612419701,
+          "candidate": 0.6461456102783726,
+          "change": -0.005888650963597475
+        },
+        {
+          "metric": "corridor_ik_success",
+          "original": 0.6976744186046512,
+          "candidate": 0.6937984496124031,
+          "change": -0.003875968992248069
+        }
+      ],
+      "failed_count": 3,
+      "maximum_relative_deficit": 0.009031198686371167,
+      "sum_relative_deficit": 0.014655972771985638
+    },
+    "meaningful": true,
+    "equivalent": false
+  },
+  {
+    "id": "s0998",
+    "design": [
+      350.0,
+      170.0,
+      80.0,
+      90.0,
+      65.0,
+      19.745,
+      13.915
+    ],
+    "metrics": {
+      "global_isotropy_mean": 0.36069140630326213,
+      "global_isotropy_p10": 0.187941262263791,
+      "global_cell_retention": 1.0,
+      "weak_isotropy_mean": 0.1947198394768973,
+      "weak_isotropy_p10": 0.13097945005313144,
+      "weak_cell_retention": 1.0,
+      "corridor_isotropy_mean": 0.1803748467765164,
+      "corridor_isotropy_p10": 0.12499663548736832,
+      "corridor_cell_retention": 1.0,
+      "volume_cm3": 2336.16683702571,
+      "radial_extent_mm": 113.84076363996064,
+      "z_max_mm": 168.92563417635694,
+      "z_min_mm": 63.96575693166589,
+      "tip_distance_max_mm": 173.1719994411362,
+      "global_ik_success": 0.6385438972162741,
+      "global_ik_p95_mm": 92.21726880715676,
+      "global_diagnostic_success": 0.9968950749464668,
+      "weak_ik_success": 0.5843653250773994,
+      "weak_ik_p95_mm": 53.788245709542814,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.7054263565891473,
+      "corridor_ik_p95_mm": 9.486334776373978,
+      "corridor_diagnostic_success": 1.0
+    },
+    "comparison": {
+      "pass_all": false,
+      "failures": [
+        {
+          "metric": "corridor_isotropy_p10",
+          "original": 0.12563027754592443,
+          "candidate": 0.12499663548736832,
+          "change": -0.0006336420585561081
+        },
+        {
+          "metric": "global_ik_success",
+          "original": 0.6520342612419701,
+          "candidate": 0.6385438972162741,
+          "change": -0.013490364025695922
+        },
+        {
+          "metric": "global_ik_p95_mm",
+          "original": 91.33520616389069,
+          "candidate": 92.21726880715676,
+          "change": 0.8820626432660674
+        }
+      ],
+      "failed_count": 3,
+      "maximum_relative_deficit": 0.02068965517241378,
+      "sum_relative_deficit": 0.03539078232081829
+    },
+    "meaningful": true,
+    "equivalent": false
+  },
+  {
+    "id": "s1032",
+    "design": [
+      350.0,
+      170.0,
+      80.0,
+      90.0,
+      65.0,
+      20.495,
+      13.915
+    ],
+    "metrics": {
+      "global_isotropy_mean": 0.3719014712094586,
+      "global_isotropy_p10": 0.19617884380873732,
+      "global_cell_retention": 1.0,
+      "weak_isotropy_mean": 0.2003923695011062,
+      "weak_isotropy_p10": 0.1359458893764256,
+      "weak_cell_retention": 1.0,
+      "corridor_isotropy_mean": 0.18501654542938964,
+      "corridor_isotropy_p10": 0.12873306023797854,
+      "corridor_cell_retention": 1.0,
+      "volume_cm3": 2425.3095285713202,
+      "radial_extent_mm": 115.07460073056826,
+      "z_max_mm": 169.21562239592396,
+      "z_min_mm": 63.660268790765166,
+      "tip_distance_max_mm": 173.17567810503152,
+      "global_ik_success": 0.6284796573875803,
+      "global_ik_p95_mm": 92.21726880715676,
+      "global_diagnostic_success": 0.9968950749464668,
+      "weak_ik_success": 0.5727554179566563,
+      "weak_ik_p95_mm": 53.788245709542814,
+      "weak_diagnostic_success": 1.0,
+      "corridor_ik_success": 0.689922480620155,
+      "corridor_ik_p95_mm": 9.850822820210295,
+      "corridor_diagnostic_success": 1.0
+    },
+    "comparison": {
+      "pass_all": false,
+      "failures": [
+        {
+          "metric": "global_ik_success",
+          "original": 0.6520342612419701,
+          "candidate": 0.6284796573875803,
+          "change": -0.02355460385438979
+        },
+        {
+          "metric": "global_ik_p95_mm",
+          "original": 91.33520616389069,
+          "candidate": 92.21726880715676,
+          "change": 0.8820626432660674
+        },
+        {
+          "metric": "weak_ik_success",
+          "original": 0.5828173374613003,
+          "candidate": 0.5727554179566563,
+          "change": -0.010061919504643968
+        },
+        {
+          "metric": "corridor_ik_success",
+          "original": 0.6976744186046512,
+          "candidate": 0.689922480620155,
+          "change": -0.007751937984496138
+        },
+        {
+          "metric": "corridor_ik_p95_mm",
+          "original": 9.486334776373978,
+          "candidate": 9.850822820210295,
+          "change": 0.3644880438363174
+        }
+      ],
+      "failed_count": 5,
+      "maximum_relative_deficit": 0.038422431047245624,
+      "sum_relative_deficit": 0.1125800352842765
+    },
+    "meaningful": true,
+    "equivalent": false
+  }
+]

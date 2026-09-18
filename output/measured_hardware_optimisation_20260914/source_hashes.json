@@ -1,0 +1,11 @@
+{
+  "tools/optimise_measured_ctr.py": "4590eb64f9c8e148e40138d2ab1d3152da55d600376d3ecd06af64b78f27af0f",
+  "tools/run_broad_hardware_study.py": "fef35ba8edb72582a4647583e49842b617ca0691aaf8380558c2e469537ff624",
+  "tools/run_hardware_optimisation.py": "17f1ddc6a7040f2adebdfc13a8337f17210e04ac2b173a8ea620f30e35f8c56b",
+  "ctr_design_analysis.py": "ac12f04d2731dc1511dce00d8c17aa5baf9c8fb737d26e1e4e30d5bf24b46c71",
+  "measured_hardware_simulator/design_constraints.py": "be8241df83ebdeb9d687cf9cd7755bb8ca92c29a98d52d62e2ded51109e8accb",
+  "measured_hardware_simulator/CTR_superPosKin_fun_sectioned.py": "aeebd1f9562e907fa7cd07449608a66aa0b067ef76775d9b4329e1b992f40b0d",
+  "measured_hardware_simulator/tube_parameters.py": "96bca31d76cd34d1b4f87c5e4d82ec9feae5426bfcfbfba5b4c4ae770a009efb",
+  "measured_hardware_simulator/ctr_inverse_kinematics.py": "4bb60600740f98825a8906c8055822d7125c66f026da55b2d577815a55da032e",
+  "measured_hardware_simulator/ctr_operating_profile.py": "55cc2f4467153d94900cf037fe325846ceff29e9b202cbfc0be472dcd39c8999"
+}

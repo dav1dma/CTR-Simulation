@@ -1,0 +1,23 @@
+{
+  "global": {
+    "paired_success_gain_pp": 7.284394801847277,
+    "bootstrap_95_percent_interval_pp": [
+      5.368791701644185,
+      9.220080987486755
+    ]
+  },
+  "weak": {
+    "paired_success_gain_pp": 9.030039811798769,
+    "bootstrap_95_percent_interval_pp": [
+      6.460568170774511,
+      11.770927140502605
+    ]
+  },
+  "corridor": {
+    "paired_success_gain_pp": 10.687022900763358,
+    "bootstrap_95_percent_interval_pp": [
+      7.58648675032392,
+      13.773827032068295
+    ]
+  }
+}

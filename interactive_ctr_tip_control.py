@@ -356,7 +356,7 @@ def keyboard_target_step_mm(modifier_names: set[str]) -> float:
 class VisPyCTRTipControlViewer(joint_viewer.VisPyCTRViewer):
     """Joint-space viewer extended with constrained Cartesian tip control."""
 
-    def __init__(self) -> None:
+    def __init__(self, *, mode="hardware", tubes="original", workspace_samples=12000) -> None:
         # These are initialised before the base class because it builds the
         # sidebar using the overridden sidebar_text method.
         self.control_mode = JOINT_MODE
@@ -417,18 +417,19 @@ class VisPyCTRTipControlViewer(joint_viewer.VisPyCTRViewer):
         self.options_hold_start: float | None = None
         self.options_hold_fired = False
 
-        super().__init__()
+        super().__init__(mode=mode, tubes=tubes, workspace_samples=workspace_samples)
 
         self.canvas.title = "PS5 CTR Simulator — Tip Position Control"
         self.controller.previous[BUTTON_L3] = False
-        self.ik_solver = ConstrainedTipIK(self.parameters)
+        self.ik_solver = ConstrainedTipIK(self.parameters, deployment_limits=self.limits)
         self.planning_solver = ConstrainedTipIK(
             self.parameters,
+            deployment_limits=self.limits,
             max_iterations=12,
             damping_mm=1.0,
             max_normalised_step=0.10,
         )
-        self.endpoint_workspace_maps = load_endpoint_workspace_maps()
+        self.joint_workspace_visual.visible = False
         self.workspace_sample_count = self.endpoint_workspace_maps.tips_mm.shape[1]
         self.target_planners = [
             TipTargetPlanner(
@@ -524,6 +525,7 @@ class VisPyCTRTipControlViewer(joint_viewer.VisPyCTRViewer):
                 )
 
         plate_vertices, plate_faces = front_plate_box_mesh()
+        plate_vertices[:, 2] -= FRONT_PLATE_THICKNESS_MM
         self.front_plate_visual = scene.visuals.Mesh(
             vertices=plate_vertices,
             faces=plate_faces,
@@ -580,8 +582,8 @@ class VisPyCTRTipControlViewer(joint_viewer.VisPyCTRViewer):
 
         # Frame the complete sampled workspace on first launch. Mouse drag and
         # wheel control remain available for closer inspection.
-        self.view.camera.center = (0.0, 0.0, 20.0)
-        self.view.camera.distance = 900.0
+        self.view.camera.center = (0.0, 0.0, 55.0 if mode == "hardware" else 80.0)
+        self.view.camera.distance = 400.0 if mode == "hardware" else 900.0
         self.sidebar.label.font_size = 6.5
         self.update_rear_tube_visuals()
         self.update_endpoint_visuals()
@@ -1009,7 +1011,7 @@ class VisPyCTRTipControlViewer(joint_viewer.VisPyCTRViewer):
         deployment_m: np.ndarray,
         rotation_rad: np.ndarray,
     ) -> np.ndarray:
-        deployment = np.asarray(deployment_m, dtype=float).reshape(3)
+        deployment = self.limits.validate(np.asarray(deployment_m, dtype=float).reshape(3))
         if np.max(np.abs(deployment)) <= 1e-10:
             return np.zeros((2, 3), dtype=np.float32)
         result = joint_viewer.superPosKin(
@@ -1034,7 +1036,8 @@ class VisPyCTRTipControlViewer(joint_viewer.VisPyCTRViewer):
         return np.vstack(parts) * 1000.0
 
     def show_motion_plan(self, plan: MotionPlan) -> None:
-        self.motion_route = build_motion_route(plan, self.motion_strategy)
+        self.motion_route = build_motion_route(plan, self.motion_strategy,
+            deployment_limits=self.limits)
         backbone = self.configuration_backbone_mm(
             plan.goal_deployment_m,
             plan.goal_rotation_rad,
@@ -1143,6 +1146,7 @@ class VisPyCTRTipControlViewer(joint_viewer.VisPyCTRViewer):
 
     def toggle_guides(self) -> None:
         super().toggle_guides()
+        self.joint_workspace_visual.visible = False
         if self.workspace_surface_visual is not None:
             self.workspace_surface_visual.visible = self.guides_visible
         self.update_endpoint_visuals()
@@ -1257,11 +1261,11 @@ class VisPyCTRTipControlViewer(joint_viewer.VisPyCTRViewer):
             self.motion_route,
             elapsed,
         )
-        self.deployment[:] = deployment
+        self.deployment[:] = self.limits.validate(deployment)
         self.rotation[:] = rotation
         self.robot_dirty = True
         if self.execution_progress >= 1.0:
-            self.deployment[:] = self.motion_plan.goal_deployment_m
+            self.deployment[:] = self.limits.validate(self.motion_plan.goal_deployment_m)
             self.rotation[:] = self.motion_plan.goal_rotation_rad
             self.tip_stage = TARGET_REACHED
             self.ik_status = "TARGET REACHED"
@@ -1448,82 +1452,53 @@ class VisPyCTRTipControlViewer(joint_viewer.VisPyCTRViewer):
         lock_lines = "\n".join(lock_rows)
         solution_count = len(self.motion_plans)
         solution_number = self.solution_index + 1 if solution_count else 0
-        text = f"""ROBOT STATE
+        text = f"""{self.profile.description(self.deployment)}
+F6: change limits | F7: change tubes (resets state)
 
-CONTROL: {mode} ({precision})
-WORKFLOW: {workflow}
-PLATE STATE: {plate_state}
-PS5: {state}
+CONTROL: {mode} ({precision}) | PS5: {state}
 ACTIVE ENDPOINT: {joint_viewer.TUBE_NAMES[self.selected_tube]}
-WAYPOINTS: {len(self.waypoints)}
+WORKFLOW: {workflow}
 LAST: {self.last_action}
 
-              EXPOSED    BEHIND Z=0   ROTATION
-{markers[0]} INNER      {mm[0]:6.1f}     {rear_mm[0]:6.1f} mm   {deg[0]:7.1f} deg
-{markers[1]} MIDDLE     {mm[1]:6.1f}     {rear_mm[1]:6.1f} mm   {deg[1]:7.1f} deg
-{markers[2]} OUTER      {mm[2]:6.1f}     {rear_mm[2]:6.1f} mm   {deg[2]:7.1f} deg
+             EXPOSURE mm   ROTATION deg
+{markers[0]} INNER     {mm[0]:7.1f}       {deg[0]:7.1f}
+{markers[1]} MIDDLE    {mm[1]:7.1f}       {deg[1]:7.1f}
+{markers[2]} OUTER     {mm[2]:7.1f}       {deg[2]:7.1f}
+Exposure is material length beyond the front plate.
 
-ENDPOINT POSITIONS       X        Y        Z
+MODEL ENDPOINTS          X        Y        Z
 {endpoint_rows}
+TARGET (mm): {self.target_tip_mm[0]:.1f} / {self.target_tip_mm[1]:.1f} / {self.target_tip_mm[2]:.1f}
+Numerical residual: {self.tracking_error_mm:.3f} mm
+IK: {self.ik_status}
+Solution {solution_number}/{solution_count} | Nearest sample: {self.target_sample_distance_mm:.2f} mm
 
-SELECTED ENDPOINT  ACTUAL      TARGET
-{axis_markers[0]} X           {selected_position[0]:7.1f}     {self.target_tip_mm[0]:7.1f} mm
-{axis_markers[1]} Y           {selected_position[1]:7.1f}     {self.target_tip_mm[1]:7.1f} mm
-{axis_markers[2]} Z           {selected_position[2]:7.1f}     {self.target_tip_mm[2]:7.1f} mm
-Tracking error              {self.tracking_error_mm:7.3f} mm
-Plan calculation            {self.last_ik_ms:7.2f} ms
-IK status: {self.ik_status}
-Target zone: {self.target_zone_label()}
-Nearest sample              {self.target_sample_distance_mm:7.2f} mm
-ENDPOINT CONSTRAINTS        ERROR
+ENDPOINT LOCKS          ERROR
 {lock_lines}
-Soft tolerance {SOFT_LOCK_TOLERANCE_MM:.1f} mm | Hard {HARD_LOCK_TOLERANCE_MM:.1f} mm
-Plan source: {self.plan_solution_source}
-IK solution: {solution_number} of {solution_count}
-Selected solution error       {(self.motion_plan.position_error_mm if self.motion_plan is not None else 0.0):7.3f} mm
-Motion route: {self.motion_strategy}
-Current phase: {phase_label}
-Estimated route time         {route_duration:7.2f} s
-Motion progress             {100.0 * self.execution_progress:7.1f} %
+Soft {SOFT_LOCK_TOLERANCE_MM:.1f} mm | Hard {HARD_LOCK_TOLERANCE_MM:.1f} mm
+Route: {self.motion_strategy}
+Phase: {phase_label} | Progress: {100*self.execution_progress:.0f}%
+Simulation only; paths are not collision checked.
 
-TARGET WORKFLOW
-RED    Selected, not checked
-GREEN  Solution preview / reached
-GHOSTS Alternative IK tube configurations
-CYAN   Direct planned path
-PURPLE Retract/reorient/advance path
-Simulation path is NOT collision checked
+WORKSPACE: {self.workspace_sample_count:,} valid sampled states
+Blue surface: approximate selected-endpoint envelope.
+Enclosed points are not guaranteed reachable.
+Z=0: front surface of front plate (exit reference).
+Behind-plate lines are schematic, not solved shapes.
+Inner blue | Middle green | Outer orange
 
-COORDINATE FRAME
-Z=0    Back surface / tube exit reference
-Z<0    Parked tubes and actuator side
-Z>0    Exposed robot and workspace
-
-SELECTED ENDPOINT ORIENTATION
-Tilt from +Z  {selected_tilt:7.1f} deg
-Azimuth       {selected_azimuth:7.1f} deg
-Direction     {selected_direction[0]:+.3f}  {selected_direction[1]:+.3f}  {selected_direction[2]:+.3f}
-
-TUBE COLOURS
-INNER Blue  |  MIDDLE Green  |  OUTER Orange
-Dark line = rotation stripe
-
-SMOOTH REACHABLE WORKSPACE
-BLUE  Selected endpoint boundary
-Target is constrained inside this surface
-{self.workspace_sample_count:,} sampled actuator states
-Complete 360-degree workspace
-
-CONDITIONAL WORKSPACE
-Active non-selected locks      {self.conditional_active_lock_count:7d}
-GREEN strict feasible samples {self.conditional_feasible_count:7d}
-AMBER soft-lock samples      {self.conditional_relaxed_count:7d}
-Projected-target distance    {self.conditional_projection_distance_mm:7.2f} mm
-
-PERFORMANCE
-Model {self.last_model_ms:5.1f} ms | UI {self.ui_rate:4.1f} FPS | Robot {self.robot_rate:4.1f}/s
-
-{self.control_key_text()}"""
+CONTROLS
+Tab / L3: joint or Cartesian target control
+1/2/3: select endpoint | X/Y/Z: target axis
+W/S: exposure (joint); Left/Right: target (Cartesian)
+A/D: rotation (joint) | Enter / Cross: plan, confirm
+L1/R1: select endpoint | Options: endpoint lock
+D-pad in preview: route / alternative solution
+R: feasible reset | Circle: undo
+Triangle: guides | R3: sidebar | Mouse: orbit / zoom
+Cross in joint mode: save waypoint
+Options hold: export image and state | Q: quit
+"""
         return text + (f"\n\nERROR\n{self.error_text}" if self.error_text else "")
 
     def control_key_text(self) -> str:
@@ -1731,6 +1706,8 @@ Q             Quit"""
 
     def on_key_press(self, event) -> None:
         key = event.key.name.lower() if event.key is not None else ""
+        if self.profile_key(key):
+            return
         if key == "q":
             self.canvas.close()
             return
@@ -1809,7 +1786,11 @@ Q             Quit"""
 
 
 def main() -> None:
-    VisPyCTRTipControlViewer().run()
+    args = joint_viewer.viewer_arguments()
+    viewer = VisPyCTRTipControlViewer(mode=args.mode, tubes=args.tubes)
+    if args.waypoints:
+        viewer.load_waypoints(args.waypoints)
+    viewer.run()
 
 
 if __name__ == "__main__":

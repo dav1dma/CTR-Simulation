@@ -1,0 +1,6 @@
+{
+  "difficult": "Worst 20% annular-volume mass of original calibration cells with >=100 targets; ties by cell ID",
+  "calibration_sha": "476e090c673b7e351319d99e71ae29288169e1fc9eeabb7b627cb6ef4e0d66a5",
+  "reference_sha": "742c2a5b86f50af99e1a6c7f3a10f9bab7b8a01f2134b2d7d988366874c41025",
+  "region_overlap": "Separate regional readouts; no duplicated weights in global objective"
+}

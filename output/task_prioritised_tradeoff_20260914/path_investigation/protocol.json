@@ -1,0 +1,25 @@
+{
+  "purpose": "Diagnose two large candidate deviations without modifying old results or active simulator",
+  "design": [
+    350.0,
+    177.5,
+    87.5,
+    90.0,
+    65.0,
+    21.37,
+    14.04
+  ],
+  "cases": [
+    "bank0 path10",
+    "bank1 path14"
+  ],
+  "experiments": [
+    "reproduce existing warm-start path",
+    "200 iterations same waypoints",
+    "200 smaller steps same controller",
+    "independent two-nearest-start solves at81 reference positions",
+    "bounded trust-region least squares warm-start path",
+    "reverse continuation from independently solved endpoint"
+  ],
+  "limits": "Same hardware and exterior model. Pointwise reachability does not imply a continuous feasible path. Post-hoc diagnostics are not new held-out performance claims."
+}

@@ -1,0 +1,8 @@
+{
+  "reason": "Initial100-target support83.64% below predeclared90% goal. Add independent original-FK targets to deficient cells; stop once goal met or16 batches exhausted.",
+  "seed_start": 61402,
+  "batch_states": 262144,
+  "max_batches": 16,
+  "cell_cap": 192,
+  "selection": "Cell counts only, no candidate outcomes or error-dependent selection. Existing calibration regions remain frozen."
+}

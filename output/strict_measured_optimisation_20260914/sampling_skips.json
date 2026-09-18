@@ -1,0 +1,50 @@
+[
+  {
+    "design": [
+      350.5118,
+      170.0,
+      89.8476,
+      101.0183,
+      44.1132,
+      22.1361,
+      12.1203
+    ],
+    "reason": "Uniform rejection sampling budget exhausted; not a proof of infeasibility"
+  },
+  {
+    "design": [
+      350.0,
+      170.0,
+      90.0,
+      90.0,
+      65.0,
+      19.12,
+      14.04
+    ],
+    "reason": "Uniform rejection sampling budget exhausted; not a proof of infeasibility"
+  },
+  {
+    "design": [
+      330.493,
+      203.1567,
+      122.9493,
+      49.7308,
+      59.433,
+      23.6152,
+      15.9531
+    ],
+    "reason": "Uniform rejection sampling budget exhausted; not a proof of infeasibility"
+  },
+  {
+    "design": [
+      358.7411,
+      170.0,
+      89.8955,
+      92.6117,
+      67.8969,
+      16.305,
+      14.6926
+    ],
+    "reason": "Uniform rejection sampling budget exhausted; not a proof of infeasibility"
+  }
+]

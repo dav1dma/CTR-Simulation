@@ -1,0 +1,104 @@
+{
+  "id": "measured-optimisation-20260914-v1",
+  "baseline": [
+    350.0,
+    170.0,
+    80.0,
+    90.0,
+    65.0,
+    19.12,
+    14.04
+  ],
+  "bounds": [
+    [
+      320.0,
+      380.0
+    ],
+    [
+      170.0,
+      230.0
+    ],
+    [
+      80.0,
+      140.0
+    ],
+    [
+      30.0,
+      110.0
+    ],
+    [
+      20.0,
+      90.0
+    ],
+    [
+      12.0,
+      27.0
+    ],
+    [
+      9.0,
+      21.0
+    ]
+  ],
+  "variables": [
+    "inner_total_mm",
+    "middle_total_mm",
+    "outer_total_mm",
+    "middle_curve_mm",
+    "outer_curve_mm",
+    "middle_curvature_per_m",
+    "outer_curvature_per_m"
+  ],
+  "measured": {
+    "retracted_mm": [
+      275,
+      195,
+      115
+    ],
+    "extended_mm": [
+      175,
+      95,
+      15
+    ],
+    "body_mm": 71.5,
+    "gap_mm": [
+      8.5,
+      108
+    ],
+    "sensitivity_gap_mm": 108.5
+  },
+  "assumptions": [
+    "Lengths mean chuck-tip to distal-tip material length; no grip offset",
+    "Straight coaxial internal path assumed, guidance/contact not simulated",
+    "Distal precurves, straight inner wire, original diameters and 75 GPa stiffness fixed",
+    "Unrestricted rotations; no friction, torsion, elastic stability or loaded accuracy",
+    "Bounds exploratory, not supplier or manufacturing limits"
+  ],
+  "methods": {
+    "cell_mm": 5,
+    "minimum_support": 5,
+    "physical_jacobian_scale": [
+      350.0,
+      170.0,
+      80.0,
+      3.141592653589793,
+      3.141592653589793,
+      3.141592653589793
+    ],
+    "weak_region": "lowest 20% annular-volume-weighted baseline supported cell median isotropy",
+    "corridor": "baseline supported subset r<10, z40..130mm",
+    "targets": "actual baseline reachable positions, cell-stratified with annular weights",
+    "ik": "single start at most-retracted feasible state, zero rotations, 40 iterations, damping1mm, step0.1, stop0.01mm, success0.5mm; same algorithm/budget per design; viewer-matched forward differences, componentwise step cap, first-improving line search, stop stalled states; pilot method archived",
+    "screen": "256 Sobol designs plus structured controls; 8192 feasible uniform physical states; shortlist 12 on frozen-region isotropy and retention",
+    "selection": "fresh training targets: require global/weak/corridor success no worse by >0.02 absolute; rank equal global/weak/corridor success plus 0.25 normalized weak and corridor effective mean isotropy",
+    "validation": "freeze selected design before independent targets; no validation retuning",
+    "refinement": "Training-only: 128 Sobol local samples plus 28 axis perturbations around original and best shortlist design; per-region p95 gate baseline +1mm; no held-out feedback",
+    "fine": "Training only: 9x9 curvature grid +/-2/m and 64 local Sobol samples around best score, unchanged selection gates; no held-out feedback"
+  },
+  "seeds": {
+    "region": 33111,
+    "screen": 33112,
+    "designs": 33113,
+    "selection": 34101,
+    "validation": 36101
+  }
+}

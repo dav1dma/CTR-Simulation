@@ -24,6 +24,9 @@ from vispy.visuals.transforms import STTransform
 
 from CTR_superPosKin_fun_sectioned import superPosKin
 from tube_parameters import build_supervisor_ctr_parameters
+from ctr_operating_profile import OperatingProfile, viewer_arguments
+from ctr_viewer_workspace import profile_workspace
+from ctr_workspace_map import workspace_surface_of_revolution
 
 
 app.use_app(os.environ.get("VISPY_APP", "glfw"))
@@ -395,17 +398,23 @@ class SidebarPanel(scene.Widget):
 
 
 class VisPyCTRViewer:
-    def __init__(self) -> None:
+    def __init__(self, *, mode="hardware", tubes="original", workspace_samples=12000) -> None:
         pygame.init()
         pygame.joystick.init()
         self.controller = ControllerManager()
 
-        self.parameters = build_supervisor_ctr_parameters()
+        self.profile = OperatingProfile(mode, tubes)
+        self.limits = self.profile.limits
+        self.workspace_samples = workspace_samples
+        self.parameters = self.profile.parameters
+        self.endpoint_workspace_maps = profile_workspace(self.profile, sample_count=workspace_samples)
+        self._switching = False
+
         self.sim_parameters = {"n_p": MODEL_POINTS_PER_SECTION, "isPlot": False}
         self.total_lengths = np.array(
             [sum(lengths) for lengths in self.parameters["l_t"]], dtype=float
         )
-        self.deployment = INITIAL_DEPLOYMENT_M.copy()
+        self.deployment = self.profile.reset_m.copy()
         self.rotation = INITIAL_ROTATION_RAD.copy()
         self.selected_tube = 0
         self.inputs = InputSnapshot()
@@ -532,6 +541,14 @@ class VisPyCTRViewer:
         axes = scene.visuals.XYZAxis(parent=self.view.scene)
         axes.transform = STTransform(scale=(45.0, 45.0, 45.0))
 
+        surface = workspace_surface_of_revolution(self.endpoint_workspace_maps.tips_mm[0])
+        self.joint_workspace_visual = scene.visuals.Mesh(
+            vertices=surface.vertices_mm, faces=surface.faces, color=(.04,.42,.95,.10),
+            shading="smooth", parent=self.view.scene)
+        self.joint_workspace_visual.set_gl_state("translucent", depth_test=True, depth_mask=False, cull_face="back")
+        self.view.camera.center = (0,0,float(np.max(surface.profile_z_mm))/2)
+        self.view.camera.distance = 350 if self.profile.mode == "hardware" else 850
+
         self.sidebar = SidebarPanel(self.sidebar_text())
         self.sidebar.width_min = 360
         self.sidebar.width_max = 360
@@ -551,6 +568,7 @@ class VisPyCTRViewer:
         self.closed = False
 
     def calculate_backbone(self) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+        self.limits.validate(self.deployment)
         result = superPosKin(
             self.parameters,
             {"ul": self.deployment.tolist(), "uphi": self.rotation.tolist()},
@@ -573,11 +591,7 @@ class VisPyCTRViewer:
         )
 
     def translation_limits(self, tube: int) -> tuple[float, float]:
-        if tube == 0:
-            return self.deployment[1], self.total_lengths[0]
-        if tube == 1:
-            return self.deployment[2], min(self.deployment[0], self.total_lengths[1])
-        return 0.0, min(self.deployment[1], self.total_lengths[2])
+        return self.limits.interval(self.deployment, tube)
 
     def move(self, amount_mm: float) -> None:
         low, high = self.translation_limits(self.selected_tube)
@@ -600,7 +614,7 @@ class VisPyCTRViewer:
         self.update_status()
 
     def reset(self) -> None:
-        self.deployment[:] = INITIAL_DEPLOYMENT_M
+        self.deployment[:] = self.profile.reset_m
         self.rotation[:] = INITIAL_ROTATION_RAD
         self.selected_tube = 0
         self.robot_dirty = True
@@ -623,7 +637,7 @@ class VisPyCTRViewer:
             self.last_action = "Nothing to undo"
             return
         deployment, rotation, selected = self.undo_stack.pop()
-        self.deployment[:] = deployment
+        self.deployment[:] = self.limits.validate(deployment)
         self.rotation[:] = rotation
         self.selected_tube = selected
         self.robot_dirty = True
@@ -648,6 +662,8 @@ class VisPyCTRViewer:
         deg = np.rad2deg(self.rotation)
         return {
             "label": label,
+            "operating_mode": self.profile.mode,
+            "tube_design": self.profile.design,
             "inner_extension_mm": float(mm[0]),
             "middle_extension_mm": float(mm[1]),
             "outer_extension_mm": float(mm[2]),
@@ -688,6 +704,7 @@ class VisPyCTRViewer:
         self.guides_visible = not self.guides_visible
         self.vertical_reference.visible = self.guides_visible
         self.tip_arrow.visible = self.guides_visible
+        self.joint_workspace_visual.visible = self.guides_visible
         self.last_action = "Guides shown" if self.guides_visible else "Guides hidden"
         self.canvas.update()
 
@@ -770,7 +787,10 @@ class VisPyCTRViewer:
         deg = np.rad2deg(self.rotation)
         state = "CONNECTED" if self.controller.connected else "DISCONNECTED"
         markers = [">" if index == self.selected_tube else " " for index in range(3)]
-        text = f"""ROBOT STATE
+        text = f"""{self.profile.description(self.deployment)}
+F6: change limits | F7: change tubes (resets state)
+
+ROBOT STATE
 
 ACTIVE TUBE: {TUBE_NAMES[self.selected_tube]}
 PS5: {state}
@@ -778,7 +798,7 @@ MODE: {"PRECISION" if self.inputs.precision else "NORMAL"}
 WAYPOINTS: {len(self.waypoints)}
 LAST: {self.last_action}
 
-              EXTENSION     ROTATION
+              EXPOSURE      ROTATION
 {markers[0]} INNER      {mm[0]:6.1f} mm     {deg[0]:7.1f} deg
 {markers[1]} MIDDLE     {mm[1]:6.1f} mm     {deg[1]:7.1f} deg
 {markers[2]} OUTER      {mm[2]:6.1f} mm     {deg[2]:7.1f} deg
@@ -789,7 +809,7 @@ MIDDLE  Green
 OUTER   Orange
 Dark line = rotation stripe
 
-TIP POSITION
+MODEL TIP POSITION
 X {self.tip_mm[0]:7.1f} mm
 Y {self.tip_mm[1]:7.1f} mm
 Z {self.tip_mm[2]:7.1f} mm
@@ -934,8 +954,58 @@ Q             Quit"""
         finally:
             self.update_rates(now)
 
+    def switch_profile(self, *, mode=None, tubes=None):
+        """A profile switch discards live previews/undo; never reuses a stale map."""
+        replacement = self.__class__(mode=mode or self.profile.mode,
+                                     tubes=tubes or self.profile.design,
+                                     workspace_samples=self.workspace_samples)
+        self._switching = True
+        self.timer.stop()
+        self.controller.disconnect()
+        replacement.canvas.show()
+        self.canvas.close()
+        # GLFW may request app quit on close; keep its event loop for replacement.
+        self.replacement_viewer = replacement
+        replacement.timer.start()
+        replacement.last_action = "Profile changed; reset to a feasible state"
+        replacement.update_status()
+        return replacement
+
+    def profile_key(self, key):
+        if key == "f6":
+            self.switch_profile(mode="tube-length" if self.profile.mode == "hardware" else "hardware")
+            return True
+        if key == "f7":
+            self.switch_profile(tubes="optimised" if self.profile.design == "original" else "original")
+            return True
+        return False
+
+    def load_waypoints(self, path):
+        """Validate every imported state before changing the live pose."""
+        with Path(path).open(newline="", encoding="utf-8") as handle:
+            rows = list(csv.DictReader(handle))
+        if not rows:
+            raise ValueError("No waypoints found")
+        poses = []
+        for row in rows:
+            if row.get("operating_mode", self.profile.mode) != self.profile.mode or row.get("tube_design", self.profile.design) != self.profile.design:
+                raise ValueError("Waypoint profile differs from active mode/tubes")
+            d=self.limits.validate(np.array([float(row[f"{n}_extension_mm"]) for n in ("inner","middle","outer")])/1000)
+            a=np.deg2rad([float(row[f"{n}_rotation_deg"]) for n in ("inner","middle","outer")])
+            if not np.all(np.isfinite(a)):raise ValueError("Waypoint rotation must be finite")
+            poses.append((d,(a+np.pi)%(2*np.pi)-np.pi))
+        self.reset()
+        self.deployment[:],self.rotation[:]=poses[-1]
+        self.robot_dirty=True
+        self.update_robot()
+        if hasattr(self,"sync_target_to_tip"):self.sync_target_to_tip()
+        self.last_action="Loaded final waypoint; all imported states valid"
+        self.update_status()
+
     def on_key_press(self, event) -> None:
         key = event.key.name.lower() if event.key is not None else ""
+        if self.profile_key(key):
+            return
         actions = {
             "1": lambda: self.select(0),
             "2": lambda: self.select(1),
@@ -957,7 +1027,8 @@ Q             Quit"""
         self.closed = True
         self.timer.stop()
         self.controller.disconnect()
-        pygame.quit()
+        if not self._switching:
+            pygame.quit()
 
     def run(self) -> None:
         print(
@@ -977,7 +1048,11 @@ Q             Quit"""
 
 
 def main() -> None:
-    VisPyCTRViewer().run()
+    args = viewer_arguments()
+    viewer = VisPyCTRViewer(mode=args.mode, tubes=args.tubes)
+    if args.waypoints:
+        viewer.load_waypoints(args.waypoints)
+    viewer.run()
 
 
 if __name__ == "__main__":

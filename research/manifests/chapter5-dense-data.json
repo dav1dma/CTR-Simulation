@@ -1,0 +1,215 @@
+{
+  "archive": "chapter5-dense-data.tar.gz",
+  "files": [
+    {
+      "file": "output/chapter5_measured_revision/data/calibration_original.npz",
+      "bytes": 1451753,
+      "sha256": "476e090c673b7e351319d99e71ae29288169e1fc9eeabb7b627cb6ef4e0d66a5"
+    },
+    {
+      "file": "output/chapter5_measured_revision/data/calibration_targets.npz",
+      "bytes": 2187786,
+      "sha256": "4947fb2cb24611c972629587bcaac8befc72fdd2444e75ffd26135ecd23e60c2"
+    },
+    {
+      "file": "output/chapter5_measured_revision/data/gap_sensitivity.json",
+      "bytes": 120,
+      "sha256": "9f336d1e8485c22b20b5528746648108b11492f0f5467d5317b63d369871cd94"
+    },
+    {
+      "file": "output/chapter5_measured_revision/data/initial_support_83pct/original_ik.npz",
+      "bytes": 2122043,
+      "sha256": "168bcd96c4f92e34fab198c0a2304ea44649cae6ab2d70c61aaeb0cb25d63fb6"
+    },
+    {
+      "file": "output/chapter5_measured_revision/data/initial_support_83pct/original_ik_maps.npz",
+      "bytes": 7675,
+      "sha256": "f414b4f350231bb29251e0cf41114e11fcaf71c3c36046a8e7dcce543bf73102"
+    },
+    {
+      "file": "output/chapter5_measured_revision/data/initial_support_83pct/proposed_ik.npz",
+      "bytes": 2229238,
+      "sha256": "fa608ca2b4fe4de864c1b66637aed800415f1cb0cd799779a29808c4a9153319"
+    },
+    {
+      "file": "output/chapter5_measured_revision/data/initial_support_83pct/proposed_ik_maps.npz",
+      "bytes": 7676,
+      "sha256": "7a0205fed1d5117498708e495930f5ada19ec2ca78cbf07c82134e7a50d02a98"
+    },
+    {
+      "file": "output/chapter5_measured_revision/data/initial_support_83pct/summary.json",
+      "bytes": 2715,
+      "sha256": "33aca6d4e74db1043edeff5c6f1566ad243a37a7a6fb7f655384111c8e1fc78e"
+    },
+    {
+      "file": "output/chapter5_measured_revision/data/initial_support_83pct/targets.npz",
+      "bytes": 3205738,
+      "sha256": "8679143cf69815c9b4a64cd0e35ffc90c0bc8ded1ab7f6d1560dc4d05ad1315a"
+    },
+    {
+      "file": "output/chapter5_measured_revision/data/original_ik.npz",
+      "bytes": 2229345,
+      "sha256": "5fcaaf6b6340a5c651b7b773a1d32894134020e2f2ac95ea4bef3a6e4f6571d5"
+    },
+    {
+      "file": "output/chapter5_measured_revision/data/original_ik_maps.npz",
+      "bytes": 7580,
+      "sha256": "33196c2410ca836bf20c536a2da15846839b3c10ec8734dd33a61128adbf2b3b"
+    },
+    {
+      "file": "output/chapter5_measured_revision/data/original_repeat.npz",
+      "bytes": 8759451,
+      "sha256": "beb4fb8ae3be957e4b8fb0a68feed9d8b3b805a932bc202ded06ac8766a5ece0"
+    },
+    {
+      "file": "output/chapter5_measured_revision/data/original_spatial.npz",
+      "bytes": 17522046,
+      "sha256": "742c2a5b86f50af99e1a6c7f3a10f9bab7b8a01f2134b2d7d988366874c41025"
+    },
+    {
+      "file": "output/chapter5_measured_revision/data/overlay.json",
+      "bytes": 94,
+      "sha256": "aa31b6ff1c8369d3fba69be7b4dfae2060057c6e2ae76969b90ae16a1f9443b7"
+    },
+    {
+      "file": "output/chapter5_measured_revision/data/proposed_ik.npz",
+      "bytes": 2339589,
+      "sha256": "18cd5a28037e4bdff04f371d0de4ce5502de24a2bd48f809e2f7dc56c0753307"
+    },
+    {
+      "file": "output/chapter5_measured_revision/data/proposed_ik_maps.npz",
+      "bytes": 7588,
+      "sha256": "b7ae7e54c07d73fa60c0d5b0640422e93689d0cdd26472f9f4e2035aa9ebd788"
+    },
+    {
+      "file": "output/chapter5_measured_revision/data/proposed_repeat.npz",
+      "bytes": 8762826,
+      "sha256": "9e94181f54208af3ee31fc82672f01ded15830b78f73e34323ede510a9b3d9ab"
+    },
+    {
+      "file": "output/chapter5_measured_revision/data/proposed_spatial.npz",
+      "bytes": 17528924,
+      "sha256": "156502f59edb38eba9aae0466ac1295917055071f93050ab92edad1bdf992926"
+    },
+    {
+      "file": "output/chapter5_measured_revision/data/protocol.json",
+      "bytes": 1712,
+      "sha256": "37869d04e5d2f25e3374b6f3ff32b64fb38d7e279ab768989e90c8baca2ca4e1"
+    },
+    {
+      "file": "output/chapter5_measured_revision/data/reference.json",
+      "bytes": 2752,
+      "sha256": "77febb3e7f2fb31fa253f4bcd2580e74b0b7895ec0a7268d71cf23ff879b54dd"
+    },
+    {
+      "file": "output/chapter5_measured_revision/data/regions.json",
+      "bytes": 4665,
+      "sha256": "601fe8ae1de164c49b3aab59bbaaab76e584d5f80c77e9904ca2720c5ec7f457"
+    },
+    {
+      "file": "output/chapter5_measured_revision/data/sampling_checks.json",
+      "bytes": 1070,
+      "sha256": "e50fc7526e9c4a66216e0a30fea3956a8c0057951c2883c99246d40f7f45a24d"
+    },
+    {
+      "file": "output/chapter5_measured_revision/data/solver_verification.json",
+      "bytes": 76,
+      "sha256": "6fd29bb01b580d64994ce44e99b2168d0ef84131a5b73bb118045a8fa3c5d087"
+    },
+    {
+      "file": "output/chapter5_measured_revision/data/source_hashes.json",
+      "bytes": 462,
+      "sha256": "4c787082a2d539c0c26697783a14b26f69185cc9f4d5c3810203e69f101c020c"
+    },
+    {
+      "file": "output/chapter5_measured_revision/data/spatial_regions.json",
+      "bytes": 1317,
+      "sha256": "cb906eb7e46183442d5ffd3e3882a41739ba5cb89e19124a1d1d1159b92a31bb"
+    },
+    {
+      "file": "output/chapter5_measured_revision/data/summary.json",
+      "bytes": 2709,
+      "sha256": "b34fae76f70cc7231b223f56b2323af5e896921fd9334ee59dec6bcc3e1efbe1"
+    },
+    {
+      "file": "output/chapter5_measured_revision/data/support_addendum.json",
+      "bytes": 396,
+      "sha256": "84fc97873940dea9b6b909f7545ef79c26a8b642ec70ad8645217fae45bd72e8"
+    },
+    {
+      "file": "output/chapter5_measured_revision/data/support_topup_log.json",
+      "bytes": 461,
+      "sha256": "ad3e53a957188d0d40c0879af1c5efd8afb7af08e192c79c7df66ad7b15406b1"
+    },
+    {
+      "file": "output/chapter5_measured_revision/data/targets.npz",
+      "bytes": 3364307,
+      "sha256": "210c88aa7863aec577858db402784b75ac939d3ea51aa615b0425e9144ea210f"
+    },
+    {
+      "file": "output/chapter5_measured_revision/source_snapshot/ctr_design_analysis.py",
+      "bytes": 58644,
+      "sha256": "ac12f04d2731dc1511dce00d8c17aa5baf9c8fb737d26e1e4e30d5bf24b46c71"
+    },
+    {
+      "file": "output/chapter5_measured_revision/source_snapshot/measured_hardware_simulator/CTR_superPosKin_fun_sectioned.py",
+      "bytes": 12082,
+      "sha256": "aeebd1f9562e907fa7cd07449608a66aa0b067ef76775d9b4329e1b992f40b0d"
+    },
+    {
+      "file": "output/chapter5_measured_revision/source_snapshot/measured_hardware_simulator/ctr_inverse_kinematics.py",
+      "bytes": 18701,
+      "sha256": "4bb60600740f98825a8906c8055822d7125c66f026da55b2d577815a55da032e"
+    },
+    {
+      "file": "output/chapter5_measured_revision/source_snapshot/measured_hardware_simulator/ctr_operating_profile.py",
+      "bytes": 6492,
+      "sha256": "55cc2f4467153d94900cf037fe325846ceff29e9b202cbfc0be472dcd39c8999"
+    },
+    {
+      "file": "output/chapter5_measured_revision/source_snapshot/measured_hardware_simulator/design_constraints.py",
+      "bytes": 3789,
+      "sha256": "be8241df83ebdeb9d687cf9cd7755bb8ca92c29a98d52d62e2ded51109e8accb"
+    },
+    {
+      "file": "output/chapter5_measured_revision/source_snapshot/measured_hardware_simulator/tube_parameters.py",
+      "bytes": 4498,
+      "sha256": "96bca31d76cd34d1b4f87c5e4d82ec9feae5426bfcfbfba5b4c4ae770a009efb"
+    },
+    {
+      "file": "output/chapter5_measured_revision/source_snapshot/tools/chapter5_measured_figures.py",
+      "bytes": 7409,
+      "sha256": "4f25e348a8f01cd055fb016012c1e00c56bcf631e61dbe0631d218ac5e0d64ab"
+    },
+    {
+      "file": "output/chapter5_measured_revision/source_snapshot/tools/chapter5_measured_latex.py",
+      "bytes": 35282,
+      "sha256": "7a9d4dfe10e4c215f6a42101fccbea8c4f4e859ee888c6683de7fb05ad504e62"
+    },
+    {
+      "file": "output/chapter5_measured_revision/source_snapshot/tools/chapter5_measured_study.py",
+      "bytes": 8583,
+      "sha256": "3bc9d4842341949d7c8982726325c251f980077a1c327d9b4c2d0823804df68a"
+    },
+    {
+      "file": "output/chapter5_measured_revision/source_snapshot/tools/chapter5_topup_support.py",
+      "bytes": 2210,
+      "sha256": "231c62e80ffaac470f58ab739ea4787812fdf97667c9d884b962c1b9d88c7152"
+    },
+    {
+      "file": "output/chapter5_measured_revision/source_snapshot/tools/optimise_measured_ctr.py",
+      "bytes": 21613,
+      "sha256": "4590eb64f9c8e148e40138d2ab1d3152da55d600376d3ecd06af64b78f27af0f"
+    },
+    {
+      "file": "output/chapter5_measured_revision/source_snapshot/tools/run_broad_hardware_study.py",
+      "bytes": 13341,
+      "sha256": "fef35ba8edb72582a4647583e49842b617ca0691aaf8380558c2e469537ff624"
+    },
+    {
+      "file": "output/chapter5_measured_revision/source_snapshot/tools/run_hardware_optimisation.py",
+      "bytes": 13093,
+      "sha256": "17f1ddc6a7040f2adebdfc13a8337f17210e04ac2b173a8ea620f30e35f8c56b"
+    }
+  ]
+}

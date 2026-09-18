@@ -1,0 +1,9 @@
+{
+  "before_candidate_search": true,
+  "changes": [
+    "Original-only equal-budget occupancy calibration",
+    "Gap sensitivity can disqualify candidates",
+    "Equal costly-evaluator budgets; log cheap geometry rejections separately"
+  ],
+  "outcomes_used": "Reference-only kernel tests and eight timing-pilot geometries; no optimisation or held-out outcomes inspected"
+}

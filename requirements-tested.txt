@@ -1,0 +1,9 @@
+# Main dependencies used in the September 2026 macOS release checks.
+# Python 3.14.3; this is not a full historical/transitive environment lock.
+numpy==2.5.2
+scipy==1.18.0
+matplotlib==3.11.1
+transforms3d==0.4.2
+pygame-ce==2.5.8
+vispy==0.16.2
+glfw==2.10.2

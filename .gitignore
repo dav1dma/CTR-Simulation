@@ -1,6 +1,17 @@
+# Local environments and generated caches
 .DS_Store
 .venv/
+.venv-*/
 __pycache__/
 *.py[cod]
-exports/
+.pytest_cache/
+.vscode/
+**/exports/
 results/
+tmp/
+# Large arrays are release assets; the frozen region map is needed by imports.
+output/**/*.npz
+!output/measured_hardware_optimisation_20260914/baseline_regions.npz
+output/**/*.log
+output/**/dependencies/
+output/*/workspace_viewer/

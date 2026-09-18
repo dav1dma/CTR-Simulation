@@ -1,0 +1,13 @@
+{
+  "candidate": [
+    350.0,
+    177.5,
+    87.5,
+    90.0,
+    65.0,
+    20.62,
+    13.665
+  ],
+  "accepted": false,
+  "note": "Second sequential validation; first failure retained. Live simulator unchanged."
+}

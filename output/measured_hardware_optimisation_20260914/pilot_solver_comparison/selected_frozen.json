@@ -1,0 +1,53 @@
+{
+  "design": [
+    350.0,
+    170.0,
+    80.0,
+    90.0,
+    65.0,
+    19.12,
+    14.04
+  ],
+  "metrics": {
+    "global": {
+      "success": 0.501623025319195,
+      "p95_mm": 98.50651276892786,
+      "effective_isotropy_mean": 0.1806952700023557,
+      "effective_isotropy_p10": 0.0
+    },
+    "weak": {
+      "success": 0.5592972181551976,
+      "p95_mm": 55.4306296450774,
+      "effective_isotropy_mean": 0.10928260494404243,
+      "effective_isotropy_p10": 0.0
+    },
+    "corridor": {
+      "success": 0.5259259259259259,
+      "p95_mm": 19.99958136588258,
+      "effective_isotropy_mean": 0.07164372896999019,
+      "effective_isotropy_p10": 0.0
+    }
+  },
+  "eligible": true,
+  "score": 2.0868461694003186,
+  "rounded_training_metrics": {
+    "global": {
+      "success": 0.501623025319195,
+      "p95_mm": 98.50651276892786,
+      "effective_isotropy_mean": 0.1806952700023557,
+      "effective_isotropy_p10": 0.0
+    },
+    "weak": {
+      "success": 0.5592972181551976,
+      "p95_mm": 55.4306296450774,
+      "effective_isotropy_mean": 0.10928260494404243,
+      "effective_isotropy_p10": 0.0
+    },
+    "corridor": {
+      "success": 0.5259259259259259,
+      "p95_mm": 19.99958136588258,
+      "effective_isotropy_mean": 0.07164372896999019,
+      "effective_isotropy_p10": 0.0
+    }
+  }
+}

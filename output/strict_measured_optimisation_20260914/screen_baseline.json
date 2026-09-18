@@ -1,0 +1,16 @@
+{
+  "global_isotropy_mean": 0.23910786727206496,
+  "global_isotropy_p10": 0.0,
+  "global_cell_retention": 0.9481052828075416,
+  "weak_isotropy_mean": 0.1754716368127753,
+  "weak_isotropy_p10": 0.0897505881579847,
+  "weak_cell_retention": 0.9748369058713886,
+  "corridor_isotropy_mean": 0.16366621215394075,
+  "corridor_isotropy_p10": 0.10799206350149401,
+  "corridor_cell_retention": 0.9791666666666666,
+  "volume_cm3": 2106.4378742319564,
+  "radial_extent_mm": 112.21566233568167,
+  "z_max_mm": 167.70973864513655,
+  "z_min_mm": 63.85311122036661,
+  "tip_distance_max_mm": 172.06224180399894
+}

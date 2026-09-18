@@ -1,0 +1,1 @@
+Pilot using a central-difference, norm-limited batch solver. Superseded before held-out validation by a batch implementation matching the live viewer forward differences, component step caps and first-improving line search. Not final design evidence.

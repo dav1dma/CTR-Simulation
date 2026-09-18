@@ -1,0 +1,42 @@
+[
+  {
+    "evaluations": 32,
+    "hypervolume": 0.6712832682291667,
+    "feasible": 2
+  },
+  {
+    "evaluations": 64,
+    "hypervolume": 0.6712832682291667,
+    "feasible": 2
+  },
+  {
+    "evaluations": 96,
+    "hypervolume": 0.6712832682291667,
+    "feasible": 2
+  },
+  {
+    "evaluations": 128,
+    "hypervolume": 0.6712832682291667,
+    "feasible": 4
+  },
+  {
+    "evaluations": 160,
+    "hypervolume": 0.7061221354166667,
+    "feasible": 14
+  },
+  {
+    "evaluations": 192,
+    "hypervolume": 0.7062035156250001,
+    "feasible": 31
+  },
+  {
+    "evaluations": 224,
+    "hypervolume": 0.7234984375000001,
+    "feasible": 48
+  },
+  {
+    "evaluations": 256,
+    "hypervolume": 0.7248412109375001,
+    "feasible": 69
+  }
+]

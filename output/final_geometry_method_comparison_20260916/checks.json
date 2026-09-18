@@ -1,0 +1,7 @@
+{
+  "forward_max_discrepancy_mm": 2.842170943040401e-14,
+  "coupled_limits": true,
+  "equivalence_cache": true,
+  "full_azimuth_targets": true,
+  "path_interpolation_matches_explicit_loop": true
+}

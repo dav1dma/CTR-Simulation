@@ -1,0 +1,250 @@
+{
+  "archive": "measured-search-data.tar.gz",
+  "files": [
+    {
+      "file": "output/measured_hardware_optimisation_20260914/baseline_regions.npz",
+      "bytes": 4384485,
+      "sha256": "10267a8aa808dc941c5760fb6f9c7c7808f8db54b102b28b6dd614fe913978d4"
+    },
+    {
+      "file": "output/measured_hardware_optimisation_20260914/candidate_parameters.json",
+      "bytes": 2101,
+      "sha256": "96dfbeb3bf0595ca48f08497b66ff7935750ee3459203074aba7283ef243e872"
+    },
+    {
+      "file": "output/measured_hardware_optimisation_20260914/curves_only_validation.npz",
+      "bytes": 4626885,
+      "sha256": "7d6ddfe210678e17b0d1b3f634b176f0193959eab20f058702cab68cbbb43a82"
+    },
+    {
+      "file": "output/measured_hardware_optimisation_20260914/fine_records.json",
+      "bytes": 238261,
+      "sha256": "3045a8b72ee4b8b7f45810f3a5f4131492a16d1058d6e0258a01591b87e1f27a"
+    },
+    {
+      "file": "output/measured_hardware_optimisation_20260914/gap_sensitivity.json",
+      "bytes": 1148,
+      "sha256": "97e06c1996dcb5546226d592eef7a5222a42bc82630606b510fb7f3aa43ff7d9"
+    },
+    {
+      "file": "output/measured_hardware_optimisation_20260914/installed_manifest.json",
+      "bytes": 1218,
+      "sha256": "0c203e721b2ced64a6b4fac468abdaf5ccfa7058b8d8992e2cf60d2b397bd21c"
+    },
+    {
+      "file": "output/measured_hardware_optimisation_20260914/legacy_before_replacement/README.md",
+      "bytes": 298,
+      "sha256": "142e3eb92b6e20454423621f904a06634016fe7bcaddc68b3d468475584c7f38"
+    },
+    {
+      "file": "output/measured_hardware_optimisation_20260914/legacy_before_replacement/ctr_operating_profile.py",
+      "bytes": 5467,
+      "sha256": "b800be6b0baa41f4aac58890275d99b63986046422c9a90e77e59953d1b2ba5a"
+    },
+    {
+      "file": "output/measured_hardware_optimisation_20260914/legacy_before_replacement/docs/hardware_constrained_optimisation_plan.md",
+      "bytes": 7597,
+      "sha256": "ba749b67797bec2dcd278c87d443932ee00e98f211b0a4139ca6d58a8f603d3f"
+    },
+    {
+      "file": "output/measured_hardware_optimisation_20260914/lengths_only_validation.npz",
+      "bytes": 4673322,
+      "sha256": "377a15089871a6cb764c871d1910aa2cb3aa85c7c4cef41069c532e8b688b5a1"
+    },
+    {
+      "file": "output/measured_hardware_optimisation_20260914/native_viewer_verification.json",
+      "bytes": 247,
+      "sha256": "d1acc4b16e54d27844b0d45b75fa2927a71dd7b1b340be30d743075c31fdf1da"
+    },
+    {
+      "file": "output/measured_hardware_optimisation_20260914/optimised_dense_workspace.npz",
+      "bytes": 8834591,
+      "sha256": "72a51dc19f25852190dfbadc5ae86750e70e8ecf340e29fe72f11d22c33ccc8b"
+    },
+    {
+      "file": "output/measured_hardware_optimisation_20260914/optimised_native_pose.csv",
+      "bytes": 1241,
+      "sha256": "129137019e961bef542f46a25e4fc2374752c15e981e6fca4f16cf12409d5f97"
+    },
+    {
+      "file": "output/measured_hardware_optimisation_20260914/optimised_validation.npz",
+      "bytes": 4676221,
+      "sha256": "f5b7cbc6321357b3db946d7bb0ae060e587b398d2340ac048be9c84cf86b603e"
+    },
+    {
+      "file": "output/measured_hardware_optimisation_20260914/optimised_viewer.png",
+      "bytes": 475972,
+      "sha256": "7565404be9e77688455f587c93143a8fa5ea5ed3ae86f0d20db1a87e9f135db0"
+    },
+    {
+      "file": "output/measured_hardware_optimisation_20260914/original_dense_workspace.npz",
+      "bytes": 8773208,
+      "sha256": "f6dde886cd89b3eb53211a265352673044e252b9630669af01dcab791332df9e"
+    },
+    {
+      "file": "output/measured_hardware_optimisation_20260914/original_validation.npz",
+      "bytes": 4636340,
+      "sha256": "103faf307757b964e9e4a04dc7e236806a61c7fd7cf0902207b06dc0d17cc9b1"
+    },
+    {
+      "file": "output/measured_hardware_optimisation_20260914/paired_sampling_uncertainty.json",
+      "bytes": 499,
+      "sha256": "6e083c08f4fbede7c21983c784563ab91dff4f5defb4b5f274070c191a97260a"
+    },
+    {
+      "file": "output/measured_hardware_optimisation_20260914/performance_comparison.png",
+      "bytes": 104962,
+      "sha256": "46f3d3eaa7b8e08bec4dfa1adcc6e8b4f72e3cfaf7ad715528879dd60a4c338f"
+    },
+    {
+      "file": "output/measured_hardware_optimisation_20260914/pilot_solver_comparison/README.md",
+      "bytes": 251,
+      "sha256": "29ca4bed3b1ea53c7e909689438290048e5d7c0215549f54c3d6814e92d0c019"
+    },
+    {
+      "file": "output/measured_hardware_optimisation_20260914/pilot_solver_comparison/refinement_records.json",
+      "bytes": 117913,
+      "sha256": "b923b916fdfa35fd4e6b5fa196a31cd8c9e00a751b8cfa9aa6ebe3441e80ac30"
+    },
+    {
+      "file": "output/measured_hardware_optimisation_20260914/pilot_solver_comparison/selected_frozen.json",
+      "bytes": 1304,
+      "sha256": "eaabfdc06a626953d2b57d0f80d5b466eafba6f49093ed2bf943ee92605768a5"
+    },
+    {
+      "file": "output/measured_hardware_optimisation_20260914/pilot_solver_comparison/selection_records.json",
+      "bytes": 11039,
+      "sha256": "555de5b9f3e19b4492cf8c9413d7a43a1ecf2a699a2764193f4c80dc39bb466f"
+    },
+    {
+      "file": "output/measured_hardware_optimisation_20260914/protocol.json",
+      "bytes": 2964,
+      "sha256": "1e770dc34af0b4d210689237b31cfcf419d9bdb42f87ccdaa448af1a717cbbee"
+    },
+    {
+      "file": "output/measured_hardware_optimisation_20260914/refinement_records.json",
+      "bytes": 117937,
+      "sha256": "32dd870925f1e63115b50c4a16ba92bba1e8a90ff2f3b3cd6901c2b355567a59"
+    },
+    {
+      "file": "output/measured_hardware_optimisation_20260914/regional_spatial_metrics.json",
+      "bytes": 999,
+      "sha256": "013de20f0a1bc199662122786080516da5043e03a79fbbaa385788b3e0e11169"
+    },
+    {
+      "file": "output/measured_hardware_optimisation_20260914/runtime.json",
+      "bytes": 145,
+      "sha256": "bd8ae4c5a6dc4d4472d8cc482706947ee59e80cd7bfca650ee4d77a1cfa46660"
+    },
+    {
+      "file": "output/measured_hardware_optimisation_20260914/sampling_sensitivity.json",
+      "bytes": 353,
+      "sha256": "3c181d6a3fe5f81a19c4d96ffb789cf18fa151d7449f01d6a901a00216b3c95e"
+    },
+    {
+      "file": "output/measured_hardware_optimisation_20260914/screen_records.json",
+      "bytes": 72159,
+      "sha256": "7d57a134d9a06ccbed049c29a77bb48d3c3699764f50cd8bf7e7e877373f561e"
+    },
+    {
+      "file": "output/measured_hardware_optimisation_20260914/selected_frozen.json",
+      "bytes": 1314,
+      "sha256": "e5f4e7710fa97e5cbb67162389c981947d99cdb3cd0b252849e6c6509786124d"
+    },
+    {
+      "file": "output/measured_hardware_optimisation_20260914/selection_records.json",
+      "bytes": 11102,
+      "sha256": "d8c12bb075c3bd9333cbd93f143461ff5b38167025f0df517f6abd3436e1b5d3"
+    },
+    {
+      "file": "output/measured_hardware_optimisation_20260914/selection_targets.npz",
+      "bytes": 44804,
+      "sha256": "4be32365f31030cd5d99bf8b2fffce6d6a1a5a7384db105b742b74539ecefc40"
+    },
+    {
+      "file": "output/measured_hardware_optimisation_20260914/shortlist.json",
+      "bytes": 4838,
+      "sha256": "d3340d5fb71cf42896de70fbbc62eabdcf9a2dc494cf3b8b2af84d1b7e41aeaf"
+    },
+    {
+      "file": "output/measured_hardware_optimisation_20260914/solver_and_jacobian_verification.json",
+      "bytes": 335,
+      "sha256": "34b2819cf957645b7209b3252c16d525b8d07df3ea7d13530dac49579faf4e88"
+    },
+    {
+      "file": "output/measured_hardware_optimisation_20260914/source_hashes.json",
+      "bytes": 1047,
+      "sha256": "6fca1efb6090d7807fca3ad501b7b14d710ecc41ca99c0c6ec69bd6023b564ef"
+    },
+    {
+      "file": "output/measured_hardware_optimisation_20260914/source_snapshot/ctr_design_analysis.py",
+      "bytes": 58644,
+      "sha256": "ac12f04d2731dc1511dce00d8c17aa5baf9c8fb737d26e1e4e30d5bf24b46c71"
+    },
+    {
+      "file": "output/measured_hardware_optimisation_20260914/source_snapshot/measured_hardware_simulator/CTR_superPosKin_fun_sectioned.py",
+      "bytes": 12082,
+      "sha256": "aeebd1f9562e907fa7cd07449608a66aa0b067ef76775d9b4329e1b992f40b0d"
+    },
+    {
+      "file": "output/measured_hardware_optimisation_20260914/source_snapshot/measured_hardware_simulator/ctr_inverse_kinematics.py",
+      "bytes": 18701,
+      "sha256": "4bb60600740f98825a8906c8055822d7125c66f026da55b2d577815a55da032e"
+    },
+    {
+      "file": "output/measured_hardware_optimisation_20260914/source_snapshot/measured_hardware_simulator/ctr_operating_profile.py",
+      "bytes": 6492,
+      "sha256": "55cc2f4467153d94900cf037fe325846ceff29e9b202cbfc0be472dcd39c8999"
+    },
+    {
+      "file": "output/measured_hardware_optimisation_20260914/source_snapshot/measured_hardware_simulator/design_constraints.py",
+      "bytes": 3789,
+      "sha256": "be8241df83ebdeb9d687cf9cd7755bb8ca92c29a98d52d62e2ded51109e8accb"
+    },
+    {
+      "file": "output/measured_hardware_optimisation_20260914/source_snapshot/measured_hardware_simulator/tube_parameters.py",
+      "bytes": 4498,
+      "sha256": "96bca31d76cd34d1b4f87c5e4d82ec9feae5426bfcfbfba5b4c4ae770a009efb"
+    },
+    {
+      "file": "output/measured_hardware_optimisation_20260914/source_snapshot/tools/optimise_measured_ctr.py",
+      "bytes": 21613,
+      "sha256": "4590eb64f9c8e148e40138d2ab1d3152da55d600376d3ecd06af64b78f27af0f"
+    },
+    {
+      "file": "output/measured_hardware_optimisation_20260914/source_snapshot/tools/run_broad_hardware_study.py",
+      "bytes": 13341,
+      "sha256": "fef35ba8edb72582a4647583e49842b617ca0691aaf8380558c2e469537ff624"
+    },
+    {
+      "file": "output/measured_hardware_optimisation_20260914/source_snapshot/tools/run_hardware_optimisation.py",
+      "bytes": 13093,
+      "sha256": "17f1ddc6a7040f2adebdfc13a8337f17210e04ac2b173a8ea620f30e35f8c56b"
+    },
+    {
+      "file": "output/measured_hardware_optimisation_20260914/study_report.md",
+      "bytes": 7794,
+      "sha256": "a746bb0d25d65872a60edafa0bdb517e85273a9279d11006ebd0c03213e5f4d9"
+    },
+    {
+      "file": "output/measured_hardware_optimisation_20260914/validation_results.json",
+      "bytes": 6027,
+      "sha256": "75a26146c6f71d0663f087ed49eab87cda3fc09f5d9e3d0836ac6e59c5ecb12e"
+    },
+    {
+      "file": "output/measured_hardware_optimisation_20260914/validation_targets.npz",
+      "bytes": 171180,
+      "sha256": "01f664f0ea2345dcba7b4dc72f7885b4d89d16ccb0db3e09ecac934096fc6c9b"
+    },
+    {
+      "file": "output/measured_hardware_optimisation_20260914/verification.json",
+      "bytes": 138,
+      "sha256": "9c82ac158aec2fbe95d67752e31ee4274674bbdbb39b9d1bceed48e57f6b8838"
+    },
+    {
+      "file": "output/measured_hardware_optimisation_20260914/workspace_comparison.png",
+      "bytes": 394702,
+      "sha256": "dc57a5676bea070d1a41d6719ffec8cd1859030876ceb2ad1a8f2c9abba3fd98"
+    }
+  ]
+}

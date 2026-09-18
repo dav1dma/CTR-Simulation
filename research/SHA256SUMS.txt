@@ -1,0 +1,5 @@
+a88d3e6f2d8601b3c558e7f422bf395d27a5000bf2fd9811c3d3361585efdaf5  chapter5-dense-data.tar.gz
+ce584db77e9158181aae9d5aca00121cc30ab20a6275eda27bbbaf9b4e91e0d9  tradeoff-search-data.tar.gz
+5f992a4d41920e8218ddf154430315276e94531f97eaa4c866077a139f6bb780  measured-search-data.tar.gz
+ad59e44411f658c49f255fb455014f3a783810d618c5326f222b94df845d96e5  strict-search-data.tar.gz
+f274a37900d22e5155d0f33c72d3792557c05dd848d5e49ca0be8120865772d0  supplementary-method-comparison.tar.gz

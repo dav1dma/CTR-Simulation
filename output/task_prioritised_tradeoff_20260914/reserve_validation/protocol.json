@@ -1,0 +1,41 @@
+{
+  "baseline": [
+    350.0,
+    170.0,
+    80.0,
+    90.0,
+    65.0,
+    19.12,
+    14.04
+  ],
+  "priorities": "Weak-region and forward-corridor fixed-start IK success, weak-region P10 positional isotropy; protect path completion. Global volume/peak reach are secondary.",
+  "thresholds": "Volume/reach -5%; global supported reference retention -3pp; global mean isotropy -5%, P10 -10%; global fixed-start success -2pp; priority success -1pp; diagnostic success -1pp; weak P10 -5%; path completion no loss, tracking P95 +0.05mm. Meaningful: priority mean success +3pp OR weak P10 +10% with no priority success loss. Engineering benchmark choices, not clinical requirements.",
+  "ranking": "2 weak +2 corridor +1 global success gains. Dense eligibility before ranking; paths assessed before freeze.",
+  "screen": "Prior candidates plus 64 local Sobol candidates, original/current interpolations; 512 global +128 each priority targets; top24 dense at65536 states. Up to8 finalists path-tested on48 paths.",
+  "validation": "Two fresh target banks each2048 global +512 each priority; 131072 states each;24 paths each. Freeze before validation. Report both repeats; no validation-driven tuning.",
+  "assumptions": [
+    "Lengths mean chuck-tip to distal-tip material length; no grip offset",
+    "Straight coaxial internal path assumed, guidance/contact not simulated",
+    "Distal precurves, straight inner wire, original diameters and 75 GPa stiffness fixed",
+    "Unrestricted rotations; no friction, torsion, elastic stability or loaded accuracy",
+    "Bounds exploratory, not supplier or manufacturing limits"
+  ],
+  "hardware": {
+    "retracted_mm": [
+      275,
+      195,
+      115
+    ],
+    "extended_mm": [
+      175,
+      95,
+      15
+    ],
+    "body_mm": 71.5,
+    "gap_mm": [
+      8.5,
+      108
+    ],
+    "sensitivity_gap_mm": 108.5
+  }
+}

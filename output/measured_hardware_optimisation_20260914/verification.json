@@ -1,0 +1,5 @@
+{
+  "forward_max_absolute_error_mm": 2.842170943040401e-14,
+  "checked_against": "inherited section-aware forward model",
+  "states": 48
+}

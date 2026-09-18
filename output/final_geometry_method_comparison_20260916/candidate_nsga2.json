@@ -1,0 +1,35 @@
+{
+  "study": "final_geometry_method_comparison_20260916",
+  "method": "nsga2",
+  "installed": false,
+  "accepted": false,
+  "failed_gates": [
+    "path_completion",
+    "tracking_p95",
+    "repeat0_global_isotropy_p10",
+    "gap_108_5_sensitivity"
+  ],
+  "total_lengths_mm": [
+    350.0,
+    176.65073400503053,
+    80.46052043631664
+  ],
+  "curved_lengths_mm": [
+    0.0,
+    85.04235485724777,
+    70.7105713333857
+  ],
+  "straight_lengths_mm": [
+    350.0,
+    91.60837914778276,
+    9.749949102930941
+  ],
+  "precurvature_per_m": [
+    0,
+    19.12,
+    14.04
+  ],
+  "grip_offset_mm": 0,
+  "length_interpretation": "Provisional chuck tip to distal tip; not fabrication-ready",
+  "hardware": "Measured100mm coupled strokes; gap8.5\u2013108mm; sensitivity108.5mm"
+}
